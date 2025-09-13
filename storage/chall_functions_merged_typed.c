@@ -1,0 +1,1 @@
+/* Merged functions for chall */
