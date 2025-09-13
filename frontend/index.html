@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghidra Analysis Tool</title>
+    <title>Ghidra Binary Analyzer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
@@ -12,47 +12,92 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #111827; /* bg-gray-900 */
+            background-color: #010409;
+            position: relative;
+            overflow: hidden; 
         }
+
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .main-panel {
+            background-color: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(139, 148, 158, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: box-shadow 0.3s ease;
+            position: relative; 
+            z-index: 1;
+        }
+        .main-panel:hover {
+            box-shadow: 0 0 40px 5px rgba(59, 130, 246, 0.5);
+        }
+
+        #txt-viewer .code-view code {
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
         .drop-zone {
-            border: 2px dashed #4B5563; /* border-gray-600 */
-            transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+            border: 2px dashed #4B5563;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
         }
         .drop-zone.dragover {
-            background-color: #1F2937; /* bg-gray-800 */
-            border-color: #3B82F6; /* border-blue-500 */
+            background-color: #1F2937;
+            border-color: #3B82F6;
         }
+
         #spinner {
             border-top-color: #3B82F6;
             animation: spin 1s linear infinite;
         }
         @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+            to { transform: rotate(360deg); }
         }
+
         .nav-button {
-            width: 100%;
             text-align: left;
             padding: 0.5rem 0.75rem;
             border-radius: 0.375rem;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
         .nav-button:hover {
-            background-color: #4B5563;
+            background-color: rgba(75, 85, 99, 0.5);
         }
         .nav-button.active {
             background-color: #3B82F6;
             color: white;
             font-weight: 600;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
         }
+        
+        .action-button {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+        }
+        .action-button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+        .action-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
         .code-view pre {
-            height: 40vh; /* Fixed height for scroll containers */
+            height: 40vh;
             overflow: auto;
             background-color: #1E1E1E;
+            border: 1px solid rgba(139, 148, 158, 0.2);
             border-radius: 0.5rem;
             padding: 1rem;
         }
@@ -62,9 +107,11 @@
     </style>
 </head>
 <body class="text-gray-200">
+    
+    <canvas id="matrix-canvas"></canvas>
 
     <div class="min-h-screen flex items-center justify-center p-4">
-        <div class="w-full max-w-6xl bg-gray-800 rounded-xl shadow-2xl p-8 space-y-8">
+        <div class="main-panel w-full max-w-6xl rounded-xl p-8 space-y-8">
             
             <div>
                 <h1 class="text-3xl font-bold text-center text-white">Ghidra Binary Analyzer</h1>
@@ -87,11 +134,11 @@
 
             <!-- Step 2: Analysis Control -->
             <div id="analysis-section" class="hidden text-center space-y-4">
-                <div class="bg-gray-700 p-4 rounded-lg">
+                <div class="bg-gray-700/50 p-4 rounded-lg">
                     <p class="text-gray-400">File ready for analysis:</p>
                     <p id="ready-file-name" class="font-semibold text-white text-lg"></p>
                 </div>
-                <button id="analyze-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">Analyze File</button>
+                <button id="analyze-btn" class="action-button w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-4 rounded-lg">Analyze File</button>
             </div>
 
             <!-- Status & Results -->
@@ -114,7 +161,7 @@
                     <!-- C Code Viewer -->
                     <div id="c-viewer" class="hidden">
                         <h2 class="text-xl font-semibold text-white mb-4">Decompiled Code (.c)</h2>
-                        <div class="bg-gray-900 p-4 rounded-lg space-y-4">
+                        <div class="bg-gray-900/70 p-4 rounded-lg space-y-4">
                             <nav><ul id="c-nav" class="space-y-2"></ul></nav>
                             <main class="code-view"><pre><code id="c-content" class="language-c">Select a file to view...</code></pre></main>
                         </div>
@@ -122,19 +169,52 @@
                     <!-- TXT File Viewer -->
                     <div id="txt-viewer" class="hidden">
                         <h2 class="text-xl font-semibold text-white mb-4">Text Reports (.txt)</h2>
-                        <div class="bg-gray-900 p-4 rounded-lg space-y-4">
+                        <div class="bg-gray-900/70 p-4 rounded-lg space-y-4">
                             <nav><ul id="txt-nav" class="space-y-2"></ul></nav>
                             <main class="code-view"><pre><code id="txt-content" class="language-plaintext">Select a file to view...</code></pre></main>
                         </div>
                     </div>
                 </div>
 
-                <button id="reset-btn" class="mt-6 w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">Analyze Another File</button>
+                <button id="reset-btn" class="action-button mt-6 w-full bg-gray-600 hover:bg-gray-500 text-white font-bold py-3 px-4 rounded-lg">Analyze Another File</button>
             </div>
         </div>
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('matrix-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            const fontSize = 16;
+            const columns = canvas.width / fontSize;
+            const drops = Array(Math.floor(columns)).fill(1);
+
+            function draw() {
+                ctx.fillStyle = 'rgba(1, 4, 9, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#00FF41';
+                ctx.font = `${fontSize}px monospace`;
+                for (let i = 0; i < drops.length; i++) {
+                    const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                    drops[i]++;
+                }
+            }
+            let drawInterval = setInterval(draw, 33);
+            
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                const newColumns = canvas.width / fontSize;
+                while(drops.length < newColumns) drops.push(1);
+                while(drops.length > newColumns) drops.pop();
+            });
+        });
+
         // DOM Elements
         const dropZone = document.getElementById('drop-zone');
         const fileInput = document.getElementById('file-input');
@@ -148,26 +228,20 @@
         const resultsContainer = document.getElementById('results-container');
         const resultsList = document.getElementById('results-list');
         const resetBtn = document.getElementById('reset-btn');
-        // Viewer sections
         const cViewer = document.getElementById('c-viewer');
         const cNav = document.getElementById('c-nav');
         const cContent = document.getElementById('c-content');
         const txtViewer = document.getElementById('txt-viewer');
         const txtNav = document.getElementById('txt-nav');
         const txtContent = document.getElementById('txt-content');
+        
         let uploadedFileName = null;
 
         // --- Event Listeners ---
         dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
         dropZone.addEventListener('dragleave', () => { dropZone.classList.remove('dragover'); });
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('dragover');
-            if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
-        });
-        fileInput.addEventListener('change', () => {
-            if (fileInput.files.length > 0) handleFile(fileInput.files[0]);
-        });
+        dropZone.addEventListener('drop', (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]); });
+        fileInput.addEventListener('change', () => { if (fileInput.files.length > 0) handleFile(fileInput.files[0]); });
         analyzeBtn.addEventListener('click', runAnalysis);
         resetBtn.addEventListener('click', resetUI);
 
@@ -221,13 +295,10 @@
                 if (!response.ok) throw new Error('Could not fetch viewable files.');
                 const data = await response.json();
 
-                // Populate C file viewer
                 if (data.cFiles && data.cFiles.length > 0) {
                     cViewer.classList.remove('hidden');
                     populateViewer(data.cFiles, cNav, cContent, 'c');
                 }
-
-                // Populate TXT file viewer
                 if (data.txtFiles && data.txtFiles.length > 0) {
                     txtViewer.classList.remove('hidden');
                     populateViewer(data.txtFiles, txtNav, txtContent, 'txt');
@@ -244,7 +315,7 @@
                 const button = document.createElement('button');
                 button.textContent = file.fileName;
                 button.title = file.fileName;
-                button.className = 'nav-button';
+                button.className = 'nav-button w-full';
                 button.onclick = () => {
                     navElement.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
@@ -259,10 +330,7 @@
                 li.appendChild(button);
                 navElement.appendChild(li);
             });
-            // Automatically click the first file
-            if (navElement.firstChild) {
-                 navElement.querySelector('button').click();
-            }
+            if (navElement.firstChild) navElement.querySelector('button').click();
         }
 
         function displayDownloadResults(resultFiles) {
@@ -270,13 +338,8 @@
             if (resultFiles && resultFiles.length > 0) {
                  resultFiles.forEach(fileName => {
                     const li = document.createElement('li');
-                    li.className = 'bg-gray-700 p-3 rounded-lg flex justify-between items-center';
-                    li.innerHTML = `
-                        <span class="text-gray-300">${fileName}</span>
-                        <a href="http://localhost:3000/results/${fileName}" download
-                           class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md text-sm transition duration-200">
-                           Download
-                        </a>`;
+                    li.className = 'bg-gray-700/50 p-3 rounded-lg flex justify-between items-center';
+                    li.innerHTML = `<span class="text-gray-300">${fileName}</span><a href="http://localhost:3000/results/${fileName}" download class="action-button bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-md text-sm">Download</a>`;
                     resultsList.appendChild(li);
                 });
             } else {
@@ -293,7 +356,7 @@
         async function resetUI() {
             try {
                 const response = await fetch('http://localhost:3000/cleanup', { method: 'POST' });
-                if (response.ok) { console.log((await response.json()).message); }
+                if (response.ok) console.log((await response.json()).message);
             } catch (error) {
                 console.error('Error during cleanup:', error);
             }
@@ -304,10 +367,8 @@
             analysisSection.classList.add('hidden');
             statusSection.classList.add('hidden');
             resultsContainer.classList.add('hidden');
-            // Hide viewer sections
             cViewer.classList.add('hidden');
             txtViewer.classList.add('hidden');
-            // Reset content
             cContent.textContent = 'Select a file to view...';
             txtContent.textContent = 'Select a file to view...';
             statusMessage.textContent = 'Uploading...';
@@ -316,4 +377,6 @@
     </script>
 </body>
 </html>
+
+
 
