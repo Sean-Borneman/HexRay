@@ -35,8 +35,8 @@ def check_c_syntax(c_file_path):
 
 if __name__ == "__main__":
     project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    results_folder = os.path.join(project_root, "storage/results")
-    verification_folder = os.path.join(results_folder, "verification")
+    results_folder = os.path.join(project_root, "storage/")
+    verification_folder = os.path.join(results_folder, "results")
 
     # Make verification folder if it doesn't exist
     os.makedirs(verification_folder, exist_ok=True)
