@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghidra Analysis Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- For C syntax highlighting - Switched to a VS Code-like theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+        .drop-zone {
+            border: 2px dashed #4B5563; /* border-gray-600 */
+            transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        }
+        .drop-zone.dragover {
+            background-color: #1F2937; /* bg-gray-800 */
+            border-color: #3B82F6; /* border-blue-500 */
+        }
+        #spinner {
+            border-top-color: #3B82F6;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        /* Styles for the code viewer */
+        #code-nav button {
+            width: 100%;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease;
+        }
+        #code-nav button:hover {
+            background-color: #4B5563; /* hover:bg-gray-600 */
+        }
+        #code-nav button.active {
+            background-color: #3B82F6; /* bg-blue-600 */
+            color: white;
+            font-weight: 600;
+        }
+        /* Styles for the scrollable code box */
+        #code-viewer-section main pre {
+            max-height: 50vh; /* Set max height to 50% of the viewport height */
+            overflow: auto;   /* Enable scrollbars automatically */
+            background-color: #1E1E1E; /* Match the VS Code dark theme background */
+        }
+        #code-content {
+            white-space: pre; /* Preserve formatting and allow horizontal scroll */
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-4xl bg-gray-800 rounded-xl shadow-2xl p-8 space-y-8">
+            
+            <!-- Header -->
+            <div>
+                <h1 class="text-3xl font-bold text-center text-white">Ghidra Binary Analyzer</h1>
+                <p class="text-center text-gray-400 mt-2">Upload an executable or binary file to begin analysis.</p>
+            </div>
+
+            <!-- Step 1: File Upload -->
+            <div id="upload-section">
+                <form id="upload-form">
+                    <label for="file-input" class="cursor-pointer">
+                        <div id="drop-zone" class="drop-zone rounded-lg p-10 text-center">
+                            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <p class="mt-4 text-lg text-gray-300">
+                                <span class="font-semibold text-blue-400">Click to upload</span> or drag and drop
+                            </p>
+                            <p id="file-name-display" class="mt-2 text-sm text-gray-500">No file selected</p>
+                            <input type="file" id="file-input" name="uploadedFile" class="hidden">
+                        </div>
+                    </label>
+                </form>
+            </div>
+
+            <!-- Step 2: Analysis Control -->
+            <div id="analysis-section" class="hidden text-center space-y-4">
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <p class="text-gray-400">File ready for analysis:</p>
+                    <p id="ready-file-name" class="font-semibold text-white text-lg"></p>
+                </div>
+                <button id="analyze-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                    Analyze File
+                </button>
+            </div>
+
+            <!-- Status & Results -->
+            <div id="status-section" class="text-center space-y-4 hidden">
+                 <div class="flex items-center justify-center space-x-3">
+                    <div id="spinner" class="w-8 h-8 border-4 border-gray-600 rounded-full"></div>
+                    <p id="status-message" class="text-lg font-medium text-gray-300">Uploading file...</p>
+                </div>
+            </div>
+            
+            <div id="results-container" class="hidden space-y-8">
+                <!-- Downloadable files -->
+                <div id="results-section">
+                     <h2 class="text-xl font-semibold text-white mb-4">Downloadable Files</h2>
+                     <ul id="results-list" class="space-y-3"></ul>
+                </div>
+
+                <!-- Code Viewer -->
+                <div id="code-viewer-section" class="hidden">
+                    <h2 class="text-xl font-semibold text-white mb-4">Decompiled Code</h2>
+                    <div class="flex flex-col md:flex-row gap-6 bg-gray-900 p-4 rounded-lg">
+                        <!-- Sidebar Navigation -->
+                        <nav class="w-full md:w-1/4">
+                            <ul id="code-nav" class="space-y-2">
+                                <!-- JS will populate this -->
+                            </ul>
+                        </nav>
+                        <!-- Code Display -->
+                        <main class="w-full md:w-3/4 rounded-lg">
+                            <pre class="p-4 rounded-lg text-sm"><code id="code-content" class="language-c"></code></pre>
+                        </main>
+                    </div>
+                </div>
+
+                <button id="reset-btn" class="mt-6 w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                    Analyze Another File
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const fileNameDisplay = document.getElementById('file-name-display');
+        const analyzeBtn = document.getElementById('analyze-btn');
+        const readyFileName = document.getElementById('ready-file-name');
+        
+        const uploadSection = document.getElementById('upload-section');
+        const analysisSection = document.getElementById('analysis-section');
+        const statusSection = document.getElementById('status-section');
+        const statusMessage = document.getElementById('status-message');
+        
+        const resultsContainer = document.getElementById('results-container');
+        const resultsSection = document.getElementById('results-section');
+        const resultsList = document.getElementById('results-list');
+        const resetBtn = document.getElementById('reset-btn');
+
+        const codeViewerSection = document.getElementById('code-viewer-section');
+        const codeNav = document.getElementById('code-nav');
+        const codeContent = document.getElementById('code-content');
+
+        let uploadedFileName = null;
+
+        // --- Drag and Drop Logic ---
+        dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+        dropZone.addEventListener('dragleave', () => { dropZone.classList.remove('dragover'); });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+        });
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) handleFile(fileInput.files[0]);
+        });
+
+        async function handleFile(file) {
+            fileNameDisplay.textContent = file.name;
+            uploadSection.classList.add('hidden');
+            analysisSection.classList.add('hidden');
+            statusSection.classList.remove('hidden');
+            statusMessage.textContent = `Uploading ${file.name}...`;
+
+            const formData = new FormData();
+            formData.append('uploadedFile', file);
+            try {
+                const response = await fetch('http://localhost:3000/upload', { method: 'POST', body: formData });
+                if (!response.ok) throw new Error(`Upload failed: ${response.statusText}`);
+                const result = await response.json();
+                uploadedFileName = result.fileName;
+
+                statusSection.classList.add('hidden');
+                readyFileName.textContent = uploadedFileName;
+                analysisSection.classList.remove('hidden');
+            } catch (error) {
+                showError(`Upload Error: ${error.message}`);
+            }
+        }
+        
+        analyzeBtn.addEventListener('click', async () => {
+            if (!uploadedFileName) return;
+
+            analysisSection.classList.add('hidden');
+            statusSection.classList.remove('hidden');
+            statusMessage.textContent = `Analyzing ${uploadedFileName}... Please wait.`;
+            
+            try {
+                // Trigger analysis
+                const analyzeResponse = await fetch('http://localhost:3000/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ fileName: uploadedFileName })
+                });
+                if (!analyzeResponse.ok) throw new Error(`Analysis failed: ${analyzeResponse.statusText}`);
+                const analyzeResult = await analyzeResponse.json();
+                
+                statusSection.classList.add('hidden');
+                resultsContainer.classList.remove('hidden');
+                
+                // Display downloadable files
+                displayDownloadResults(analyzeResult.results);
+                
+                // Fetch and display C code files
+                await fetchAndDisplayCode();
+
+            } catch (error) {
+                showError(`Analysis Error: ${error.message}`);
+            }
+        });
+
+        async function fetchAndDisplayCode() {
+            try {
+                const response = await fetch('http://localhost:3000/code-results');
+                if (!response.ok) throw new Error('Could not fetch code files.');
+                const codeFiles = await response.json();
+
+                if (codeFiles && codeFiles.length > 0) {
+                    codeViewerSection.classList.remove('hidden');
+                    codeNav.innerHTML = ''; // Clear previous nav
+
+                    codeFiles.forEach((file, index) => {
+                        const li = document.createElement('li');
+                        const button = document.createElement('button');
+                        button.textContent = file.fileName;
+                        button.dataset.index = index;
+                        button.onclick = () => {
+                            // Update active state
+                            codeNav.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+                            button.classList.add('active');
+                            
+                            // FIX: Manually highlight the code string and set innerHTML.
+                            const codeString = codeFiles[index].content;
+                            const highlighted = hljs.highlight(codeString, { language: 'c', ignoreIllegals: true });
+                            
+                            codeContent.innerHTML = highlighted.value;
+                            codeContent.className = 'language-c'; // Keep class for CSS consistency
+                        };
+                        li.appendChild(button);
+                        codeNav.appendChild(li);
+                    });
+                    
+                    // Automatically click the first file
+                    if (codeNav.firstChild) {
+                         codeNav.querySelector('button').click();
+                    }
+                }
+            } catch (error) {
+                console.error("Code Display Error:", error);
+            }
+        }
+
+        function displayDownloadResults(resultFiles) {
+            resultsList.innerHTML = '';
+            if (resultFiles && resultFiles.length > 0) {
+                 resultFiles.forEach(fileName => {
+                    const li = document.createElement('li');
+                    li.className = 'bg-gray-700 p-3 rounded-lg flex justify-between items-center';
+                    li.innerHTML = `
+                        <span class="text-gray-300">${fileName}</span>
+                        <a href="http://localhost:3000/results/${fileName}" download
+                           class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md text-sm transition duration-200">
+                           Download
+                        </a>`;
+                    resultsList.appendChild(li);
+                });
+            } else {
+                 resultsList.innerHTML = '<li class="text-gray-400">No result files were generated.</li>';
+            }
+        }
+
+        function showError(message) {
+            statusSection.classList.remove('hidden');
+            statusMessage.textContent = message;
+            statusMessage.classList.add('text-red-400');
+            resultsContainer.classList.remove('hidden'); 
+            resultsSection.classList.add('hidden');
+        }
+
+        resetBtn.addEventListener('click', async () => {
+            // NEW: Call the cleanup endpoint on the server
+            try {
+                const response = await fetch('http://localhost:3000/cleanup', { method: 'POST' });
+                if (!response.ok) {
+                    console.error('Failed to clean up server files.');
+                } else {
+                    const result = await response.json();
+                    console.log(result.message);
+                }
+            } catch (error) {
+                console.error('Error during cleanup:', error);
+            }
+
+            // Reset UI
+            uploadedFileName = null;
+            fileInput.value = '';
+            fileNameDisplay.textContent = 'No file selected';
+
+            uploadSection.classList.remove('hidden');
+            analysisSection.classList.add('hidden');
+            statusSection.classList.add('hidden');
+            resultsContainer.classList.add('hidden');
+            codeViewerSection.classList.add('hidden');
+
+            statusMessage.textContent = 'Uploading...';
+            statusMessage.classList.remove('text-red-400');
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,23 @@
+{
+  "name": "ghidra-frontend-server",
+  "version": "1.0.0",
+  "description": "A simple frontend and server for a Ghidra analysis tool.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ghidra",
+    "analysis",
+    "file-upload"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.0",
+    "multer": "^2.0.2"
+  }
+}
