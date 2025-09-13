@@ -378,22 +378,41 @@ Examples:
         elif args.use_ghirda_scripts:
             # Run the alternate scripts to build a project and decompile to text
             import subprocess
-            print("[Mode] Using ghirda-cli-call.py and ghidraDecompileToText.py")
+            print("[Mode] Using ghirda-cli-call.py and ghidraDecompileTWOFiles.py")
             # First: run ghirda-cli-call.py (analyzes the first file in storage)
             try:
                 subprocess.run([sys.executable, 'ghirda-cli-call.py'], check=True)
             except Exception as e:
                 print(f"Error running ghirda-cli-call.py: {e}")
-            # Second: run ghidraDecompileToText.py to export per-function text files
+            # Second: run ghidraDecompileTWOFiles.py to export consolidated function C and data
             try:
-                subprocess.run([sys.executable, 'ghidraDecompileToText.py'], check=True)
+                subprocess.run([sys.executable, 'ghidraDecompileTWOFiles.py'], check=True)
             except Exception as e:
-                print(f"Error running ghidraDecompileToText.py: {e}")
-            # If user still wants LLM typing, allow passing --c-file/--dump-file
-            if args.c_file:
-                results = pipeline.run_from_files(c_file=args.c_file, objdump_file=args.dump_file)
+                print(f"Error running ghidraDecompileTWOFiles.py: {e}")
+            # If consolidated outputs exist, run typing/summarization automatically
+            merged_c_path = Path('./decompiled_output/ALL_FUNCTIONS.c')
+            combined_data_path = Path('./decompiled_output/ALL_DATA.txt')
+            if merged_c_path.exists():
+                outputs = pipeline.llm_analyzer.annotate_types_and_summarize(
+                    c_file_path=str(merged_c_path),
+                    objdump_path=str(combined_data_path) if combined_data_path.exists() else None,
+                    out_ext='c'
+                )
+                results = {
+                    'binary_name': merged_c_path.stem,
+                    'code_file': str(merged_c_path),
+                    'data_file': str(combined_data_path) if combined_data_path.exists() else None,
+                    'analysis_file': None,
+                    'summary_file': outputs.get('summary_file'),
+                    'typed_code_file': outputs.get('typed_code_file'),
+                    'combined_input_file': outputs.get('combined_input_file'),
+                    'code_chunks_analyzed': 0,
+                    'data_chunks_analyzed': 0,
+                    'total_chunks': 0,
+                    'tokens_used': 0,
+                }
             else:
-                print("Scripts executed. Provide --c-file to run typing/summarization on a file.")
+                print("Consolidated outputs not found; you can pass --c-file and --dump-file to run typing.")
                 results = {
                     'binary_name': None,
                     'code_file': None,
@@ -401,6 +420,7 @@ Examples:
                     'analysis_file': None,
                     'summary_file': None,
                     'typed_code_file': None,
+                    'combined_input_file': None,
                     'code_chunks_analyzed': 0,
                     'data_chunks_analyzed': 0,
                     'total_chunks': 0,
