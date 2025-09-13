@@ -350,9 +350,20 @@ Content:
                 'analysis': analysis
             })
         
-        # Save analysis results
+        # Save analysis results to storage folder
         if save_analysis:
-            analysis_file = Path("ghidra_output") / f"{base_name}_analysis.json"
+            # Get storage directory (same logic as save_to_files)
+            current_dir = Path(__file__).parent
+            if current_dir.name == 'backend':
+                storage_dir = current_dir.parent / 'storage'
+            else:
+                storage_dir = Path('../storage').resolve()
+                if not storage_dir.exists():
+                    storage_dir = current_dir.parent / 'storage'
+            
+            storage_dir.mkdir(exist_ok=True, parents=True)
+            analysis_file = storage_dir / f"{base_name}_analysis.json"
+            
             with open(analysis_file, 'w') as f:
                 json.dump(analyses, f, indent=2)
             print(f"Saved analysis to: {analysis_file}")
