@@ -101,18 +101,18 @@ void helper_function() {
             `${baseName}_helpers.c`,
         ];
 
-        resultFiles.slice(0, 3).forEach(resultFile => {
-            const resultPath = path.join(resultsDir, resultFile);
-            fs.writeFileSync(resultPath, `This is a simulated analysis result for ${fileName}.\nGenerated on: ${new Date().toISOString()}`);
-            console.log(`Generated result file: ${resultPath}`);
-        });
+        // resultFiles.slice(0, 3).forEach(resultFile => {
+        //     const resultPath = path.join(resultsDir, resultFile);
+        //     fs.writeFileSync(resultPath, `This is a simulated analysis result for ${fileName}.\nGenerated on: ${new Date().toISOString()}`);
+        //     console.log(`Generated result file: ${resultPath}`);
+        // });
 
         console.log(`Analysis finished for: ${fileName}`);
         res.json({
             message: `Analysis complete for ${fileName}`,
             results: resultFiles
         });
-    }, 3000); // Simulate a 3-second analysis time
+    }, 50); // Simulate a 3-second analysis time
 });
 
 // 3. Get Code Results Endpoint
