@@ -1,3 +1,0 @@
-=== SOURCE_C_START ===
-/* Merged functions for chall */
-=== SOURCE_C_END ===
