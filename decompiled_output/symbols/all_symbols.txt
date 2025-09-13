@@ -1,0 +1,569 @@
+SYMBOL TABLE EXPORT
+Total symbols: 113
+============================================================
+
+Name: __libc_start_main
+Address: EXTERNAL:00000001
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: puts
+Address: EXTERNAL:00000002
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: strlen
+Address: EXTERNAL:00000003
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: __stack_chk_fail
+Address: EXTERNAL:00000004
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: printf
+Address: EXTERNAL:00000005
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: __isoc99_scanf
+Address: EXTERNAL:00000006
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: __cxa_finalize
+Address: EXTERNAL:00000007
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: _ITM_deregisterTMCloneTable
+Address: EXTERNAL:00000008
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: _ITM_registerTMCloneTable
+Address: EXTERNAL:00000009
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: __gmon_start__
+Address: EXTERNAL:0000000a
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: Elf64_Phdr_ARRAY_00100040
+Address: 00100040
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: s_/lib64/ld-linux-x86-64.so.2_00100318
+Address: 00100318
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: NoteGnuProperty_4_00100338
+Address: 00100338
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: GnuBuildId_00100368
+Address: 00100368
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __abi_tag
+Address: 0010038c
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __DT_GNU_HASH
+Address: 001003b0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __DT_SYMTAB
+Address: 001003d8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __DT_STRTAB
+Address: 001004e0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __DT_VERSYM
+Address: 001005b0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __DT_VERNEED
+Address: 001005c8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __DT_RELA
+Address: 00100618
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __DT_JMPREL
+Address: 001006d8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __DT_INIT
+Address: 00101000
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: _init
+Address: 00101000
+Type: Function
+Namespace: Global
+----------------------------------------
+Name: LAB_00101016
+Address: 00101016
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: FUN_00101020
+Address: 00101020
+Type: Function
+Namespace: Global
+----------------------------------------
+Name: FUN_00101080
+Address: 00101080
+Type: Function
+Namespace: Global
+----------------------------------------
+Name: puts
+Address: 00101090
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: strlen
+Address: 001010a0
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: __stack_chk_fail
+Address: 001010b0
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: printf
+Address: 001010c0
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: __isoc99_scanf
+Address: 001010d0
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: _start
+Address: 001010e0
+Type: Function
+Namespace: Global
+----------------------------------------
+Name: deregister_tm_clones
+Address: 00101110
+Type: Function
+Namespace: Global
+----------------------------------------
+Name: LAB_00101138
+Address: 00101138
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: register_tm_clones
+Address: 00101140
+Type: Function
+Namespace: Global
+----------------------------------------
+Name: LAB_00101178
+Address: 00101178
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __do_global_dtors_aux
+Address: 00101180
+Type: Function
+Namespace: Global
+----------------------------------------
+Name: LAB_001011a7
+Address: 001011a7
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_001011b8
+Address: 001011b8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: frame_dummy
+Address: 001011c0
+Type: Function
+Namespace: Global
+----------------------------------------
+Name: main
+Address: 001011c9
+Type: Function
+Namespace: Global
+----------------------------------------
+Name: LAB_00101248
+Address: 00101248
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_00101261
+Address: 00101261
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_00101275
+Address: 00101275
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_001012c8
+Address: 001012c8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_00101310
+Address: 00101310
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_0010133d
+Address: 0010133d
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_00101344
+Address: 00101344
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_00101387
+Address: 00101387
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_00101393
+Address: 00101393
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_001013d0
+Address: 001013d0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_001013d7
+Address: 001013d7
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_001013fb
+Address: 001013fb
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: LAB_0010140f
+Address: 0010140f
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __DT_FINI
+Address: 00101418
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: _fini
+Address: 00101418
+Type: Function
+Namespace: Global
+----------------------------------------
+Name: _IO_stdin_used
+Address: 00102000
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: target
+Address: 00102020
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: s_Enter_flag:_001021e1
+Address: 001021e1
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: DAT_001021ee
+Address: 001021ee
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: DAT_001021f1
+Address: 001021f1
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: s_Correct!_001021f6
+Address: 001021f6
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __GNU_EH_FRAME_HDR
+Address: 00102200
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: cie_00102238
+Address: 00102238
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: fde_00102250
+Address: 00102250
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: fde_00102268
+Address: 00102268
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: fde_00102290
+Address: 00102290
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: fde_001022a8
+Address: 001022a8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: fde_001022c0
+Address: 001022c0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __FRAME_END__
+Address: 001022e4
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __DT_INIT_ARRAY
+Address: 00103d98
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __frame_dummy_init_array_entry
+Address: 00103d98
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __DT_FINI_ARRAY
+Address: 00103da0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __do_global_dtors_aux_fini_array_entry
+Address: 00103da0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: _DYNAMIC
+Address: 00103da8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __DT_PLTGOT
+Address: 00103f98
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: _GLOBAL_OFFSET_TABLE_
+Address: 00103f98
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: PTR_00103fa0
+Address: 00103fa0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: PTR_00103fa8
+Address: 00103fa8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: PTR_puts_00103fb0
+Address: 00103fb0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: PTR_strlen_00103fb8
+Address: 00103fb8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: PTR___stack_chk_fail_00103fc0
+Address: 00103fc0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: PTR_printf_00103fc8
+Address: 00103fc8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: PTR___isoc99_scanf_00103fd0
+Address: 00103fd0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: PTR___libc_start_main_00103fd8
+Address: 00103fd8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: PTR__ITM_deregisterTMCloneTable_00103fe0
+Address: 00103fe0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: PTR___gmon_start___00103fe8
+Address: 00103fe8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: PTR__ITM_registerTMCloneTable_00103ff0
+Address: 00103ff0
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: PTR___cxa_finalize_00103ff8
+Address: 00103ff8
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: data_start
+Address: 00104000
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __data_start
+Address: 00104000
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __dso_handle
+Address: 00104008
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: completed.0
+Address: 00104010
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: _edata
+Address: 00104010
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __bss_start
+Address: 00104010
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __TMC_END__
+Address: 00104010
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: _end
+Address: 00104018
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: __libc_start_main
+Address: 00105000
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: _ITM_deregisterTMCloneTable
+Address: 00105008
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: puts
+Address: 00105010
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: strlen
+Address: 00105018
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: __stack_chk_fail
+Address: 00105020
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: printf
+Address: 00105028
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: __gmon_start__
+Address: 00105030
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: __isoc99_scanf
+Address: 00105038
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: _ITM_registerTMCloneTable
+Address: 00105040
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: __cxa_finalize
+Address: 00105048
+Type: Function
+Namespace: <EXTERNAL>
+----------------------------------------
+Name: ElfComment[0]
+Address: .comment::00000000
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: DAT_.shstrtab__00000000
+Address: .shstrtab::00000000
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: DAT_.strtab__00000000
+Address: .strtab::00000000
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: Elf64_Sym_ARRAY_.symtab__00000000
+Address: .symtab::00000000
+Type: Label
+Namespace: Global
+----------------------------------------
+Name: Elf64_Shdr_ARRAY__elfSectionHeaders__00000000
+Address: _elfSectionHeaders::00000000
+Type: Label
+Namespace: Global
+----------------------------------------

@@ -1,6 +1,6 @@
-Function: deregister_tm_clones
-Address: 00101110
-Size: 34 bytes
+// Function: deregister_tm_clones
+// Address: 00101110
+// Size: 34 bytes
 ============================================================
 
 

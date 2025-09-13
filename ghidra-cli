@@ -77,7 +77,7 @@ if [ "$NEW_PROJECT" = true ]; then
     fi
 
     "$GHIDRA_ANALYZE" "$PROJECT_DIR" "$PROJECT_NAME" -import "${IMPORT_FILE[@]}" || exit $?
-    "$GHIDRA_EXECUTE" "$PROJECT_DIR/$PROJECT_NAME.gpr"
+    #"$GHIDRA_EXECUTE" "$PROJECT_DIR/$PROJECT_NAME.gpr"
     exit $?
 fi
 

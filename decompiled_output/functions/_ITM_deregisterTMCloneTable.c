@@ -1,12 +1,12 @@
-Function: _ITM_registerTMCloneTable
-Address: 00105040
-Size: 1 bytes
+// Function: _ITM_deregisterTMCloneTable
+// Address: 00105008
+// Size: 1 bytes
 ============================================================
 
 
 /* WARNING: Control flow encountered bad instruction data */
 
-void _ITM_registerTMCloneTable(void)
+void _ITM_deregisterTMCloneTable(void)
 
 {
                     /* WARNING: Bad instruction - Truncating control flow here */

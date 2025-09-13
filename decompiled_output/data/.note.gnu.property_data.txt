@@ -1,0 +1,45 @@
+Data Section: .note.gnu.property
+Address Range: 00100338 - 00100367
+Size: 48 bytes
+============================================================
+
+Address: 00100338
+Type: /ELF/NoteGnuProperty_4
+pack(disabled)
+Structure NoteGnuProperty_4 {
+   0   dword   4   namesz   "Length of name field"
+   4   dword   4   descsz   "Length of description field"
+   8   dword   4   type   "Vendor specific type"
+   12   string   4   name   "Vendor name"
+}
+Length: 16 Alignment: 1
+
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 00100348
+Type: /NoteGnuPropertyElement_4
+pack(disabled)
+Structure NoteGnuPropertyElement_4 {
+   0   dword   4   prType   ""
+   4   dword   4   prDatasz   ""
+   8   byte[4]   4   data   ""
+}
+Length: 12 Alignment: 1
+
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 00100354
+Type: /NoteGnuPropertyElement_4
+pack(disabled)
+Structure NoteGnuPropertyElement_4 {
+   0   dword   4   prType   ""
+   4   dword   4   prDatasz   ""
+   8   byte[4]   4   data   ""
+}
+Length: 12 Alignment: 1
+
+Size: 12 bytes
+Value: undefined
+----------------------------------------

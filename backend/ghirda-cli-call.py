@@ -7,6 +7,7 @@ class SimpleGhidraCLI:
         self.script_path = Path("./ghidra-cli").resolve()
         self.git_bash = self._find_git_bash()
     
+    
     def _find_git_bash(self):
         """Find Git Bash executable"""
         possible_paths = [
@@ -59,7 +60,6 @@ class SimpleGhidraCLI:
         binary_file = Path(binary_path)
         if not binary_file.exists():
             raise FileNotFoundError(f"Binary file not found: {binary_file.resolve()}")
-        
         # Build arguments for ghidra-cli
         args = ['-n', '-i', str(binary_path)]
         

@@ -1,6 +1,6 @@
-Function: printf
-Address: 00105028
-Size: 1 bytes
+// Function: printf
+// Address: 00105028
+// Size: 1 bytes
 ============================================================
 
 

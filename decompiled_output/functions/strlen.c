@@ -1,6 +1,6 @@
-Function: strlen
-Address: 00105018
-Size: 1 bytes
+// Function: strlen
+// Address: 00105018
+// Size: 1 bytes
 ============================================================
 
 

@@ -1,6 +1,6 @@
-Function: _start
-Address: 001010e0
-Size: 38 bytes
+// Function: _start
+// Address: 001010e0
+// Size: 38 bytes
 ============================================================
 
 

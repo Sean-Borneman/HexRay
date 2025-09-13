@@ -1,0 +1,419 @@
+STRING DATA EXPORT
+Total strings found: 83
+============================================================
+
+Address: 00100318
+Type: TerminatedCString
+Length: 28
+Value: '/lib64/ld-linux-x86-64.so.2'
+----------------------------------------
+Address: 001004e1
+Type: string-utf8
+Length: 5
+Value: 'puts'
+----------------------------------------
+Address: 001004e6
+Type: string-utf8
+Length: 17
+Value: '__stack_chk_fail'
+----------------------------------------
+Address: 001004f7
+Type: string-utf8
+Length: 7
+Value: 'strlen'
+----------------------------------------
+Address: 001004fe
+Type: string-utf8
+Length: 18
+Value: '__libc_start_main'
+----------------------------------------
+Address: 00100510
+Type: string-utf8
+Length: 15
+Value: '__cxa_finalize'
+----------------------------------------
+Address: 0010051f
+Type: string-utf8
+Length: 7
+Value: 'printf'
+----------------------------------------
+Address: 00100526
+Type: string-utf8
+Length: 15
+Value: '__isoc99_scanf'
+----------------------------------------
+Address: 00100535
+Type: string-utf8
+Length: 10
+Value: 'libc.so.6'
+----------------------------------------
+Address: 0010053f
+Type: string-utf8
+Length: 10
+Value: 'GLIBC_2.7'
+----------------------------------------
+Address: 00100549
+Type: string-utf8
+Length: 10
+Value: 'GLIBC_2.4'
+----------------------------------------
+Address: 00100553
+Type: string-utf8
+Length: 12
+Value: 'GLIBC_2.2.5'
+----------------------------------------
+Address: 0010055f
+Type: string-utf8
+Length: 11
+Value: 'GLIBC_2.34'
+----------------------------------------
+Address: 0010056a
+Type: string-utf8
+Length: 28
+Value: '_ITM_deregisterTMCloneTable'
+----------------------------------------
+Address: 00100586
+Type: string-utf8
+Length: 15
+Value: '__gmon_start__'
+----------------------------------------
+Address: 00100595
+Type: string-utf8
+Length: 26
+Value: '_ITM_registerTMCloneTable'
+----------------------------------------
+Address: 001021e1
+Type: string
+Length: 13
+Value: 'Enter flag: '
+----------------------------------------
+Address: 001021f6
+Type: string
+Length: 9
+Value: 'Correct!'
+----------------------------------------
+Address: 00102241
+Type: string
+Length: 3
+Value: 'zR'
+----------------------------------------
+Address: .comment::00000000
+Type: string-utf8
+Length: 43
+Value: 'GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0'
+----------------------------------------
+Address: .shstrtab::00000001
+Type: string-utf8
+Length: 8
+Value: '.symtab'
+----------------------------------------
+Address: .shstrtab::00000009
+Type: string-utf8
+Length: 8
+Value: '.strtab'
+----------------------------------------
+Address: .shstrtab::00000011
+Type: string-utf8
+Length: 10
+Value: '.shstrtab'
+----------------------------------------
+Address: .shstrtab::0000001b
+Type: string-utf8
+Length: 8
+Value: '.interp'
+----------------------------------------
+Address: .shstrtab::00000023
+Type: string-utf8
+Length: 19
+Value: '.note.gnu.property'
+----------------------------------------
+Address: .shstrtab::00000036
+Type: string-utf8
+Length: 19
+Value: '.note.gnu.build-id'
+----------------------------------------
+Address: .shstrtab::00000049
+Type: string-utf8
+Length: 14
+Value: '.note.ABI-tag'
+----------------------------------------
+Address: .shstrtab::00000057
+Type: string-utf8
+Length: 10
+Value: '.gnu.hash'
+----------------------------------------
+Address: .shstrtab::00000061
+Type: string-utf8
+Length: 8
+Value: '.dynsym'
+----------------------------------------
+Address: .shstrtab::00000069
+Type: string-utf8
+Length: 8
+Value: '.dynstr'
+----------------------------------------
+Address: .shstrtab::00000071
+Type: string-utf8
+Length: 13
+Value: '.gnu.version'
+----------------------------------------
+Address: .shstrtab::0000007e
+Type: string-utf8
+Length: 15
+Value: '.gnu.version_r'
+----------------------------------------
+Address: .shstrtab::0000008d
+Type: string-utf8
+Length: 10
+Value: '.rela.dyn'
+----------------------------------------
+Address: .shstrtab::00000097
+Type: string-utf8
+Length: 10
+Value: '.rela.plt'
+----------------------------------------
+Address: .shstrtab::000000a1
+Type: string-utf8
+Length: 6
+Value: '.init'
+----------------------------------------
+Address: .shstrtab::000000a7
+Type: string-utf8
+Length: 9
+Value: '.plt.got'
+----------------------------------------
+Address: .shstrtab::000000b0
+Type: string-utf8
+Length: 9
+Value: '.plt.sec'
+----------------------------------------
+Address: .shstrtab::000000b9
+Type: string-utf8
+Length: 6
+Value: '.text'
+----------------------------------------
+Address: .shstrtab::000000bf
+Type: string-utf8
+Length: 6
+Value: '.fini'
+----------------------------------------
+Address: .shstrtab::000000c5
+Type: string-utf8
+Length: 8
+Value: '.rodata'
+----------------------------------------
+Address: .shstrtab::000000cd
+Type: string-utf8
+Length: 14
+Value: '.eh_frame_hdr'
+----------------------------------------
+Address: .shstrtab::000000db
+Type: string-utf8
+Length: 10
+Value: '.eh_frame'
+----------------------------------------
+Address: .shstrtab::000000e5
+Type: string-utf8
+Length: 12
+Value: '.init_array'
+----------------------------------------
+Address: .shstrtab::000000f1
+Type: string-utf8
+Length: 12
+Value: '.fini_array'
+----------------------------------------
+Address: .shstrtab::000000fd
+Type: string-utf8
+Length: 9
+Value: '.dynamic'
+----------------------------------------
+Address: .shstrtab::00000106
+Type: string-utf8
+Length: 6
+Value: '.data'
+----------------------------------------
+Address: .shstrtab::0000010c
+Type: string-utf8
+Length: 5
+Value: '.bss'
+----------------------------------------
+Address: .shstrtab::00000111
+Type: string-utf8
+Length: 9
+Value: '.comment'
+----------------------------------------
+Address: .strtab::00000001
+Type: string-utf8
+Length: 8
+Value: 'Scrt1.o'
+----------------------------------------
+Address: .strtab::00000009
+Type: string-utf8
+Length: 10
+Value: '__abi_tag'
+----------------------------------------
+Address: .strtab::00000013
+Type: string-utf8
+Length: 11
+Value: 'crtstuff.c'
+----------------------------------------
+Address: .strtab::0000001e
+Type: string-utf8
+Length: 21
+Value: 'deregister_tm_clones'
+----------------------------------------
+Address: .strtab::00000033
+Type: string-utf8
+Length: 22
+Value: '__do_global_dtors_aux'
+----------------------------------------
+Address: .strtab::00000049
+Type: string-utf8
+Length: 12
+Value: 'completed.0'
+----------------------------------------
+Address: .strtab::00000055
+Type: string-utf8
+Length: 39
+Value: '__do_global_dtors_aux_fini_array_entry'
+----------------------------------------
+Address: .strtab::0000007c
+Type: string-utf8
+Length: 12
+Value: 'frame_dummy'
+----------------------------------------
+Address: .strtab::00000088
+Type: string-utf8
+Length: 31
+Value: '__frame_dummy_init_array_entry'
+----------------------------------------
+Address: .strtab::000000a7
+Type: string-utf8
+Length: 8
+Value: 'chall.c'
+----------------------------------------
+Address: .strtab::000000af
+Type: string-utf8
+Length: 14
+Value: '__FRAME_END__'
+----------------------------------------
+Address: .strtab::000000bd
+Type: string-utf8
+Length: 9
+Value: '_DYNAMIC'
+----------------------------------------
+Address: .strtab::000000c6
+Type: string-utf8
+Length: 19
+Value: '__GNU_EH_FRAME_HDR'
+----------------------------------------
+Address: .strtab::000000d9
+Type: string-utf8
+Length: 22
+Value: '_GLOBAL_OFFSET_TABLE_'
+----------------------------------------
+Address: .strtab::000000ef
+Type: string-utf8
+Length: 29
+Value: '__libc_start_main@GLIBC_2.34'
+----------------------------------------
+Address: .strtab::0000010c
+Type: string-utf8
+Length: 28
+Value: '_ITM_deregisterTMCloneTable'
+----------------------------------------
+Address: .strtab::00000128
+Type: string-utf8
+Length: 17
+Value: 'puts@GLIBC_2.2.5'
+----------------------------------------
+Address: .strtab::00000139
+Type: string-utf8
+Length: 7
+Value: '_edata'
+----------------------------------------
+Address: .strtab::00000140
+Type: string-utf8
+Length: 6
+Value: '_fini'
+----------------------------------------
+Address: .strtab::00000146
+Type: string-utf8
+Length: 19
+Value: 'strlen@GLIBC_2.2.5'
+----------------------------------------
+Address: .strtab::00000159
+Type: string-utf8
+Length: 27
+Value: '__stack_chk_fail@GLIBC_2.4'
+----------------------------------------
+Address: .strtab::00000174
+Type: string-utf8
+Length: 19
+Value: 'printf@GLIBC_2.2.5'
+----------------------------------------
+Address: .strtab::00000187
+Type: string-utf8
+Length: 13
+Value: '__data_start'
+----------------------------------------
+Address: .strtab::00000194
+Type: string-utf8
+Length: 7
+Value: 'target'
+----------------------------------------
+Address: .strtab::0000019b
+Type: string-utf8
+Length: 15
+Value: '__gmon_start__'
+----------------------------------------
+Address: .strtab::000001aa
+Type: string-utf8
+Length: 13
+Value: '__dso_handle'
+----------------------------------------
+Address: .strtab::000001b7
+Type: string-utf8
+Length: 15
+Value: '_IO_stdin_used'
+----------------------------------------
+Address: .strtab::000001c6
+Type: string-utf8
+Length: 5
+Value: '_end'
+----------------------------------------
+Address: .strtab::000001cb
+Type: string-utf8
+Length: 12
+Value: '__bss_start'
+----------------------------------------
+Address: .strtab::000001d7
+Type: string-utf8
+Length: 5
+Value: 'main'
+----------------------------------------
+Address: .strtab::000001dc
+Type: string-utf8
+Length: 25
+Value: '__isoc99_scanf@GLIBC_2.7'
+----------------------------------------
+Address: .strtab::000001f5
+Type: string-utf8
+Length: 12
+Value: '__TMC_END__'
+----------------------------------------
+Address: .strtab::00000201
+Type: string-utf8
+Length: 26
+Value: '_ITM_registerTMCloneTable'
+----------------------------------------
+Address: .strtab::0000021b
+Type: string-utf8
+Length: 27
+Value: '__cxa_finalize@GLIBC_2.2.5'
+----------------------------------------
+Address: .strtab::00000236
+Type: string-utf8
+Length: 6
+Value: '_init'
+----------------------------------------

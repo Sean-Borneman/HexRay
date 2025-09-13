@@ -1,0 +1,10 @@
+Data Section: .bss
+Address Range: 00104010 - 00104017
+Size: 8 bytes
+============================================================
+
+Address: 00104010
+Type: undefined1
+Size: 1 bytes
+Value: undefined
+----------------------------------------

@@ -1,6 +1,6 @@
-Function: puts
-Address: 00105010
-Size: 1 bytes
+// Function: puts
+// Address: 00105010
+// Size: 1 bytes
 ============================================================
 
 

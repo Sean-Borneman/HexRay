@@ -1,6 +1,6 @@
-Function: _init
-Address: 00101000
-Size: 27 bytes
+// Function: _init
+// Address: 00101000
+// Size: 27 bytes
 ============================================================
 
 

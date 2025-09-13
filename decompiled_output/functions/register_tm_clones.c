@@ -1,6 +1,6 @@
-Function: register_tm_clones
-Address: 00101140
-Size: 51 bytes
+// Function: register_tm_clones
+// Address: 00101140
+// Size: 51 bytes
 ============================================================
 
 
