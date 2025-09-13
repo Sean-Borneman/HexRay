@@ -1,10 +1,10 @@
+
+const { execSync } = require('child_process');
 const express = require('express');
 const multer = require('multer');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
-
 
 const app = express();
 const PORT = 3000;
@@ -60,59 +60,45 @@ app.post('/analyze', (req, res) => {
     if (!fs.existsSync(filePath)) {
         return res.status(404).json({ message: 'File to analyze not found.' });
     }
-
     execSync("cd .. && python ./backend/main.py");
     console.log(`Analysis started for: ${fileName}`);
 
-    // --- Backend Simulation ---
-    // In a real application, this is where you would trigger your Ghidra script.
-    // We'll simulate it by creating some dummy result files after a delay.
-    setTimeout(() => {
-        const baseName = path.parse(fileName).name;
-        
-        // --- Create dummy C files for the code viewer ---
-        const cFileContent1 = `// Decompiled from: ${fileName}
-#include <stdio.h>
-
-int main() {
-    printf("Hello from main function!\\n");
-    return 0;
-}`;
-        const cFileContent2 = `// Helper functions for: ${fileName}
-#include <stdlib.h>
-
-void helper_function() {
-    // This is a simulated helper function.
-    int* ptr = malloc(sizeof(int));
-    if (ptr != NULL) {
-        *ptr = 100;
-        free(ptr);
-    }
-}`;
-        fs.writeFileSync(path.join(resultsDir, `${baseName}_main.c`), cFileContent1);
-        fs.writeFileSync(path.join(resultsDir, `${baseName}_helpers.c`), cFileContent2);
+    // ===================================================================
+    // TODO: TRIGGER YOUR GHIDRA ANALYSIS SCRIPT HERE
+    // The command should take the input file path and the output directory.
+    // This part of the code should execute your command-line script.
+    //
+    // For example, using Node.js's child_process:
+    //
+    // const { execSync } = require('child_process');
+    // try {
+    //     // This is a blocking call, the server will wait until the script is done.
+    //     // Replace this with your actual command.
+    //     const command = `your_ghidra_command --inputFile "${filePath}" --outputDir "${resultsDir}"`;
+    //     console.log(`Executing: ${command}`);
+    //     execSync(command, { stdio: 'inherit' }); // stdio: 'inherit' will show script output in the server console
+    // } catch (error) {
+    //     console.error(`Analysis script failed for ${fileName}:`, error);
+    //     return res.status(500).json({ message: `Analysis script failed: ${error.message}` });
+    // }
+    //
+    // For testing without a real script, you can manually place files
+    // in the 'storage/results' directory before clicking 'Analyze'.
+    // ===================================================================
 
 
-        const resultFiles = [
-            `${baseName}_analysis_report.txt`,
-            `${baseName}_strings.json`,
-            `${baseName}_functions.csv`,
-            `${baseName}_main.c`,
-            `${baseName}_helpers.c`,
-        ];
-
-        resultFiles.slice(0, 3).forEach(resultFile => {
-            const resultPath = path.join(resultsDir, resultFile);
-            fs.writeFileSync(resultPath, `This is a simulated analysis result for ${fileName}.\nGenerated on: ${new Date().toISOString()}`);
-            console.log(`Generated result file: ${resultPath}`);
-        });
-
-        console.log(`Analysis finished for: ${fileName}`);
+    // After the script is finished, read the results directory for any generated files.
+    try {
+        const resultFiles = fs.readdirSync(resultsDir);
+        console.log(`Analysis finished for: ${fileName}. Found ${resultFiles.length} result files.`);
         res.json({
             message: `Analysis complete for ${fileName}`,
             results: resultFiles
         });
-    }, 3000); // Simulate a 3-second analysis time
+    } catch (error) {
+        console.error('Error reading results directory:', error);
+        res.status(500).json({ message: 'Could not read analysis results directory.' });
+    }
 });
 
 // 3. Get Code Results Endpoint
@@ -161,3 +147,5 @@ app.listen(PORT, () => {
     console.log('Storage directories are set up at:', storageDir);
 });
 
+
+	
