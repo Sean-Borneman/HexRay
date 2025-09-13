@@ -156,7 +156,7 @@ if __name__ == "__main__":
         data_path = Path('./decompiled_output/ALL_DATA.txt')
         if not funcs_path.exists():
             print("[LLM] Skipping typing: consolidated file ./decompiled_output/ALL_FUNCTIONS.c not found.")
-            return
+            raise SystemExit(0)
 
         print("[LLM] Running typing and summarization on consolidated outputs...")
         analyzer = LLMAnalyzer()
