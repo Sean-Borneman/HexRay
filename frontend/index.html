@@ -113,7 +113,7 @@
         <div class="main-panel w-full max-w-6xl rounded-xl p-8 space-y-8">
             
             <div>
-                <h1 class="text-3xl font-bold text-center text-white">Ghidra Binary Analyzer</h1>
+                <img src="heXray-transparent.png" width="200" height="300" alt="heXray logo" class="mx-auto" />
                 <p class="text-center text-gray-400 mt-2">Upload an executable or binary file to begin analysis.</p>
             </div>
 
@@ -137,7 +137,27 @@
                     <p class="text-gray-400">File ready for analysis:</p>
                     <p id="ready-file-name" class="font-semibold text-white text-lg"></p>
                 </div>
-                <button id="analyze-btn" class="action-button w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-4 rounded-lg">Analyze File</button>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <button id="analyze-btn" class="action-button w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-4 rounded-lg">Analyze Only</button>
+                  <button id="autohack-btn" class="action-button w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-4 rounded-lg">Analyze + Auto Hack</button>
+                </div>
+            </div>
+
+            <!-- Auto Hack Flag Format Confirmation -->
+            <div id="flag-config" class="hidden text-left space-y-4 bg-gray-800/60 p-4 rounded-lg">
+                <h3 class="text-lg font-semibold text-white">Auto Hack Configuration</h3>
+                <p class="text-gray-400 text-sm">Provide the expected flag format (regex). This helps the exploit detect success quickly.</p>
+                <label for="flag-regex" class="block text-gray-300">Flag Format (regex)</label>
+                <input id="flag-regex" type="text" class="w-full rounded-md bg-gray-900 border border-gray-600 text-gray-100 p-2"
+                       placeholder="FortID{[^}]+}" value="FortID{[^}]+}">
+                <label class="inline-flex items-center space-x-2 text-gray-300">
+                    <input id="flag-accept" type="checkbox" class="rounded bg-gray-900 border-gray-600">
+                    <span>I confirm the flag format above is correct.</span>
+                </label>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    <button id="start-autohack-btn" disabled class="action-button w-full bg-purple-600 disabled:bg-purple-900 hover:bg-purple-500 text-white font-bold py-3 px-4 rounded-lg">Start Auto Hack</button>
+                    <button id="cancel-autohack-btn" class="action-button w-full bg-gray-600 hover:bg-gray-500 text-white font-bold py-3 px-4 rounded-lg">Cancel</button>
+                </div>
             </div>
 
             <!-- Status & Results -->
@@ -219,6 +239,12 @@
         const fileInput = document.getElementById('file-input');
         const fileNameDisplay = document.getElementById('file-name-display');
         const analyzeBtn = document.getElementById('analyze-btn');
+        const autoHackBtn = document.getElementById('autohack-btn');
+        const flagConfig = document.getElementById('flag-config');
+        const flagRegexInput = document.getElementById('flag-regex');
+        const flagAccept = document.getElementById('flag-accept');
+        const startAutohackBtn = document.getElementById('start-autohack-btn');
+        const cancelAutohackBtn = document.getElementById('cancel-autohack-btn');
         const readyFileName = document.getElementById('ready-file-name');
         const uploadSection = document.getElementById('upload-section');
         const analysisSection = document.getElementById('analysis-section');
@@ -241,7 +267,21 @@
         dropZone.addEventListener('dragleave', () => { dropZone.classList.remove('dragover'); });
         dropZone.addEventListener('drop', (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]); });
         fileInput.addEventListener('change', () => { if (fileInput.files.length > 0) handleFile(fileInput.files[0]); });
-        analyzeBtn.addEventListener('click', runAnalysis);
+        analyzeBtn.addEventListener('click', () => runAnalysis(false));
+        autoHackBtn.addEventListener('click', () => {
+            // Show confirmation panel for flag format
+            flagConfig.classList.remove('hidden');
+        });
+        flagAccept.addEventListener('change', () => {
+            startAutohackBtn.disabled = !flagAccept.checked;
+        });
+        startAutohackBtn.addEventListener('click', () => {
+            flagConfig.classList.add('hidden');
+            runAnalysis(true);
+        });
+        cancelAutohackBtn.addEventListener('click', () => {
+            flagConfig.classList.add('hidden');
+        });
         resetBtn.addEventListener('click', resetUI);
 
         // --- Core Functions ---
@@ -266,16 +306,17 @@
             }
         }
         
-        async function runAnalysis() {
+        async function runAnalysis(autoHack) {
             if (!uploadedFileName) return;
             analysisSection.classList.add('hidden');
             statusSection.classList.remove('hidden');
-            statusMessage.textContent = `Analyzing ${readyFileName.textContent}... Please wait.`;
+            statusMessage.textContent = `Analyzing ${readyFileName.textContent}${autoHack ? ' (with Auto Hack)' : ''}... Please wait.`;
             try {
+                const flagRegex = autoHack ? ((flagRegexInput && flagRegexInput.value) || '').trim() : '';
                 const analyzeResponse = await fetch('http://localhost:3000/analyze', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ fileName: uploadedFileName })
+                    body: JSON.stringify({ fileName: uploadedFileName, autoHack: !!autoHack, flagRegex })
                 });
                 if (!analyzeResponse.ok) throw new Error(`Analysis failed: ${analyzeResponse.statusText}`);
                 const analyzeResult = await analyzeResponse.json();

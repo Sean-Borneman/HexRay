@@ -1,9 +1,43 @@
 import subprocess
 import os
+import time
+import sys
+import re
+import json
 from pathlib import Path
 from ghidraDecompileTWOFiles import export_consolidated_code_and_data
 from llm_analyzer import LLMAnalyzer
 # from ghidraDecompileToText import export_with_pyghidra
+
+# --- Helpers for optional automated hacking stage ---
+def _wait_for_server_signal(flag_path: Path, env_var: str = 'AUTO_HACK_NOW', timeout: int = 600, poll: float = 1.0) -> bool:
+    """Wait for a go-signal from server.js.
+
+    Signal sources:
+      - Environment variable env_var set to truthy (e.g., 1, true)
+      - A flag file created at flag_path
+    Returns True if signaled within timeout; False otherwise.
+    """
+    truthy = {"1", "true", "yes", "on"}
+    if str(os.getenv(env_var, "")).strip().lower() in truthy:
+        return True
+    start = time.time()
+    while time.time() - start < timeout:
+        if flag_path.exists():
+            return True
+        time.sleep(poll)
+    return False
+
+
+def _find_original_executable(upload_root: Path) -> Path | None:
+    """Find the most recent file under storage/uploads (recursively)."""
+    if not upload_root.exists():
+        return None
+    files = [p for p in upload_root.rglob('*') if p.is_file()]
+    if not files:
+        return None
+    files.sort(key=lambda p: p.stat().st_mtime, reverse=True)
+    return files[0]
 class SimpleGhidraCLI:
     def __init__(self):
         self.script_path = Path("./ghidra-cli").resolve()
@@ -211,6 +245,61 @@ if __name__ == "__main__":
                         break
         except Exception as e:
             print(f"[LLM][Diag] Could not inspect summary file: {e}")
+
+        # ---- Optional automated hacking stage (gated by server signal) ----
+        try:
+            signal_path = Path('./storage/working/enable_auto_hack.flag')
+            env_val = os.getenv('AUTO_HACK_NOW')
+            print(f"[AutoHack] Waiting for server signal (env AUTO_HACK_NOW=1 or {signal_path})...")
+            # If explicitly disabled, skip without waiting
+            if isinstance(env_val, str) and env_val.strip().lower() in {"0","false","no","off"}:
+                print("[AutoHack] AUTO_HACK_NOW explicitly disabled; skipping automated hacking.")
+            elif _wait_for_server_signal(signal_path, env_var='AUTO_HACK_NOW', timeout=600, poll=1.0):
+                print("[AutoHack] Signal received. Running automated hacking steps...")
+                # Determine inputs
+                combined_candidates = [
+                    combined_path if combined_path and combined_path.exists() else None,
+                    Path('./storage/working_combined.txt') if Path('./storage/working_combined.txt').exists() else None,
+                ]
+                chosen_combined = next((p for p in combined_candidates if p), None)
+                if not chosen_combined:
+                    print("[AutoHack] No combined input found. Skipping automated hacking.")
+                else:
+                    # Import local modules lazily
+                    from automatedhacking.findvulnerabilities import find_vulnerabilities
+                    from automatedhacking.generateexploit import generate_exploit
+
+                    results_dir = Path('./storage/results')
+                    results_dir.mkdir(parents=True, exist_ok=True)
+
+                    # Step 1: static heuristics to extract vulns and payloads
+                    fv = find_vulnerabilities(
+                        combined_path=str(chosen_combined),
+                        typed_c_path=str(typed_path) if typed_path and typed_path.exists() else None,
+                        summary_path=str(summary_path) if summary_path and summary_path.exists() else None,
+                        out_dir=str(results_dir),
+                    )
+
+                    # Step 2: generate exploit runner scaffold
+                    exe = _find_original_executable(Path('./storage/uploads'))
+                    if not exe:
+                        print("[AutoHack] Could not locate original executable under storage/uploads. Skipping exploit generation.")
+                    else:
+                        # Allow frontend to provide custom flag regex via env
+                        flag_regex = os.getenv('FLAG_REGEX') or r"FortID\{[^}]+\}"
+                        ge = generate_exploit(
+                            vulnerabilities_json=fv.get('vulnerabilities'),
+                            typed_c_path=str(typed_path) if typed_path and typed_path.exists() else None,
+                            original_exe=str(exe),
+                            out_dir=str(results_dir),
+                            flag_regex=flag_regex,
+                            combined_path=str(chosen_combined) if chosen_combined else None,
+                        )
+                        print(f"[AutoHack] Exploit generated and executed: {ge.get('exploit_script')}")
+            else:
+                print("[AutoHack] No signal received within timeout. Skipping automated hacking.")
+        except Exception as e:
+            print(f"[AutoHack] Error during automated hacking stage: {e}")
 
     except Exception as e:
         print(f"[LLM] Error during typing/summarization: {e}")

@@ -30,5 +30,7 @@ __pycache__/
 
 # Build outputs / tools
 decompiled_output/
+/ghidra_projects/
+/decompiled_output/
 
 # Storage directories are managed by per-folder .gitignore files

@@ -44,7 +44,7 @@ app.post('/upload', upload.single('uploadedFile'), (req, res) => {
 
 // 2. Analysis Trigger Endpoint
 app.post('/analyze', (req, res) => {
-    const { fileName } = req.body;
+    const { fileName, autoHack, flagRegex } = req.body;
     if (!fileName) {
         return res.status(400).json({ message: 'Missing fileName to analyze.' });
     }
@@ -52,7 +52,15 @@ app.post('/analyze', (req, res) => {
     if (!fs.existsSync(filePath)) {
         return res.status(404).json({ message: 'File to analyze not found.' });
     }
-    execSync("cd .. && python ./backend/main.py");
+    // Run backend with explicit AUTO_HACK_NOW setting
+    const cwd = path.join(__dirname, '..');
+    const env = { ...process.env, AUTO_HACK_NOW: (autoHack ? '1' : '0') };
+    if (flagRegex && typeof flagRegex === 'string' && flagRegex.trim()) {
+        env.FLAG_REGEX = flagRegex.trim();
+        console.log(`[analyze] FLAG_REGEX override set`);
+    }
+    console.log(`[analyze] AUTO_HACK_NOW=${env.AUTO_HACK_NOW}`);
+    execSync(process.platform === 'win32' ? 'python ./backend/main.py' : 'python3 ./backend/main.py', { cwd, env, stdio: 'inherit' });
     console.log(`Analysis started for: ${fileName}`);
 
     // ===================================================================
