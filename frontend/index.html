@@ -172,7 +172,7 @@
                             <!-- Verification Section -->
                             <div id="verification-section" class="pt-4 border-t border-gray-700">
                                 <button id="verify-btn" class="action-button w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg relative">
-                                    <span class="btn-text">Verify Code</span>
+                                    <span class="btn-text">Verify</span>
                                     <div class="spinner-overlay absolute inset-0 items-center justify-center hidden">
                                         <div class="spinner w-5 h-5 border-2 border-gray-600 rounded-full"></div>
                                     </div>
@@ -251,6 +251,7 @@
         const txtContent = document.getElementById('txt-content');
         const verifyBtn = document.getElementById('verify-btn');
         const verificationResult = document.getElementById('verification-result');
+        const verificationSection = document.getElementById('verification-section');
         
         let uploadedFileName = null;
 
@@ -343,8 +344,12 @@
 
                 if (data.cFiles && data.cFiles.length > 0) {
                     cViewer.classList.remove('hidden');
+                    verificationSection.classList.remove('hidden');
                     populateViewer(data.cFiles, cNav, cContent, 'c');
+                } else {
+                    verificationSection.classList.add('hidden');
                 }
+                
                 if (data.txtFiles && data.txtFiles.length > 0) {
                     txtViewer.classList.remove('hidden');
                     populateViewer(data.txtFiles, txtNav, txtContent, 'txt');
@@ -419,6 +424,7 @@
             txtContent.textContent = 'Select a file to view...';
             
             // Reset verification section
+            verificationSection.classList.add('hidden');
             verificationResult.classList.add('hidden');
             verificationResult.classList.remove('text-red-400');
             verifyBtn.classList.remove('hidden', 'verifying');
