@@ -1,0 +1,11 @@
+This is a two-phase interactive game program:
+
+1. **Calibration Phase**: The program generates random digit sequences and asks the user to repeat them. It starts with 1 digit and progresses to 5 digits. The user must correctly input each sequence. If successful, it prints "Calibration success" and adds the sum of all digits plus a bonus of 12.
+
+2. **Game Phase**: After calibration, the program waits for a specific 7-digit sequence (58823000) to be entered. Once detected, it starts a number subtraction game where:
+   - The program and user take turns subtracting numbers (1-9) from a starting value
+   - The computer makes random moves, the user inputs their moves
+   - The goal is to reach exactly zero
+   - When the user wins (reaches zero), the program displays the FLAG environment variable
+
+The program uses standard C library functions for random number generation, I/O, and system interaction. It includes stack canary protection and proper error handling for EOF conditions.
