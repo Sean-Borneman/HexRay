@@ -1,0 +1,10 @@
+Data Section: .comment
+Address Range: .comment::00000000 - .comment::0000002a
+Size: 43 bytes
+============================================================
+
+Address: .comment::00000000
+Type: string-utf8
+Size: 43 bytes
+Value: GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+----------------------------------------

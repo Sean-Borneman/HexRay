@@ -1,0 +1,80 @@
+Data Section: .dynstr
+Address Range: 001004e0 - 001005ae
+Size: 207 bytes
+============================================================
+
+Address: 001004e1
+Type: string-utf8
+Size: 5 bytes
+Value: puts
+----------------------------------------
+Address: 001004e6
+Type: string-utf8
+Size: 17 bytes
+Value: __stack_chk_fail
+----------------------------------------
+Address: 001004f7
+Type: string-utf8
+Size: 7 bytes
+Value: strlen
+----------------------------------------
+Address: 001004fe
+Type: string-utf8
+Size: 18 bytes
+Value: __libc_start_main
+----------------------------------------
+Address: 00100510
+Type: string-utf8
+Size: 15 bytes
+Value: __cxa_finalize
+----------------------------------------
+Address: 0010051f
+Type: string-utf8
+Size: 7 bytes
+Value: printf
+----------------------------------------
+Address: 00100526
+Type: string-utf8
+Size: 15 bytes
+Value: __isoc99_scanf
+----------------------------------------
+Address: 00100535
+Type: string-utf8
+Size: 10 bytes
+Value: libc.so.6
+----------------------------------------
+Address: 0010053f
+Type: string-utf8
+Size: 10 bytes
+Value: GLIBC_2.7
+----------------------------------------
+Address: 00100549
+Type: string-utf8
+Size: 10 bytes
+Value: GLIBC_2.4
+----------------------------------------
+Address: 00100553
+Type: string-utf8
+Size: 12 bytes
+Value: GLIBC_2.2.5
+----------------------------------------
+Address: 0010055f
+Type: string-utf8
+Size: 11 bytes
+Value: GLIBC_2.34
+----------------------------------------
+Address: 0010056a
+Type: string-utf8
+Size: 28 bytes
+Value: _ITM_deregisterTMCloneTable
+----------------------------------------
+Address: 00100586
+Type: string-utf8
+Size: 15 bytes
+Value: __gmon_start__
+----------------------------------------
+Address: 00100595
+Type: string-utf8
+Size: 26 bytes
+Value: _ITM_registerTMCloneTable
+----------------------------------------

@@ -1,0 +1,10 @@
+Data Section: .symtab
+Address Range: .symtab::00000000 - .symtab::000003d7
+Size: 984 bytes
+============================================================
+
+Address: .symtab::00000000
+Type: Elf64_Sym[41]
+Size: 984 bytes
+Value: undefined
+----------------------------------------
