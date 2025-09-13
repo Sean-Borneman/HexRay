@@ -1,7 +1,11 @@
 import pyghidra
 from pathlib import Path
+import subprocess
+import sys
 
-def export_code_and_data():
+def export_code_and_data(binary_path: str | None = None,
+                         project_name: str | None = None,
+                         project_dir: str | None = None):
     """Export both decompiled C code AND data from the binary"""
     
     # Setup paths
@@ -9,7 +13,7 @@ def export_code_and_data():
     ghidra_install_dir = script_dir.parent / "Ghidra_full_open_source_install" / "ghidra_11.4.2_PUBLIC"
     ghidra_install_dir_str = str(ghidra_install_dir.resolve())
     
-    project_dir = Path("./ghidra_projects").resolve()
+    project_dir_path = Path(project_dir).resolve() if project_dir else Path("./ghidra_projects").resolve()
     output_dir = Path("./decompiled_output")
     output_dir.mkdir(exist_ok=True)
     
@@ -22,8 +26,26 @@ def export_code_and_data():
     for dir_path in [code_dir, data_dir, strings_dir, symbols_dir]:
         dir_path.mkdir(exist_ok=True)
     
+    # Optionally create/import a project from a provided binary first
+    if binary_path:
+        project_dir_path.mkdir(parents=True, exist_ok=True)
+        base = Path(binary_path).resolve()
+        pname = project_name or f"{base.stem}_analysis"
+        ghidra_cli = (script_dir.parent / "ghidra-cli").resolve()
+        if not ghidra_cli.exists():
+            print(f"❌ ghidra-cli helper not found at {ghidra_cli}")
+            print("Please ensure the helper script exists and Ghidra is installed at Ghidra_full_open_source_install.")
+            return
+        try:
+            print(f"🔧 Creating Ghidra project '{pname}' and importing: {base}")
+            cmd = ["bash", str(ghidra_cli), "-n", "-i", str(base), "-d", str(project_dir_path), "--name", pname]
+            subprocess.run(cmd, check=True)
+        except Exception as e:
+            print(f"❌ Failed to create/import project via ghidra-cli: {e}")
+            return
+
     # Find project
-    rep_files = list(project_dir.glob("*.rep"))
+    rep_files = list(project_dir_path.glob("*.rep"))
     if not rep_files:
         print(f"❌ No projects found")
         return
@@ -44,7 +66,7 @@ def export_code_and_data():
     print("📂 Opening Ghidra project...")
     
     try:
-        project = GhidraProject.openProject(str(project_dir), project_name, False)
+        project = GhidraProject.openProject(str(project_dir_path), project_name, False)
         project_data = project.getProjectData()
         root_folder = project_data.getRootFolder()
         
@@ -287,5 +309,11 @@ def export_code_and_data():
         if 'project' in locals():
             project.close()
 
-# # Run the complete export
-# export_code_and_data()
+if __name__ == "__main__":
+    import argparse
+    p = argparse.ArgumentParser(description="Export C, data, strings, and symbols with Ghidra")
+    p.add_argument("--binary", help="Path to input executable to import into a new project")
+    p.add_argument("--project-name", help="Optional project name")
+    p.add_argument("--project-dir", help="Optional project directory (default: ./ghidra_projects)")
+    args = p.parse_args()
+    export_code_and_data(binary_path=args.binary, project_name=args.project_name, project_dir=args.project_dir)

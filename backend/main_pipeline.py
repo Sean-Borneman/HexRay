@@ -170,6 +170,77 @@ class DisassemblyPipeline:
             json.dump(results, f, indent=2)
 
         return results
+
+    def _combine_export_outputs(self, binary_stem: str) -> Optional[Dict[str, str]]:
+        """Combine Ghidra export outputs into a single C file and a single data file.
+
+        Looks for ./decompiled_output/{functions,data,strings,symbols} produced by
+        ghidraWithDataCall.py and writes merged artifacts into storage/.
+
+        Returns a dict with paths or None if exports not found.
+        """
+        export_root = Path('./decompiled_output')
+        funcs_dir = export_root / 'functions'
+        data_dir = export_root / 'data'
+        strings_file = export_root / 'strings' / 'all_strings.txt'
+        symbols_file = export_root / 'symbols' / 'all_symbols.txt'
+
+        if not export_root.exists() or not funcs_dir.exists():
+            return None
+
+        merged_c = self.storage_dir / f"{binary_stem}_functions_merged.c"
+        combined_data = self.storage_dir / f"{binary_stem}_export_data.txt"
+
+        # Merge all function .c files
+        try:
+            with open(merged_c, 'w') as out_c:
+                out_c.write(f"/* Merged functions for {binary_stem} */\n\n")
+                for cpath in sorted(funcs_dir.glob('*.c')):
+                    out_c.write(f"/* === BEGIN {cpath.name} === */\n")
+                    try:
+                        with open(cpath, 'r', errors='ignore') as f:
+                            out_c.write(f.read())
+                    except Exception:
+                        pass
+                    out_c.write(f"\n/* === END {cpath.name} === */\n\n")
+        except Exception:
+            return None
+
+        # Combine data/strings/symbols into one text file (bounded merging handled downstream)
+        try:
+            with open(combined_data, 'w') as out_d:
+                if data_dir.exists():
+                    for dpath in sorted(data_dir.glob('*.txt')):
+                        out_d.write(f"=== DATA FILE {dpath.name} START ===\n")
+                        try:
+                            with open(dpath, 'r', errors='ignore') as f:
+                                out_d.write(f.read())
+                        except Exception:
+                            pass
+                        out_d.write(f"\n=== DATA FILE {dpath.name} END ===\n\n")
+                if strings_file.exists():
+                    out_d.write("=== STRINGS START ===\n")
+                    try:
+                        with open(strings_file, 'r', errors='ignore') as f:
+                            out_d.write(f.read())
+                    except Exception:
+                        pass
+                    out_d.write("\n=== STRINGS END ===\n\n")
+                if symbols_file.exists():
+                    out_d.write("=== SYMBOLS START ===\n")
+                    try:
+                        with open(symbols_file, 'r', errors='ignore') as f:
+                            out_d.write(f.read())
+                    except Exception:
+                        pass
+                    out_d.write("\n=== SYMBOLS END ===\n")
+        except Exception:
+            return None
+
+        return {
+            'merged_c_file': str(merged_c),
+            'combined_data_file': str(combined_data),
+        }
     
     def print_results(self, results: Dict):
         """
@@ -262,6 +333,8 @@ Examples:
     parser.add_argument('--dump-file', help='Optional objdump/data file to aid typing')
     parser.add_argument('--use-ghirda-scripts', action='store_true',
                        help='Use ghirda-cli-call.py and ghidraDecompileToText.py instead of ghidra_processor')
+    parser.add_argument('--use-ghidra-with-data', action='store_true',
+                       help='Use ghidraWithDataCall.py as the first step to create a project and export code+data')
     
     # Output options
     parser.add_argument('--quiet', action='store_true',
@@ -273,8 +346,8 @@ Examples:
     
     # Validate mode selection
     using_existing = bool(args.c_file)
-    if not using_existing and not args.binary and not args.use_ghirda_scripts:
-        print("Error: provide a binary or --c-file or --use-ghirda-scripts")
+    if not using_existing and not args.binary and not args.use_ghirda_scripts and not args.use_ghidra_with_data:
+        print("Error: provide a binary or --c-file or --use-ghirda-scripts or --use-ghidra-with-data")
         sys.exit(2)
     
     # Create pipeline
@@ -328,6 +401,60 @@ Examples:
                     'analysis_file': None,
                     'summary_file': None,
                     'typed_code_file': None,
+                    'code_chunks_analyzed': 0,
+                    'data_chunks_analyzed': 0,
+                    'total_chunks': 0,
+                    'tokens_used': 0,
+                }
+        elif args.use_ghidra_with_data:
+            # Create a Ghidra project from the provided binary and export code+data using pyghidra
+            if not args.binary:
+                print("Error: --use-ghidra-with-data requires a binary path.")
+                sys.exit(2)
+            if not Path(args.binary).exists():
+                print(f"Error: Binary file not found: {args.binary}")
+                sys.exit(1)
+            from ghidraWithDataCall import export_code_and_data
+            print("[Mode] Using ghidraWithDataCall.py to create project and export code+data")
+            try:
+                export_code_and_data(binary_path=args.binary)
+            except Exception as e:
+                print(f"Error running ghidraWithDataCall: {e}")
+                if args.verbose:
+                    import traceback
+                    traceback.print_exc()
+            # Combine exports into single C and data files, then run typing+summary via LLM
+            binary_stem = Path(args.binary).stem
+            merged = pipeline._combine_export_outputs(binary_stem)
+            if not merged:
+                print("Export finished, but could not find expected output directories. Skipping LLM step.")
+                results = {
+                    'binary_name': binary_stem,
+                    'code_file': None,
+                    'data_file': None,
+                    'analysis_file': None,
+                    'summary_file': None,
+                    'typed_code_file': None,
+                    'combined_input_file': None,
+                    'code_chunks_analyzed': 0,
+                    'data_chunks_analyzed': 0,
+                    'total_chunks': 0,
+                    'tokens_used': 0,
+                }
+            else:
+                outputs = pipeline.llm_analyzer.annotate_types_and_summarize(
+                    c_file_path=merged['merged_c_file'],
+                    objdump_path=merged['combined_data_file'],
+                    out_ext='c'
+                )
+                results = {
+                    'binary_name': binary_stem,
+                    'code_file': merged['merged_c_file'],
+                    'data_file': merged['combined_data_file'],
+                    'analysis_file': None,
+                    'summary_file': outputs.get('summary_file'),
+                    'typed_code_file': outputs.get('typed_code_file'),
+                    'combined_input_file': outputs.get('combined_input_file'),
                     'code_chunks_analyzed': 0,
                     'data_chunks_analyzed': 0,
                     'total_chunks': 0,

@@ -24,6 +24,9 @@ python main_pipeline.py binary --no-summary
 python backend/llm_analyzer.py storage/challoutput.c --type code --chunk
 python backend/llm_analyzer.py storage/challdump.txt --type data --chunk
 
+# Ghidra export (code + data) first
+python backend/main_pipeline.py /path/to/binary --use-ghidra-with-data
+
 ## Configuration
 
 You can provide your Anthropic API key via any of these (checked in order):
