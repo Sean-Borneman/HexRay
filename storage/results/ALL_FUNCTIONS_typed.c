@@ -1,166 +1,152 @@
-```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <windows.h>
-#include <evntprov.h>
+#include <time.h>
 
-// ETW event callback function
-void ETW_EventCallback(REGHANDLE RegHandle, int EventType, unsigned char Level, 
-                      ULONGLONG MatchAnyKeyword, ULONGLONG MatchAllKeyword, 
-                      PEVENT_FILTER_DESCRIPTOR FilterData, int *CallbackContext)
+// Main entry point - sets up calibration and game
+int main(void)
 {
-    int value;
+    time_t current_time;
+    int calibration_sum;
+    int game_result;
     
-    if (CallbackContext != NULL) {
-        if (EventType == 0) {
-            *CallbackContext = 0;
-        }
-        else if (EventType == 1) {
-            if (Level == 0) {
-                value = 0x100;
-            }
-            else {
-                value = Level + 1;
-            }
-            *CallbackContext = value;
-            *(ULONGLONG *)(CallbackContext + 4) = MatchAnyKeyword;
-            *(ULONGLONG *)(CallbackContext + 6) = MatchAllKeyword;
-        }
-        
-        if (*(ULONGLONG *)(CallbackContext + 10) != 0) {
-            ((void (*)(REGHANDLE))*(ULONGLONG *)(CallbackContext + 10))(RegHandle);
-        }
-    }
-}
-
-// ETW event writing function
-void _tlgWriteTransfer_EtwWriteTransfer(ULONGLONG ProviderContext, unsigned char *EventMetadata,
-                                       LPCGUID ActivityId, LPCGUID RelatedActivityId, 
-                                       ULONG UserDataCount, PEVENT_DATA_DESCRIPTOR UserData)
-{
-    EVENT_DESCRIPTOR EventDesc;
+    current_time = time(NULL);
+    srand((unsigned int)current_time);
     
-    EventDesc.Id = (USHORT)(*EventMetadata << 24);
-    EventDesc.Version = (UCHAR)(*(USHORT *)(EventMetadata + 1));
-    EventDesc.Channel = 0;
-    EventDesc.Level = 0;
-    EventDesc.Opcode = 0;
-    EventDesc.Task = 0;
-    EventDesc.Keyword = *(ULONGLONG *)(EventMetadata + 3);
-    
-    UserData->Ptr = *(ULONGLONG *)(ProviderContext + 8);
-    UserData->Size = (ULONG)**(USHORT **)(ProviderContext + 8);
-    UserData->Reserved = 2;
-    
-    UserData[1].Ptr = (ULONGLONG)(EventMetadata + 0xb);
-    UserData[1].Size = (ULONG)*(USHORT *)(EventMetadata + 0xb);
-    UserData[1].Reserved = 1;
-    
-    EventWriteTransfer(*(REGHANDLE *)(ProviderContext + 0x20), &EventDesc, 
-                      ActivityId, RelatedActivityId, UserDataCount, UserData);
-}
-
-// PE section finder
-PIMAGE_SECTION_HEADER _FindPESection(PBYTE pImageBase, DWORD_PTR rva)
-{
-    int ntHeaderOffset = *(int *)(pImageBase + 0x3c);
-    UINT sectionIndex = 0;
-    PIMAGE_SECTION_HEADER pSection = (PIMAGE_SECTION_HEADER)
-        (pImageBase + (ULONGLONG)*(USHORT *)(pImageBase + ntHeaderOffset + 0x14) + 
-         0x18 + ntHeaderOffset);
-    
-    USHORT numberOfSections = *(USHORT *)(pImageBase + ntHeaderOffset + 6);
-    
-    if (numberOfSections != 0) {
-        do {
-            if ((pSection->VirtualAddress <= rva) &&
-                (rva < pSection->Misc.PhysicalAddress + pSection->VirtualAddress)) {
-                return pSection;
-            }
-            sectionIndex++;
-            pSection++;
-        } while (sectionIndex < numberOfSections);
-    }
-    return NULL;
-}
-
-// Check if address is in non-writable section
-BOOL _IsNonwritableInCurrentImage(PBYTE pTarget)
-{
-    PIMAGE_SECTION_HEADER pSection;
-    
-    if (!IsValidPEImage((short *)&IMAGE_DOS_HEADER_140000000)) {
-        return FALSE;
+    calibration_sum = 0;
+    while (calibration_sum == 0) {
+        calibration_sum = run_calibration();
     }
     
-    pSection = _FindPESection((PBYTE)&IMAGE_DOS_HEADER_140000000, 
-                             (DWORD_PTR)(pTarget - 0x140000000));
-    if (pSection != NULL) {
-        return (BOOL)(~(pSection->Characteristics >> 0x1f) & 1);
+    game_result = 1;
+    while (game_result != 0) {
+        game_result = run_game(calibration_sum);
     }
-    return FALSE;
-}
-
-// Validate PE image
-bool IsValidPEImage(short *pImageBase)
-{
-    if ((*pImageBase == 0x5a4d) &&  // "MZ" signature
-        (*(int *)((ULONGLONG)*(int *)(pImageBase + 0x1e) + (ULONGLONG)pImageBase) == 0x4550)) { // "PE" signature
-        return (short)((int *)((ULONGLONG)*(int *)(pImageBase + 0x1e) + (ULONGLONG)pImageBase))[6] == 0x20b;
-    }
-    return false;
-}
-
-// Main application function
-int MainApplication(void)
-{
-    ULONG result;
-    const char *eventName = "CalculatorStarted";
-    EVENT_DATA_DESCRIPTOR eventData[3];
-    
-    // Register ETW provider
-    result = EventRegister((LPCGUID)0x140002489, ETW_EventCallback, 
-                          (PVOID)0x140003000, (PREGHANDLE)&DAT_140003020);
-    
-    if (result == 0) {
-        EventSetInformation(DAT_140003020, 2);
-    }
-    
-    // Check if ETW logging is enabled and write event
-    if (((5 < DAT_140003000) && ((DAT_140003010 & 0x2000000000000) != 0)) &&
-        ((DAT_140003018 & 0x2000000000000) == DAT_140003018)) {
-        
-        eventData[2].Size = 0;
-        eventData[2].Ptr = (ULONGLONG)eventName;
-        eventData[2].Reserved = 0x12;
-        
-        _tlgWriteTransfer_EtwWriteTransfer(0x140003000, (unsigned char *)&DAT_140002489,
-                                         NULL, NULL, 3, eventData);
-    }
-    
-    // Launch Windows Calculator
-    ShellExecuteW(NULL, NULL, L"ms-calculator:", NULL, NULL, SW_SHOWNORMAL);
     
     return 0;
 }
 
-// Application entry point
-void entry(void)
+// Calibration phase - generates random sequences for user to repeat
+int run_calibration(void)
 {
-    __security_init_cookie();
-    MainApplication();
+    int random_value;
+    int total_sum;
+    int round;
+    int digit_index;
+    int input_index;
+    int user_input;
+    int calibration_sequence[6];
+    
+    total_sum = 0;
+    while (total_sum == 0) {
+        for (digit_index = 0; digit_index < 5; digit_index++) {
+            random_value = rand();
+            calibration_sequence[digit_index] = random_value % 9;
+            total_sum += calibration_sequence[digit_index];
+        }
+    }
+    
+    round = 0;
+    do {
+        if (round > 4) {
+            puts(":Calibration success");
+            puts("!");
+            fflush(stdout);
+            total_sum += 12; // Add bonus to sum
+            return total_sum;
+        }
+        
+        printf(":Calibrating (%d/5)...\n", round + 1);
+        putchar('>');
+        
+        for (digit_index = 0; digit_index <= round; digit_index++) {
+            putchar(calibration_sequence[digit_index] + '1');
+        }
+        putchar('\n');
+        fflush(stdout);
+        
+        for (input_index = 0; input_index <= round; input_index++) {
+            user_input = getchar();
+            if (user_input == EOF) {
+                exit(0);
+            }
+            if ((user_input - '1') != calibration_sequence[input_index]) {
+                puts(":Calibration failure");
+                fflush(stdout);
+                total_sum = 0;
+                return total_sum;
+            }
+        }
+        
+        round++;
+    } while (true);
 }
 
-// Exception filter
-int ExceptionFilter(_EXCEPTION_POINTERS *ExceptionInfo)
+// Main game phase - number guessing game with secret sequence
+int run_game(unsigned int target_sum)
 {
-    return _XcptFilter(ExceptionInfo->ExceptionRecord->ExceptionCode, ExceptionInfo);
+    int user_input;
+    unsigned int computer_guess;
+    long random_val;
+    char *flag_env;
+    int shift_index;
+    unsigned int remaining_sum;
+    char input_buffer[7];
+    
+    // Initialize input buffer
+    for (shift_index = 0; shift_index < 7; shift_index++) {
+        input_buffer[shift_index] = '\0';
+    }
+    
+    // Wait for secret sequence: 5,8,8,2,3,0,0
+    do {
+        // Shift buffer left
+        for (shift_index = 0; shift_index < 6; shift_index++) {
+            input_buffer[shift_index] = input_buffer[shift_index + 1];
+        }
+        
+        user_input = getchar();
+        if (user_input == EOF) {
+            exit(0);
+        }
+        input_buffer[6] = (char)(user_input - '1');
+        
+    } while (!(input_buffer[0] == 5 && input_buffer[1] == 8 && 
+               input_buffer[2] == 8 && input_buffer[3] == 2 && 
+               input_buffer[4] == 3 && input_buffer[5] == 0 && 
+               input_buffer[6] == 0));
+    
+    remaining_sum = target_sum;
+    
+    // Main game loop
+    do {
+        if ((int)remaining_sum < 10) {
+            printf(">%d\n", remaining_sum);
+            fflush(stdout);
+            return 1; // Game continues
+        }
+        
+        random_val = random();
+        computer_guess = (unsigned int)((int)random_val + (int)(random_val / 9) * -9 + 1);
+        printf(">%d\n", computer_guess);
+        fflush(stdout);
+        
+        remaining_sum -= computer_guess;
+        
+        user_input = getchar();
+        if (user_input == EOF) {
+            exit(0);
+        }
+        
+        user_input = user_input - '0';
+        
+    } while ((user_input < 1) || (user_input > 9) || 
+             (remaining_sum -= user_input, remaining_sum != 0));
+    
+    // Player won - show flag
+    flag_env = getenv("FLAG");
+    printf(":%s\n", flag_env);
+    fflush(stdout);
+    
+    return 0; // Game ends
 }
-
-// Check for specific exception code
-bool IsSpecificException(EXCEPTION_POINTERS **ExceptionInfo)
-{
-    return *(int *)**ExceptionInfo == -0x3ffffffb;
-}
-```
