@@ -77,6 +77,18 @@ class LLMAnalyzer:
                 storage_dir = current_dir.parent / 'storage'
         
         return storage_dir
+
+    def _get_results_dir(self) -> Path:
+        """Get the results directory (repo-root/results)."""
+        current_dir = Path(__file__).parent
+        if current_dir.name == 'backend':
+            results_dir = current_dir.parent / 'results'
+        else:
+            results_dir = Path('../results').resolve()
+            if not results_dir.exists():
+                results_dir = current_dir.parent / 'results'
+        results_dir.mkdir(parents=True, exist_ok=True)
+        return results_dir
     
     def _get_api_key(self, provided_key: str = None) -> str:
         """
@@ -358,9 +370,10 @@ Content:
                 objdump_content = f.read(200_000)
 
         base_name = self._sanitize_basename(Path(c_file_path).name)
-        out_code = self.storage_dir / f"{base_name}_typed.{out_ext or 'c'}"
-        out_summary = self.storage_dir / f"{base_name}_summary.txt"
-        combined_input = self.storage_dir / f"{base_name}_combined.txt"
+        results_dir = self._get_results_dir()
+        out_code = results_dir / f"{base_name}_typed.{out_ext or 'c'}"
+        out_summary = results_dir / f"{base_name}_summary.txt"
+        combined_input = results_dir / f"{base_name}_combined.txt"
 
         # Persist a combined view of inputs for traceability and optional reuse
         try:
