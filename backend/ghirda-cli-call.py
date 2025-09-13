@@ -1,7 +1,7 @@
 import subprocess
 import os
 from pathlib import Path
-from ghidraWithDataCall import export_code_and_data
+from ghidraDecompileTWOFiles import export_consolidated_code_and_data
 # from ghidraDecompileToText import export_with_pyghidra
 class SimpleGhidraCLI:
     def __init__(self):
@@ -146,4 +146,4 @@ def main():
 if __name__ == "__main__":
     main()
     # export_with_pyghidra()
-    export_code_and_data()
+    export_consolidated_code_and_data()
