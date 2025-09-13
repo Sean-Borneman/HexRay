@@ -53,7 +53,7 @@
             border-color: #3B82F6;
         }
 
-        .spinner {
+        #spinner {
             border-top-color: #3B82F6;
             animation: spin 1s linear infinite;
         }
@@ -81,7 +81,7 @@
         }
         
         .action-button {
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
         }
         .action-button:hover:not(:disabled) {
             transform: translateY(-2px);
@@ -90,12 +90,6 @@
         .action-button:disabled {
             cursor: not-allowed;
             opacity: 0.5;
-        }
-        
-        .action-button.verifying {
-            filter: blur(2px);
-            cursor: not-allowed;
-            pointer-events: none;
         }
 
         .code-view pre {
@@ -149,7 +143,7 @@
             <!-- Status & Results -->
             <div id="status-section" class="text-center space-y-4 hidden">
                  <div class="flex items-center justify-center space-x-3">
-                    <div id="spinner" class="spinner w-8 h-8 border-4 border-gray-600 rounded-full"></div>
+                    <div id="spinner" class="w-8 h-8 border-4 border-gray-600 rounded-full"></div>
                     <p id="status-message" class="text-lg font-medium text-gray-300">Uploading file...</p>
                 </div>
             </div>
@@ -169,16 +163,6 @@
                         <div class="bg-gray-900/70 p-4 rounded-lg space-y-4">
                             <nav><ul id="c-nav" class="space-y-2"></ul></nav>
                             <main class="code-view"><pre><code id="c-content" class="language-c">Select a file to view...</code></pre></main>
-                            <!-- Verification Section -->
-                            <div id="verification-section" class="pt-4 border-t border-gray-700">
-                                <button id="verify-btn" class="action-button w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg relative">
-                                    <span class="btn-text">Verify</span>
-                                    <div class="spinner-overlay absolute inset-0 items-center justify-center hidden">
-                                        <div class="spinner w-5 h-5 border-2 border-gray-600 rounded-full"></div>
-                                    </div>
-                                </button>
-                                <div id="verification-result" class="hidden mt-4 p-4 bg-gray-800 rounded-lg text-left whitespace-pre-wrap font-mono text-sm"></div>
-                            </div>
                         </div>
                     </div>
                     <!-- TXT File Viewer -->
@@ -249,9 +233,6 @@
         const txtViewer = document.getElementById('txt-viewer');
         const txtNav = document.getElementById('txt-nav');
         const txtContent = document.getElementById('txt-content');
-        const verifyBtn = document.getElementById('verify-btn');
-        const verificationResult = document.getElementById('verification-result');
-        const verificationSection = document.getElementById('verification-section');
         
         let uploadedFileName = null;
 
@@ -262,7 +243,6 @@
         fileInput.addEventListener('change', () => { if (fileInput.files.length > 0) handleFile(fileInput.files[0]); });
         analyzeBtn.addEventListener('click', runAnalysis);
         resetBtn.addEventListener('click', resetUI);
-        verifyBtn.addEventListener('click', runVerification);
 
         // --- Core Functions ---
         async function handleFile(file) {
@@ -308,34 +288,6 @@
             }
         }
 
-        async function runVerification() {
-            verifyBtn.classList.add('verifying');
-            verifyBtn.querySelector('.btn-text').classList.add('opacity-0');
-            verifyBtn.querySelector('.spinner-overlay').classList.remove('hidden');
-            verifyBtn.querySelector('.spinner-overlay').classList.add('flex');
-
-            try {
-                const response = await fetch('http://localhost:3000/verify', { method: 'POST' });
-                 if (!response.ok) throw new Error(`Verification failed: ${response.statusText}`);
-                const data = await response.json();
-
-                verificationResult.textContent = data.result;
-                verificationResult.classList.remove('hidden');
-                verifyBtn.classList.add('hidden');
-
-            } catch (error) {
-                 verificationResult.textContent = `Error: ${error.message}`;
-                 verificationResult.classList.remove('hidden');
-                 verificationResult.classList.add('text-red-400');
-                 
-                 // Reset button state on error
-                 verifyBtn.classList.remove('verifying');
-                 verifyBtn.querySelector('.btn-text').classList.remove('opacity-0');
-                 verifyBtn.querySelector('.spinner-overlay').classList.add('hidden');
-                 verifyBtn.querySelector('.spinner-overlay').classList.remove('flex');
-            }
-        }
-
         async function fetchAndDisplayViewableFiles() {
             try {
                 const response = await fetch('http://localhost:3000/code-results');
@@ -344,12 +296,8 @@
 
                 if (data.cFiles && data.cFiles.length > 0) {
                     cViewer.classList.remove('hidden');
-                    verificationSection.classList.remove('hidden');
                     populateViewer(data.cFiles, cNav, cContent, 'c');
-                } else {
-                    verificationSection.classList.add('hidden');
                 }
-                
                 if (data.txtFiles && data.txtFiles.length > 0) {
                     txtViewer.classList.remove('hidden');
                     populateViewer(data.txtFiles, txtNav, txtContent, 'txt');
@@ -422,21 +370,9 @@
             txtViewer.classList.add('hidden');
             cContent.textContent = 'Select a file to view...';
             txtContent.textContent = 'Select a file to view...';
-            
-            // Reset verification section
-            verificationSection.classList.add('hidden');
-            verificationResult.classList.add('hidden');
-            verificationResult.classList.remove('text-red-400');
-            verifyBtn.classList.remove('hidden', 'verifying');
-            verifyBtn.querySelector('.btn-text').classList.remove('opacity-0');
-            verifyBtn.querySelector('.spinner-overlay').classList.add('hidden');
-            verifyBtn.querySelector('.spinner-overlay').classList.remove('flex');
-
-
             statusMessage.textContent = 'Uploading...';
             statusMessage.classList.remove('text-red-400');
         }
     </script>
 </body>
 </html>
-
