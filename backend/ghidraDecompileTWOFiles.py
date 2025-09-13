@@ -1,5 +1,6 @@
 import pyghidra
 from pathlib import Path
+import shutil  # Add this import!
 
 def export_consolidated_code_and_data():
     """Export all C code to one file and all data to another file"""
