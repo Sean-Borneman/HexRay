@@ -50,7 +50,7 @@ class SimpleGhidraCLI:
             )
             return result
         except subprocess.CalledProcessError as e:
-            print(f"❌ Command failed: {bash_command}")
+            print(f" Command failed: {bash_command}")
             print(f"Error: {e.stderr}")
             print(f"Output: {e.stdout}")
             raise
@@ -70,10 +70,10 @@ class SimpleGhidraCLI:
         if project_name:
             args.extend(['--name', project_name])
         
-        print(f"🔍 Starting analysis of: {binary_file.resolve()}")
-        print(f"📁 Project will be created in: {project_dir or '/tmp'}")
-        print(f"📝 Project name:5 {project_name or 'auto-generated'}")
-        print("⏳ This may take a while for large binaries...")
+        print(f" Starting analysis of: {binary_file.resolve()}")
+        print(f" Project will be created in: {project_dir or '/tmp'}")
+        print(f" Project name:5 {project_name or 'auto-generated'}")
+        print(" This may take a while for large binaries...")
         
         try:
             result = self.run(args)
@@ -81,7 +81,7 @@ class SimpleGhidraCLI:
             print("Output:", result.stdout)
             return result
         except Exception as e:
-            print(f"❌ Analysis failed: {e}")
+            print(f" Analysis failed: {e}")
             raise
 
 def main():
@@ -91,7 +91,7 @@ def main():
         storage_dir = Path("./storage/uploads")
         
         if not storage_dir.exists():
-            print(f"❌ Storage folder not found: {storage_dir.resolve()}")
+            print(f" Storage folder not found: {storage_dir.resolve()}")
             print("Please create a 'storage' folder and put your binary file in it.")
             return
         
@@ -99,7 +99,7 @@ def main():
         files = [f for f in storage_dir.iterdir() if f.is_file()]
         
         if not files:
-            print(f"❌ No files found in storage folder: {storage_dir.resolve()}")
+            print(f" No files found in storage folder: {storage_dir.resolve()}")
             print("Please put a binary file in the storage folder.")
             return
         
@@ -113,7 +113,7 @@ def main():
         
         # Check if the binary exists first
         if not Path(binary_path).exists():
-            print(f"❌ Binary file '{binary_path}' not found in current directory.")
+            print(f" Binary file '{binary_path}' not found in current directory.")
             print(f"Current directory: {Path.cwd()}")
             print("Files in current directory:")
             for file in Path.cwd().iterdir():
@@ -132,21 +132,21 @@ def main():
             project_dir=project_dir
         )
         
-        print(f"\n🎉 Analysis complete! Project saved as '{project_name}'")
+        print(f"\n Analysis complete! Project saved as '{project_name}'")
         if project_dir:
-            print(f"📂 Project location: {Path(project_dir).resolve()}")
+            print(f"Project location: {Path(project_dir).resolve()}")
         
     except FileNotFoundError as e:
-        print(f"❌ Setup Error: {e}")
+        print(f"Setup Error: {e}")
     except subprocess.CalledProcessError as e:
-        print(f"❌ Execution Error: {e}")
+        print(f"Execution Error: {e}")
     except Exception as e:
-        print(f"❌ Unexpected Error: {e}")
+        print(f"Unexpected Error: {e}")
 
 if __name__ == "__main__":
     main()
     # export_with_pyghidra()
     export_consolidated_code_and_data()
-    
+
 
 

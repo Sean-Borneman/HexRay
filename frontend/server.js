@@ -61,7 +61,7 @@ app.post('/analyze', (req, res) => {
         return res.status(404).json({ message: 'File to analyze not found.' });
     }
 
-    execSync("cd ../backend && python main.py");
+    execSync("cd .. && python ./backend/main.py");
     console.log(`Analysis started for: ${fileName}`);
 
     // --- Backend Simulation ---

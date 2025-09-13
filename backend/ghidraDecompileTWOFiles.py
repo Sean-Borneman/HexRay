@@ -16,13 +16,13 @@ def export_consolidated_code_and_data():
     # Find project
     rep_files = list(project_dir.glob("*.rep"))
     if not rep_files:
-        print(f"❌ No projects found")
+        print(f"No projects found")
         return
     
     project_name = rep_files[0].stem
-    print(f"🎯 Found project: {project_name}")
+    print(f"Found project: {project_name}")
     
-    print("🔧 Starting Ghidra...")
+    print("Starting Ghidra...")
     pyghidra.start(ghidra_install_dir_str)
     
     from ghidra.base.project import GhidraProject
@@ -32,7 +32,7 @@ def export_consolidated_code_and_data():
     from ghidra.program.model.mem import MemoryBlock
     from java.lang import Object
     
-    print("📂 Opening Ghidra project...")
+    print("Opening Ghidra project...")
     
     try:
         project = GhidraProject.openProject(str(project_dir), project_name, False)
@@ -45,16 +45,16 @@ def export_consolidated_code_and_data():
                 domain_files.append(df)
         
         if not domain_files:
-            print("❌ No programs found")
+            print("No programs found")
             return
         
         consumer = Object()
         program = domain_files[0].getDomainObject(consumer, False, False, None)
         
-        print(f"📄 Opened program: {program.getName()}")
+        print(f"Opened program: {program.getName()}")
         
         # ========== CREATE CONSOLIDATED C CODE FILE ==========
-        print("🔄 Consolidating all C functions...")
+        print("Consolidating all C functions...")
         
         all_functions_file = output_dir / "ALL_FUNCTIONS.c"
         
@@ -87,7 +87,7 @@ def export_consolidated_code_and_data():
                 if func_name.startswith("__") or "@plt" in func_name:
                     continue
                 
-                print(f"📝 Adding function: {func_name}")
+                print(f"Adding function: {func_name}")
                 
                 try:
                     results = decompiler.decompileFunction(function, 30, None)
@@ -111,7 +111,7 @@ def export_consolidated_code_and_data():
                     f.write(f"/* ERROR: Could not decompile {func_name}: {e} */\n\n")
         
         # ========== CREATE CONSOLIDATED DATA FILE ==========
-        print("🔄 Consolidating all data...")
+        print("Consolidating all data...")
         
         all_data_file = output_dir / "ALL_DATA.txt"
         
@@ -228,16 +228,16 @@ def export_consolidated_code_and_data():
         # Cleanup
         decompiler.dispose()
         
-        print("✅ Consolidated export completed!")
-        print(f"📝 ALL_FUNCTIONS.c: {function_count} functions")
-        print(f"📊 ALL_DATA.txt: {data_count} data items, {string_count} strings, {symbol_count} symbols")
-        print(f"📁 Output directory: {output_dir.resolve()}")
+        print("Consolidated export completed!")
+        print(f"ALL_FUNCTIONS.c: {function_count} functions")
+        print(f"ALL_DATA.txt: {data_count} data items, {string_count} strings, {symbol_count} symbols")
+        print(f"Output directory: {output_dir.resolve()}")
         
         # Show file sizes
         functions_size = all_functions_file.stat().st_size
         data_size = all_data_file.stat().st_size
-        print(f"📏 Functions file size: {functions_size:,} bytes")
-        print(f"📏 Data file size: {data_size:,} bytes")
+        print(f"Functions file size: {functions_size:,} bytes")
+        print(f"Data file size: {data_size:,} bytes")
         
     finally:
         if 'program' in locals():
@@ -246,4 +246,4 @@ def export_consolidated_code_and_data():
             project.close()
 
 # Run the consolidated export
-export_consolidated_code_and_data()
+# export_consolidated_code_and_data()
