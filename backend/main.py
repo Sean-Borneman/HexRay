@@ -154,19 +154,63 @@ if __name__ == "__main__":
     try:
         funcs_path = Path('./decompiled_output/ALL_FUNCTIONS.c')
         data_path = Path('./decompiled_output/ALL_DATA.txt')
-        if funcs_path.exists():
-            print("[LLM] Running typing and summarization on consolidated outputs...")
-            analyzer = LLMAnalyzer()
-            outputs = analyzer.annotate_types_and_summarize(
-                c_file_path=str(funcs_path),
-                objdump_path=str(data_path) if data_path.exists() else None,
-                out_ext='c'
-            )
-            print("[LLM] Typed code:", outputs.get('typed_code_file'))
-            print("[LLM] Summary:", outputs.get('summary_file'))
-            if outputs.get('combined_input_file'):
-                print("[LLM] Combined input:", outputs.get('combined_input_file'))
-        else:
+        if not funcs_path.exists():
             print("[LLM] Skipping typing: consolidated file ./decompiled_output/ALL_FUNCTIONS.c not found.")
+            return
+
+        print("[LLM] Running typing and summarization on consolidated outputs...")
+        analyzer = LLMAnalyzer()
+        print(f"[LLM] Using model: {analyzer.model}")
+        if getattr(analyzer, 'client', None) is None:
+            print("[LLM] Anthropic client is not initialized. Ensure the 'anthropic' package is installed in this Python and your API key is configured.")
+
+        outputs = analyzer.annotate_types_and_summarize(
+            c_file_path=str(funcs_path),
+            objdump_path=str(data_path) if data_path.exists() else None,
+            out_ext='c'
+        )
+
+        typed_path = Path(outputs.get('typed_code_file') or '')
+        summary_path = Path(outputs.get('summary_file') or '')
+        combined_path = Path(outputs.get('combined_input_file') or '')
+
+        print("[LLM] Typed code:", str(typed_path) if typed_path else 'N/A')
+        print("[LLM] Summary:", str(summary_path) if summary_path else 'N/A')
+        if combined_path:
+            try:
+                csz = combined_path.stat().st_size
+                print(f"[LLM] Combined input: {combined_path} (size: {csz:,} bytes)")
+            except Exception:
+                print(f"[LLM] Combined input: {combined_path}")
+
+        # Diagnose unchanged typed output
+        try:
+            if typed_path and typed_path.exists():
+                original_c = funcs_path.read_text(errors='ignore')
+                typed_c = typed_path.read_text(errors='ignore')
+                if original_c.strip() == typed_c.strip():
+                    print("[LLM][Diag] Typed C appears unchanged from input. Possible reasons:")
+                    print(" - Offline fallback due to missing SDK, invalid API key, or network issues")
+                    print(" - Model error (e.g., unsupported model) or request too large for context window")
+                    print(" - The model chose not to modify types (rare)")
+        except Exception as e:
+            print(f"[LLM][Diag] Could not compare typed C with original: {e}")
+
+        # Diagnose empty or fallback summary
+        try:
+            if summary_path and summary_path.exists():
+                summary_text = summary_path.read_text(errors='ignore')
+                if not summary_text.strip() or 'No summary generated.' in summary_text:
+                    print("[LLM][Diag] Summary is empty. Potential causes: API error or oversized prompt.")
+                if 'Offline fallback:' in summary_text:
+                    print("[LLM][Diag] Summary indicates offline fallback. Check console for [LLMAnalyzer] errors above.")
+                # Surface embedded LLM error line if present
+                for line in summary_text.splitlines():
+                    if line.startswith('LLM error:'):
+                        print(f"[LLM][Diag] {line}")
+                        break
+        except Exception as e:
+            print(f"[LLM][Diag] Could not inspect summary file: {e}")
+
     except Exception as e:
         print(f"[LLM] Error during typing/summarization: {e}")
