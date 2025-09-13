@@ -56,7 +56,7 @@ class SimpleGhidraCLI:
             raise
     
     def analyze_binary(self, binary_path, project_name=None, project_dir=None):
-        """Analyze a binary file with ghidra-cli"""
+        """Analyze a binary file with stoghidra-cli"""
         # Check if binary exists
         binary_file = Path(binary_path)
         if not binary_file.exists():
@@ -88,7 +88,7 @@ def main():
     try:
         ghidra = SimpleGhidraCLI()
         
-        storage_dir = Path("./storage")
+        storage_dir = Path("./storage/uploads")
         
         if not storage_dir.exists():
             print(f"❌ Storage folder not found: {storage_dir.resolve()}")
