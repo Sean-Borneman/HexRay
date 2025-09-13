@@ -372,10 +372,18 @@ Content:
 
         base_name = self._sanitize_basename(Path(c_file_path).name)
         results_dir = self._get_results_dir()
+        working_dir = self._get_working_dir()
         out_code = results_dir / f"{base_name}_typed.{out_ext or 'c'}"
         out_summary = results_dir / f"{base_name}_summary.txt"
         # Save the combined input in working directory for live artifacts
-        combined_input = self._get_working_dir() / f"{base_name}_combined.txt"
+        combined_input = working_dir / f"{base_name}_combined.txt"
+        # Clean up any stale combined file that might exist in results from earlier versions
+        stale_combined = results_dir / f"{base_name}_combined.txt"
+        try:
+            if stale_combined.exists():
+                stale_combined.unlink()
+        except Exception:
+            pass
 
         # Persist a combined view of inputs for traceability and optional reuse
         try:
@@ -391,6 +399,15 @@ Content:
             # Do not fail the analysis if writing the combined file has issues
             pass
 
+        # Helpful diagnostics for large requests
+        try:
+            c_len = len(c_content)
+            d_len = len(objdump_content) if objdump_content else 0
+            print(f"[LLMAnalyzer] Preparing typing request | model={self.model} | chunking={'off' if self.disable_chunking else 'on'} | c_chars={c_len} | data_chars={d_len}")
+            print(f"[LLMAnalyzer] Combined prompt artifact: {combined_input}")
+        except Exception:
+            pass
+
         system_instructions = (
             "You are a reverse engineering assistant. Given decompiled C code "
             "from Ghidra and optionally objdump output, infer strong typing for "
@@ -402,6 +419,9 @@ Content:
             "Do not add comments except where necessary to indicate assumptions."
         )
 
+        # Note: we include at most 200k chars of the C file and up to 200k chars of data
+        if len(c_content) > 200000:
+            print(f"[LLMAnalyzer] Note: C input truncated from {len(c_content):,} to 200,000 chars for prompt size.")
         prompt = (
             "Task: Produce two artifacts.\n"
             "1) TYPED_CODE: Full C code with improved/explicit types.\n"
@@ -422,6 +442,8 @@ Content:
         )
 
         if objdump_content:
+            if len(objdump_content) > 200000:
+                print(f"[LLMAnalyzer] Note: Data input truncated from {len(objdump_content):,} to 200,000 chars for prompt size.")
             prompt += f"\nObjdump/Data ({Path(objdump_path).name} excerpt):\n```\n{objdump_content}\n```\n"
 
         text = None
