@@ -3,7 +3,7 @@ const multer = require('multer');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
-
+const { execSync } = require('child_process')
 const app = express();
 const PORT = 3000;
 
@@ -51,6 +51,7 @@ app.post('/analyze', (req, res) => {
     if (!fs.existsSync(filePath)) {
         return res.status(404).json({ message: 'File to analyze not found.' });
     }
+    execSync("cd .. && python ./backend/main.py");
     console.log(`Analysis started for: ${fileName}`);
 
     // ===================================================================

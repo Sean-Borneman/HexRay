@@ -1,697 +1,1504 @@
 ================================================================================
 CONSOLIDATED DATA EXPORT
-Program: 0033cebc0dd0e505a7b27913d015dee7
-Generated: Sat Sep 13 01:33:39 EDT 2025
+Program: 42d388501a46a526133e8226f54bf21e
+Generated: Sat Sep 13 02:16:59 EDT 2025
 ================================================================================
 
 /******************************************************************************
  * MEMORY BLOCKS AND DATA SECTIONS
  ******************************************************************************/
 
-Block: segment_2.1
-Range: 00100000 - 00100317
-Size: 792 bytes
+Block: Headers
+Range: 00400000 - 004003ff
+Size: 1024 bytes
 ------------------------------------------------------------
-  00100000: /ELF/Elf64_Ehdr
+  00400000: /DOS/IMAGE_DOS_HEADER
 pack(disabled)
-Structure Elf64_Ehdr {
-   0   byte   1   e_ident_magic_num   ""
-   1   string   3   e_ident_magic_str   ""
-   4   byte   1   e_ident_class   ""
-   5   byte   1   e_ident_data   ""
-   6   byte   1   e_ident_version   ""
-   7   byte   1   e_ident_osabi   ""
-   8   byte   1   e_ident_abiversion   ""
-   9   byte[7]   7   e_ident_pad   ""
-   16   word   2   e_type   ""
-   18   word   2   e_machine   ""
-   20   dword   4   e_version   ""
-   24   qword   8   e_entry   ""
-   32   qword   8   e_phoff   ""
-   40   qword   8   e_shoff   ""
-   48   dword   4   e_flags   ""
-   52   word   2   e_ehsize   ""
-   54   word   2   e_phentsize   ""
-   56   word   2   e_phnum   ""
-   58   word   2   e_shentsize   ""
-   60   word   2   e_shnum   ""
-   62   word   2   e_shstrndx   ""
+Structure IMAGE_DOS_HEADER {
+   0   char[2]   2   e_magic   "Magic number"
+   2   word   2   e_cblp   "Bytes of last page"
+   4   word   2   e_cp   "Pages in file"
+   6   word   2   e_crlc   "Relocations"
+   8   word   2   e_cparhdr   "Size of header in paragraphs"
+   10   word   2   e_minalloc   "Minimum extra paragraphs needed"
+   12   word   2   e_maxalloc   "Maximum extra paragraphs needed"
+   14   word   2   e_ss   "Initial (relative) SS value"
+   16   word   2   e_sp   "Initial SP value"
+   18   word   2   e_csum   "Checksum"
+   20   word   2   e_ip   "Initial IP value"
+   22   word   2   e_cs   "Initial (relative) CS value"
+   24   word   2   e_lfarlc   "File address of relocation table"
+   26   word   2   e_ovno   "Overlay number"
+   28   word[4]   8   e_res[4]   "Reserved words"
+   36   word   2   e_oemid   "OEM identifier (for e_oeminfo)"
+   38   word   2   e_oeminfo   "OEM information; e_oemid specific"
+   40   word[10]   20   e_res2[10]   "Reserved words"
+   60   dword   4   e_lfanew   "File address of new exe header"
+   64   byte[64]   64   e_program   "Actual DOS program"
 }
-Length: 64 Alignment: 1
+Length: 128 Alignment: 1
  = undefined
-  00100040: Elf64_Phdr[13] = undefined
-Items in block: 2
-
-Block: .interp
-Range: 00100318 - 00100333
-Size: 28 bytes
-------------------------------------------------------------
-  00100318: TerminatedCString = /lib64/ld-linux-x86-64.so.2
-Items in block: 1
-
-Block: .note.gnu.property
-Range: 00100338 - 00100367
-Size: 48 bytes
-------------------------------------------------------------
-  00100338: /ELF/NoteGnuProperty_4
+  00400080: IMAGE_RICH_HEADER = IMAGE_RICH_HEADER[mask=da3544afh, numRecords=9]
+  004000f8: /PE/IMAGE_NT_HEADERS32
 pack(disabled)
-Structure NoteGnuProperty_4 {
-   0   dword   4   namesz   "Length of name field"
-   4   dword   4   descsz   "Length of description field"
-   8   dword   4   type   "Vendor specific type"
-   12   string   4   name   "Vendor name"
+Structure IMAGE_NT_HEADERS32 {
+   0   char[4]   4   Signature   ""
+   4   IMAGE_FILE_HEADER   20   FileHeader   ""
+   24   IMAGE_OPTIONAL_HEADER32   224   OptionalHeader   ""
 }
-Length: 16 Alignment: 1
+Length: 248 Alignment: 1
  = undefined
-  00100348: /NoteGnuPropertyElement_4
+  004001f0: /PE/IMAGE_SECTION_HEADER
 pack(disabled)
-Structure NoteGnuPropertyElement_4 {
-   0   dword   4   prType   ""
-   4   dword   4   prDatasz   ""
-   8   byte[4]   4   data   ""
+Structure IMAGE_SECTION_HEADER {
+   0   char[8]   8   Name   ""
+   8   Misc   4   Misc   ""
+   12   ImageBaseOffset32   4   VirtualAddress   ""
+   16   dword   4   SizeOfRawData   ""
+   20   dword   4   PointerToRawData   ""
+   24   dword   4   PointerToRelocations   ""
+   28   dword   4   PointerToLinenumbers   ""
+   32   word   2   NumberOfRelocations   ""
+   34   word   2   NumberOfLinenumbers   ""
+   36   SectionFlags   4   Characteristics   ""
 }
-Length: 12 Alignment: 1
+Length: 40 Alignment: 1
  = undefined
-  00100354: /NoteGnuPropertyElement_4
+  00400218: /PE/IMAGE_SECTION_HEADER
 pack(disabled)
-Structure NoteGnuPropertyElement_4 {
-   0   dword   4   prType   ""
-   4   dword   4   prDatasz   ""
-   8   byte[4]   4   data   ""
+Structure IMAGE_SECTION_HEADER {
+   0   char[8]   8   Name   ""
+   8   Misc   4   Misc   ""
+   12   ImageBaseOffset32   4   VirtualAddress   ""
+   16   dword   4   SizeOfRawData   ""
+   20   dword   4   PointerToRawData   ""
+   24   dword   4   PointerToRelocations   ""
+   28   dword   4   PointerToLinenumbers   ""
+   32   word   2   NumberOfRelocations   ""
+   34   word   2   NumberOfLinenumbers   ""
+   36   SectionFlags   4   Characteristics   ""
 }
-Length: 12 Alignment: 1
+Length: 40 Alignment: 1
  = undefined
-Items in block: 3
-
-Block: .note.gnu.build-id
-Range: 00100368 - 0010038b
-Size: 36 bytes
-------------------------------------------------------------
-  00100368: /ELF/GnuBuildId
+  00400240: /PE/IMAGE_SECTION_HEADER
 pack(disabled)
-Structure GnuBuildId {
-   0   dword   4   namesz   "Length of name field"
-   4   dword   4   descsz   "Length of description field"
-   8   dword   4   type   "Vendor specific type"
-   12   string   4   name   "Vendor name"
-   16   byte[20]   20   hash   ""
+Structure IMAGE_SECTION_HEADER {
+   0   char[8]   8   Name   ""
+   8   Misc   4   Misc   ""
+   12   ImageBaseOffset32   4   VirtualAddress   ""
+   16   dword   4   SizeOfRawData   ""
+   20   dword   4   PointerToRawData   ""
+   24   dword   4   PointerToRelocations   ""
+   28   dword   4   PointerToLinenumbers   ""
+   32   word   2   NumberOfRelocations   ""
+   34   word   2   NumberOfLinenumbers   ""
+   36   SectionFlags   4   Characteristics   ""
 }
-Length: 36 Alignment: 1
+Length: 40 Alignment: 1
  = undefined
-Items in block: 1
-
-Block: .note.ABI-tag
-Range: 0010038c - 001003ab
-Size: 32 bytes
-------------------------------------------------------------
-  0010038c: /ELF/NoteAbiTag
+  00400268: /PE/IMAGE_SECTION_HEADER
 pack(disabled)
-Structure NoteAbiTag {
-   0   dword   4   namesz   "Length of name field"
-   4   dword   4   descsz   "Length of description field"
-   8   dword   4   type   "Vendor specific type"
-   12   string   4   name   "Vendor name"
-   16   dword   4   abiType   "0 == Linux"
-   20   dword[3]   12   requiredKernelVersion   "Major.minor.patch"
+Structure IMAGE_SECTION_HEADER {
+   0   char[8]   8   Name   ""
+   8   Misc   4   Misc   ""
+   12   ImageBaseOffset32   4   VirtualAddress   ""
+   16   dword   4   SizeOfRawData   ""
+   20   dword   4   PointerToRawData   ""
+   24   dword   4   PointerToRelocations   ""
+   28   dword   4   PointerToLinenumbers   ""
+   32   word   2   NumberOfRelocations   ""
+   34   word   2   NumberOfLinenumbers   ""
+   36   SectionFlags   4   Characteristics   ""
 }
-Length: 32 Alignment: 1
+Length: 40 Alignment: 1
  = undefined
-Items in block: 1
-
-Block: .gnu.hash
-Range: 001003b0 - 001003d3
-Size: 36 bytes
-------------------------------------------------------------
-  001003b0: dword = 0x2
-  001003b4: dword = 0xa
-  001003b8: dword = 0x1
-  001003bc: dword = 0x6
-  001003c0: qword[1] = undefined
-  001003c8: dword[2] = undefined
-  001003d0: dword[1] = undefined
-Items in block: 7
-
-Block: .dynsym
-Range: 001003d8 - 001004df
-Size: 264 bytes
-------------------------------------------------------------
-  001003d8: Elf64_Sym[11] = undefined
-Items in block: 1
-
-Block: .dynstr
-Range: 001004e0 - 001005ae
-Size: 207 bytes
-------------------------------------------------------------
-  001004e1: string-utf8 = puts
-  001004e6: string-utf8 = __stack_chk_fail
-  001004f7: string-utf8 = strlen
-  001004fe: string-utf8 = __libc_start_main
-  00100510: string-utf8 = __cxa_finalize
-  0010051f: string-utf8 = printf
-  00100526: string-utf8 = __isoc99_scanf
-  00100535: string-utf8 = libc.so.6
-  0010053f: string-utf8 = GLIBC_2.7
-  00100549: string-utf8 = GLIBC_2.4
-  00100553: string-utf8 = GLIBC_2.2.5
-  0010055f: string-utf8 = GLIBC_2.34
-  0010056a: string-utf8 = _ITM_deregisterTMCloneTable
-  00100586: string-utf8 = __gmon_start__
-  00100595: string-utf8 = _ITM_registerTMCloneTable
-Items in block: 15
-
-Block: .gnu.version
-Range: 001005b0 - 001005c5
-Size: 22 bytes
-------------------------------------------------------------
-  001005b0: word = 0x0
-  001005b2: word = 0x2
-  001005b4: word = 0x1
-  001005b6: word = 0x3
-  001005b8: word = 0x3
-  001005ba: word = 0x4
-  001005bc: word = 0x3
-  001005be: word = 0x1
-  001005c0: word = 0x5
-  001005c2: word = 0x1
-  001005c4: word = 0x3
-Items in block: 11
-
-Block: .gnu.version_r
-Range: 001005c8 - 00100617
-Size: 80 bytes
-------------------------------------------------------------
-Items in block: 0
-
-Block: .rela.dyn
-Range: 00100618 - 001006d7
-Size: 192 bytes
-------------------------------------------------------------
-  00100618: Elf64_Rela[8] = undefined
-Items in block: 1
-
-Block: .rela.plt
-Range: 001006d8 - 0010074f
-Size: 120 bytes
-------------------------------------------------------------
-  001006d8: Elf64_Rela[5] = undefined
-Items in block: 1
-
-Block: .init
-Range: 00101000 - 0010101a
-Size: 27 bytes
-------------------------------------------------------------
-Items in block: 0
-
-Block: .plt
-Range: 00101020 - 0010107f
-Size: 96 bytes
-------------------------------------------------------------
-Items in block: 0
-
-Block: .plt.got
-Range: 00101080 - 0010108f
-Size: 16 bytes
-------------------------------------------------------------
-Items in block: 0
-
-Block: .plt.sec
-Range: 00101090 - 001010df
-Size: 80 bytes
-------------------------------------------------------------
-Items in block: 0
-
-Block: .text
-Range: 001010e0 - 00101414
-Size: 821 bytes
-------------------------------------------------------------
-Items in block: 0
-
-Block: .fini
-Range: 00101418 - 00101424
-Size: 13 bytes
-------------------------------------------------------------
-Items in block: 0
-
-Block: .rodata
-Range: 00102000 - 001021fe
-Size: 511 bytes
-------------------------------------------------------------
-  00102000: undefined4 = 0x20001
-  00102020: undefined1[449] = undefined
-  001021e1: string = Enter flag: 
-  001021f6: string = Correct!
-Items in block: 4
-
-Block: .eh_frame_hdr
-Range: 00102200 - 00102233
-Size: 52 bytes
-------------------------------------------------------------
-  00102200: /eh_frame_hdr
+  00400290: /PE/IMAGE_SECTION_HEADER
 pack(disabled)
-Structure eh_frame_hdr {
-   0   byte   1   eh_frame_hdr_version   "Exception Handler Frame Header Version"
-   1   dwfenc   1   eh_frame_pointer_encoding   "Exception Handler Frame Pointer Encoding"
-   2   dwfenc   1   eh_frame_desc_entry_count_encoding   "Encoding of # of Exception Handler FDEs"
-   3   dwfenc   1   eh_frame_table_encoding   "Exception Handler Table Encoding"
+Structure IMAGE_SECTION_HEADER {
+   0   char[8]   8   Name   ""
+   8   Misc   4   Misc   ""
+   12   ImageBaseOffset32   4   VirtualAddress   ""
+   16   dword   4   SizeOfRawData   ""
+   20   dword   4   PointerToRawData   ""
+   24   dword   4   PointerToRelocations   ""
+   28   dword   4   PointerToLinenumbers   ""
+   32   word   2   NumberOfRelocations   ""
+   34   word   2   NumberOfLinenumbers   ""
+   36   SectionFlags   4   Characteristics   ""
 }
-Length: 4 Alignment: 1
- = undefined
-  00102204: dword = 0x34
-  00102208: dword = 0x5
-  0010220c: /fde_table_entry
-pack(disabled)
-Structure fde_table_entry {
-   0   dword   4   initial_loc   "Initial Location"
-   4   dword   4   data_loc   "Data location"
-}
-Length: 8 Alignment: 1
- = undefined
-  00102214: /fde_table_entry
-pack(disabled)
-Structure fde_table_entry {
-   0   dword   4   initial_loc   "Initial Location"
-   4   dword   4   data_loc   "Data location"
-}
-Length: 8 Alignment: 1
- = undefined
-  0010221c: /fde_table_entry
-pack(disabled)
-Structure fde_table_entry {
-   0   dword   4   initial_loc   "Initial Location"
-   4   dword   4   data_loc   "Data location"
-}
-Length: 8 Alignment: 1
- = undefined
-  00102224: /fde_table_entry
-pack(disabled)
-Structure fde_table_entry {
-   0   dword   4   initial_loc   "Initial Location"
-   4   dword   4   data_loc   "Data location"
-}
-Length: 8 Alignment: 1
- = undefined
-  0010222c: /fde_table_entry
-pack(disabled)
-Structure fde_table_entry {
-   0   dword   4   initial_loc   "Initial Location"
-   4   dword   4   data_loc   "Data location"
-}
-Length: 8 Alignment: 1
+Length: 40 Alignment: 1
  = undefined
 Items in block: 8
 
-Block: .eh_frame
-Range: 00102238 - 001022e7
-Size: 176 bytes
+Block: .text
+Range: 00401000 - 004021ff
+Size: 4608 bytes
 ------------------------------------------------------------
-  00102238: dword = 0x14
-  0010223c: dword = 0x0
-  00102240: byte = 0x1
-  00102241: string = zR
-  00102244: uleb128 = 0x1
-  00102245: sleb128 = -0x8
-  00102246: byte = 0x10
-  00102247: uleb128 = 0x1
-  00102248: dwfenc = DW_EH_PE_sdata4 | DW_EH_PE_pcrel
-  00102249: byte[7] = undefined
-  00102250: dword = 0x14
-  00102254: dword = 0x1c
-  00102258: dword = 0xffffee88
-  0010225c: dword = 0x26
-  00102260: uleb128 = 0x0
-  00102261: byte[7] = undefined
-  00102268: dword = 0x24
-  0010226c: dword = 0x34
-  00102270: dword = 0xffffedb0
-  00102274: dword = 0x60
-  00102278: uleb128 = 0x0
-  00102279: byte[23] = undefined
-  00102290: dword = 0x14
-  00102294: dword = 0x5c
-  00102298: dword = 0xffffede8
-  0010229c: qword = 0x10
-  001022a4: uleb128 = 0x0
-  001022a5: byte[3] = undefined
-  001022a8: dword = 0x14
-  001022ac: dword = 0x74
-  001022b0: dword = 0xffffede0
-  001022b4: qword = 0x50
-  001022bc: uleb128 = 0x0
-  001022bd: byte[3] = undefined
-  001022c0: dword = 0x20
-  001022c4: dword = 0x8c
-  001022c8: dword = 0xffffef01
-  001022cc: dword = 0x24c
-  001022d0: uleb128 = 0x0
-  001022d1: byte[19] = undefined
-  001022e4: dword = 0x0
-Items in block: 41
-
-Block: .init_array
-Range: 00103d98 - 00103d9f
-Size: 8 bytes
-------------------------------------------------------------
-  00103d98: pointer = 001011c0
-Items in block: 1
-
-Block: .fini_array
-Range: 00103da0 - 00103da7
-Size: 8 bytes
-------------------------------------------------------------
-  00103da0: pointer = 00101180
-Items in block: 1
-
-Block: .dynamic
-Range: 00103da8 - 00103f97
-Size: 496 bytes
-------------------------------------------------------------
-  00103da8: Elf64_Dyn[27] = undefined
-Items in block: 1
-
-Block: .got
-Range: 00103f98 - 00103fff
-Size: 104 bytes
-------------------------------------------------------------
-  00103f98: pointer = 00103da8
-  00103fa0: pointer = 00000000
-  00103fa8: pointer = 00000000
-  00103fb0: pointer = 00105010
-  00103fb8: pointer = 00105018
-  00103fc0: pointer = 00105020
-  00103fc8: pointer = 00105028
-  00103fd0: pointer = 00105038
-  00103fd8: pointer = 00105000
-  00103fe0: pointer = 00105008
-  00103fe8: pointer = 00105030
-  00103ff0: pointer = 00105040
-  00103ff8: pointer = 00105048
-Items in block: 13
+  00401000: pointer = 00403040
+  00401004: undefined * = 00403090
+  00401008: /PE/IMAGE_LOAD_CONFIG_DIRECTORY32
+pack(disabled)
+Structure IMAGE_LOAD_CONFIG_DIRECTORY32 {
+   0   dword   4   Size   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   dword   4   GlobalFlagsClear   ""
+   16   dword   4   GlobalFlagsSet   ""
+   20   dword   4   CriticalSectionDefaultTimeout   ""
+   24   dword   4   DeCommitFreeBlockThreshold   ""
+   28   dword   4   DeCommitTotalFreeThreshold   ""
+   32   pointer32   4   LockPrefixTable   ""
+   36   dword   4   MaximumAllocationSize   ""
+   40   dword   4   VirtualMemoryThreshold   ""
+   44   dword   4   ProcessHeapFlags   ""
+   48   dword   4   ProcessAffinityMask   ""
+   52   word   2   CsdVersion   ""
+   54   word   2   DependentLoadFlags   ""
+   56   pointer32   4   EditList   ""
+   60   pointer32   4   SecurityCookie   ""
+   64   pointer32   4   SEHandlerTable   ""
+   68   dword   4   SEHandlerCount   ""
+   72   pointer32   4   GuardCFCCheckFunctionPointer   ""
+   76   pointer32   4   GuardCFDispatchFunctionPointer   ""
+   80   pointer32   4   GuardCFFunctionTable   ""
+   84   dword   4   GuardCFFunctionCount   ""
+   88   IMAGE_GUARD_FLAGS   4   GuardFlags   ""
+   92   IMAGE_LOAD_CONFIG_CODE_INTEGRITY   12   CodeIntegrity   ""
+   104   pointer32   4   GuardAddressTakenIatEntryTable   ""
+   108   dword   4   GuardAddressTakenIatEntryCount   ""
+   112   pointer32   4   GuardLongJumpTargetTable   ""
+   116   dword   4   GuardLongJumpTargetCount   ""
+   120   pointer32   4   DynamicValueRelocTable   ""
+   124   pointer32   4   CHPEMetadataPointer   ""
+   128   pointer32   4   GuardRFFailureRoutine   ""
+   132   pointer32   4   GuardRFFailureRoutineFunctionPointer   ""
+   136   dword   4   DynamicValueRelocTableOffset   ""
+   140   word   2   DynamicValueRelocTableSection   ""
+   142   word   2   Reserved1   ""
+   144   pointer32   4   GuardRFVerifyStackPointerFunctionPointer   ""
+   148   dword   4   HotPatchTableOffset   ""
+   152   dword   4   Reserved2   ""
+   156   dword   4   Reserved3   ""
+}
+Length: 160 Alignment: 1
+ = undefined
+  004010d8: undefined * = 004019c0
+  004010dc: undefined * = 00401d50
+  004010e4: GuardCfgTableEntry[10] = undefined
+  00401110: string = CalculatorStarted
+  00401124: unicode = ms-calculator:
+  00401144: /PE/IMAGE_DEBUG_DIRECTORY
+pack(disabled)
+Structure IMAGE_DEBUG_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   dword   4   Type   ""
+   16   dword   4   SizeOfData   ""
+   20   dword   4   AddressOfRawData   ""
+   24   dword   4   PointerToRawData   ""
+}
+Length: 28 Alignment: 1
+ = undefined
+  00401160: /PE/IMAGE_DEBUG_DIRECTORY
+pack(disabled)
+Structure IMAGE_DEBUG_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   dword   4   Type   ""
+   16   dword   4   SizeOfData   ""
+   20   dword   4   AddressOfRawData   ""
+   24   dword   4   PointerToRawData   ""
+}
+Length: 28 Alignment: 1
+ = undefined
+  0040117c: /PE/IMAGE_DEBUG_DIRECTORY
+pack(disabled)
+Structure IMAGE_DEBUG_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   dword   4   Type   ""
+   16   dword   4   SizeOfData   ""
+   20   dword   4   AddressOfRawData   ""
+   24   dword   4   PointerToRawData   ""
+}
+Length: 28 Alignment: 1
+ = undefined
+  00401198: /PE/IMAGE_DEBUG_DIRECTORY
+pack(disabled)
+Structure IMAGE_DEBUG_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   dword   4   Type   ""
+   16   dword   4   SizeOfData   ""
+   20   dword   4   AddressOfRawData   ""
+   24   dword   4   PointerToRawData   ""
+}
+Length: 28 Alignment: 1
+ = undefined
+  004011c0: IBO32DataType: typedef ImageBaseOffset32 pointer32 = 00402030
+  00401267: string = CalculatorWinMain
+  00401279: string = "CalculatorStarted"
+  0040128f: undefined4 = 0x905ca09
+  00401293: undefined4 = 0x401e610e
+  00401297: undefined4 = 0x212f50b6
+  0040129b: undefined4 = -0x1f467fd7
+  0040129f: undefined2 = 0x29
+  004012a1: string = MicrosoftCalculator
+  004012cc: /PDB/DotNetPdbInfo
+pack(disabled)
+Structure DotNetPdbInfo {
+   0   string   4   signature   ""
+   4   GUID   16   guid   ""
+   20   dword   4   age   ""
+   24   string   8   pdbpath   ""
+}
+Length: 32 Alignment: 1
+ = undefined
+  004013ac: string = .rdata
+  004013bc: string = .rdata$sxdata
+  004013d4: string = .rdata$voltmd
+  00401404: string = .rdata$zETW1
+  0040141c: string = .rdata$zETW2
+  004014b0: string = .data
+  0040208c: undefined * = 00401be9
+  00402090: undefined * = 00401bfd
+  004020ac: undefined * = 00401db9
+  004020b0: undefined * = 00401dbd
+  004020cc: undefined * = 00401f2b
+  004020d0: undefined * = 00401f3e
+Items in block: 34
 
 Block: .data
-Range: 00104000 - 0010400f
-Size: 16 bytes
+Range: 00403000 - 004033ff
+Size: 1024 bytes
 ------------------------------------------------------------
-  00104008: pointer = 00104008
-Items in block: 1
+  00403000: undefined4 = 0x0
+  00403004: pointer = 0040129f
+  0040300c: undefined4 = 0x0
+  00403010: undefined4 = 0x0
+  00403014: undefined4 = 0x0
+  00403018: undefined4 = 0x0
+  0040301c: undefined4 = 0x0
+  00403028: undefined4 = -0x44bf19b2
+  0040302c: undefined4 = 0x44bf19b1
+  00403030: undefined4 = 0x1
+  00403054: undefined4 = 0x0
+  00403148: undefined4 = 0x0
+  0040335c: undefined4 = 0x0
+  00403360: undefined4 = 0x0
+  00403374: undefined4 = 0x0
+  0040337c: undefined4 = 0x0
+  00403380: undefined4 = 0x0
+  00403384: undefined4 = 0x0
+  00403388: undefined4 = 0x0
+  00403398: undefined4 = 0x0
+  0040339c: undefined4 = 0x0
+  004033a0: undefined4 = 0x0
+Items in block: 22
 
-Block: .bss
-Range: 00104010 - 00104017
-Size: 8 bytes
+Block: .idata
+Range: 00404000 - 004045ff
+Size: 1536 bytes
 ------------------------------------------------------------
-  00104010: undefined1 = undefined
-Items in block: 1
+  00404000: pointer = 000043ce
+  00404004: pointer = 000043e4
+  00404008: pointer = 000043be
+  00404010: pointer = 00004210
+  00404014: pointer = 0000422e
+  00404018: pointer = 00004242
+  0040401c: pointer = 000041f4
+  00404020: pointer = 00004270
+  00404024: pointer = 00004286
+  00404028: pointer = 0000429c
+  0040402c: pointer = 000042b6
+  00404030: pointer = 00004256
+  00404038: pointer = 000041d8
+  00404040: pointer = 00004422
+  00404048: pointer = 00004410
+  00404050: pointer = 00004408
+  00404058: pointer = 000042f2
+  0040405c: pointer = 0000433e
+  00404060: pointer = 0000434c
+  00404064: pointer = 00004360
+  00404068: pointer = 0000436c
+  0040406c: pointer = 00004382
+  00404070: pointer = 00004396
+  00404074: pointer = 0000432c
+  00404078: pointer = 00004324
+  0040407c: pointer = 000042e2
+  00404080: pointer = 000042d4
+  00404084: pointer = 00004312
+  00404088: pointer = 000043a4
+  0040408c: pointer = 00004300
+  00404090: pointer = 00004334
+  00404098: pointer = 00402070
+  004040a0: dword = 0x4178
+  004040a4: dword = 0x0
+  004040a8: dword = 0x0
+  004040ac: dword = 0x41e8
+  004040b0: dword = 0x4038
+  004040b4: dword = 0x4150
+  004040b8: dword = 0x0
+  004040bc: dword = 0x0
+  004040c0: dword = 0x42c6
+  004040c4: dword = 0x4010
+  004040c8: dword = 0x4198
+  004040cc: dword = 0x0
+  004040d0: dword = 0x0
+  004040d4: dword = 0x4376
+  004040d8: dword = 0x4058
+  004040dc: dword = 0x4140
+  004040e0: dword = 0x0
+  004040e4: dword = 0x0
+  004040e8: dword = 0x43fa
+  004040ec: dword = 0x4000
+  004040f0: dword = 0x4190
+  004040f4: dword = 0x0
+  004040f8: dword = 0x0
+  004040fc: dword = 0x4436
+  00404100: dword = 0x4050
+  00404104: dword = 0x4188
+  00404108: dword = 0x0
+  0040410c: dword = 0x0
+  00404110: dword = 0x4458
+  00404114: dword = 0x4048
+  00404118: dword = 0x4180
+  0040411c: dword = 0x0
+  00404120: dword = 0x0
+  00404124: dword = 0x4482
+  00404128: dword = 0x4040
+  00404140: dword = 0x43ce
+  00404144: dword = 0x43e4
+  00404148: dword = 0x43be
+  00404150: dword = 0x4210
+  00404154: dword = 0x422e
+  00404158: dword = 0x4242
+  0040415c: dword = 0x41f4
+  00404160: dword = 0x4270
+  00404164: dword = 0x4286
+  00404168: dword = 0x429c
+  0040416c: dword = 0x42b6
+  00404170: dword = 0x4256
+  00404178: dword = 0x41d8
+  00404180: dword = 0x4422
+  00404188: dword = 0x4410
+  00404190: dword = 0x4408
+  00404198: dword = 0x42f2
+  0040419c: dword = 0x433e
+  004041a0: dword = 0x434c
+  004041a4: dword = 0x4360
+  004041a8: dword = 0x436c
+  004041ac: dword = 0x4382
+  004041b0: dword = 0x4396
+  004041b4: dword = 0x432c
+  004041b8: dword = 0x4324
+  004041bc: dword = 0x42e2
+  004041c0: dword = 0x42d4
+  004041c4: dword = 0x4312
+  004041c8: dword = 0x43a4
+  004041cc: dword = 0x4300
+  004041d0: dword = 0x4334
+  004041d8: word = 0x1b0
+  004041da: TerminatedCString = ShellExecuteW
+  004041e8: TerminatedCString = SHELL32.dll
+  004041f4: word = 0x5e2
+  004041f6: TerminatedCString = UnhandledExceptionFilter
+  00404210: word = 0x5a0
+  00404212: TerminatedCString = SetUnhandledExceptionFilter
+  0040422e: word = 0x235
+  00404230: TerminatedCString = GetCurrentProcess
+  00404242: word = 0x5c0
+  00404244: TerminatedCString = TerminateProcess
+  00404256: word = 0x478
+  00404258: TerminatedCString = QueryPerformanceCounter
+  00404270: word = 0x236
+  00404272: TerminatedCString = GetCurrentProcessId
+  00404286: word = 0x23a
+  00404288: TerminatedCString = GetCurrentThreadId
+  0040429c: word = 0x30d
+  0040429e: TerminatedCString = GetSystemTimeAsFileTime
+  004042b6: word = 0x32f
+  004042b8: TerminatedCString = GetTickCount
+  004042c6: TerminatedCString = KERNEL32.dll
+  004042d4: word = 0x74
+  004042d6: TerminatedCString = _XcptFilter
+  004042e2: word = 0xd2
+  004042e4: TerminatedCString = __p__commode
+  004042f2: word = 0x11a
+  004042f4: TerminatedCString = _amsg_exit
+  00404300: word = 0xfa
+  00404302: TerminatedCString = __wgetmainargs
+  00404312: word = 0xeb
+  00404314: TerminatedCString = __set_app_type
+  00404324: word = 0x4b9
+  00404326: TerminatedCString = exit
+  0040432c: word = 0x17c
+  0040432e: TerminatedCString = _exit
+  00404334: word = 0x12d
+  00404336: TerminatedCString = _cexit
+  0040433e: word = 0xd7
+  00404340: TerminatedCString = __p__fmode
+  0040434c: word = 0xed
+  0040434e: TerminatedCString = __setusermatherr
+  00404360: word = 0x1f3
+  00404362: TerminatedCString = _initterm
+  0040436c: word = 0x410
+  0040436e: TerminatedCString = _wcmdln
+  00404376: TerminatedCString = msvcrt.dll
+  00404382: word = 0x3a
+  00404384: TerminatedCString = ?terminate@@YAXXZ
+  00404396: word = 0x140
+  00404398: TerminatedCString = _controlfp
+  004043a4: word = 0x173
+  004043a6: TerminatedCString = _except_handler4_common
+  004043be: word = 0x10c
+  004043c0: TerminatedCString = EventRegister
+  004043ce: word = 0x10d
+  004043d0: TerminatedCString = EventSetInformation
+  004043e4: word = 0x114
+  004043e6: TerminatedCString = EventWriteTransfer
+  004043fa: TerminatedCString = ADVAPI32.dll
+  00404408: word = 0x2d
+  0040440a: TerminatedCString = Sleep
+  00404410: word = 0x22
+  00404412: TerminatedCString = GetStartupInfoW
+  00404422: word = 0x15
+  00404424: TerminatedCString = GetModuleHandleW
+  00404436: TerminatedCString = api-ms-win-core-synch-l1-2-0.dll
+  00404458: TerminatedCString = api-ms-win-core-processthreads-l1-1-0.dll
+  00404482: TerminatedCString = api-ms-win-core-libraryloader-l1-2-0.dll
+Items in block: 167
 
-Block: EXTERNAL
-Range: 00105000 - 0010504f
-Size: 80 bytes
+Block: .rsrc
+Range: 00405000 - 004097ff
+Size: 18432 bytes
 ------------------------------------------------------------
-Items in block: 0
+  00405000: /PE/IMAGE_RESOURCE_DIRECTORY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   word   2   NumberOfNamedEntries   ""
+   14   word   2   NumberOfIdEntries   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  00405010: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405018: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405020: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405028: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405030: /PE/IMAGE_RESOURCE_DIRECTORY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   word   2   NumberOfNamedEntries   ""
+   14   word   2   NumberOfIdEntries   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  00405040: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405048: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405050: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405058: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405060: /PE/IMAGE_RESOURCE_DIRECTORY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   word   2   NumberOfNamedEntries   ""
+   14   word   2   NumberOfIdEntries   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  00405070: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405078: /PE/IMAGE_RESOURCE_DIRECTORY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   word   2   NumberOfNamedEntries   ""
+   14   word   2   NumberOfIdEntries   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  00405088: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405090: /PE/IMAGE_RESOURCE_DIRECTORY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   word   2   NumberOfNamedEntries   ""
+   14   word   2   NumberOfIdEntries   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  004050a0: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  004050a8: /PE/IMAGE_RESOURCE_DIRECTORY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   word   2   NumberOfNamedEntries   ""
+   14   word   2   NumberOfIdEntries   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  004050b8: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  004050c0: /PE/IMAGE_RESOURCE_DIRECTORY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   word   2   NumberOfNamedEntries   ""
+   14   word   2   NumberOfIdEntries   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  004050d0: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  004050d8: /PE/IMAGE_RESOURCE_DIRECTORY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   word   2   NumberOfNamedEntries   ""
+   14   word   2   NumberOfIdEntries   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  004050e8: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  004050f0: /PE/IMAGE_RESOURCE_DIRECTORY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   word   2   NumberOfNamedEntries   ""
+   14   word   2   NumberOfIdEntries   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  00405100: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405108: /PE/IMAGE_RESOURCE_DIRECTORY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   word   2   NumberOfNamedEntries   ""
+   14   word   2   NumberOfIdEntries   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  00405118: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405120: /PE/IMAGE_RESOURCE_DIRECTORY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   word   2   NumberOfNamedEntries   ""
+   14   word   2   NumberOfIdEntries   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  00405130: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405138: /PE/IMAGE_RESOURCE_DIRECTORY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   word   2   NumberOfNamedEntries   ""
+   14   word   2   NumberOfIdEntries   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  00405148: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
+   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
+   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  00405150: /PE/IMAGE_RESOURCE_DATA_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DATA_ENTRY {
+   0   dword   4   OffsetToData   ""
+   4   dword   4   Size   ""
+   8   dword   4   CodePage   ""
+   12   dword   4   Reserved   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  00405160: /PE/IMAGE_RESOURCE_DATA_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DATA_ENTRY {
+   0   dword   4   OffsetToData   ""
+   4   dword   4   Size   ""
+   8   dword   4   CodePage   ""
+   12   dword   4   Reserved   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  00405170: /PE/IMAGE_RESOURCE_DATA_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DATA_ENTRY {
+   0   dword   4   OffsetToData   ""
+   4   dword   4   Size   ""
+   8   dword   4   CodePage   ""
+   12   dword   4   Reserved   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  00405180: /PE/IMAGE_RESOURCE_DATA_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DATA_ENTRY {
+   0   dword   4   OffsetToData   ""
+   4   dword   4   Size   ""
+   8   dword   4   CodePage   ""
+   12   dword   4   Reserved   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  00405190: /PE/IMAGE_RESOURCE_DATA_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DATA_ENTRY {
+   0   dword   4   OffsetToData   ""
+   4   dword   4   Size   ""
+   8   dword   4   CodePage   ""
+   12   dword   4   Reserved   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  004051a0: /PE/IMAGE_RESOURCE_DATA_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DATA_ENTRY {
+   0   dword   4   OffsetToData   ""
+   4   dword   4   Size   ""
+   8   dword   4   CodePage   ""
+   12   dword   4   Reserved   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  004051b0: /PE/IMAGE_RESOURCE_DATA_ENTRY
+pack(disabled)
+Structure IMAGE_RESOURCE_DATA_ENTRY {
+   0   dword   4   OffsetToData   ""
+   4   dword   4   Size   ""
+   8   dword   4   CodePage   ""
+   12   dword   4   Reserved   ""
+}
+Length: 16 Alignment: 1
+ = undefined
+  004051c0: /PE/IMAGE_RESOURCE_DIR_STRING_U_26
+pack(disabled)
+Structure IMAGE_RESOURCE_DIR_STRING_U_26 {
+   0   word   2   Length   ""
+   2   unicode   26   NameString   ""
+}
+Length: 28 Alignment: 1
+ = undefined
+  004051e0: TerminatedCString = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Copyright (c) Microsoft Corporation -->
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+<assemblyIdentity
+    name="Microsoft.Windows.Shell.calc"
+    processorArchitecture="x86"
+    version="5.1.0.0"
+    type="win32"/>
+<description>Windows Shell</description>
+<dependency>
+    <dependentAssembly>
+        <assemblyIdentity
+            type="win32"
+            name="Microsoft.Windows.Common-Controls"
+            version="6.0.0.0"
+            processorArchitecture="*"
+            publicKeyToken="6595b64144ccf1df"
+            language="*"
+        />
+    </dependentAssembly>
+</dependency>
+<trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
+    <security>
+        <requestedPrivileges>
+            <requestedExecutionLevel level="asInvoker" uiAccess="false"/>
+        </requestedPrivileges>
+    </security>
+</trustInfo>
+<application xmlns="urn:schemas-microsoft-com:asm.v3">
+    <windowsSettings>
+        <dpiAware  xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true</dpiAware>
+    </windowsSettings>
+</application>
+</assembly>
 
-Block: .comment
-Range: .comment::00000000 - .comment::0000002a
-Size: 43 bytes
-------------------------------------------------------------
-  .comment::00000000: string-utf8 = GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
-Items in block: 1
+  00405670: /PE/VS_VERSION_INFO
+pack(disabled)
+Structure VS_VERSION_INFO {
+   0   word   2   StructLength   ""
+   2   word   2   ValueLength   ""
+   4   word   2   StructType   ""
+   6   unicode   32   Info   ""
+   38   byte[2]   2   Padding   ""
+   40   dword   4   Signature   ""
+   44   word[2]   4   StructVersion   ""
+   48   word[4]   8   FileVersion   ""
+   56   word[4]   8   ProductVersion   ""
+   64   dword[2]   8   FileFlagsMask   ""
+   72   dword   4   FileFlags   ""
+   76   dword   4   FileOS   ""
+   80   dword   4   FileType   ""
+   84   dword   4   FileSubtype   ""
+   88   dword   4   FileTimestamp   ""
+}
+Length: 92 Alignment: 1
+ = undefined
+  004056cc: /PE/StringFileInfo
+pack(disabled)
+Structure StringFileInfo {
+   0   word   2   wLength   ""
+   2   word   2   wValueLength   ""
+   4   word   2   wType   ""
+}
+Length: 6 Alignment: 1
+ = undefined
+  004056d2: TerminatedUnicode = StringFileInfo
+  004056f0: /PE/StringTable
+pack(disabled)
+Structure StringTable {
+   0   word   2   wLength   ""
+   2   word   2   wValueLength   ""
+   4   word   2   wType   ""
+}
+Length: 6 Alignment: 1
+ = undefined
+  004056f6: TerminatedUnicode = 040904B0
+  00405708: /PE/StringInfo
+pack(disabled)
+Structure StringInfo {
+   0   word   2   wLength   ""
+   2   word   2   wValueLength   ""
+   4   word   2   wType   ""
+}
+Length: 6 Alignment: 1
+ = undefined
+  0040570e: TerminatedUnicode = CompanyName
+  00405728: TerminatedUnicode = Microsoft Corporation
+  00405754: /PE/StringInfo
+pack(disabled)
+Structure StringInfo {
+   0   word   2   wLength   ""
+   2   word   2   wValueLength   ""
+   4   word   2   wType   ""
+}
+Length: 6 Alignment: 1
+ = undefined
+  0040575a: TerminatedUnicode = FileDescription
+  0040577c: TerminatedUnicode = Windows Calculator
+  004057a4: /PE/StringInfo
+pack(disabled)
+Structure StringInfo {
+   0   word   2   wLength   ""
+   2   word   2   wValueLength   ""
+   4   word   2   wType   ""
+}
+Length: 6 Alignment: 1
+ = undefined
+  004057aa: TerminatedUnicode = FileVersion
+  004057c4: TerminatedUnicode = 10.0.26100.1882 (WinBuild.160101.0800)
+  00405814: /PE/StringInfo
+pack(disabled)
+Structure StringInfo {
+   0   word   2   wLength   ""
+   2   word   2   wValueLength   ""
+   4   word   2   wType   ""
+}
+Length: 6 Alignment: 1
+ = undefined
+  0040581a: TerminatedUnicode = InternalName
+  00405834: TerminatedUnicode = CALC
+  00405840: /PE/StringInfo
+pack(disabled)
+Structure StringInfo {
+   0   word   2   wLength   ""
+   2   word   2   wValueLength   ""
+   4   word   2   wType   ""
+}
+Length: 6 Alignment: 1
+ = undefined
+  00405846: TerminatedUnicode = LegalCopyright
+  00405864: TerminatedUnicode = © Microsoft Corporation. All rights reserved.
+  004058c0: /PE/StringInfo
+pack(disabled)
+Structure StringInfo {
+   0   word   2   wLength   ""
+   2   word   2   wValueLength   ""
+   4   word   2   wType   ""
+}
+Length: 6 Alignment: 1
+ = undefined
+  004058c6: TerminatedUnicode = OriginalFilename
+  004058e8: TerminatedUnicode = CALC.EXE
+  004058fc: /PE/StringInfo
+pack(disabled)
+Structure StringInfo {
+   0   word   2   wLength   ""
+   2   word   2   wValueLength   ""
+   4   word   2   wType   ""
+}
+Length: 6 Alignment: 1
+ = undefined
+  00405902: TerminatedUnicode = ProductName
+  0040591c: TerminatedUnicode = Microsoft® Windows® Operating System
+  00405968: /PE/StringInfo
+pack(disabled)
+Structure StringInfo {
+   0   word   2   wLength   ""
+   2   word   2   wValueLength   ""
+   4   word   2   wType   ""
+}
+Length: 6 Alignment: 1
+ = undefined
+  0040596e: TerminatedUnicode = ProductVersion
+  0040598c: TerminatedUnicode = 10.0.26100.1882
+  004059ac: /PE/VarFileInfo
+pack(disabled)
+Structure VarFileInfo {
+   0   word   2   wLength   ""
+   2   word   2   wValueLength   ""
+   4   word   2   wType   ""
+}
+Length: 6 Alignment: 1
+ = undefined
+  004059b2: TerminatedUnicode = VarFileInfo
+  004059cc: /PE/Var
+pack(disabled)
+Structure Var {
+   0   word   2   wLength   ""
+   2   word   2   wValueLength   ""
+   4   word   2   wType   ""
+}
+Length: 6 Alignment: 1
+ = undefined
+  004059d2: TerminatedUnicode = Translation
+  004059ec: dword = 0x4b00409
+  004059f8: IconResource = <Icon-Image>
+  00405e60: PNG-Image = DataImage@eb91027
+  00406078: IconResource = <Icon-Image>
+  00407120: IconResource = <Icon-Image>
+  004096c8: GroupIconResource = GroupIcon
+Items in block: 78
 
-Block: .shstrtab
-Range: .shstrtab::00000000 - .shstrtab::00000119
-Size: 282 bytes
+Block: .reloc
+Range: 0040a000 - 0040a1ff
+Size: 512 bytes
 ------------------------------------------------------------
-  .shstrtab::00000001: string-utf8 = .symtab
-  .shstrtab::00000009: string-utf8 = .strtab
-  .shstrtab::00000011: string-utf8 = .shstrtab
-  .shstrtab::0000001b: string-utf8 = .interp
-  .shstrtab::00000023: string-utf8 = .note.gnu.property
-  .shstrtab::00000036: string-utf8 = .note.gnu.build-id
-  .shstrtab::00000049: string-utf8 = .note.ABI-tag
-  .shstrtab::00000057: string-utf8 = .gnu.hash
-  .shstrtab::00000061: string-utf8 = .dynsym
-  .shstrtab::00000069: string-utf8 = .dynstr
-  .shstrtab::00000071: string-utf8 = .gnu.version
-  .shstrtab::0000007e: string-utf8 = .gnu.version_r
-  .shstrtab::0000008d: string-utf8 = .rela.dyn
-  .shstrtab::00000097: string-utf8 = .rela.plt
-  .shstrtab::000000a1: string-utf8 = .init
-  .shstrtab::000000a7: string-utf8 = .plt.got
-  .shstrtab::000000b0: string-utf8 = .plt.sec
-  .shstrtab::000000b9: string-utf8 = .text
-  .shstrtab::000000bf: string-utf8 = .fini
-  .shstrtab::000000c5: string-utf8 = .rodata
-  .shstrtab::000000cd: string-utf8 = .eh_frame_hdr
-  .shstrtab::000000db: string-utf8 = .eh_frame
-  .shstrtab::000000e5: string-utf8 = .init_array
-  .shstrtab::000000f1: string-utf8 = .fini_array
-  .shstrtab::000000fd: string-utf8 = .dynamic
-  .shstrtab::00000106: string-utf8 = .data
-  .shstrtab::0000010c: string-utf8 = .bss
-  .shstrtab::00000111: string-utf8 = .comment
-Items in block: 28
+  0040a000: dword = 0x1000
+  0040a004: dword = 0x13c
+  0040a008: word = 0x3000
+  0040a00a: word = 0x3004
+  0040a00c: word = 0x3044
+  0040a00e: word = 0x3048
+  0040a010: word = 0x3050
+  0040a012: word = 0x3058
+  0040a014: word = 0x30a8
+  0040a016: word = 0x30c0
+  0040a018: word = 0x30cc
+  0040a01a: word = 0x30d8
+  0040a01c: word = 0x30dc
+  0040a01e: word = 0x3610
+  0040a020: word = 0x362c
+  0040a022: word = 0x3636
+  0040a024: word = 0x363c
+  0040a026: word = 0x3643
+  0040a028: word = 0x365b
+  0040a02a: word = 0x3665
+  0040a02c: word = 0x366b
+  0040a02e: word = 0x3670
+  0040a030: word = 0x3675
+  0040a032: word = 0x367c
+  0040a034: word = 0x369a
+  0040a036: word = 0x36a7
+  0040a038: word = 0x36ad
+  0040a03a: word = 0x36b3
+  0040a03c: word = 0x3733
+  0040a03e: word = 0x3738
+  0040a040: word = 0x3755
+  0040a042: word = 0x3776
+  0040a044: word = 0x378a
+  0040a046: word = 0x3793
+  0040a048: word = 0x37a6
+  0040a04a: word = 0x37b0
+  0040a04c: word = 0x37c0
+  0040a04e: word = 0x37ca
+  0040a050: word = 0x37cf
+  0040a052: word = 0x37ea
+  0040a054: word = 0x37f2
+  0040a056: word = 0x3812
+  0040a058: word = 0x3832
+  0040a05a: word = 0x3838
+  0040a05c: word = 0x383e
+  0040a05e: word = 0x3844
+  0040a060: word = 0x384a
+  0040a062: word = 0x3850
+  0040a064: word = 0x3857
+  0040a066: word = 0x385e
+  0040a068: word = 0x3865
+  0040a06a: word = 0x386c
+  0040a06c: word = 0x3873
+  0040a06e: word = 0x387a
+  0040a070: word = 0x3881
+  0040a072: word = 0x3887
+  0040a074: word = 0x3893
+  0040a076: word = 0x389e
+  0040a078: word = 0x38a9
+  0040a07a: word = 0x38ae
+  0040a07c: word = 0x38b3
+  0040a07e: word = 0x38b9
+  0040a080: word = 0x38c3
+  0040a082: word = 0x38cd
+  0040a084: word = 0x38dd
+  0040a086: word = 0x38e6
+  0040a088: word = 0x38ee
+  0040a08a: word = 0x38f9
+  0040a08c: word = 0x38fe
+  0040a08e: word = 0x3904
+  0040a090: word = 0x3920
+  0040a092: word = 0x3927
+  0040a094: word = 0x393d
+  0040a096: word = 0x395d
+  0040a098: word = 0x396c
+  0040a09a: word = 0x3975
+  0040a09c: word = 0x397e
+  0040a09e: word = 0x3993
+  0040a0a0: word = 0x39a7
+  0040a0a2: word = 0x39af
+  0040a0a4: word = 0x39c8
+  0040a0a6: word = 0x39d4
+  0040a0a8: word = 0x39da
+  0040a0aa: word = 0x39e1
+  0040a0ac: word = 0x39ea
+  0040a0ae: word = 0x39f0
+  0040a0b0: word = 0x39f8
+  0040a0b2: word = 0x39fe
+  0040a0b4: word = 0x3a0b
+  0040a0b6: word = 0x3a13
+  0040a0b8: word = 0x3a19
+  0040a0ba: word = 0x3a31
+  0040a0bc: word = 0x3a36
+  0040a0be: word = 0x3a3c
+  0040a0c0: word = 0x3a41
+  0040a0c2: word = 0x3a46
+  0040a0c4: word = 0x3a4b
+  0040a0c6: word = 0x3a50
+  0040a0c8: word = 0x3a56
+  0040a0ca: word = 0x3a5e
+  0040a0cc: word = 0x3a6c
+  0040a0ce: word = 0x3a80
+  0040a0d0: word = 0x3a93
+  0040a0d2: word = 0x3ab5
+  0040a0d4: word = 0x3ac0
+  0040a0d6: word = 0x3ad2
+  0040a0d8: word = 0x3ada
+  0040a0da: word = 0x3adf
+  0040a0dc: word = 0x3ae4
+  0040a0de: word = 0x3b06
+  0040a0e0: word = 0x3b0c
+  0040a0e2: word = 0x3b13
+  0040a0e4: word = 0x3b18
+  0040a0e6: word = 0x3b25
+  0040a0e8: word = 0x3b34
+  0040a0ea: word = 0x3b3c
+  0040a0ec: word = 0x3b44
+  0040a0ee: word = 0x3b58
+  0040a0f0: word = 0x3b60
+  0040a0f2: word = 0x3b67
+  0040a0f4: word = 0x3bb2
+  0040a0f6: word = 0x3bbc
+  0040a0f8: word = 0x3bc2
+  0040a0fa: word = 0x3bcc
+  0040a0fc: word = 0x3c04
+  0040a0fe: word = 0x3c0a
+  0040a100: word = 0x3c14
+  0040a102: word = 0x3c1a
+  0040a104: word = 0x3c23
+  0040a106: word = 0x3c28
+  0040a108: word = 0x3c68
+  0040a10a: word = 0x3c88
+  0040a10c: word = 0x3c90
+  0040a10e: word = 0x3c96
+  0040a110: word = 0x3ca3
+  0040a112: word = 0x3cbd
+  0040a114: word = 0x3cc8
+  0040a116: word = 0x3cd2
+  0040a118: word = 0x3cdd
+  0040a11a: word = 0x3d39
+  0040a11c: word = 0x3d51
+  0040a11e: word = 0x3d57
+  0040a120: word = 0x3d66
+  0040a122: word = 0x3d73
+  0040a124: word = 0x3ded
+  0040a126: word = 0x3e28
+  0040a128: word = 0x3ea8
+  0040a12a: word = 0x3ead
+  0040a12c: word = 0x3ebf
+  0040a12e: word = 0x3edd
+  0040a130: word = 0x3ef1
+  0040a132: word = 0x3ef7
+  0040a134: word = 0x3fb5
+  0040a136: word = 0x3fc4
+  0040a138: word = 0x3fd1
+  0040a13a: word = 0x3fee
+  0040a13c: dword = 0x2000
+  0040a140: dword = 0x1c
+  0040a144: word = 0x3042
+  0040a146: word = 0x3047
+  0040a148: word = 0x305d
+  0040a14a: word = 0x308c
+  0040a14c: word = 0x3090
+  0040a14e: word = 0x30ac
+  0040a150: word = 0x30b0
+  0040a152: word = 0x30cc
+  0040a154: word = 0x30d0
+  0040a156: word = 0x0
+  0040a158: dword = 0x3000
+  0040a15c: dword = 0xc
+  0040a160: word = 0x3004
+  0040a162: word = 0x0
+  0040a164: dword = 0x4000
+  0040a168: dword = 0xc
+  0040a16c: word = 0x3098
+  0040a16e: word = 0x0
+Items in block: 176
 
-Block: .strtab
-Range: .strtab::00000000 - .strtab::0000023b
-Size: 572 bytes
+Block: tdb
+Range: ffdff000 - ffdfffff
+Size: 4096 bytes
 ------------------------------------------------------------
-  .strtab::00000001: string-utf8 = Scrt1.o
-  .strtab::00000009: string-utf8 = __abi_tag
-  .strtab::00000013: string-utf8 = crtstuff.c
-  .strtab::0000001e: string-utf8 = deregister_tm_clones
-  .strtab::00000033: string-utf8 = __do_global_dtors_aux
-  .strtab::00000049: string-utf8 = completed.0
-  .strtab::00000055: string-utf8 = __do_global_dtors_aux_fini_array_entry
-  .strtab::0000007c: string-utf8 = frame_dummy
-  .strtab::00000088: string-utf8 = __frame_dummy_init_array_entry
-  .strtab::000000a7: string-utf8 = chall.c
-  .strtab::000000af: string-utf8 = __FRAME_END__
-  .strtab::000000bd: string-utf8 = _DYNAMIC
-  .strtab::000000c6: string-utf8 = __GNU_EH_FRAME_HDR
-  .strtab::000000d9: string-utf8 = _GLOBAL_OFFSET_TABLE_
-  .strtab::000000ef: string-utf8 = __libc_start_main@GLIBC_2.34
-  .strtab::0000010c: string-utf8 = _ITM_deregisterTMCloneTable
-  .strtab::00000128: string-utf8 = puts@GLIBC_2.2.5
-  .strtab::00000139: string-utf8 = _edata
-  .strtab::00000140: string-utf8 = _fini
-  .strtab::00000146: string-utf8 = strlen@GLIBC_2.2.5
-  .strtab::00000159: string-utf8 = __stack_chk_fail@GLIBC_2.4
-  .strtab::00000174: string-utf8 = printf@GLIBC_2.2.5
-  .strtab::00000187: string-utf8 = __data_start
-  .strtab::00000194: string-utf8 = target
-  .strtab::0000019b: string-utf8 = __gmon_start__
-  .strtab::000001aa: string-utf8 = __dso_handle
-  .strtab::000001b7: string-utf8 = _IO_stdin_used
-  .strtab::000001c6: string-utf8 = _end
-  .strtab::000001cb: string-utf8 = __bss_start
-  .strtab::000001d7: string-utf8 = main
-  .strtab::000001dc: string-utf8 = __isoc99_scanf@GLIBC_2.7
-  .strtab::000001f5: string-utf8 = __TMC_END__
-  .strtab::00000201: string-utf8 = _ITM_registerTMCloneTable
-  .strtab::0000021b: string-utf8 = __cxa_finalize@GLIBC_2.2.5
-  .strtab::00000236: string-utf8 = _init
-Items in block: 35
-
-Block: .symtab
-Range: .symtab::00000000 - .symtab::000003d7
-Size: 984 bytes
-------------------------------------------------------------
-  .symtab::00000000: Elf64_Sym[41] = undefined
-Items in block: 1
-
-Block: _elfSectionHeaders
-Range: _elfSectionHeaders::00000000 - _elfSectionHeaders::000007bf
-Size: 1984 bytes
-------------------------------------------------------------
-  _elfSectionHeaders::00000000: Elf64_Shdr[31] = undefined
-Items in block: 1
+  ffdff000: void *32 = 00000000
+  ffdff004: void *32 = 00000000
+  ffdff008: void *32 = 00000000
+  ffdff00c: void *32 = 00000000
+  ffdff010: void *32 = 00000000
+  ffdff014: void *32 = 00000000
+  ffdff018: void *32 = ffdff000
+  ffdff01c: void *32 = 00000000
+  ffdff020: /CLIENT_ID
+pack(disabled)
+Structure CLIENT_ID {
+   0   void *32   4   UniqueProcess   ""
+   4   void *32   4   UniqueThread   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  ffdff028: void *32 = 00000000
+  ffdff02c: void *32 = 00000000
+  ffdff030: void *32 = 00000000
+  ffdff034: dword = 0x0
+  ffdff038: dword = 0x0
+  ffdff03c: void *32 = 00000000
+  ffdff040: void *32 = 00000000
+  ffdff044: dword[26] = undefined
+  ffdff0ac: dword[5] = undefined
+  ffdff0c0: void *32 = 00000000
+  ffdff0c4: dword = 0x0
+  ffdff0c8: dword = 0x0
+  ffdff0cc: void *[54] = undefined
+  ffdff1a4: dword = 0x0
+  ffdff1a8: void *32 = 00000000
+  ffdff1ac: uchar[36] = undefined
+  ffdff1d0: dword = 0x0
+  ffdff1d4: dword = 0x0
+  ffdff6b4: /CLIENT_ID
+pack(disabled)
+Structure CLIENT_ID {
+   0   void *32   4   UniqueProcess   ""
+   4   void *32   4   UniqueThread   ""
+}
+Length: 8 Alignment: 1
+ = undefined
+  ffdff6bc: void *32 = 00000000
+  ffdff6c0: dword = 0x0
+  ffdff6c4: dword = 0x0
+  ffdff6c8: void *32 = 00000000
+  ffdff6cc: void *[62] = undefined
+  ffdff7c4: void *[233] = undefined
+  ffdffb68: void *[29] = undefined
+  ffdffbdc: void *32 = 00000000
+  ffdffbe0: void *32 = 00000000
+  ffdffbe4: void *32 = 00000000
+  ffdffbe8: void *32 = 00000000
+  ffdffbec: void *32 = 00000000
+  ffdffbf0: void *32 = 00000000
+  ffdffbf4: dword = 0x0
+  ffdffc00: wchar16[261] = undefined
+  ffdffe0c: void *32 = 00000000
+  ffdffe10: void *[64] = undefined
+  ffdfff10: void *32 = 00000000
+  ffdfff14: void *32 = 00000000
+  ffdfff18: void *32 = 00000000
+  ffdfff1c: void *32 = 00000000
+  ffdfff20: void *[2] = undefined
+  ffdfff28: dword = 0x0
+  ffdfff2c: void *[9] = undefined
+  ffdfff50: GUID = 00000000-0000-0000-0000-000000000000
+  ffdfff60: void *32 = 00000000
+  ffdfff64: void *32 = 00000000
+  ffdfff68: void *32 = 00000000
+  ffdfff6c: void *32 = 00000000
+  ffdfff70: dword = 0x0
+  ffdfff74: dword = 0x0
+  ffdfff78: dword = 0x0
+  ffdfff7c: void *32 = 00000000
+  ffdfff80: void *32 = 00000000
+  ffdfff84: dword = 0x0
+  ffdfff88: void *32 = 00000000
+  ffdfff8c: void *32 = 00000000
+  ffdfff90: void *32 = 00000000
+  ffdfff94: void *32 = 00000000
+  ffdfff98: dword = 0x0
+  ffdfff9c: dword = 0x0
+  ffdfffa0: void *32 = 00000000
+  ffdfffa4: void *32 = 00000000
+  ffdfffa8: dword = 0x0
+  ffdfffac: void *32 = 00000000
+  ffdfffb0: void *32 = 00000000
+  ffdfffb4: void *32 = 00000000
+  ffdfffb8: void *32 = 00000000
+  ffdfffbc: void *32 = 00000000
+  ffdfffc0: void *32 = 00000000
+  ffdfffc4: dword = 0x0
+  ffdfffc8: ushort = 0x0
+  ffdfffca: ushort = 0x0
+  ffdfffcc: void *32 = 00000000
+  ffdfffd0: void *32 = 00000000
+  ffdfffd4: void *32 = 00000000
+  ffdfffd8: dword = 0x0
+  ffdfffe0: void *32 = 00000000
+Items in block: 86
 
 /******************************************************************************
  * STRING DATA
  ******************************************************************************/
 
-00100318: TerminatedCString = '/lib64/ld-linux-x86-64.so.2'
-001004e1: string-utf8 = 'puts'
-001004e6: string-utf8 = '__stack_chk_fail'
-001004f7: string-utf8 = 'strlen'
-001004fe: string-utf8 = '__libc_start_main'
-00100510: string-utf8 = '__cxa_finalize'
-0010051f: string-utf8 = 'printf'
-00100526: string-utf8 = '__isoc99_scanf'
-00100535: string-utf8 = 'libc.so.6'
-0010053f: string-utf8 = 'GLIBC_2.7'
-00100549: string-utf8 = 'GLIBC_2.4'
-00100553: string-utf8 = 'GLIBC_2.2.5'
-0010055f: string-utf8 = 'GLIBC_2.34'
-0010056a: string-utf8 = '_ITM_deregisterTMCloneTable'
-00100586: string-utf8 = '__gmon_start__'
-00100595: string-utf8 = '_ITM_registerTMCloneTable'
-001021e1: string = 'Enter flag: '
-001021f6: string = 'Correct!'
-00102241: string = 'zR'
-.comment::00000000: string-utf8 = 'GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0'
-.shstrtab::00000001: string-utf8 = '.symtab'
-.shstrtab::00000009: string-utf8 = '.strtab'
-.shstrtab::00000011: string-utf8 = '.shstrtab'
-.shstrtab::0000001b: string-utf8 = '.interp'
-.shstrtab::00000023: string-utf8 = '.note.gnu.property'
-.shstrtab::00000036: string-utf8 = '.note.gnu.build-id'
-.shstrtab::00000049: string-utf8 = '.note.ABI-tag'
-.shstrtab::00000057: string-utf8 = '.gnu.hash'
-.shstrtab::00000061: string-utf8 = '.dynsym'
-.shstrtab::00000069: string-utf8 = '.dynstr'
-.shstrtab::00000071: string-utf8 = '.gnu.version'
-.shstrtab::0000007e: string-utf8 = '.gnu.version_r'
-.shstrtab::0000008d: string-utf8 = '.rela.dyn'
-.shstrtab::00000097: string-utf8 = '.rela.plt'
-.shstrtab::000000a1: string-utf8 = '.init'
-.shstrtab::000000a7: string-utf8 = '.plt.got'
-.shstrtab::000000b0: string-utf8 = '.plt.sec'
-.shstrtab::000000b9: string-utf8 = '.text'
-.shstrtab::000000bf: string-utf8 = '.fini'
-.shstrtab::000000c5: string-utf8 = '.rodata'
-.shstrtab::000000cd: string-utf8 = '.eh_frame_hdr'
-.shstrtab::000000db: string-utf8 = '.eh_frame'
-.shstrtab::000000e5: string-utf8 = '.init_array'
-.shstrtab::000000f1: string-utf8 = '.fini_array'
-.shstrtab::000000fd: string-utf8 = '.dynamic'
-.shstrtab::00000106: string-utf8 = '.data'
-.shstrtab::0000010c: string-utf8 = '.bss'
-.shstrtab::00000111: string-utf8 = '.comment'
-.strtab::00000001: string-utf8 = 'Scrt1.o'
-.strtab::00000009: string-utf8 = '__abi_tag'
-.strtab::00000013: string-utf8 = 'crtstuff.c'
-.strtab::0000001e: string-utf8 = 'deregister_tm_clones'
-.strtab::00000033: string-utf8 = '__do_global_dtors_aux'
-.strtab::00000049: string-utf8 = 'completed.0'
-.strtab::00000055: string-utf8 = '__do_global_dtors_aux_fini_array_entry'
-.strtab::0000007c: string-utf8 = 'frame_dummy'
-.strtab::00000088: string-utf8 = '__frame_dummy_init_array_entry'
-.strtab::000000a7: string-utf8 = 'chall.c'
-.strtab::000000af: string-utf8 = '__FRAME_END__'
-.strtab::000000bd: string-utf8 = '_DYNAMIC'
-.strtab::000000c6: string-utf8 = '__GNU_EH_FRAME_HDR'
-.strtab::000000d9: string-utf8 = '_GLOBAL_OFFSET_TABLE_'
-.strtab::000000ef: string-utf8 = '__libc_start_main@GLIBC_2.34'
-.strtab::0000010c: string-utf8 = '_ITM_deregisterTMCloneTable'
-.strtab::00000128: string-utf8 = 'puts@GLIBC_2.2.5'
-.strtab::00000139: string-utf8 = '_edata'
-.strtab::00000140: string-utf8 = '_fini'
-.strtab::00000146: string-utf8 = 'strlen@GLIBC_2.2.5'
-.strtab::00000159: string-utf8 = '__stack_chk_fail@GLIBC_2.4'
-.strtab::00000174: string-utf8 = 'printf@GLIBC_2.2.5'
-.strtab::00000187: string-utf8 = '__data_start'
-.strtab::00000194: string-utf8 = 'target'
-.strtab::0000019b: string-utf8 = '__gmon_start__'
-.strtab::000001aa: string-utf8 = '__dso_handle'
-.strtab::000001b7: string-utf8 = '_IO_stdin_used'
-.strtab::000001c6: string-utf8 = '_end'
-.strtab::000001cb: string-utf8 = '__bss_start'
-.strtab::000001d7: string-utf8 = 'main'
-.strtab::000001dc: string-utf8 = '__isoc99_scanf@GLIBC_2.7'
-.strtab::000001f5: string-utf8 = '__TMC_END__'
-.strtab::00000201: string-utf8 = '_ITM_registerTMCloneTable'
-.strtab::0000021b: string-utf8 = '__cxa_finalize@GLIBC_2.2.5'
-.strtab::00000236: string-utf8 = '_init'
+00401110: string = 'CalculatorStarted'
+00401267: string = 'CalculatorWinMain'
+00401279: string = '"CalculatorStarted"'
+004012a1: string = 'MicrosoftCalculator'
+004013ac: string = '.rdata'
+004013bc: string = '.rdata$sxdata'
+004013d4: string = '.rdata$voltmd'
+00401404: string = '.rdata$zETW1'
+0040141c: string = '.rdata$zETW2'
+004014b0: string = '.data'
+004041da: TerminatedCString = 'ShellExecuteW'
+004041e8: TerminatedCString = 'SHELL32.dll'
+004041f6: TerminatedCString = 'UnhandledExceptionFilter'
+00404212: TerminatedCString = 'SetUnhandledExceptionFilter'
+00404230: TerminatedCString = 'GetCurrentProcess'
+00404244: TerminatedCString = 'TerminateProcess'
+00404258: TerminatedCString = 'QueryPerformanceCounter'
+00404272: TerminatedCString = 'GetCurrentProcessId'
+00404288: TerminatedCString = 'GetCurrentThreadId'
+0040429e: TerminatedCString = 'GetSystemTimeAsFileTime'
+004042b8: TerminatedCString = 'GetTickCount'
+004042c6: TerminatedCString = 'KERNEL32.dll'
+004042d6: TerminatedCString = '_XcptFilter'
+004042e4: TerminatedCString = '__p__commode'
+004042f4: TerminatedCString = '_amsg_exit'
+00404302: TerminatedCString = '__wgetmainargs'
+00404314: TerminatedCString = '__set_app_type'
+00404326: TerminatedCString = 'exit'
+0040432e: TerminatedCString = '_exit'
+00404336: TerminatedCString = '_cexit'
+00404340: TerminatedCString = '__p__fmode'
+0040434e: TerminatedCString = '__setusermatherr'
+00404362: TerminatedCString = '_initterm'
+0040436e: TerminatedCString = '_wcmdln'
+00404376: TerminatedCString = 'msvcrt.dll'
+00404384: TerminatedCString = '?terminate@@YAXXZ'
+00404398: TerminatedCString = '_controlfp'
+004043a6: TerminatedCString = '_except_handler4_common'
+004043c0: TerminatedCString = 'EventRegister'
+004043d0: TerminatedCString = 'EventSetInformation'
+004043e6: TerminatedCString = 'EventWriteTransfer'
+004043fa: TerminatedCString = 'ADVAPI32.dll'
+0040440a: TerminatedCString = 'Sleep'
+00404412: TerminatedCString = 'GetStartupInfoW'
+00404424: TerminatedCString = 'GetModuleHandleW'
+00404436: TerminatedCString = 'api-ms-win-core-synch-l1-2-0.dll'
+00404458: TerminatedCString = 'api-ms-win-core-processthreads-l1-1-0.dll'
+00404482: TerminatedCString = 'api-ms-win-core-libraryloader-l1-2-0.dll'
+004051e0: TerminatedCString = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\r\n<!-- Copyright (c) Microsoft Corporation -->\r\n<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">\r\n<assemblyIdentity\r\n    name="Microsoft.Windows.Shell.calc"\r\n    processorArchitecture="x86"\r\n    version="5.1.0.0"\r\n    type="win32"/>\r\n<description>Windows Shell</description>\r\n<dependency>\r\n    <dependentAssembly>\r\n        <assemblyIdentity\r\n            type="win32"\r\n            name="Microsoft.Windows.Common-Controls"\r\n            version="6.0.0.0"\r\n            processorArchitecture="*"\r\n            publicKeyToken="6595b64144ccf1df"\r\n            language="*"\r\n        />\r\n    </dependentAssembly>\r\n</dependency>\r\n<trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">\r\n    <security>\r\n        <requestedPrivileges>\r\n            <requestedExecutionLevel level="asInvoker" uiAccess="false"/>\r\n        </requestedPrivileges>\r\n    </security>\r\n</trustInfo>\r\n<application xmlns="urn:schemas-microsoft-com:asm.v3">\r\n    <windowsSettings>\r\n        <dpiAware  xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true</dpiAware>\r\n    </windowsSettings>\r\n</application>\r\n</assembly>\r\n'
 
-Total strings: 83
+Total strings: 49
 
 /******************************************************************************
  * SYMBOL TABLE
  ******************************************************************************/
 
---- Function (35 symbols) ---
-  EXTERNAL:00000001: __libc_start_main
-  EXTERNAL:00000002: puts
-  EXTERNAL:00000003: strlen
-  EXTERNAL:00000004: __stack_chk_fail
-  EXTERNAL:00000005: printf
-  EXTERNAL:00000006: __isoc99_scanf
-  EXTERNAL:00000007: __cxa_finalize
-  EXTERNAL:00000008: _ITM_deregisterTMCloneTable
-  EXTERNAL:00000009: _ITM_registerTMCloneTable
-  EXTERNAL:0000000a: __gmon_start__
-  00101000: _init
-  00101020: FUN_00101020
-  00101080: FUN_00101080
-  00101090: puts
-  001010a0: strlen
-  001010b0: __stack_chk_fail
-  001010c0: printf
-  001010d0: __isoc99_scanf
-  001010e0: _start
-  00101110: deregister_tm_clones
-  00101140: register_tm_clones
-  00101180: __do_global_dtors_aux
-  001011c0: frame_dummy
-  001011c9: main
-  00101418: _fini
-  00105000: __libc_start_main
-  00105008: _ITM_deregisterTMCloneTable
-  00105010: puts
-  00105018: strlen
-  00105020: __stack_chk_fail
-  00105028: printf
-  00105030: __gmon_start__
-  00105038: __isoc99_scanf
-  00105040: _ITM_registerTMCloneTable
-  00105048: __cxa_finalize
+--- Function (59 symbols) ---
+  EXTERNAL:00000001: ShellExecuteW
+  EXTERNAL:00000002: SetUnhandledExceptionFilter
+  EXTERNAL:00000003: GetCurrentProcess
+  EXTERNAL:00000004: TerminateProcess
+  EXTERNAL:00000005: UnhandledExceptionFilter
+  EXTERNAL:00000006: GetCurrentProcessId
+  EXTERNAL:00000007: GetCurrentThreadId
+  EXTERNAL:00000008: GetSystemTimeAsFileTime
+  EXTERNAL:00000009: GetTickCount
+  EXTERNAL:0000000a: QueryPerformanceCounter
+  EXTERNAL:0000000b: _amsg_exit
+  EXTERNAL:0000000c: __p__fmode
+  EXTERNAL:0000000d: __setusermatherr
+  EXTERNAL:0000000e: initterm
+  EXTERNAL:00000010: terminate
+  EXTERNAL:00000011: _controlfp
+  EXTERNAL:00000012: _exit
+  EXTERNAL:00000013: exit
+  EXTERNAL:00000014: __p__commode
+  EXTERNAL:00000015: _XcptFilter
+  EXTERNAL:00000016: __set_app_type
+  EXTERNAL:00000017: except_handler4_common
+  EXTERNAL:00000018: __wgetmainargs
+  EXTERNAL:00000019: _cexit
+  EXTERNAL:0000001a: EventSetInformation
+  EXTERNAL:0000001b: EventWriteTransfer
+  EXTERNAL:0000001c: EventRegister
+  EXTERNAL:0000001d: Sleep
+  EXTERNAL:0000001e: GetStartupInfoW
+  EXTERNAL:0000001f: GetModuleHandleW
+  004015a0: FUN_004015a0
+  00401623: FUN_00401623
+  004016cf: FUN_004016cf
+  0040176d: FUN_0040176d
+  00401810: FUN_00401810
+  00401933: FUN_00401933
+  004019c0: FUN_004019c0
+  00401a30: FUN_00401a30
+  00401a69: FUN_00401a69
+  00401c49: FUN_00401c49
+  00401c80: FUN_00401c80
+  00401cf0: entry
+  00401d00: FUN_00401d00
+  00401d50: FUN_00401d50
+  00401d64: _XcptFilter
+  00401d70: FUN_00401d70
+  00401de4: FUN_00401de4
+  00401e26: _amsg_exit
+  00401e40: FUN_00401e40
+  00401e50: __FindPESection
+  ... and 9 more
 
---- Label (78 symbols) ---
-  00100040: Elf64_Phdr_ARRAY_00100040
-  00100318: s_/lib64/ld-linux-x86-64.so.2_00100318
-  00100338: NoteGnuProperty_4_00100338
-  00100368: GnuBuildId_00100368
-  0010038c: __abi_tag
-  001003b0: __DT_GNU_HASH
-  001003d8: __DT_SYMTAB
-  001004e0: __DT_STRTAB
-  001005b0: __DT_VERSYM
-  001005c8: __DT_VERNEED
-  00100618: __DT_RELA
-  001006d8: __DT_JMPREL
-  00101000: __DT_INIT
-  00101016: LAB_00101016
-  00101138: LAB_00101138
-  00101178: LAB_00101178
-  001011a7: LAB_001011a7
-  001011b8: LAB_001011b8
-  00101248: LAB_00101248
-  00101261: LAB_00101261
-  00101275: LAB_00101275
-  001012c8: LAB_001012c8
-  00101310: LAB_00101310
-  0010133d: LAB_0010133d
-  00101344: LAB_00101344
-  00101387: LAB_00101387
-  00101393: LAB_00101393
-  001013d0: LAB_001013d0
-  001013d7: LAB_001013d7
-  001013fb: LAB_001013fb
-  0010140f: LAB_0010140f
-  00101418: __DT_FINI
-  00102000: _IO_stdin_used
-  00102020: target
-  001021e1: s_Enter_flag:_001021e1
-  001021ee: DAT_001021ee
-  001021f1: DAT_001021f1
-  001021f6: s_Correct!_001021f6
-  00102200: __GNU_EH_FRAME_HDR
-  00102238: cie_00102238
-  00102250: fde_00102250
-  00102268: fde_00102268
-  00102290: fde_00102290
-  001022a8: fde_001022a8
-  001022c0: fde_001022c0
-  001022e4: __FRAME_END__
-  00103d98: __DT_INIT_ARRAY
-  00103d98: __frame_dummy_init_array_entry
-  00103da0: __DT_FINI_ARRAY
-  00103da0: __do_global_dtors_aux_fini_array_entry
-  ... and 28 more
+--- Label (268 symbols) ---
+  EXTERNAL:0000000f: _wcmdln
+  00400000: IMAGE_DOS_HEADER_00400000
+  0040003c: IMAGE_DOS_HEADER_00400000.e_lfanew
+  004000f8: IMAGE_NT_HEADERS32_004000f8
+  00400110: IMAGE_NT_HEADERS32_004000f8.OptionalHeader.Magic
+  0040016c: IMAGE_NT_HEADERS32_004000f8.OptionalHeader.NumberOfRvaAndSizes
+  0040017c: IMAGE_NT_HEADERS32_004000f8.OptionalHeader.DataDirectory[1].Size
+  004001e0: IMAGE_NT_HEADERS32_004000f8.OptionalHeader.DataDirectory[14].VirtualAddress
+  004001f0: IMAGE_SECTION_HEADER_004001f0
+  00401000: PTR_DAT_00401000
+  00401008: IMAGE_LOAD_CONFIG_DIRECTORY32_00401008
+  004010c8: DAT_004010c8
+  004010d0: DAT_004010d0
+  004010d4: DAT_004010d4
+  004010e0: DAT_004010e0
+  004010e4: GuardCFFunctionTable
+  00401110: s_CalculatorStarted_00401110
+  00401124: u_ms-calculator:_00401124
+  00401144: IMAGE_DEBUG_DIRECTORY_00401144
+  004011c0: DAT_004011c0
+  00401248: DAT_00401248
+  00401259: DAT_00401259
+  0040128f: DAT_0040128f
+  00401293: DAT_00401293
+  00401297: DAT_00401297
+  0040129b: DAT_0040129b
+  0040129f: DAT_0040129f
+  004012c8: DAT_004012c8
+  004015e9: LAB_004015e9
+  004015ec: LAB_004015ec
+  004015f2: LAB_004015f2
+  00401616: LAB_00401616
+  00401659: LAB_00401659
+  00401698: LAB_00401698
+  004016b7: LAB_004016b7
+  004017e5: LAB_004017e5
+  0040181b: LAB_0040181b
+  00401826: LAB_00401826
+  00401957: LAB_00401957
+  004019ab: LAB_004019ab
+  00401a1e: LAB_00401a1e
+  00401a92: LAB_00401a92
+  00401aae: LAB_00401aae
+  00401abb: LAB_00401abb
+  00401abe: LAB_00401abe
+  00401ad0: LAB_00401ad0
+  00401af3: LAB_00401af3
+  00401b04: LAB_00401b04
+  00401b0a: LAB_00401b0a
+  00401b2d: LAB_00401b2d
+  ... and 218 more
 
 ================================================================================
 EXPORT SUMMARY
 ================================================================================
-Functions exported: 17
-Data items: 181
-Strings: 83
-Symbols: 113
+Functions exported: 25
+Data items: 571
+Strings: 49
+Symbols: 327
 ================================================================================

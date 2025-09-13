@@ -147,6 +147,7 @@ def main():
 if __name__ == "__main__":
     main()
     # export_with_pyghidra()
+    
     export_consolidated_code_and_data()
 
     # After consolidated export, automatically run LLM typing + summary
