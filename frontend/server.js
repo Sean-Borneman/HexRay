@@ -12,11 +12,10 @@ const storageDir = path.join(__dirname, '..', 'storage');
 const uploadsDir = path.join(storageDir, 'uploads');
 const decomp_out = path.join(__dirname, '..', 'decompiled_output');
 const resultsDir = path.join(storageDir, 'results');
-const verifDir = path.join(storageDir, 'results.verification');
 
 
 // Ensure all directories exist on startup
-[storageDir, uploadsDir, resultsDir, decomp_out, verifyDir].forEach(dir => {
+[storageDir, uploadsDir, resultsDir, decomp_out].forEach(dir => {
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
         console.log(`Created directory: ${dir}`);
@@ -141,8 +140,7 @@ app.post('/cleanup', (req, res) => {
     };
     cleanupDirectory(uploadsDir);
     cleanupDirectory(resultsDir);
-    cleanupDirectory(decomp_out);
-    cleanupDirectory(verifyDir); // Also clean verification results
+    cleanupDirectory(decomp_out); // Also clean verification results
     res.json({ message: 'Server directories cleaned up successfully.' });
 });
 
