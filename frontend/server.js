@@ -14,7 +14,8 @@ const decomp_out = path.join(__dirname, '..', 'decompiled_output');
 const resultsDir = path.join(storageDir, 'results');
 const verifyDir = path.join(resultsDir, 'verification');
 
-[storageDir, uploadsDir, resultsDir].forEach(dir => {
+// Ensure all directories exist on startup
+[storageDir, uploadsDir, resultsDir, decomp_out, verifyDir].forEach(dir => {
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
         console.log(`Created directory: ${dir}`);
@@ -25,6 +26,7 @@ const verifyDir = path.join(resultsDir, 'verification');
 app.use(cors());
 app.use(express.json());
 app.use('/results', express.static(resultsDir));
+app.use('/decompiled', express.static(decomp_out)); // Serve decompiled files too
 
 // --- File Upload Configuration (Multer) ---
 const upload = multer({ dest: uploadsDir });
@@ -56,37 +58,43 @@ app.post('/analyze', (req, res) => {
     execSync("cd .. && python ./backend/main.py");
     console.log(`Analysis started for: ${fileName}`);
 
-    // ===================================================================
-    // TODO: TRIGGER YOUR GHIDRA ANALYSIS SCRIPT HERE
-    // ===================================================================
-
     try {
+        // We can check both directories for a combined list of downloadable files
+        const decompFiles = fs.readdirSync(decomp_out);
         const resultFiles = fs.readdirSync(resultsDir);
-        console.log(`Analysis finished for: ${fileName}. Found ${resultFiles.length} result files.`);
+        const allFiles = [...decompFiles, ...resultFiles];
+        
+        console.log(`Analysis finished for: ${fileName}. Found ${allFiles.length} result files.`);
         res.json({
             message: `Analysis complete for ${fileName}`,
-            results: resultFiles
+            results: allFiles
         });
     } catch (error) {
-        console.error('Error reading results directory:', error);
-        res.status(500).json({ message: 'Could not read analysis results directory.' });
+        console.error('Error reading results directories:', error);
+        res.status(500).json({ message: 'Could not read analysis results directories.' });
     }
 });
 
 // 3. Get Viewable Files Endpoint
 app.get('/code-results', (req, res) => {
     try {
-        const files = fs.readdirSync(resultsDir);
-        
         const cFiles = [];
         const txtFiles = [];
 
-        files.forEach(fileName => {
-            const ext = path.extname(fileName).toLowerCase();
-            const content = fs.readFileSync(path.join(resultsDir, fileName), 'utf-8');
-            if (ext === '.c') {
+        // Read C files from decompiled_output
+        const decompFiles = fs.readdirSync(decomp_out);
+        decompFiles.forEach(fileName => {
+            if (path.extname(fileName).toLowerCase() === '.c') {
+                const content = fs.readFileSync(path.join(decomp_out, fileName), 'utf-8');
                 cFiles.push({ fileName, content });
-            } else if (ext === '.txt') {
+            }
+        });
+
+        // Read TXT files from storage/results
+        const resultFiles = fs.readdirSync(resultsDir);
+        resultFiles.forEach(fileName => {
+            if (path.extname(fileName).toLowerCase() === '.txt') {
+                const content = fs.readFileSync(path.join(resultsDir, fileName), 'utf-8');
                 txtFiles.push({ fileName, content });
             }
         });
@@ -99,17 +107,21 @@ app.get('/code-results', (req, res) => {
     }
 });
 
-// 4. Verification Endpoint (SAFE SIMULATION)
+// 4. Verification Endpoint
 app.post('/verify', (req, res) => {
     console.log('Verification process triggered...');
-
-    execSync("cd .. && python ./backend/verify.py");
-    const verificationResultPath = path.join(verifyDir, 'verification_result.txt');
-    const verificationContent = fs.readFileSync(verificationResultPath, 'utf-8');
-    res.json({
-                message: 'Verification complete.',
-                result: verificationContent
-            });
+    try {
+        execSync("cd .. && python ./backend/verify.py");
+        const verificationResultPath = path.join(verifyDir, 'verification_result.txt');
+        const verificationContent = fs.readFileSync(verificationResultPath, 'utf-8');
+        res.json({
+            message: 'Verification complete.',
+            result: verificationContent
+        });
+    } catch (error) {
+        console.error('An error occurred during verification:', error);
+        res.status(500).json({ message: `Verification failed: ${error.message}` });
+    }
 });
 
 // 5. Cleanup Endpoint
@@ -129,6 +141,7 @@ app.post('/cleanup', (req, res) => {
     cleanupDirectory(uploadsDir);
     cleanupDirectory(resultsDir);
     cleanupDirectory(decomp_out);
+    cleanupDirectory(verifyDir); // Also clean verification results
     res.json({ message: 'Server directories cleaned up successfully.' });
 });
 
