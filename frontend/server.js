@@ -12,6 +12,8 @@ const storageDir = path.join(__dirname, '..', 'storage');
 const uploadsDir = path.join(storageDir, 'uploads');
 const decomp_out = path.join(__dirname, '..', 'decompiled_output');
 const resultsDir = path.join(storageDir, 'results');
+const verifDir = path.join(storageDir, 'results.verification');
+
 
 [storageDir, uploadsDir, resultsDir].forEach(dir => {
     if (!fs.existsSync(dir)) {

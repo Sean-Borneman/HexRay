@@ -1,6 +1,7 @@
 import subprocess
 import os
 from pathlib import Path
+import shutil 
 from ghidraDecompileTWOFiles import export_consolidated_code_and_data
 # from ghidraDecompileToText import export_with_pyghidra
 class SimpleGhidraCLI:

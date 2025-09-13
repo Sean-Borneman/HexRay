@@ -247,23 +247,23 @@ def export_consolidated_code_and_data():
             project.close()
 
     # ========== CLEANUP GHIDRA PROJECT FOLDER ==========
-        # try: #UNCOMMENT
-        #     print("Cleaning up Ghidra project folder...")
+        try: #UNCOMMENT
+            print("Cleaning up Ghidra project folder...")
             
-        #     # Wait a moment to ensure all file handles are released
-        #     import time
-        #     time.sleep(1)
+            # Wait a moment to ensure all file handles are released
+            import time
+            time.sleep(1)
             
-        #     if project_dir.exists():
-        #         # Delete the entire ghidra_projects folder
-        #         shutil.rmtree(project_dir)
-        #         print(f"Deleted: {project_dir}")
-        #     else:
-        #         print(f"Project folder already gone: {project_dir}")
+            if project_dir.exists():
+                # Delete the entire ghidra_projects folder
+                shutil.rmtree(project_dir)
+                print(f"Deleted: {project_dir}")
+            else:
+                print(f"Project folder already gone: {project_dir}")
                 
-        # except Exception as e:
-        #     print(f"Could not delete project folder: {e}")
-        #     print(f"You can manually delete: {project_dir}")
+        except Exception as e:
+            print(f"Could not delete project folder: {e}")
+            print(f"You can manually delete: {project_dir}")
 
 # Run the consolidated export
 # export_consolidated_code_and_data()

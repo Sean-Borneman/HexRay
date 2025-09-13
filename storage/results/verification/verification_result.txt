@@ -1,1 +1,0 @@
-ALL_FUNCTIONS_typed.c is syntactically valid.
