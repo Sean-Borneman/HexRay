@@ -1,0 +1,10 @@
+Data Section: .fini_array
+Address Range: 00103da0 - 00103da7
+Size: 8 bytes
+============================================================
+
+Address: 00103da0
+Type: pointer
+Size: 8 bytes
+Value: 00101180
+----------------------------------------

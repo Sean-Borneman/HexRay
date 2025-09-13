@@ -1,0 +1,32 @@
+COMPLETE BINARY EXPORT SUMMARY
+Program: MoSimulator.exe
+Export Date: Fri Sep 12 23:22:13 EDT 2025
+============================================================
+
+📝 Functions Exported: 321
+   Location: functions/
+
+📊 Data Items Exported: 2006
+   Location: data/
+   - Headers: 10 items (Headers_data.txt)
+   - .rdata: 871 items (.rdata_data.txt)
+   - .data: 102 items (.data_data.txt)
+   - .pdata: 1 items (.pdata_data.txt)
+   - _RDATA: 50 items (_RDATA_data.txt)
+   - .rsrc: 87 items (.rsrc_data.txt)
+   - .reloc: 796 items (.reloc_data.txt)
+   - tdb: 89 items (tdb_data.txt)
+
+🔤 Strings Exported: 183
+   Location: strings/all_strings.txt
+
+🔗 Symbols Exported: 3130
+   Location: symbols/all_symbols.txt
+
+📁 Directory Structure:
+   decompiled_output/
+   ├── functions/     (C code)
+   ├── data/          (data sections)
+   ├── strings/       (string data)
+   ├── symbols/       (symbol table)
+   └── EXPORT_SUMMARY.txt

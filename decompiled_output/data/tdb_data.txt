@@ -1,0 +1,464 @@
+Data Section: tdb
+Address Range: ff00000000 - ff0000184f
+Size: 6224 bytes
+============================================================
+
+Address: ff00000000
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000008
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000010
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000018
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000020
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000028
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000030
+Type: void *64
+Size: 8 bytes
+Value: ff00000000
+----------------------------------------
+Address: ff00000038
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000040
+Type: /CLIENT_ID
+pack(disabled)
+Structure CLIENT_ID {
+   0   void *64   8   UniqueProcess   ""
+   8   void *64   8   UniqueThread   ""
+}
+Length: 16 Alignment: 1
+
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: ff00000050
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000058
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000060
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000068
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff0000006c
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff00000070
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000078
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000080
+Type: dword[26]
+Size: 104 bytes
+Value: undefined
+----------------------------------------
+Address: ff000000e8
+Type: dword[5]
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: ff00000100
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000108
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff0000010c
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff00000110
+Type: void *[54]
+Size: 432 bytes
+Value: undefined
+----------------------------------------
+Address: ff000002c0
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff000002c8
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff000002d0
+Type: uchar[24]
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: ff000002e8
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff000002ee
+Type: uchar[2]
+Size: 2 bytes
+Value: undefined
+----------------------------------------
+Address: ff000002f0
+Type: qword
+Size: 8 bytes
+Value: 0x0
+----------------------------------------
+Address: ff00000748
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff000007d8
+Type: /CLIENT_ID
+pack(disabled)
+Structure CLIENT_ID {
+   0   void *64   8   UniqueProcess   ""
+   8   void *64   8   UniqueThread   ""
+}
+Length: 16 Alignment: 1
+
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: ff000007e8
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff000007f0
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff000007f4
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff000007f8
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00000800
+Type: void *[62]
+Size: 496 bytes
+Value: undefined
+----------------------------------------
+Address: ff000009f0
+Type: void *[233]
+Size: 1864 bytes
+Value: undefined
+----------------------------------------
+Address: ff00001138
+Type: void *[29]
+Size: 232 bytes
+Value: undefined
+----------------------------------------
+Address: ff00001220
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001228
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001230
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001238
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001240
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001248
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001250
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff00001268
+Type: wchar16[261]
+Size: 522 bytes
+Value: undefined
+----------------------------------------
+Address: ff00001478
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001480
+Type: void *[64]
+Size: 512 bytes
+Value: undefined
+----------------------------------------
+Address: ff00001680
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001688
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001690
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001698
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff000016a0
+Type: void *[2]
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: ff000016b0
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff000016b8
+Type: void *[11]
+Size: 88 bytes
+Value: undefined
+----------------------------------------
+Address: ff00001710
+Type: GUID
+Size: 16 bytes
+Value: 00000000-0000-0000-0000-000000000000
+----------------------------------------
+Address: ff00001720
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001728
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001730
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001738
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001740
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff00001744
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff00001750
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001758
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001760
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff00001768
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001770
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001778
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001780
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001788
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001790
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001798
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff0000179c
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff000017a0
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff000017a8
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff000017b0
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff000017b8
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff000017c0
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff000017c8
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff000017d0
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff000017d8
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff000017e0
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff000017e8
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff000017ec
+Type: ushort
+Size: 2 bytes
+Value: 0x0
+----------------------------------------
+Address: ff000017ee
+Type: ushort
+Size: 2 bytes
+Value: 0x0
+----------------------------------------
+Address: ff000017f0
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff000017f8
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001800
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------
+Address: ff00001808
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: ff00001810
+Type: void *64
+Size: 8 bytes
+Value: 00000000
+----------------------------------------

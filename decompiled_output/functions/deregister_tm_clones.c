@@ -1,0 +1,15 @@
+// Function: deregister_tm_clones
+// Address: 00101110
+// Size: 34 bytes
+============================================================
+
+
+/* WARNING: Removing unreachable block (ram,0x00101123) */
+/* WARNING: Removing unreachable block (ram,0x0010112f) */
+
+void deregister_tm_clones(void)
+
+{
+  return;
+}
+

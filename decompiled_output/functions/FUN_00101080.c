@@ -1,0 +1,13 @@
+// Function: FUN_00101080
+// Address: 00101080
+// Size: 10 bytes
+============================================================
+
+
+void FUN_00101080(void)
+
+{
+  (*(code *)PTR___cxa_finalize_00103ff8)();
+  return;
+}
+

@@ -1,0 +1,180 @@
+Data Section: .strtab
+Address Range: .strtab::00000000 - .strtab::0000023b
+Size: 572 bytes
+============================================================
+
+Address: .strtab::00000001
+Type: string-utf8
+Size: 8 bytes
+Value: Scrt1.o
+----------------------------------------
+Address: .strtab::00000009
+Type: string-utf8
+Size: 10 bytes
+Value: __abi_tag
+----------------------------------------
+Address: .strtab::00000013
+Type: string-utf8
+Size: 11 bytes
+Value: crtstuff.c
+----------------------------------------
+Address: .strtab::0000001e
+Type: string-utf8
+Size: 21 bytes
+Value: deregister_tm_clones
+----------------------------------------
+Address: .strtab::00000033
+Type: string-utf8
+Size: 22 bytes
+Value: __do_global_dtors_aux
+----------------------------------------
+Address: .strtab::00000049
+Type: string-utf8
+Size: 12 bytes
+Value: completed.0
+----------------------------------------
+Address: .strtab::00000055
+Type: string-utf8
+Size: 39 bytes
+Value: __do_global_dtors_aux_fini_array_entry
+----------------------------------------
+Address: .strtab::0000007c
+Type: string-utf8
+Size: 12 bytes
+Value: frame_dummy
+----------------------------------------
+Address: .strtab::00000088
+Type: string-utf8
+Size: 31 bytes
+Value: __frame_dummy_init_array_entry
+----------------------------------------
+Address: .strtab::000000a7
+Type: string-utf8
+Size: 8 bytes
+Value: chall.c
+----------------------------------------
+Address: .strtab::000000af
+Type: string-utf8
+Size: 14 bytes
+Value: __FRAME_END__
+----------------------------------------
+Address: .strtab::000000bd
+Type: string-utf8
+Size: 9 bytes
+Value: _DYNAMIC
+----------------------------------------
+Address: .strtab::000000c6
+Type: string-utf8
+Size: 19 bytes
+Value: __GNU_EH_FRAME_HDR
+----------------------------------------
+Address: .strtab::000000d9
+Type: string-utf8
+Size: 22 bytes
+Value: _GLOBAL_OFFSET_TABLE_
+----------------------------------------
+Address: .strtab::000000ef
+Type: string-utf8
+Size: 29 bytes
+Value: __libc_start_main@GLIBC_2.34
+----------------------------------------
+Address: .strtab::0000010c
+Type: string-utf8
+Size: 28 bytes
+Value: _ITM_deregisterTMCloneTable
+----------------------------------------
+Address: .strtab::00000128
+Type: string-utf8
+Size: 17 bytes
+Value: puts@GLIBC_2.2.5
+----------------------------------------
+Address: .strtab::00000139
+Type: string-utf8
+Size: 7 bytes
+Value: _edata
+----------------------------------------
+Address: .strtab::00000140
+Type: string-utf8
+Size: 6 bytes
+Value: _fini
+----------------------------------------
+Address: .strtab::00000146
+Type: string-utf8
+Size: 19 bytes
+Value: strlen@GLIBC_2.2.5
+----------------------------------------
+Address: .strtab::00000159
+Type: string-utf8
+Size: 27 bytes
+Value: __stack_chk_fail@GLIBC_2.4
+----------------------------------------
+Address: .strtab::00000174
+Type: string-utf8
+Size: 19 bytes
+Value: printf@GLIBC_2.2.5
+----------------------------------------
+Address: .strtab::00000187
+Type: string-utf8
+Size: 13 bytes
+Value: __data_start
+----------------------------------------
+Address: .strtab::00000194
+Type: string-utf8
+Size: 7 bytes
+Value: target
+----------------------------------------
+Address: .strtab::0000019b
+Type: string-utf8
+Size: 15 bytes
+Value: __gmon_start__
+----------------------------------------
+Address: .strtab::000001aa
+Type: string-utf8
+Size: 13 bytes
+Value: __dso_handle
+----------------------------------------
+Address: .strtab::000001b7
+Type: string-utf8
+Size: 15 bytes
+Value: _IO_stdin_used
+----------------------------------------
+Address: .strtab::000001c6
+Type: string-utf8
+Size: 5 bytes
+Value: _end
+----------------------------------------
+Address: .strtab::000001cb
+Type: string-utf8
+Size: 12 bytes
+Value: __bss_start
+----------------------------------------
+Address: .strtab::000001d7
+Type: string-utf8
+Size: 5 bytes
+Value: main
+----------------------------------------
+Address: .strtab::000001dc
+Type: string-utf8
+Size: 25 bytes
+Value: __isoc99_scanf@GLIBC_2.7
+----------------------------------------
+Address: .strtab::000001f5
+Type: string-utf8
+Size: 12 bytes
+Value: __TMC_END__
+----------------------------------------
+Address: .strtab::00000201
+Type: string-utf8
+Size: 26 bytes
+Value: _ITM_registerTMCloneTable
+----------------------------------------
+Address: .strtab::0000021b
+Type: string-utf8
+Size: 27 bytes
+Value: __cxa_finalize@GLIBC_2.2.5
+----------------------------------------
+Address: .strtab::00000236
+Type: string-utf8
+Size: 6 bytes
+Value: _init
+----------------------------------------

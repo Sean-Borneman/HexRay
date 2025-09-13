@@ -1,0 +1,4470 @@
+Data Section: .rdata
+Address Range: 14000e000 - 1400175ff
+Size: 38400 bytes
+============================================================
+
+Address: 14000e000
+Type: pointer
+Size: 8 bytes
+Value: 000175cc
+----------------------------------------
+Address: 14000e008
+Type: pointer
+Size: 8 bytes
+Value: 000170c4
+----------------------------------------
+Address: 14000e010
+Type: pointer
+Size: 8 bytes
+Value: 000170de
+----------------------------------------
+Address: 14000e018
+Type: pointer
+Size: 8 bytes
+Value: 000170f4
+----------------------------------------
+Address: 14000e020
+Type: pointer
+Size: 8 bytes
+Value: 0001710a
+----------------------------------------
+Address: 14000e028
+Type: pointer
+Size: 8 bytes
+Value: 00017124
+----------------------------------------
+Address: 14000e030
+Type: pointer
+Size: 8 bytes
+Value: 0001713a
+----------------------------------------
+Address: 14000e038
+Type: pointer
+Size: 8 bytes
+Value: 0001714e
+----------------------------------------
+Address: 14000e040
+Type: pointer
+Size: 8 bytes
+Value: 00017168
+----------------------------------------
+Address: 14000e048
+Type: pointer
+Size: 8 bytes
+Value: 0001717c
+----------------------------------------
+Address: 14000e050
+Type: pointer
+Size: 8 bytes
+Value: 00017190
+----------------------------------------
+Address: 14000e058
+Type: pointer
+Size: 8 bytes
+Value: 000171ac
+----------------------------------------
+Address: 14000e060
+Type: pointer
+Size: 8 bytes
+Value: 000171ca
+----------------------------------------
+Address: 14000e068
+Type: pointer
+Size: 8 bytes
+Value: 000171dc
+----------------------------------------
+Address: 14000e070
+Type: pointer
+Size: 8 bytes
+Value: 000171f8
+----------------------------------------
+Address: 14000e078
+Type: pointer
+Size: 8 bytes
+Value: 000175be
+----------------------------------------
+Address: 14000e080
+Type: pointer
+Size: 8 bytes
+Value: 0001721a
+----------------------------------------
+Address: 14000e088
+Type: pointer
+Size: 8 bytes
+Value: 00017228
+----------------------------------------
+Address: 14000e090
+Type: pointer
+Size: 8 bytes
+Value: 00017238
+----------------------------------------
+Address: 14000e098
+Type: pointer
+Size: 8 bytes
+Value: 00017248
+----------------------------------------
+Address: 14000e0a0
+Type: pointer
+Size: 8 bytes
+Value: 00017260
+----------------------------------------
+Address: 14000e0a8
+Type: pointer
+Size: 8 bytes
+Value: 00017278
+----------------------------------------
+Address: 14000e0b0
+Type: pointer
+Size: 8 bytes
+Value: 00017290
+----------------------------------------
+Address: 14000e0b8
+Type: pointer
+Size: 8 bytes
+Value: 000172b8
+----------------------------------------
+Address: 14000e0c0
+Type: pointer
+Size: 8 bytes
+Value: 000172c4
+----------------------------------------
+Address: 14000e0c8
+Type: pointer
+Size: 8 bytes
+Value: 000172d2
+----------------------------------------
+Address: 14000e0d0
+Type: pointer
+Size: 8 bytes
+Value: 000172e0
+----------------------------------------
+Address: 14000e0d8
+Type: pointer
+Size: 8 bytes
+Value: 000172ea
+----------------------------------------
+Address: 14000e0e0
+Type: pointer
+Size: 8 bytes
+Value: 000172f8
+----------------------------------------
+Address: 14000e0e8
+Type: pointer
+Size: 8 bytes
+Value: 0001730a
+----------------------------------------
+Address: 14000e0f0
+Type: pointer
+Size: 8 bytes
+Value: 0001731c
+----------------------------------------
+Address: 14000e0f8
+Type: pointer
+Size: 8 bytes
+Value: 0001732c
+----------------------------------------
+Address: 14000e100
+Type: pointer
+Size: 8 bytes
+Value: 0001733e
+----------------------------------------
+Address: 14000e108
+Type: pointer
+Size: 8 bytes
+Value: 00017352
+----------------------------------------
+Address: 14000e110
+Type: pointer
+Size: 8 bytes
+Value: 00017362
+----------------------------------------
+Address: 14000e118
+Type: pointer
+Size: 8 bytes
+Value: 0001736e
+----------------------------------------
+Address: 14000e120
+Type: pointer
+Size: 8 bytes
+Value: 00017384
+----------------------------------------
+Address: 14000e128
+Type: pointer
+Size: 8 bytes
+Value: 00017398
+----------------------------------------
+Address: 14000e130
+Type: pointer
+Size: 8 bytes
+Value: 000173a6
+----------------------------------------
+Address: 14000e138
+Type: pointer
+Size: 8 bytes
+Value: 000173ba
+----------------------------------------
+Address: 14000e140
+Type: pointer
+Size: 8 bytes
+Value: 000175da
+----------------------------------------
+Address: 14000e148
+Type: pointer
+Size: 8 bytes
+Value: 000173d0
+----------------------------------------
+Address: 14000e150
+Type: pointer
+Size: 8 bytes
+Value: 000173dc
+----------------------------------------
+Address: 14000e158
+Type: pointer
+Size: 8 bytes
+Value: 000173e8
+----------------------------------------
+Address: 14000e160
+Type: pointer
+Size: 8 bytes
+Value: 000173f4
+----------------------------------------
+Address: 14000e168
+Type: pointer
+Size: 8 bytes
+Value: 00017408
+----------------------------------------
+Address: 14000e170
+Type: pointer
+Size: 8 bytes
+Value: 00017418
+----------------------------------------
+Address: 14000e178
+Type: pointer
+Size: 8 bytes
+Value: 0001742a
+----------------------------------------
+Address: 14000e180
+Type: pointer
+Size: 8 bytes
+Value: 00017434
+----------------------------------------
+Address: 14000e188
+Type: pointer
+Size: 8 bytes
+Value: 00017440
+----------------------------------------
+Address: 14000e190
+Type: pointer
+Size: 8 bytes
+Value: 0001744c
+----------------------------------------
+Address: 14000e198
+Type: pointer
+Size: 8 bytes
+Value: 0001745e
+----------------------------------------
+Address: 14000e1a0
+Type: pointer
+Size: 8 bytes
+Value: 00017470
+----------------------------------------
+Address: 14000e1a8
+Type: pointer
+Size: 8 bytes
+Value: 00017486
+----------------------------------------
+Address: 14000e1b0
+Type: pointer
+Size: 8 bytes
+Value: 0001749c
+----------------------------------------
+Address: 14000e1b8
+Type: pointer
+Size: 8 bytes
+Value: 000174b6
+----------------------------------------
+Address: 14000e1c0
+Type: pointer
+Size: 8 bytes
+Value: 000174d0
+----------------------------------------
+Address: 14000e1c8
+Type: pointer
+Size: 8 bytes
+Value: 000174e0
+----------------------------------------
+Address: 14000e1d0
+Type: pointer
+Size: 8 bytes
+Value: 000174ee
+----------------------------------------
+Address: 14000e1d8
+Type: pointer
+Size: 8 bytes
+Value: 00017500
+----------------------------------------
+Address: 14000e1e0
+Type: pointer
+Size: 8 bytes
+Value: 0001750c
+----------------------------------------
+Address: 14000e1e8
+Type: pointer
+Size: 8 bytes
+Value: 0001751a
+----------------------------------------
+Address: 14000e1f0
+Type: pointer
+Size: 8 bytes
+Value: 00017528
+----------------------------------------
+Address: 14000e1f8
+Type: pointer
+Size: 8 bytes
+Value: 00017532
+----------------------------------------
+Address: 14000e200
+Type: pointer
+Size: 8 bytes
+Value: 00017542
+----------------------------------------
+Address: 14000e208
+Type: pointer
+Size: 8 bytes
+Value: 00017554
+----------------------------------------
+Address: 14000e210
+Type: pointer
+Size: 8 bytes
+Value: 00017560
+----------------------------------------
+Address: 14000e218
+Type: pointer
+Size: 8 bytes
+Value: 0001756e
+----------------------------------------
+Address: 14000e220
+Type: pointer
+Size: 8 bytes
+Value: 00017582
+----------------------------------------
+Address: 14000e228
+Type: pointer
+Size: 8 bytes
+Value: 00017598
+----------------------------------------
+Address: 14000e230
+Type: pointer
+Size: 8 bytes
+Value: 000175aa
+----------------------------------------
+Address: 14000e240
+Type: pointer
+Size: 8 bytes
+Value: 000170a8
+----------------------------------------
+Address: 14000e250
+Type: pointer
+Size: 8 bytes
+Value: 140001598
+----------------------------------------
+Address: 14000e258
+Type: undefined *
+Size: 8 bytes
+Value: 140001598
+----------------------------------------
+Address: 14000e260
+Type: pointer
+Size: 8 bytes
+Value: 14000d900
+----------------------------------------
+Address: 14000e268
+Type: pointer
+Size: 8 bytes
+Value: 14000d920
+----------------------------------------
+Address: 14000e270
+Type: undefined *
+Size: 8 bytes
+Value: 14000d920
+----------------------------------------
+Address: 14000e280
+Type: pointer
+Size: 8 bytes
+Value: 140002d40
+----------------------------------------
+Address: 14000e2a8
+Type: undefined *
+Size: 8 bytes
+Value: 140001008
+----------------------------------------
+Address: 14000e2b0
+Type: undefined *
+Size: 8 bytes
+Value: 1400010c0
+----------------------------------------
+Address: 14000e2b8
+Type: undefined *
+Size: 8 bytes
+Value: 14000ab38
+----------------------------------------
+Address: 14000e2c0
+Type: undefined *
+Size: 8 bytes
+Value: 140008708
+----------------------------------------
+Address: 14000e2c8
+Type: undefined *
+Size: 8 bytes
+Value: 140009f64
+----------------------------------------
+Address: 14000e2d0
+Type: undefined *
+Size: 8 bytes
+Value: 14000cdc0
+----------------------------------------
+Address: 14000e2e8
+Type: undefined *
+Size: 8 bytes
+Value: 140005914
+----------------------------------------
+Address: 14000e2f0
+Type: undefined *
+Size: 8 bytes
+Value: 14000c868
+----------------------------------------
+Address: 14000e2f8
+Type: undefined *
+Size: 8 bytes
+Value: 14000a084
+----------------------------------------
+Address: 14000e328
+Type: string
+Size: 9 bytes
+Value: .\D3D12\
+----------------------------------------
+Address: 14000e350
+Type: pointer
+Size: 8 bytes
+Value: 140001cd4
+----------------------------------------
+Address: 14000ea70
+Type: string
+Size: 12 bytes
+Value: __based(
+----------------------------------------
+Address: 14000ea80
+Type: string
+Size: 8 bytes
+Value: __cdecl
+----------------------------------------
+Address: 14000ea88
+Type: string
+Size: 12 bytes
+Value: __pascal
+----------------------------------------
+Address: 14000ea98
+Type: string
+Size: 12 bytes
+Value: __stdcall
+----------------------------------------
+Address: 14000eaa8
+Type: string
+Size: 12 bytes
+Value: __thiscall
+----------------------------------------
+Address: 14000eab8
+Type: string
+Size: 12 bytes
+Value: __fastcall
+----------------------------------------
+Address: 14000eac8
+Type: string
+Size: 16 bytes
+Value: __vectorcall
+----------------------------------------
+Address: 14000ead8
+Type: string
+Size: 12 bytes
+Value: __clrcall
+----------------------------------------
+Address: 14000eaf0
+Type: string
+Size: 12 bytes
+Value: __swift_1
+----------------------------------------
+Address: 14000eb00
+Type: string
+Size: 12 bytes
+Value: __swift_2
+----------------------------------------
+Address: 14000eb10
+Type: string
+Size: 12 bytes
+Value: __swift_3
+----------------------------------------
+Address: 14000eb28
+Type: string
+Size: 12 bytes
+Value: __restrict
+----------------------------------------
+Address: 14000eb38
+Type: string
+Size: 12 bytes
+Value: __unaligned
+----------------------------------------
+Address: 14000eb48
+Type: string
+Size: 12 bytes
+Value: restrict(
+----------------------------------------
+Address: 14000eb60
+Type: string
+Size: 8 bytes
+Value:  delete
+----------------------------------------
+Address: 14000eb88
+Type: string
+Size: 12 bytes
+Value: operator
+----------------------------------------
+Address: 14000ec10
+Type: string
+Size: 12 bytes
+Value: `vftable'
+----------------------------------------
+Address: 14000ec20
+Type: string
+Size: 12 bytes
+Value: `vbtable'
+----------------------------------------
+Address: 14000ec48
+Type: string
+Size: 24 bytes
+Value: `local static guard'
+----------------------------------------
+Address: 14000ec60
+Type: string
+Size: 12 bytes
+Value: `string'
+----------------------------------------
+Address: 14000ec70
+Type: string
+Size: 20 bytes
+Value: `vbase destructor'
+----------------------------------------
+Address: 14000ec88
+Type: string
+Size: 32 bytes
+Value: `vector deleting destructor'
+----------------------------------------
+Address: 14000eca8
+Type: string
+Size: 32 bytes
+Value: `default constructor closure'
+----------------------------------------
+Address: 14000ecc8
+Type: string
+Size: 32 bytes
+Value: `scalar deleting destructor'
+----------------------------------------
+Address: 14000ece8
+Type: string
+Size: 32 bytes
+Value: `vector constructor iterator'
+----------------------------------------
+Address: 14000ed08
+Type: string
+Size: 32 bytes
+Value: `vector destructor iterator'
+----------------------------------------
+Address: 14000ed28
+Type: string
+Size: 36 bytes
+Value: `vector vbase constructor iterator'
+----------------------------------------
+Address: 14000ed50
+Type: string
+Size: 28 bytes
+Value: `virtual displacement map'
+----------------------------------------
+Address: 14000ed70
+Type: string
+Size: 36 bytes
+Value: `eh vector constructor iterator'
+----------------------------------------
+Address: 14000ed98
+Type: string
+Size: 32 bytes
+Value: `eh vector destructor iterator'
+----------------------------------------
+Address: 14000edb8
+Type: string
+Size: 40 bytes
+Value: `eh vector vbase constructor iterator'
+----------------------------------------
+Address: 14000ede0
+Type: string
+Size: 28 bytes
+Value: `copy constructor closure'
+----------------------------------------
+Address: 14000ee00
+Type: string
+Size: 16 bytes
+Value: `udt returning'
+----------------------------------------
+Address: 14000ee20
+Type: string
+Size: 16 bytes
+Value: `local vftable'
+----------------------------------------
+Address: 14000ee30
+Type: string
+Size: 36 bytes
+Value: `local vftable constructor closure'
+----------------------------------------
+Address: 14000ee60
+Type: string
+Size: 12 bytes
+Value:  delete[]
+----------------------------------------
+Address: 14000ee70
+Type: string
+Size: 16 bytes
+Value: `omni callsig'
+----------------------------------------
+Address: 14000ee80
+Type: string
+Size: 28 bytes
+Value: `placement delete closure'
+----------------------------------------
+Address: 14000eea0
+Type: string
+Size: 32 bytes
+Value: `placement delete[] closure'
+----------------------------------------
+Address: 14000eec0
+Type: string
+Size: 40 bytes
+Value: `managed vector constructor iterator'
+----------------------------------------
+Address: 14000eee8
+Type: string
+Size: 40 bytes
+Value: `managed vector destructor iterator'
+----------------------------------------
+Address: 14000ef10
+Type: string
+Size: 40 bytes
+Value: `eh vector copy constructor iterator'
+----------------------------------------
+Address: 14000ef38
+Type: string
+Size: 44 bytes
+Value: `eh vector vbase copy constructor iterator'
+----------------------------------------
+Address: 14000ef68
+Type: string
+Size: 28 bytes
+Value: `dynamic initializer for '
+----------------------------------------
+Address: 14000ef88
+Type: string
+Size: 36 bytes
+Value: `dynamic atexit destructor for '
+----------------------------------------
+Address: 14000efb0
+Type: string
+Size: 36 bytes
+Value: `vector copy constructor iterator'
+----------------------------------------
+Address: 14000efd8
+Type: string
+Size: 44 bytes
+Value: `vector vbase copy constructor iterator'
+----------------------------------------
+Address: 14000f008
+Type: string
+Size: 44 bytes
+Value: `managed vector copy constructor iterator'
+----------------------------------------
+Address: 14000f038
+Type: string
+Size: 28 bytes
+Value: `local static thread guard'
+----------------------------------------
+Address: 14000f058
+Type: string
+Size: 16 bytes
+Value: operator "" 
+----------------------------------------
+Address: 14000f068
+Type: string
+Size: 20 bytes
+Value: operator co_await
+----------------------------------------
+Address: 14000f080
+Type: string
+Size: 12 bytes
+Value: operator<=>
+----------------------------------------
+Address: 14000f090
+Type: string
+Size: 20 bytes
+Value:  Type Descriptor'
+----------------------------------------
+Address: 14000f0a8
+Type: string
+Size: 28 bytes
+Value:  Base Class Descriptor at (
+----------------------------------------
+Address: 14000f0c8
+Type: string
+Size: 20 bytes
+Value:  Base Class Array'
+----------------------------------------
+Address: 14000f0e0
+Type: string
+Size: 32 bytes
+Value:  Class Hierarchy Descriptor'
+----------------------------------------
+Address: 14000f100
+Type: string
+Size: 28 bytes
+Value:  Complete Object Locator'
+----------------------------------------
+Address: 14000f120
+Type: string
+Size: 24 bytes
+Value: `anonymous namespace'
+----------------------------------------
+Address: 14000f138
+Type: undefined *
+Size: 8 bytes
+Value: 14000f150
+----------------------------------------
+Address: 14000f140
+Type: undefined *
+Size: 8 bytes
+Value: 14000f190
+----------------------------------------
+Address: 14000f148
+Type: undefined *
+Size: 8 bytes
+Value: 14000f1d0
+----------------------------------------
+Address: 14000f150
+Type: unicode
+Size: 60 bytes
+Value: api-ms-win-core-fibers-l1-1-1
+----------------------------------------
+Address: 14000f190
+Type: unicode
+Size: 58 bytes
+Value: api-ms-win-core-synch-l1-2-0
+----------------------------------------
+Address: 14000f1d0
+Type: unicode
+Size: 18 bytes
+Value: kernel32
+----------------------------------------
+Address: 14000f1e8
+Type: unicode
+Size: 16 bytes
+Value: api-ms-
+----------------------------------------
+Address: 14000f200
+Type: string
+Size: 9 bytes
+Value: FlsAlloc
+----------------------------------------
+Address: 14000f218
+Type: string
+Size: 8 bytes
+Value: FlsFree
+----------------------------------------
+Address: 14000f228
+Type: string
+Size: 12 bytes
+Value: FlsGetValue
+----------------------------------------
+Address: 14000f240
+Type: string
+Size: 12 bytes
+Value: FlsSetValue
+----------------------------------------
+Address: 14000f258
+Type: string
+Size: 28 bytes
+Value: InitializeCriticalSectionEx
+----------------------------------------
+Address: 14000f310
+Type: undefined8
+Size: 8 bytes
+Value: 0x0
+----------------------------------------
+Address: 14000f318
+Type: pointer
+Size: 8 bytes
+Value: 140015980
+----------------------------------------
+Address: 14000f320
+Type: pointer[2]
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 14000f330
+Type: string
+Size: 18 bytes
+Value: Unknown exception
+----------------------------------------
+Address: 14000f348
+Type: pointer
+Size: 8 bytes
+Value: 1400159f8
+----------------------------------------
+Address: 14000f350
+Type: pointer[2]
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 14000f360
+Type: string
+Size: 14 bytes
+Value: bad exception
+----------------------------------------
+Address: 14000f430
+Type: undefined8
+Size: 8 bytes
+Value: 0xc
+----------------------------------------
+Address: 14000f438
+Type: undefined8
+Size: 8 bytes
+Value: 0x3
+----------------------------------------
+Address: 14000f440
+Type: undefined8
+Size: 8 bytes
+Value: 0x9
+----------------------------------------
+Address: 14000f448
+Type: typedef FuncInfo _s_FuncInfo
+Size: 40 bytes
+Value: undefined
+----------------------------------------
+Address: 14000f470
+Type: typedef FuncInfo _s_FuncInfo
+Size: 40 bytes
+Value: undefined
+----------------------------------------
+Address: 14000f498
+Type: typedef FuncInfo _s_FuncInfo
+Size: 40 bytes
+Value: undefined
+----------------------------------------
+Address: 14000f4c0
+Type: unicode
+Size: 24 bytes
+Value: mscoree.dll
+----------------------------------------
+Address: 14000f4d8
+Type: string
+Size: 15 bytes
+Value: CorExitProcess
+----------------------------------------
+Address: 14000f4e8
+Type: typedef FuncInfo _s_FuncInfo
+Size: 40 bytes
+Value: undefined
+----------------------------------------
+Address: 14000f510
+Type: pointer
+Size: 8 bytes
+Value: 140005e54
+----------------------------------------
+Address: 14000f530
+Type: undefined *
+Size: 8 bytes
+Value: 14000967c
+----------------------------------------
+Address: 14000f538
+Type: undefined *
+Size: 8 bytes
+Value: 1400096b0
+----------------------------------------
+Address: 14000f540
+Type: undefined *
+Size: 8 bytes
+Value: 140001594
+----------------------------------------
+Address: 14000f548
+Type: undefined *
+Size: 8 bytes
+Value: 140001594
+----------------------------------------
+Address: 14000f550
+Type: undefined *
+Size: 8 bytes
+Value: 1400082f0
+----------------------------------------
+Address: 14000f558
+Type: undefined *
+Size: 8 bytes
+Value: 140008354
+----------------------------------------
+Address: 14000f560
+Type: undefined *
+Size: 8 bytes
+Value: 14000978c
+----------------------------------------
+Address: 14000f568
+Type: undefined *
+Size: 8 bytes
+Value: 1400097a8
+----------------------------------------
+Address: 14000f578
+Type: undefined *
+Size: 8 bytes
+Value: 140005edc
+----------------------------------------
+Address: 14000f580
+Type: undefined *
+Size: 8 bytes
+Value: 1400068a4
+----------------------------------------
+Address: 14000f588
+Type: undefined *
+Size: 8 bytes
+Value: 1400068e0
+----------------------------------------
+Address: 14000f590
+Type: undefined *
+Size: 8 bytes
+Value: 14000891c
+----------------------------------------
+Address: 14000f598
+Type: undefined *
+Size: 8 bytes
+Value: 140008958
+----------------------------------------
+Address: 14000f5a0
+Type: undefined *
+Size: 8 bytes
+Value: 140008120
+----------------------------------------
+Address: 14000f5a8
+Type: undefined *
+Size: 8 bytes
+Value: 140001594
+----------------------------------------
+Address: 14000f5b0
+Type: undefined *
+Size: 8 bytes
+Value: 140007de4
+----------------------------------------
+Address: 14000f5e8
+Type: undefined *
+Size: 8 bytes
+Value: 140005ee4
+----------------------------------------
+Address: 14000f5f0
+Type: undefined *
+Size: 8 bytes
+Value: 140001594
+----------------------------------------
+Address: 14000f5f8
+Type: undefined *
+Size: 8 bytes
+Value: 140005e8c
+----------------------------------------
+Address: 14000f600
+Type: undefined *
+Size: 8 bytes
+Value: 140005e68
+----------------------------------------
+Address: 14000f608
+Type: undefined *
+Size: 8 bytes
+Value: 140001594
+----------------------------------------
+Address: 14000f610
+Type: undefined4
+Size: 4 bytes
+Value: 0x1
+----------------------------------------
+Address: 14000f618
+Type: undefined4
+Size: 4 bytes
+Value: 0x2
+----------------------------------------
+Address: 14000f61c
+Type: undefined4
+Size: 4 bytes
+Value: 0x2
+----------------------------------------
+Address: 14000f778
+Type: pointer
+Size: 8 bytes
+Value: 14000f798
+----------------------------------------
+Address: 14000f780
+Type: pointer
+Size: 8 bytes
+Value: 14000f7a8
+----------------------------------------
+Address: 14000f788
+Type: pointer
+Size: 8 bytes
+Value: 14000f7b8
+----------------------------------------
+Address: 14000f790
+Type: pointer
+Size: 8 bytes
+Value: 14000f7c8
+----------------------------------------
+Address: 14000f798
+Type: unicode
+Size: 12 bytes
+Value: ja-JP
+----------------------------------------
+Address: 14000f7a8
+Type: unicode
+Size: 12 bytes
+Value: zh-CN
+----------------------------------------
+Address: 14000f7b8
+Type: unicode
+Size: 12 bytes
+Value: ko-KR
+----------------------------------------
+Address: 14000f7c8
+Type: unicode
+Size: 12 bytes
+Value: zh-TW
+----------------------------------------
+Address: 14000f7e0
+Type: undefined *
+Size: 8 bytes
+Value: 14000faa0
+----------------------------------------
+Address: 14000f7e8
+Type: undefined *
+Size: 8 bytes
+Value: 14000faa4
+----------------------------------------
+Address: 14000f7f0
+Type: undefined *
+Size: 8 bytes
+Value: 14000faa8
+----------------------------------------
+Address: 14000f7f8
+Type: undefined *
+Size: 8 bytes
+Value: 14000faac
+----------------------------------------
+Address: 14000f800
+Type: undefined *
+Size: 8 bytes
+Value: 14000fab0
+----------------------------------------
+Address: 14000f808
+Type: undefined *
+Size: 8 bytes
+Value: 14000fab4
+----------------------------------------
+Address: 14000f810
+Type: undefined *
+Size: 8 bytes
+Value: 14000fab8
+----------------------------------------
+Address: 14000f818
+Type: undefined *
+Size: 8 bytes
+Value: 14000fabc
+----------------------------------------
+Address: 14000f820
+Type: undefined *
+Size: 8 bytes
+Value: 14000fac4
+----------------------------------------
+Address: 14000f828
+Type: undefined *
+Size: 8 bytes
+Value: 14000fad0
+----------------------------------------
+Address: 14000f830
+Type: undefined *
+Size: 8 bytes
+Value: 14000fad8
+----------------------------------------
+Address: 14000f838
+Type: undefined *
+Size: 8 bytes
+Value: 14000fae8
+----------------------------------------
+Address: 14000f840
+Type: undefined *
+Size: 8 bytes
+Value: 14000faf4
+----------------------------------------
+Address: 14000f848
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb00
+----------------------------------------
+Address: 14000f850
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb0c
+----------------------------------------
+Address: 14000f858
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb10
+----------------------------------------
+Address: 14000f860
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb14
+----------------------------------------
+Address: 14000f868
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb18
+----------------------------------------
+Address: 14000f870
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb1c
+----------------------------------------
+Address: 14000f878
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb20
+----------------------------------------
+Address: 14000f880
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb24
+----------------------------------------
+Address: 14000f888
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb28
+----------------------------------------
+Address: 14000f890
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb2c
+----------------------------------------
+Address: 14000f898
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb30
+----------------------------------------
+Address: 14000f8a0
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb34
+----------------------------------------
+Address: 14000f8a8
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb38
+----------------------------------------
+Address: 14000f8b0
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb40
+----------------------------------------
+Address: 14000f8b8
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb48
+----------------------------------------
+Address: 14000f8c0
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb54
+----------------------------------------
+Address: 14000f8c8
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb5c
+----------------------------------------
+Address: 14000f8d0
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb1c
+----------------------------------------
+Address: 14000f8d8
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb64
+----------------------------------------
+Address: 14000f8e0
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb6c
+----------------------------------------
+Address: 14000f8e8
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb74
+----------------------------------------
+Address: 14000f8f0
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb80
+----------------------------------------
+Address: 14000f8f8
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb90
+----------------------------------------
+Address: 14000f900
+Type: undefined *
+Size: 8 bytes
+Value: 14000fb98
+----------------------------------------
+Address: 14000f908
+Type: undefined *
+Size: 8 bytes
+Value: 14000fba8
+----------------------------------------
+Address: 14000f910
+Type: undefined *
+Size: 8 bytes
+Value: 14000fbb4
+----------------------------------------
+Address: 14000f918
+Type: undefined *
+Size: 8 bytes
+Value: 14000fbb8
+----------------------------------------
+Address: 14000f920
+Type: undefined *
+Size: 8 bytes
+Value: 14000fbc0
+----------------------------------------
+Address: 14000f928
+Type: undefined *
+Size: 8 bytes
+Value: 14000fbd0
+----------------------------------------
+Address: 14000f930
+Type: undefined *
+Size: 8 bytes
+Value: 14000fbe8
+----------------------------------------
+Address: 14000f940
+Type: undefined *
+Size: 8 bytes
+Value: 14000fbf8
+----------------------------------------
+Address: 14000f948
+Type: undefined *
+Size: 8 bytes
+Value: 14000fc00
+----------------------------------------
+Address: 14000f950
+Type: undefined *
+Size: 8 bytes
+Value: 14000fc08
+----------------------------------------
+Address: 14000f958
+Type: undefined *
+Size: 8 bytes
+Value: 14000fc10
+----------------------------------------
+Address: 14000f960
+Type: undefined *
+Size: 8 bytes
+Value: 14000fc18
+----------------------------------------
+Address: 14000f968
+Type: undefined *
+Size: 8 bytes
+Value: 14000fc20
+----------------------------------------
+Address: 14000f970
+Type: undefined *
+Size: 8 bytes
+Value: 14000fc28
+----------------------------------------
+Address: 14000f978
+Type: undefined *
+Size: 8 bytes
+Value: 14000fc30
+----------------------------------------
+Address: 14000f980
+Type: undefined *
+Size: 8 bytes
+Value: 14000fc40
+----------------------------------------
+Address: 14000f988
+Type: undefined *
+Size: 8 bytes
+Value: 14000fc50
+----------------------------------------
+Address: 14000f990
+Type: undefined *
+Size: 8 bytes
+Value: 14000fc60
+----------------------------------------
+Address: 14000f998
+Type: undefined *
+Size: 8 bytes
+Value: 14000fc78
+----------------------------------------
+Address: 14000f9a0
+Type: undefined *
+Size: 8 bytes
+Value: 14000fc90
+----------------------------------------
+Address: 14000f9a8
+Type: undefined *
+Size: 8 bytes
+Value: 14000fca0
+----------------------------------------
+Address: 14000f9b0
+Type: undefined *
+Size: 8 bytes
+Value: 14000fcb8
+----------------------------------------
+Address: 14000f9b8
+Type: undefined *
+Size: 8 bytes
+Value: 14000fcc0
+----------------------------------------
+Address: 14000f9c0
+Type: undefined *
+Size: 8 bytes
+Value: 14000fcc8
+----------------------------------------
+Address: 14000f9c8
+Type: undefined *
+Size: 8 bytes
+Value: 14000fcd0
+----------------------------------------
+Address: 14000f9d0
+Type: undefined *
+Size: 8 bytes
+Value: 14000fcd8
+----------------------------------------
+Address: 14000f9d8
+Type: undefined *
+Size: 8 bytes
+Value: 14000fce0
+----------------------------------------
+Address: 14000f9e0
+Type: undefined *
+Size: 8 bytes
+Value: 14000fce8
+----------------------------------------
+Address: 14000f9e8
+Type: undefined *
+Size: 8 bytes
+Value: 14000fcf0
+----------------------------------------
+Address: 14000f9f0
+Type: undefined *
+Size: 8 bytes
+Value: 14000fcf8
+----------------------------------------
+Address: 14000f9f8
+Type: undefined *
+Size: 8 bytes
+Value: 14000fd00
+----------------------------------------
+Address: 14000fa00
+Type: undefined *
+Size: 8 bytes
+Value: 14000fd08
+----------------------------------------
+Address: 14000fa08
+Type: undefined *
+Size: 8 bytes
+Value: 14000fd10
+----------------------------------------
+Address: 14000fa10
+Type: undefined *
+Size: 8 bytes
+Value: 14000fd18
+----------------------------------------
+Address: 14000fa18
+Type: undefined *
+Size: 8 bytes
+Value: 14000fd28
+----------------------------------------
+Address: 14000fa20
+Type: undefined *
+Size: 8 bytes
+Value: 14000fd40
+----------------------------------------
+Address: 14000fa28
+Type: undefined *
+Size: 8 bytes
+Value: 14000fd50
+----------------------------------------
+Address: 14000fa30
+Type: undefined *
+Size: 8 bytes
+Value: 14000fcd8
+----------------------------------------
+Address: 14000fa38
+Type: undefined *
+Size: 8 bytes
+Value: 14000fd60
+----------------------------------------
+Address: 14000fa40
+Type: undefined *
+Size: 8 bytes
+Value: 14000fd70
+----------------------------------------
+Address: 14000fa48
+Type: undefined *
+Size: 8 bytes
+Value: 14000fd80
+----------------------------------------
+Address: 14000fa50
+Type: undefined *
+Size: 8 bytes
+Value: 14000fd90
+----------------------------------------
+Address: 14000fa58
+Type: undefined *
+Size: 8 bytes
+Value: 14000fda8
+----------------------------------------
+Address: 14000fa60
+Type: undefined *
+Size: 8 bytes
+Value: 14000fdb8
+----------------------------------------
+Address: 14000fa68
+Type: undefined *
+Size: 8 bytes
+Value: 14000fdd0
+----------------------------------------
+Address: 14000fa70
+Type: undefined *
+Size: 8 bytes
+Value: 14000fde4
+----------------------------------------
+Address: 14000fa78
+Type: undefined *
+Size: 8 bytes
+Value: 14000fdec
+----------------------------------------
+Address: 14000fa80
+Type: undefined *
+Size: 8 bytes
+Value: 14000fdf8
+----------------------------------------
+Address: 14000fa88
+Type: undefined *
+Size: 8 bytes
+Value: 14000fe10
+----------------------------------------
+Address: 14000fa90
+Type: undefined *
+Size: 8 bytes
+Value: 14000fe38
+----------------------------------------
+Address: 14000fa98
+Type: undefined *
+Size: 8 bytes
+Value: 14000fe50
+----------------------------------------
+Address: 14000fabc
+Type: string
+Size: 7 bytes
+Value: Sunday
+----------------------------------------
+Address: 14000fac4
+Type: string
+Size: 7 bytes
+Value: Monday
+----------------------------------------
+Address: 14000fad0
+Type: string
+Size: 8 bytes
+Value: Tuesday
+----------------------------------------
+Address: 14000fad8
+Type: string
+Size: 10 bytes
+Value: Wednesday
+----------------------------------------
+Address: 14000fae8
+Type: string
+Size: 9 bytes
+Value: Thursday
+----------------------------------------
+Address: 14000faf4
+Type: string
+Size: 7 bytes
+Value: Friday
+----------------------------------------
+Address: 14000fb00
+Type: string
+Size: 9 bytes
+Value: Saturday
+----------------------------------------
+Address: 14000fb40
+Type: string
+Size: 8 bytes
+Value: January
+----------------------------------------
+Address: 14000fb48
+Type: string
+Size: 9 bytes
+Value: February
+----------------------------------------
+Address: 14000fb54
+Type: string
+Size: 6 bytes
+Value: March
+----------------------------------------
+Address: 14000fb5c
+Type: string
+Size: 6 bytes
+Value: April
+----------------------------------------
+Address: 14000fb74
+Type: string
+Size: 7 bytes
+Value: August
+----------------------------------------
+Address: 14000fb80
+Type: string
+Size: 10 bytes
+Value: September
+----------------------------------------
+Address: 14000fb90
+Type: string
+Size: 8 bytes
+Value: October
+----------------------------------------
+Address: 14000fb98
+Type: string
+Size: 9 bytes
+Value: November
+----------------------------------------
+Address: 14000fba8
+Type: string
+Size: 9 bytes
+Value: December
+----------------------------------------
+Address: 14000fbc0
+Type: string
+Size: 9 bytes
+Value: MM/dd/yy
+----------------------------------------
+Address: 14000fbd0
+Type: string
+Size: 20 bytes
+Value: dddd, MMMM dd, yyyy
+----------------------------------------
+Address: 14000fbe8
+Type: string
+Size: 9 bytes
+Value: HH:mm:ss
+----------------------------------------
+Address: 14000fc30
+Type: unicode
+Size: 14 bytes
+Value: Sunday
+----------------------------------------
+Address: 14000fc40
+Type: unicode
+Size: 14 bytes
+Value: Monday
+----------------------------------------
+Address: 14000fc50
+Type: unicode
+Size: 16 bytes
+Value: Tuesday
+----------------------------------------
+Address: 14000fc60
+Type: unicode
+Size: 20 bytes
+Value: Wednesday
+----------------------------------------
+Address: 14000fc78
+Type: unicode
+Size: 18 bytes
+Value: Thursday
+----------------------------------------
+Address: 14000fc90
+Type: unicode
+Size: 14 bytes
+Value: Friday
+----------------------------------------
+Address: 14000fca0
+Type: unicode
+Size: 18 bytes
+Value: Saturday
+----------------------------------------
+Address: 14000fd18
+Type: unicode
+Size: 16 bytes
+Value: January
+----------------------------------------
+Address: 14000fd28
+Type: unicode
+Size: 18 bytes
+Value: February
+----------------------------------------
+Address: 14000fd40
+Type: unicode
+Size: 12 bytes
+Value: March
+----------------------------------------
+Address: 14000fd50
+Type: unicode
+Size: 12 bytes
+Value: April
+----------------------------------------
+Address: 14000fd60
+Type: unicode
+Size: 10 bytes
+Value: June
+----------------------------------------
+Address: 14000fd70
+Type: unicode
+Size: 10 bytes
+Value: July
+----------------------------------------
+Address: 14000fd80
+Type: unicode
+Size: 14 bytes
+Value: August
+----------------------------------------
+Address: 14000fd90
+Type: unicode
+Size: 20 bytes
+Value: September
+----------------------------------------
+Address: 14000fda8
+Type: unicode
+Size: 16 bytes
+Value: October
+----------------------------------------
+Address: 14000fdb8
+Type: unicode
+Size: 18 bytes
+Value: November
+----------------------------------------
+Address: 14000fdd0
+Type: unicode
+Size: 18 bytes
+Value: December
+----------------------------------------
+Address: 14000fdf8
+Type: unicode
+Size: 18 bytes
+Value: MM/dd/yy
+----------------------------------------
+Address: 14000fe10
+Type: unicode
+Size: 40 bytes
+Value: dddd, MMMM dd, yyyy
+----------------------------------------
+Address: 14000fe38
+Type: unicode
+Size: 18 bytes
+Value: HH:mm:ss
+----------------------------------------
+Address: 14000fe50
+Type: unicode
+Size: 12 bytes
+Value: en-US
+----------------------------------------
+Address: 140010470
+Type: undefined *
+Size: 8 bytes
+Value: 140010510
+----------------------------------------
+Address: 140010478
+Type: undefined *
+Size: 8 bytes
+Value: 140010550
+----------------------------------------
+Address: 140010480
+Type: undefined *
+Size: 8 bytes
+Value: 140010590
+----------------------------------------
+Address: 140010488
+Type: undefined *
+Size: 8 bytes
+Value: 1400105e0
+----------------------------------------
+Address: 140010490
+Type: undefined *
+Size: 8 bytes
+Value: 140010640
+----------------------------------------
+Address: 140010498
+Type: undefined *
+Size: 8 bytes
+Value: 140010690
+----------------------------------------
+Address: 1400104a0
+Type: undefined *
+Size: 8 bytes
+Value: 14000f190
+----------------------------------------
+Address: 1400104a8
+Type: undefined *
+Size: 8 bytes
+Value: 1400106d0
+----------------------------------------
+Address: 1400104b0
+Type: undefined *
+Size: 8 bytes
+Value: 140010710
+----------------------------------------
+Address: 1400104b8
+Type: undefined *
+Size: 8 bytes
+Value: 140010750
+----------------------------------------
+Address: 1400104c0
+Type: undefined *
+Size: 8 bytes
+Value: 140010790
+----------------------------------------
+Address: 1400104c8
+Type: undefined *
+Size: 8 bytes
+Value: 1400107e0
+----------------------------------------
+Address: 1400104d0
+Type: undefined *
+Size: 8 bytes
+Value: 140010840
+----------------------------------------
+Address: 1400104d8
+Type: undefined *
+Size: 8 bytes
+Value: 140010890
+----------------------------------------
+Address: 1400104e0
+Type: undefined *
+Size: 8 bytes
+Value: 1400108e0
+----------------------------------------
+Address: 1400104e8
+Type: undefined *
+Size: 8 bytes
+Value: 14000f1d0
+----------------------------------------
+Address: 1400104f0
+Type: undefined *
+Size: 8 bytes
+Value: 1400108f8
+----------------------------------------
+Address: 1400104f8
+Type: undefined *
+Size: 8 bytes
+Value: 140010910
+----------------------------------------
+Address: 140010500
+Type: undefined *
+Size: 8 bytes
+Value: 140010958
+----------------------------------------
+Address: 140010510
+Type: unicode
+Size: 64 bytes
+Value: api-ms-win-core-datetime-l1-1-1
+----------------------------------------
+Address: 140010550
+Type: unicode
+Size: 56 bytes
+Value: api-ms-win-core-file-l1-2-2
+----------------------------------------
+Address: 140010590
+Type: unicode
+Size: 72 bytes
+Value: api-ms-win-core-localization-l1-2-1
+----------------------------------------
+Address: 1400105e0
+Type: unicode
+Size: 90 bytes
+Value: api-ms-win-core-localization-obsolete-l1-2-0
+----------------------------------------
+Address: 140010640
+Type: unicode
+Size: 76 bytes
+Value: api-ms-win-core-processthreads-l1-1-2
+----------------------------------------
+Address: 140010690
+Type: unicode
+Size: 60 bytes
+Value: api-ms-win-core-string-l1-1-0
+----------------------------------------
+Address: 1400106d0
+Type: unicode
+Size: 62 bytes
+Value: api-ms-win-core-sysinfo-l1-2-1
+----------------------------------------
+Address: 140010710
+Type: unicode
+Size: 58 bytes
+Value: api-ms-win-core-winrt-l1-1-0
+----------------------------------------
+Address: 140010750
+Type: unicode
+Size: 60 bytes
+Value: api-ms-win-core-xstate-l2-1-0
+----------------------------------------
+Address: 140010790
+Type: unicode
+Size: 78 bytes
+Value: api-ms-win-rtcore-ntuser-window-l1-1-0
+----------------------------------------
+Address: 1400107e0
+Type: unicode
+Size: 86 bytes
+Value: api-ms-win-security-systemfunctions-l1-1-0
+----------------------------------------
+Address: 140010840
+Type: unicode
+Size: 70 bytes
+Value: ext-ms-win-ntuser-dialogbox-l1-1-0
+----------------------------------------
+Address: 140010890
+Type: unicode
+Size: 78 bytes
+Value: ext-ms-win-ntuser-windowstation-l1-1-0
+----------------------------------------
+Address: 1400108e0
+Type: unicode
+Size: 18 bytes
+Value: advapi32
+----------------------------------------
+Address: 1400108f8
+Type: unicode
+Size: 12 bytes
+Value: ntdll
+----------------------------------------
+Address: 140010910
+Type: unicode
+Size: 70 bytes
+Value: api-ms-win-appmodel-runtime-l1-1-2
+----------------------------------------
+Address: 140010958
+Type: unicode
+Size: 14 bytes
+Value: user32
+----------------------------------------
+Address: 140010968
+Type: unicode
+Size: 16 bytes
+Value: ext-ms-
+----------------------------------------
+Address: 140010988
+Type: string
+Size: 14 bytes
+Value: LCMapStringEx
+----------------------------------------
+Address: 1400109a0
+Type: string
+Size: 17 bytes
+Value: LocaleNameToLCID
+----------------------------------------
+Address: 1400109b8
+Type: string
+Size: 37 bytes
+Value: AppPolicyGetProcessTerminationMethod
+----------------------------------------
+Address: 140011a88
+Type: unicode
+Size: 12 bytes
+Value: de-DE
+----------------------------------------
+Address: 140011c08
+Type: unicode
+Size: 12 bytes
+Value: sl-SI
+----------------------------------------
+Address: 140011d10
+Type: unicode
+Size: 12 bytes
+Value: hi-IN
+----------------------------------------
+Address: 140011da8
+Type: unicode
+Size: 12 bytes
+Value: bn-IN
+----------------------------------------
+Address: 140011db8
+Type: unicode
+Size: 12 bytes
+Value: pa-IN
+----------------------------------------
+Address: 140011dd8
+Type: unicode
+Size: 12 bytes
+Value: ta-IN
+----------------------------------------
+Address: 140011de8
+Type: unicode
+Size: 12 bytes
+Value: te-IN
+----------------------------------------
+Address: 140011df8
+Type: unicode
+Size: 12 bytes
+Value: kn-IN
+----------------------------------------
+Address: 140011e28
+Type: unicode
+Size: 12 bytes
+Value: sa-IN
+----------------------------------------
+Address: 140011ed8
+Type: unicode
+Size: 12 bytes
+Value: de-CH
+----------------------------------------
+Address: 140011f58
+Type: unicode
+Size: 24 bytes
+Value: sr-SP-Latn
+----------------------------------------
+Address: 140011f98
+Type: unicode
+Size: 12 bytes
+Value: se-SE
+----------------------------------------
+Address: 140012000
+Type: unicode
+Size: 12 bytes
+Value: de-AT
+----------------------------------------
+Address: 140012040
+Type: unicode
+Size: 24 bytes
+Value: sr-SP-Cyrl
+----------------------------------------
+Address: 1400120c8
+Type: unicode
+Size: 12 bytes
+Value: fr-CH
+----------------------------------------
+Address: 140012118
+Type: unicode
+Size: 12 bytes
+Value: de-LI
+----------------------------------------
+Address: 140012158
+Type: unicode
+Size: 24 bytes
+Value: bs-BA-Latn
+----------------------------------------
+Address: 1400121c0
+Type: unicode
+Size: 24 bytes
+Value: sr-BA-Latn
+----------------------------------------
+Address: 140012440
+Type: pointer
+Size: 8 bytes
+Value: 140011a30
+----------------------------------------
+Address: 1400133e0
+Type: unicode
+Size: 12 bytes
+Value: bn-in
+----------------------------------------
+Address: 1400133f0
+Type: unicode
+Size: 24 bytes
+Value: bs-ba-latn
+----------------------------------------
+Address: 140013448
+Type: unicode
+Size: 12 bytes
+Value: de-at
+----------------------------------------
+Address: 140013458
+Type: unicode
+Size: 12 bytes
+Value: de-ch
+----------------------------------------
+Address: 140013468
+Type: unicode
+Size: 12 bytes
+Value: de-de
+----------------------------------------
+Address: 140013478
+Type: unicode
+Size: 12 bytes
+Value: de-li
+----------------------------------------
+Address: 140013728
+Type: unicode
+Size: 12 bytes
+Value: fr-ch
+----------------------------------------
+Address: 140013798
+Type: unicode
+Size: 12 bytes
+Value: hi-in
+----------------------------------------
+Address: 140013858
+Type: unicode
+Size: 12 bytes
+Value: kn-in
+----------------------------------------
+Address: 140013988
+Type: unicode
+Size: 12 bytes
+Value: pa-in
+----------------------------------------
+Address: 140013a18
+Type: unicode
+Size: 12 bytes
+Value: sa-in
+----------------------------------------
+Address: 140013a48
+Type: unicode
+Size: 12 bytes
+Value: se-se
+----------------------------------------
+Address: 140013a68
+Type: unicode
+Size: 12 bytes
+Value: sl-si
+----------------------------------------
+Address: 140013b00
+Type: unicode
+Size: 24 bytes
+Value: sr-ba-latn
+----------------------------------------
+Address: 140013b18
+Type: unicode
+Size: 24 bytes
+Value: sr-sp-cyrl
+----------------------------------------
+Address: 140013b30
+Type: unicode
+Size: 24 bytes
+Value: sr-sp-latn
+----------------------------------------
+Address: 140013b88
+Type: unicode
+Size: 12 bytes
+Value: ta-in
+----------------------------------------
+Address: 140013b98
+Type: unicode
+Size: 12 bytes
+Value: te-in
+----------------------------------------
+Address: 140013cd8
+Type: typedef FuncInfo _s_FuncInfo
+Size: 40 bytes
+Value: undefined
+----------------------------------------
+Address: 140013d00
+Type: undefined8
+Size: 8 bytes
+Value: -0x10000000000000
+----------------------------------------
+Address: 140013d10
+Type: undefined8
+Size: 8 bytes
+Value: 0x7ff0000000000000
+----------------------------------------
+Address: 140013d20
+Type: undefined8
+Size: 8 bytes
+Value: -0x8000000000000
+----------------------------------------
+Address: 140013d90
+Type: undefined8
+Size: 8 bytes
+Value: 0x3fdbcb7b1526e50e
+----------------------------------------
+Address: 140013da0
+Type: undefined8
+Size: 8 bytes
+Value: 0x3fdbcb7800000000
+----------------------------------------
+Address: 140013db0
+Type: undefined8
+Size: 8 bytes
+Value: 0x3ea8a93728719535
+----------------------------------------
+Address: 140013dc0
+Type: undefined8
+Size: 8 bytes
+Value: 0x3fd3441350000000
+----------------------------------------
+Address: 140013dd0
+Type: undefined8
+Size: 8 bytes
+Value: 0x3e03ef3fde623e25
+----------------------------------------
+Address: 140013de0
+Type: undefined8
+Size: 8 bytes
+Value: 0x4000000000000000
+----------------------------------------
+Address: 140013df0
+Type: undefined8
+Size: 8 bytes
+Value: 0x3ff0000000000000
+----------------------------------------
+Address: 140013e00
+Type: undefined8
+Size: 8 bytes
+Value: 0x3fe0000000000000
+----------------------------------------
+Address: 140013e40
+Type: undefined8
+Size: 8 bytes
+Value: 0x3fd5555555555555
+----------------------------------------
+Address: 140013e50
+Type: undefined8
+Size: 8 bytes
+Value: 0x3fd0000000000000
+----------------------------------------
+Address: 140013e60
+Type: undefined8
+Size: 8 bytes
+Value: 0x3fc999999999999a
+----------------------------------------
+Address: 140013e70
+Type: undefined8
+Size: 8 bytes
+Value: 0x3fc5555555555555
+----------------------------------------
+Address: 140013e80
+Type: undefined8
+Size: 8 bytes
+Value: -0x3f70080000000000
+----------------------------------------
+Address: 140013ea0
+Type: undefined8
+Size: 8 bytes
+Value: 0x3fb0000000000000
+----------------------------------------
+Address: 140013ef0
+Type: undefined8
+Size: 8 bytes
+Value: 0x3fb55555555554e6
+----------------------------------------
+Address: 140013f00
+Type: undefined8
+Size: 8 bytes
+Value: 0x3f89999999bac6d4
+----------------------------------------
+Address: 140013f10
+Type: undefined8
+Size: 8 bytes
+Value: 0x3f62492307f1519f
+----------------------------------------
+Address: 140013f20
+Type: undefined8
+Size: 8 bytes
+Value: 0x3f3c8034c85dfff0
+----------------------------------------
+Address: 140013f40
+Type: undefined4
+Size: 4 bytes
+Value: 0x1
+----------------------------------------
+Address: 140013f44
+Type: undefined4
+Size: 4 bytes
+Value: 0x2
+----------------------------------------
+Address: 140013f48
+Type: undefined4
+Size: 4 bytes
+Value: 0x3
+----------------------------------------
+Address: 140013f50
+Type: unicode
+Size: 16 bytes
+Value: CONOUT$
+----------------------------------------
+Address: 140015790
+Type: string
+Size: 6 bytes
+Value: log10
+----------------------------------------
+Address: 1400157b0
+Type: pointer
+Size: 8 bytes
+Value: 140015a78
+----------------------------------------
+Address: 1400157b8
+Type: pointer[1]
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 1400157c0
+Type: pointer
+Size: 8 bytes
+Value: 1400197a0
+----------------------------------------
+Address: 1400157c8
+Type: undefined *
+Size: 8 bytes
+Value: 140019840
+----------------------------------------
+Address: 1400157d0
+Type: /PE/IMAGE_LOAD_CONFIG_DIRECTORY64
+pack(disabled)
+Structure IMAGE_LOAD_CONFIG_DIRECTORY64 {
+   0   dword   4   Size   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   dword   4   GlobalFlagsClear   ""
+   16   dword   4   GlobalFlagsSet   ""
+   20   dword   4   CriticalSectionDefaultTimeout   ""
+   24   qword   8   DeCommitFreeBlockThreshold   ""
+   32   qword   8   DeCommitTotalFreeThreshold   ""
+   40   pointer64   8   LockPrefixTable   ""
+   48   qword   8   MaximumAllocationSize   ""
+   56   qword   8   VirtualMemoryThreshold   ""
+   64   qword   8   ProcessAffinityMask   ""
+   72   dword   4   ProcessHeapFlags   ""
+   76   word   2   CsdVersion   ""
+   78   word   2   DependentLoadFlags   ""
+   80   pointer64   8   EditList   ""
+   88   pointer64   8   SecurityCookie   ""
+   96   pointer64   8   SEHandlerTable   ""
+   104   qword   8   SEHandlerCount   ""
+   112   pointer64   8   GuardCFCCheckFunctionPointer   ""
+   120   pointer64   8   GuardCFDispatchFunctionPointer   ""
+   128   pointer64   8   GuardCFFunctionTable   ""
+   136   qword   8   GuardCFFunctionCount   ""
+   144   IMAGE_GUARD_FLAGS   4   GuardFlags   ""
+   148   IMAGE_LOAD_CONFIG_CODE_INTEGRITY   12   CodeIntegrity   ""
+   160   pointer64   8   GuardAddressTakenIatEntryTable   ""
+   168   qword   8   GuardAddressTakenIatEntryCount   ""
+   176   pointer64   8   GuardLongJumpTargetTable   ""
+   184   qword   8   GuardLongJumpTargetCount   ""
+   192   pointer64   8   DynamicValueRelocTable   ""
+   200   pointer64   8   CHPEMetadataPointer   ""
+   208   pointer64   8   GuardRFFailureRoutine   ""
+   216   pointer64   8   GuardRFFailureRoutineFunctionPointer   ""
+   224   dword   4   DynamicValueRelocTableOffset   ""
+   228   word   2   DynamicValueRelocTableSection   ""
+   230   word   2   Reserved1   ""
+   232   pointer64   8   GuardRFVerifyStackPointerFunctionPointer   ""
+   240   dword   4   HotPatchTableOffset   ""
+   244   dword   4   Reserved2   ""
+   248   qword   8   Reserved3   ""
+}
+Length: 256 Alignment: 1
+
+Size: 256 bytes
+Value: undefined
+----------------------------------------
+Address: 1400158e8
+Type: undefined *
+Size: 8 bytes
+Value: 14000e258
+----------------------------------------
+Address: 1400158f0
+Type: undefined *
+Size: 8 bytes
+Value: 14000e268
+----------------------------------------
+Address: 1400158f8
+Type: undefined *
+Size: 8 bytes
+Value: 14000e270
+----------------------------------------
+Address: 140015900
+Type: undefined *
+Size: 8 bytes
+Value: 14000e278
+----------------------------------------
+Address: 140015908
+Type: undefined *
+Size: 8 bytes
+Value: 14000e280
+----------------------------------------
+Address: 140015910
+Type: /PE/IMAGE_DEBUG_DIRECTORY
+pack(disabled)
+Structure IMAGE_DEBUG_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   dword   4   Type   ""
+   16   dword   4   SizeOfData   ""
+   20   dword   4   AddressOfRawData   ""
+   24   dword   4   PointerToRawData   ""
+}
+Length: 28 Alignment: 1
+
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 14001592c
+Type: /PE/IMAGE_DEBUG_DIRECTORY
+pack(disabled)
+Structure IMAGE_DEBUG_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   dword   4   Type   ""
+   16   dword   4   SizeOfData   ""
+   20   dword   4   AddressOfRawData   ""
+   24   dword   4   PointerToRawData   ""
+}
+Length: 28 Alignment: 1
+
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 140015948
+Type: /PE/IMAGE_DEBUG_DIRECTORY
+pack(disabled)
+Structure IMAGE_DEBUG_DIRECTORY {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   dword   4   Type   ""
+   16   dword   4   SizeOfData   ""
+   20   dword   4   AddressOfRawData   ""
+   24   dword   4   PointerToRawData   ""
+}
+Length: 28 Alignment: 1
+
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 140015980
+Type: typedef RTTICompleteObjectLocator _s__RTTICompleteObjectLocator
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 1400159a8
+Type: typedef RTTIClassHierarchyDescriptor _s__RTTIClassHierarchyDescriptor
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 1400159c0
+Type: RTTIBaseClassDescriptor *32 __((image-base-relative))[1]
+Size: 4 bytes
+Value: undefined
+----------------------------------------
+Address: 1400159d0
+Type: typedef RTTIBaseClassDescriptor _s__RTTIBaseClassDescriptor
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 1400159f8
+Type: typedef RTTICompleteObjectLocator _s__RTTICompleteObjectLocator
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 140015a20
+Type: typedef RTTIClassHierarchyDescriptor _s__RTTIClassHierarchyDescriptor
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140015a38
+Type: RTTIBaseClassDescriptor *32 __((image-base-relative))[2]
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140015a50
+Type: typedef RTTIBaseClassDescriptor _s__RTTIBaseClassDescriptor
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 140015a78
+Type: typedef RTTICompleteObjectLocator _s__RTTICompleteObjectLocator
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 140015aa0
+Type: typedef RTTIClassHierarchyDescriptor _s__RTTIClassHierarchyDescriptor
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140015ab8
+Type: RTTIBaseClassDescriptor *32 __((image-base-relative))[1]
+Size: 4 bytes
+Value: undefined
+----------------------------------------
+Address: 140015ac8
+Type: typedef RTTIBaseClassDescriptor _s__RTTIBaseClassDescriptor
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 140015be8
+Type: /PDB/DotNetPdbInfo
+pack(disabled)
+Structure DotNetPdbInfo {
+   0   string   4   signature   ""
+   4   GUID   16   guid   ""
+   20   dword   4   age   ""
+   24   string   121   pdbpath   ""
+}
+Length: 145 Alignment: 1
+
+Size: 145 bytes
+Value: undefined
+----------------------------------------
+Address: 140015e10
+Type: string
+Size: 8 bytes
+Value: .rdata
+----------------------------------------
+Address: 140015e34
+Type: string
+Size: 16 bytes
+Value: .rdata$voltmd
+----------------------------------------
+Address: 140015ed8
+Type: string
+Size: 8 bytes
+Value: .edata
+----------------------------------------
+Address: 140015f38
+Type: string
+Size: 8 bytes
+Value: .data
+----------------------------------------
+Address: 140015f7c
+Type: string
+Size: 8 bytes
+Value: .pdata
+----------------------------------------
+Address: 140015f8c
+Type: string
+Size: 8 bytes
+Value: _RDATA
+----------------------------------------
+Address: 140015fc8
+Type: undefined8
+Size: 8 bytes
+Value: 0x0
+----------------------------------------
+Address: 140015fd8
+Type: undefined8
+Size: 8 bytes
+Value: 0x0
+----------------------------------------
+Address: 140015fe0
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140015fe8
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140015ff0
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016024
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 14001602c
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 14001604c
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016054
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 140016060
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140016068
+Type: PEx64_UnwindInfo
+Size: 14 bytes
+Value: undefined
+----------------------------------------
+Address: 140016078
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 140016084
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016098
+Type: PEx64_UnwindInfo
+Size: 4 bytes
+Value: undefined
+----------------------------------------
+Address: 1400160a0
+Type: PEx64_UnwindInfo
+Size: 4 bytes
+Value: undefined
+----------------------------------------
+Address: 1400160a4
+Type: PEx64_UnwindInfo
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 1400160c0
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 1400160e0
+Type: PEx64_UnwindInfo
+Size: 10 bytes
+Value: undefined
+----------------------------------------
+Address: 1400160f0
+Type: PEx64_UnwindInfo
+Size: 10 bytes
+Value: undefined
+----------------------------------------
+Address: 1400160fc
+Type: PEx64_UnwindInfo
+Size: 4 bytes
+Value: undefined
+----------------------------------------
+Address: 140016100
+Type: PEx64_UnwindInfo
+Size: 4 bytes
+Value: undefined
+----------------------------------------
+Address: 140016104
+Type: PEx64_UnwindInfo
+Size: 4 bytes
+Value: undefined
+----------------------------------------
+Address: 140016108
+Type: PEx64_UnwindInfo
+Size: 4 bytes
+Value: undefined
+----------------------------------------
+Address: 14001610c
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 14001611c
+Type: PEx64_UnwindInfo
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 140016138
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 14001614c
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 140016164
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016178
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 14001618c
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 1400161ac
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 1400161b8
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 1400161c4
+Type: PEx64_UnwindInfo
+Size: 4 bytes
+Value: undefined
+----------------------------------------
+Address: 1400161c8
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 140016214
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 140016250
+Type: PEx64_UnwindInfo
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 14001626c
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 140016284
+Type: PEx64_UnwindInfo
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 1400162c4
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 1400162f0
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 140016308
+Type: PEx64_UnwindInfo
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 140016328
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 140016340
+Type: PEx64_UnwindInfo
+Size: 26 bytes
+Value: undefined
+----------------------------------------
+Address: 140016360
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016368
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016370
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016378
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016380
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 140016394
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 1400163a4
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 1400163b8
+Type: PEx64_UnwindInfo
+Size: 22 bytes
+Value: undefined
+----------------------------------------
+Address: 1400163d0
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 1400163e0
+Type: typedef UnwindMapEntry _s_UnwindMapEntry
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 1400163e8
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 1400163f4
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 14001640c
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 140016420
+Type: typedef IPToStateMapEntry _s_IPToStateMapEntry
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140016428
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016440
+Type: typedef IPToStateMapEntry _s_IPToStateMapEntry
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140016448
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 140016468
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 14001648c
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016494
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 1400164bc
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 1400164c4
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 1400164d8
+Type: typedef IPToStateMapEntry _s_IPToStateMapEntry
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 1400164e0
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 1400164f8
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 140016510
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016534
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016558
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 140016578
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140016580
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 140016594
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 1400165a8
+Type: PEx64_UnwindInfo
+Size: 4 bytes
+Value: undefined
+----------------------------------------
+Address: 1400165ac
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 1400165b4
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 1400165bc
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 1400165c4
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 1400165e8
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 14001660c
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016630
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016654
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 14001665c
+Type: PEx64_UnwindInfo
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 14001667c
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 140016690
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 1400166a0
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 1400166ac
+Type: PEx64_UnwindInfo
+Size: 32 bytes
+Value: undefined
+----------------------------------------
+Address: 1400166d0
+Type: PEx64_UnwindInfo
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 1400166ec
+Type: PEx64_UnwindInfo
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 14001670c
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140016714
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 14001673c
+Type: PEx64_UnwindInfo
+Size: 22 bytes
+Value: undefined
+----------------------------------------
+Address: 140016754
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 140016770
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016794
+Type: PEx64_UnwindInfo
+Size: 10 bytes
+Value: undefined
+----------------------------------------
+Address: 1400167a0
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 1400167b0
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 1400167dc
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 1400167fc
+Type: PEx64_UnwindInfo
+Size: 26 bytes
+Value: undefined
+----------------------------------------
+Address: 140016818
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140016820
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016830
+Type: PEx64_UnwindInfo
+Size: 36 bytes
+Value: undefined
+----------------------------------------
+Address: 140016858
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 14001687c
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140016884
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 140016898
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 1400168b8
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 1400168f4
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016918
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016928
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140016930
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016954
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 14001697c
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 140016994
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 1400169ac
+Type: PEx64_UnwindInfo
+Size: 36 bytes
+Value: undefined
+----------------------------------------
+Address: 1400169d0
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 1400169e0
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 1400169f0
+Type: PEx64_UnwindInfo
+Size: 36 bytes
+Value: undefined
+----------------------------------------
+Address: 140016a18
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016a20
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016a44
+Type: PEx64_UnwindInfo
+Size: 22 bytes
+Value: undefined
+----------------------------------------
+Address: 140016a5c
+Type: PEx64_UnwindInfo
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 140016a8c
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140016a94
+Type: PEx64_UnwindInfo
+Size: 32 bytes
+Value: undefined
+----------------------------------------
+Address: 140016ac0
+Type: typedef IPToStateMapEntry _s_IPToStateMapEntry
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140016ac8
+Type: PEx64_UnwindInfo
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 140016ae8
+Type: PEx64_UnwindInfo
+Size: 32 bytes
+Value: undefined
+----------------------------------------
+Address: 140016b0c
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016b30
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 140016b48
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016b50
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016b60
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016b88
+Type: PEx64_UnwindInfo
+Size: 10 bytes
+Value: undefined
+----------------------------------------
+Address: 140016b94
+Type: PEx64_UnwindInfo
+Size: 24 bytes
+Value: undefined
+----------------------------------------
+Address: 140016bb0
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 140016bc4
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016bcc
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016bf0
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140016bf8
+Type: PEx64_UnwindInfo
+Size: 28 bytes
+Value: undefined
+----------------------------------------
+Address: 140016c18
+Type: PEx64_UnwindInfo
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 140016c20
+Type: PEx64_UnwindInfo
+Size: 10 bytes
+Value: undefined
+----------------------------------------
+Address: 140016c30
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016c38
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016c40
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 140016c54
+Type: PEx64_UnwindInfo
+Size: 20 bytes
+Value: undefined
+----------------------------------------
+Address: 140016c7c
+Type: PEx64_UnwindInfo
+Size: 16 bytes
+Value: undefined
+----------------------------------------
+Address: 140016ca0
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016ca8
+Type: PEx64_UnwindInfo
+Size: 4 bytes
+Value: undefined
+----------------------------------------
+Address: 140016cac
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016cb4
+Type: PEx64_UnwindInfo
+Size: 12 bytes
+Value: undefined
+----------------------------------------
+Address: 140016cc0
+Type: PEx64_UnwindInfo
+Size: 6 bytes
+Value: undefined
+----------------------------------------
+Address: 140016cc8
+Type: PEx64_UnwindInfo
+Size: 4 bytes
+Value: undefined
+----------------------------------------
+Address: 140016d60
+Type: /PE/IMAGE_DIRECTORY_ENTRY_EXPORT
+pack(disabled)
+Structure IMAGE_DIRECTORY_ENTRY_EXPORT {
+   0   dword   4   Characteristics   ""
+   4   dword   4   TimeDateStamp   ""
+   8   word   2   MajorVersion   ""
+   10   word   2   MinorVersion   ""
+   12   ImageBaseOffset32   4   Name   ""
+   16   dword   4   Base   ""
+   20   dword   4   NumberOfFunctions   ""
+   24   dword   4   NumberOfNames   ""
+   28   ImageBaseOffset32   4   AddressOfFunctions   ""
+   32   ImageBaseOffset32   4   AddressOfNames   ""
+   36   ImageBaseOffset32   4   AddressOfNameOrdinals   ""
+}
+Length: 40 Alignment: 1
+
+Size: 40 bytes
+Value: undefined
+----------------------------------------
+Address: 140016d88
+Type: IBO32DataType: typedef ImageBaseOffset32 pointer32
+Size: 4 bytes
+Value: 140018004
+----------------------------------------
+Address: 140016d8c
+Type: IBO32DataType: typedef ImageBaseOffset32 pointer32
+Size: 4 bytes
+Value: 140018008
+----------------------------------------
+Address: 140016d90
+Type: IBO32DataType: typedef ImageBaseOffset32 pointer32
+Size: 4 bytes
+Value: 14000e320
+----------------------------------------
+Address: 140016d94
+Type: IBO32DataType: typedef ImageBaseOffset32 pointer32
+Size: 4 bytes
+Value: 140018000
+----------------------------------------
+Address: 140016d98
+Type: IBO32DataType: typedef ImageBaseOffset32 pointer32
+Size: 4 bytes
+Value: 140016dc2
+----------------------------------------
+Address: 140016d9c
+Type: IBO32DataType: typedef ImageBaseOffset32 pointer32
+Size: 4 bytes
+Value: 140016de7
+----------------------------------------
+Address: 140016da0
+Type: IBO32DataType: typedef ImageBaseOffset32 pointer32
+Size: 4 bytes
+Value: 140016df4
+----------------------------------------
+Address: 140016da4
+Type: IBO32DataType: typedef ImageBaseOffset32 pointer32
+Size: 4 bytes
+Value: 140016e04
+----------------------------------------
+Address: 140016da8
+Type: word
+Size: 2 bytes
+Value: 0x0
+----------------------------------------
+Address: 140016daa
+Type: word
+Size: 2 bytes
+Value: 0x1
+----------------------------------------
+Address: 140016dac
+Type: word
+Size: 2 bytes
+Value: 0x2
+----------------------------------------
+Address: 140016dae
+Type: word
+Size: 2 bytes
+Value: 0x3
+----------------------------------------
+Address: 140016db0
+Type: TerminatedCString
+Size: 18 bytes
+Value: WindowsPlayer.exe
+----------------------------------------
+Address: 140016dc2
+Type: TerminatedCString
+Size: 37 bytes
+Value: AmdPowerXpressRequestHighPerformance
+----------------------------------------
+Address: 140016de7
+Type: TerminatedCString
+Size: 13 bytes
+Value: D3D12SDKPath
+----------------------------------------
+Address: 140016df4
+Type: TerminatedCString
+Size: 16 bytes
+Value: D3D12SDKVersion
+----------------------------------------
+Address: 140016e04
+Type: TerminatedCString
+Size: 20 bytes
+Value: NvOptimusEnablement
+----------------------------------------
+Address: 140016e18
+Type: dword
+Size: 4 bytes
+Value: 0x17098
+----------------------------------------
+Address: 140016e1c
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: 140016e20
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: 140016e24
+Type: dword
+Size: 4 bytes
+Value: 0x170b4
+----------------------------------------
+Address: 140016e28
+Type: dword
+Size: 4 bytes
+Value: 0xe240
+----------------------------------------
+Address: 140016e2c
+Type: dword
+Size: 4 bytes
+Value: 0x16e58
+----------------------------------------
+Address: 140016e30
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: 140016e34
+Type: dword
+Size: 4 bytes
+Value: 0x0
+----------------------------------------
+Address: 140016e38
+Type: dword
+Size: 4 bytes
+Value: 0x1720c
+----------------------------------------
+Address: 140016e3c
+Type: dword
+Size: 4 bytes
+Value: 0xe000
+----------------------------------------
+Address: 140016e58
+Type: qword
+Size: 8 bytes
+Value: 0x175cc
+----------------------------------------
+Address: 140016e60
+Type: qword
+Size: 8 bytes
+Value: 0x170c4
+----------------------------------------
+Address: 140016e68
+Type: qword
+Size: 8 bytes
+Value: 0x170de
+----------------------------------------
+Address: 140016e70
+Type: qword
+Size: 8 bytes
+Value: 0x170f4
+----------------------------------------
+Address: 140016e78
+Type: qword
+Size: 8 bytes
+Value: 0x1710a
+----------------------------------------
+Address: 140016e80
+Type: qword
+Size: 8 bytes
+Value: 0x17124
+----------------------------------------
+Address: 140016e88
+Type: qword
+Size: 8 bytes
+Value: 0x1713a
+----------------------------------------
+Address: 140016e90
+Type: qword
+Size: 8 bytes
+Value: 0x1714e
+----------------------------------------
+Address: 140016e98
+Type: qword
+Size: 8 bytes
+Value: 0x17168
+----------------------------------------
+Address: 140016ea0
+Type: qword
+Size: 8 bytes
+Value: 0x1717c
+----------------------------------------
+Address: 140016ea8
+Type: qword
+Size: 8 bytes
+Value: 0x17190
+----------------------------------------
+Address: 140016eb0
+Type: qword
+Size: 8 bytes
+Value: 0x171ac
+----------------------------------------
+Address: 140016eb8
+Type: qword
+Size: 8 bytes
+Value: 0x171ca
+----------------------------------------
+Address: 140016ec0
+Type: qword
+Size: 8 bytes
+Value: 0x171dc
+----------------------------------------
+Address: 140016ec8
+Type: qword
+Size: 8 bytes
+Value: 0x171f8
+----------------------------------------
+Address: 140016ed0
+Type: qword
+Size: 8 bytes
+Value: 0x175be
+----------------------------------------
+Address: 140016ed8
+Type: qword
+Size: 8 bytes
+Value: 0x1721a
+----------------------------------------
+Address: 140016ee0
+Type: qword
+Size: 8 bytes
+Value: 0x17228
+----------------------------------------
+Address: 140016ee8
+Type: qword
+Size: 8 bytes
+Value: 0x17238
+----------------------------------------
+Address: 140016ef0
+Type: qword
+Size: 8 bytes
+Value: 0x17248
+----------------------------------------
+Address: 140016ef8
+Type: qword
+Size: 8 bytes
+Value: 0x17260
+----------------------------------------
+Address: 140016f00
+Type: qword
+Size: 8 bytes
+Value: 0x17278
+----------------------------------------
+Address: 140016f08
+Type: qword
+Size: 8 bytes
+Value: 0x17290
+----------------------------------------
+Address: 140016f10
+Type: qword
+Size: 8 bytes
+Value: 0x172b8
+----------------------------------------
+Address: 140016f18
+Type: qword
+Size: 8 bytes
+Value: 0x172c4
+----------------------------------------
+Address: 140016f20
+Type: qword
+Size: 8 bytes
+Value: 0x172d2
+----------------------------------------
+Address: 140016f28
+Type: qword
+Size: 8 bytes
+Value: 0x172e0
+----------------------------------------
+Address: 140016f30
+Type: qword
+Size: 8 bytes
+Value: 0x172ea
+----------------------------------------
+Address: 140016f38
+Type: qword
+Size: 8 bytes
+Value: 0x172f8
+----------------------------------------
+Address: 140016f40
+Type: qword
+Size: 8 bytes
+Value: 0x1730a
+----------------------------------------
+Address: 140016f48
+Type: qword
+Size: 8 bytes
+Value: 0x1731c
+----------------------------------------
+Address: 140016f50
+Type: qword
+Size: 8 bytes
+Value: 0x1732c
+----------------------------------------
+Address: 140016f58
+Type: qword
+Size: 8 bytes
+Value: 0x1733e
+----------------------------------------
+Address: 140016f60
+Type: qword
+Size: 8 bytes
+Value: 0x17352
+----------------------------------------
+Address: 140016f68
+Type: qword
+Size: 8 bytes
+Value: 0x17362
+----------------------------------------
+Address: 140016f70
+Type: qword
+Size: 8 bytes
+Value: 0x1736e
+----------------------------------------
+Address: 140016f78
+Type: qword
+Size: 8 bytes
+Value: 0x17384
+----------------------------------------
+Address: 140016f80
+Type: qword
+Size: 8 bytes
+Value: 0x17398
+----------------------------------------
+Address: 140016f88
+Type: qword
+Size: 8 bytes
+Value: 0x173a6
+----------------------------------------
+Address: 140016f90
+Type: qword
+Size: 8 bytes
+Value: 0x173ba
+----------------------------------------
+Address: 140016f98
+Type: qword
+Size: 8 bytes
+Value: 0x175da
+----------------------------------------
+Address: 140016fa0
+Type: qword
+Size: 8 bytes
+Value: 0x173d0
+----------------------------------------
+Address: 140016fa8
+Type: qword
+Size: 8 bytes
+Value: 0x173dc
+----------------------------------------
+Address: 140016fb0
+Type: qword
+Size: 8 bytes
+Value: 0x173e8
+----------------------------------------
+Address: 140016fb8
+Type: qword
+Size: 8 bytes
+Value: 0x173f4
+----------------------------------------
+Address: 140016fc0
+Type: qword
+Size: 8 bytes
+Value: 0x17408
+----------------------------------------
+Address: 140016fc8
+Type: qword
+Size: 8 bytes
+Value: 0x17418
+----------------------------------------
+Address: 140016fd0
+Type: qword
+Size: 8 bytes
+Value: 0x1742a
+----------------------------------------
+Address: 140016fd8
+Type: qword
+Size: 8 bytes
+Value: 0x17434
+----------------------------------------
+Address: 140016fe0
+Type: qword
+Size: 8 bytes
+Value: 0x17440
+----------------------------------------
+Address: 140016fe8
+Type: qword
+Size: 8 bytes
+Value: 0x1744c
+----------------------------------------
+Address: 140016ff0
+Type: qword
+Size: 8 bytes
+Value: 0x1745e
+----------------------------------------
+Address: 140016ff8
+Type: qword
+Size: 8 bytes
+Value: 0x17470
+----------------------------------------
+Address: 140017000
+Type: qword
+Size: 8 bytes
+Value: 0x17486
+----------------------------------------
+Address: 140017008
+Type: qword
+Size: 8 bytes
+Value: 0x1749c
+----------------------------------------
+Address: 140017010
+Type: qword
+Size: 8 bytes
+Value: 0x174b6
+----------------------------------------
+Address: 140017018
+Type: qword
+Size: 8 bytes
+Value: 0x174d0
+----------------------------------------
+Address: 140017020
+Type: qword
+Size: 8 bytes
+Value: 0x174e0
+----------------------------------------
+Address: 140017028
+Type: qword
+Size: 8 bytes
+Value: 0x174ee
+----------------------------------------
+Address: 140017030
+Type: qword
+Size: 8 bytes
+Value: 0x17500
+----------------------------------------
+Address: 140017038
+Type: qword
+Size: 8 bytes
+Value: 0x1750c
+----------------------------------------
+Address: 140017040
+Type: qword
+Size: 8 bytes
+Value: 0x1751a
+----------------------------------------
+Address: 140017048
+Type: qword
+Size: 8 bytes
+Value: 0x17528
+----------------------------------------
+Address: 140017050
+Type: qword
+Size: 8 bytes
+Value: 0x17532
+----------------------------------------
+Address: 140017058
+Type: qword
+Size: 8 bytes
+Value: 0x17542
+----------------------------------------
+Address: 140017060
+Type: qword
+Size: 8 bytes
+Value: 0x17554
+----------------------------------------
+Address: 140017068
+Type: qword
+Size: 8 bytes
+Value: 0x17560
+----------------------------------------
+Address: 140017070
+Type: qword
+Size: 8 bytes
+Value: 0x1756e
+----------------------------------------
+Address: 140017078
+Type: qword
+Size: 8 bytes
+Value: 0x17582
+----------------------------------------
+Address: 140017080
+Type: qword
+Size: 8 bytes
+Value: 0x17598
+----------------------------------------
+Address: 140017088
+Type: qword
+Size: 8 bytes
+Value: 0x175aa
+----------------------------------------
+Address: 140017098
+Type: qword
+Size: 8 bytes
+Value: 0x170a8
+----------------------------------------
+Address: 1400170a8
+Type: word
+Size: 2 bytes
+Value: 0x0
+----------------------------------------
+Address: 1400170aa
+Type: TerminatedCString
+Size: 10 bytes
+Value: UnityMain
+----------------------------------------
+Address: 1400170b4
+Type: TerminatedCString
+Size: 16 bytes
+Value: UnityPlayer.dll
+----------------------------------------
+Address: 1400170c4
+Type: word
+Size: 2 bytes
+Value: 0x45b
+----------------------------------------
+Address: 1400170c6
+Type: TerminatedCString
+Size: 24 bytes
+Value: QueryPerformanceCounter
+----------------------------------------
+Address: 1400170de
+Type: word
+Size: 2 bytes
+Value: 0x222
+----------------------------------------
+Address: 1400170e0
+Type: TerminatedCString
+Size: 20 bytes
+Value: GetCurrentProcessId
+----------------------------------------
+Address: 1400170f4
+Type: word
+Size: 2 bytes
+Value: 0x226
+----------------------------------------
+Address: 1400170f6
+Type: TerminatedCString
+Size: 19 bytes
+Value: GetCurrentThreadId
+----------------------------------------
+Address: 14001710a
+Type: word
+Size: 2 bytes
+Value: 0x2f8
+----------------------------------------
+Address: 14001710c
+Type: TerminatedCString
+Size: 24 bytes
+Value: GetSystemTimeAsFileTime
+----------------------------------------
+Address: 140017124
+Type: word
+Size: 2 bytes
+Value: 0x378
+----------------------------------------
+Address: 140017126
+Type: TerminatedCString
+Size: 20 bytes
+Value: InitializeSListHead
+----------------------------------------
+Address: 14001713a
+Type: word
+Size: 2 bytes
+Value: 0x4df
+----------------------------------------
+Address: 14001713c
+Type: TerminatedCString
+Size: 18 bytes
+Value: RtlCaptureContext
+----------------------------------------
+Address: 14001714e
+Type: word
+Size: 2 bytes
+Value: 0x4e7
+----------------------------------------
+Address: 140017150
+Type: TerminatedCString
+Size: 23 bytes
+Value: RtlLookupFunctionEntry
+----------------------------------------
+Address: 140017168
+Type: word
+Size: 2 bytes
+Value: 0x4ee
+----------------------------------------
+Address: 14001716a
+Type: TerminatedCString
+Size: 17 bytes
+Value: RtlVirtualUnwind
+----------------------------------------
+Address: 14001717c
+Type: word
+Size: 2 bytes
+Value: 0x38e
+----------------------------------------
+Address: 14001717e
+Type: TerminatedCString
+Size: 18 bytes
+Value: IsDebuggerPresent
+----------------------------------------
+Address: 140017190
+Type: word
+Size: 2 bytes
+Value: 0x5ce
+----------------------------------------
+Address: 140017192
+Type: TerminatedCString
+Size: 25 bytes
+Value: UnhandledExceptionFilter
+----------------------------------------
+Address: 1400171ac
+Type: word
+Size: 2 bytes
+Value: 0x58d
+----------------------------------------
+Address: 1400171ae
+Type: TerminatedCString
+Size: 28 bytes
+Value: SetUnhandledExceptionFilter
+----------------------------------------
+Address: 1400171ca
+Type: word
+Size: 2 bytes
+Value: 0x2df
+----------------------------------------
+Address: 1400171cc
+Type: TerminatedCString
+Size: 16 bytes
+Value: GetStartupInfoW
+----------------------------------------
+Address: 1400171dc
+Type: word
+Size: 2 bytes
+Value: 0x395
+----------------------------------------
+Address: 1400171de
+Type: TerminatedCString
+Size: 26 bytes
+Value: IsProcessorFeaturePresent
+----------------------------------------
+Address: 1400171f8
+Type: word
+Size: 2 bytes
+Value: 0x282
+----------------------------------------
+Address: 1400171fa
+Type: TerminatedCString
+Size: 17 bytes
+Value: GetModuleHandleW
+----------------------------------------
+Address: 14001720c
+Type: TerminatedCString
+Size: 13 bytes
+Value: KERNEL32.dll
+----------------------------------------
+Address: 14001721a
+Type: word
+Size: 2 bytes
+Value: 0x4ed
+----------------------------------------
+Address: 14001721c
+Type: TerminatedCString
+Size: 12 bytes
+Value: RtlUnwindEx
+----------------------------------------
+Address: 140017228
+Type: word
+Size: 2 bytes
+Value: 0x26b
+----------------------------------------
+Address: 14001722a
+Type: TerminatedCString
+Size: 13 bytes
+Value: GetLastError
+----------------------------------------
+Address: 140017238
+Type: word
+Size: 2 bytes
+Value: 0x54d
+----------------------------------------
+Address: 14001723a
+Type: TerminatedCString
+Size: 13 bytes
+Value: SetLastError
+----------------------------------------
+Address: 140017248
+Type: word
+Size: 2 bytes
+Value: 0x139
+----------------------------------------
+Address: 14001724a
+Type: TerminatedCString
+Size: 21 bytes
+Value: EnterCriticalSection
+----------------------------------------
+Address: 140017260
+Type: word
+Size: 2 bytes
+Value: 0x3cd
+----------------------------------------
+Address: 140017262
+Type: TerminatedCString
+Size: 21 bytes
+Value: LeaveCriticalSection
+----------------------------------------
+Address: 140017278
+Type: word
+Size: 2 bytes
+Value: 0x114
+----------------------------------------
+Address: 14001727a
+Type: TerminatedCString
+Size: 22 bytes
+Value: DeleteCriticalSection
+----------------------------------------
+Address: 140017290
+Type: word
+Size: 2 bytes
+Value: 0x374
+----------------------------------------
+Address: 140017292
+Type: TerminatedCString
+Size: 38 bytes
+Value: InitializeCriticalSectionAndSpinCount
+----------------------------------------
+Address: 1400172b8
+Type: word
+Size: 2 bytes
+Value: 0x5be
+----------------------------------------
+Address: 1400172ba
+Type: TerminatedCString
+Size: 9 bytes
+Value: TlsAlloc
+----------------------------------------
+Address: 1400172c4
+Type: word
+Size: 2 bytes
+Value: 0x5c0
+----------------------------------------
+Address: 1400172c6
+Type: TerminatedCString
+Size: 12 bytes
+Value: TlsGetValue
+----------------------------------------
+Address: 1400172d2
+Type: word
+Size: 2 bytes
+Value: 0x5c1
+----------------------------------------
+Address: 1400172d4
+Type: TerminatedCString
+Size: 12 bytes
+Value: TlsSetValue
+----------------------------------------
+Address: 1400172e0
+Type: word
+Size: 2 bytes
+Value: 0x5bf
+----------------------------------------
+Address: 1400172e2
+Type: TerminatedCString
+Size: 8 bytes
+Value: TlsFree
+----------------------------------------
+Address: 1400172ea
+Type: word
+Size: 2 bytes
+Value: 0x1b5
+----------------------------------------
+Address: 1400172ec
+Type: TerminatedCString
+Size: 12 bytes
+Value: FreeLibrary
+----------------------------------------
+Address: 1400172f8
+Type: word
+Size: 2 bytes
+Value: 0x2bc
+----------------------------------------
+Address: 1400172fa
+Type: TerminatedCString
+Size: 15 bytes
+Value: GetProcAddress
+----------------------------------------
+Address: 14001730a
+Type: word
+Size: 2 bytes
+Value: 0x3d3
+----------------------------------------
+Address: 14001730c
+Type: TerminatedCString
+Size: 15 bytes
+Value: LoadLibraryExW
+----------------------------------------
+Address: 14001731c
+Type: word
+Size: 2 bytes
+Value: 0x135
+----------------------------------------
+Address: 14001731e
+Type: TerminatedCString
+Size: 14 bytes
+Value: EncodePointer
+----------------------------------------
+Address: 14001732c
+Type: word
+Size: 2 bytes
+Value: 0x472
+----------------------------------------
+Address: 14001732e
+Type: TerminatedCString
+Size: 15 bytes
+Value: RaiseException
+----------------------------------------
+Address: 14001733e
+Type: word
+Size: 2 bytes
+Value: 0x4e9
+----------------------------------------
+Address: 140017340
+Type: TerminatedCString
+Size: 18 bytes
+Value: RtlPcToFileHeader
+----------------------------------------
+Address: 140017352
+Type: word
+Size: 2 bytes
+Value: 0x2e1
+----------------------------------------
+Address: 140017354
+Type: TerminatedCString
+Size: 13 bytes
+Value: GetStdHandle
+----------------------------------------
+Address: 140017362
+Type: word
+Size: 2 bytes
+Value: 0x633
+----------------------------------------
+Address: 140017364
+Type: TerminatedCString
+Size: 10 bytes
+Value: WriteFile
+----------------------------------------
+Address: 14001736e
+Type: word
+Size: 2 bytes
+Value: 0x27e
+----------------------------------------
+Address: 140017370
+Type: TerminatedCString
+Size: 19 bytes
+Value: GetModuleFileNameW
+----------------------------------------
+Address: 140017384
+Type: word
+Size: 2 bytes
+Value: 0x221
+----------------------------------------
+Address: 140017386
+Type: TerminatedCString
+Size: 18 bytes
+Value: GetCurrentProcess
+----------------------------------------
+Address: 140017398
+Type: word
+Size: 2 bytes
+Value: 0x168
+----------------------------------------
+Address: 14001739a
+Type: TerminatedCString
+Size: 12 bytes
+Value: ExitProcess
+----------------------------------------
+Address: 1400173a6
+Type: word
+Size: 2 bytes
+Value: 0x5ac
+----------------------------------------
+Address: 1400173a8
+Type: TerminatedCString
+Size: 17 bytes
+Value: TerminateProcess
+----------------------------------------
+Address: 1400173ba
+Type: word
+Size: 2 bytes
+Value: 0x281
+----------------------------------------
+Address: 1400173bc
+Type: TerminatedCString
+Size: 19 bytes
+Value: GetModuleHandleExW
+----------------------------------------
+Address: 1400173d0
+Type: word
+Size: 2 bytes
+Value: 0x35a
+----------------------------------------
+Address: 1400173d2
+Type: TerminatedCString
+Size: 10 bytes
+Value: HeapAlloc
+----------------------------------------
+Address: 1400173dc
+Type: word
+Size: 2 bytes
+Value: 0x35e
+----------------------------------------
+Address: 1400173de
+Type: TerminatedCString
+Size: 9 bytes
+Value: HeapFree
+----------------------------------------
+Address: 1400173e8
+Type: word
+Size: 2 bytes
+Value: 0x17f
+----------------------------------------
+Address: 1400173ea
+Type: TerminatedCString
+Size: 10 bytes
+Value: FindClose
+----------------------------------------
+Address: 1400173f4
+Type: word
+Size: 2 bytes
+Value: 0x185
+----------------------------------------
+Address: 1400173f6
+Type: TerminatedCString
+Size: 17 bytes
+Value: FindFirstFileExW
+----------------------------------------
+Address: 140017408
+Type: word
+Size: 2 bytes
+Value: 0x196
+----------------------------------------
+Address: 14001740a
+Type: TerminatedCString
+Size: 14 bytes
+Value: FindNextFileW
+----------------------------------------
+Address: 140017418
+Type: word
+Size: 2 bytes
+Value: 0x39b
+----------------------------------------
+Address: 14001741a
+Type: TerminatedCString
+Size: 16 bytes
+Value: IsValidCodePage
+----------------------------------------
+Address: 14001742a
+Type: word
+Size: 2 bytes
+Value: 0x1bc
+----------------------------------------
+Address: 14001742c
+Type: TerminatedCString
+Size: 7 bytes
+Value: GetACP
+----------------------------------------
+Address: 140017434
+Type: word
+Size: 2 bytes
+Value: 0x2a3
+----------------------------------------
+Address: 140017436
+Type: TerminatedCString
+Size: 9 bytes
+Value: GetOEMCP
+----------------------------------------
+Address: 140017440
+Type: word
+Size: 2 bytes
+Value: 0x1cb
+----------------------------------------
+Address: 140017442
+Type: TerminatedCString
+Size: 10 bytes
+Value: GetCPInfo
+----------------------------------------
+Address: 14001744c
+Type: word
+Size: 2 bytes
+Value: 0x1e0
+----------------------------------------
+Address: 14001744e
+Type: TerminatedCString
+Size: 16 bytes
+Value: GetCommandLineA
+----------------------------------------
+Address: 14001745e
+Type: word
+Size: 2 bytes
+Value: 0x1e1
+----------------------------------------
+Address: 140017460
+Type: TerminatedCString
+Size: 16 bytes
+Value: GetCommandLineW
+----------------------------------------
+Address: 140017470
+Type: word
+Size: 2 bytes
+Value: 0x3ff
+----------------------------------------
+Address: 140017472
+Type: TerminatedCString
+Size: 20 bytes
+Value: MultiByteToWideChar
+----------------------------------------
+Address: 140017486
+Type: word
+Size: 2 bytes
+Value: 0x61f
+----------------------------------------
+Address: 140017488
+Type: TerminatedCString
+Size: 20 bytes
+Value: WideCharToMultiByte
+----------------------------------------
+Address: 14001749c
+Type: word
+Size: 2 bytes
+Value: 0x242
+----------------------------------------
+Address: 14001749e
+Type: TerminatedCString
+Size: 23 bytes
+Value: GetEnvironmentStringsW
+----------------------------------------
+Address: 1400174b6
+Type: word
+Size: 2 bytes
+Value: 0x1b4
+----------------------------------------
+Address: 1400174b8
+Type: TerminatedCString
+Size: 24 bytes
+Value: FreeEnvironmentStringsW
+----------------------------------------
+Address: 1400174d0
+Type: word
+Size: 2 bytes
+Value: 0x568
+----------------------------------------
+Address: 1400174d2
+Type: TerminatedCString
+Size: 13 bytes
+Value: SetStdHandle
+----------------------------------------
+Address: 1400174e0
+Type: word
+Size: 2 bytes
+Value: 0x259
+----------------------------------------
+Address: 1400174e2
+Type: TerminatedCString
+Size: 12 bytes
+Value: GetFileType
+----------------------------------------
+Address: 1400174ee
+Type: word
+Size: 2 bytes
+Value: 0x2e6
+----------------------------------------
+Address: 1400174f0
+Type: TerminatedCString
+Size: 15 bytes
+Value: GetStringTypeW
+----------------------------------------
+Address: 140017500
+Type: word
+Size: 2 bytes
+Value: 0x1a4
+----------------------------------------
+Address: 140017502
+Type: TerminatedCString
+Size: 9 bytes
+Value: FlsAlloc
+----------------------------------------
+Address: 14001750c
+Type: word
+Size: 2 bytes
+Value: 0x1a6
+----------------------------------------
+Address: 14001750e
+Type: TerminatedCString
+Size: 12 bytes
+Value: FlsGetValue
+----------------------------------------
+Address: 14001751a
+Type: word
+Size: 2 bytes
+Value: 0x1a7
+----------------------------------------
+Address: 14001751c
+Type: TerminatedCString
+Size: 12 bytes
+Value: FlsSetValue
+----------------------------------------
+Address: 140017528
+Type: word
+Size: 2 bytes
+Value: 0x1a5
+----------------------------------------
+Address: 14001752a
+Type: TerminatedCString
+Size: 8 bytes
+Value: FlsFree
+----------------------------------------
+Address: 140017532
+Type: word
+Size: 2 bytes
+Value: 0x3c1
+----------------------------------------
+Address: 140017534
+Type: TerminatedCString
+Size: 13 bytes
+Value: LCMapStringW
+----------------------------------------
+Address: 140017542
+Type: word
+Size: 2 bytes
+Value: 0x2c3
+----------------------------------------
+Address: 140017544
+Type: TerminatedCString
+Size: 15 bytes
+Value: GetProcessHeap
+----------------------------------------
+Address: 140017554
+Type: word
+Size: 2 bytes
+Value: 0x363
+----------------------------------------
+Address: 140017556
+Type: TerminatedCString
+Size: 9 bytes
+Value: HeapSize
+----------------------------------------
+Address: 140017560
+Type: word
+Size: 2 bytes
+Value: 0x361
+----------------------------------------
+Address: 140017562
+Type: TerminatedCString
+Size: 12 bytes
+Value: HeapReAlloc
+----------------------------------------
+Address: 14001756e
+Type: word
+Size: 2 bytes
+Value: 0x1a9
+----------------------------------------
+Address: 140017570
+Type: TerminatedCString
+Size: 17 bytes
+Value: FlushFileBuffers
+----------------------------------------
+Address: 140017582
+Type: word
+Size: 2 bytes
+Value: 0x20a
+----------------------------------------
+Address: 140017584
+Type: TerminatedCString
+Size: 19 bytes
+Value: GetConsoleOutputCP
+----------------------------------------
+Address: 140017598
+Type: word
+Size: 2 bytes
+Value: 0x206
+----------------------------------------
+Address: 14001759a
+Type: TerminatedCString
+Size: 15 bytes
+Value: GetConsoleMode
+----------------------------------------
+Address: 1400175aa
+Type: word
+Size: 2 bytes
+Value: 0x53f
+----------------------------------------
+Address: 1400175ac
+Type: TerminatedCString
+Size: 17 bytes
+Value: SetFilePointerEx
+----------------------------------------
+Address: 1400175be
+Type: word
+Size: 2 bytes
+Value: 0xce
+----------------------------------------
+Address: 1400175c0
+Type: TerminatedCString
+Size: 12 bytes
+Value: CreateFileW
+----------------------------------------
+Address: 1400175cc
+Type: word
+Size: 2 bytes
+Value: 0x89
+----------------------------------------
+Address: 1400175ce
+Type: TerminatedCString
+Size: 12 bytes
+Value: CloseHandle
+----------------------------------------
+Address: 1400175da
+Type: word
+Size: 2 bytes
+Value: 0x632
+----------------------------------------
+Address: 1400175dc
+Type: TerminatedCString
+Size: 14 bytes
+Value: WriteConsoleW
+----------------------------------------

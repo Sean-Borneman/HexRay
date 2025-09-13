@@ -1,0 +1,255 @@
+Data Section: _RDATA
+Address Range: 14001b000 - 14001b1ff
+Size: 512 bytes
+============================================================
+
+Address: 14001b000
+Type: uint
+Size: 4 bytes
+Value: 0x1ec2
+----------------------------------------
+Address: 14001b004
+Type: uint
+Size: 4 bytes
+Value: 0x1ebe
+----------------------------------------
+Address: 14001b008
+Type: uint
+Size: 4 bytes
+Value: 0x1ecb
+----------------------------------------
+Address: 14001b00c
+Type: uint
+Size: 4 bytes
+Value: 0x1eb9
+----------------------------------------
+Address: 14001b010
+Type: uint
+Size: 4 bytes
+Value: 0x1ef4
+----------------------------------------
+Address: 14001b014
+Type: uint
+Size: 4 bytes
+Value: 0x1ee4
+----------------------------------------
+Address: 14001b018
+Type: uint
+Size: 4 bytes
+Value: 0x1ec7
+----------------------------------------
+Address: 14001b01c
+Type: uint
+Size: 4 bytes
+Value: 0x1eb5
+----------------------------------------
+Address: 14001b020
+Type: uint
+Size: 4 bytes
+Value: 0x1f1a
+----------------------------------------
+Address: 14001b024
+Type: uint
+Size: 4 bytes
+Value: 0x1f07
+----------------------------------------
+Address: 14001b028
+Type: uint
+Size: 4 bytes
+Value: 0x1f10
+----------------------------------------
+Address: 14001b02c
+Type: uint
+Size: 4 bytes
+Value: 0x1ef9
+----------------------------------------
+Address: 14001b030
+Type: uint
+Size: 4 bytes
+Value: 0x1ef0
+----------------------------------------
+Address: 14001b034
+Type: uint
+Size: 4 bytes
+Value: 0x1ee0
+----------------------------------------
+Address: 14001b038
+Type: uint
+Size: 4 bytes
+Value: 0x1ec3
+----------------------------------------
+Address: 14001b03c
+Type: uint
+Size: 4 bytes
+Value: 0x1eb1
+----------------------------------------
+Address: 14001b064
+Type: uint
+Size: 4 bytes
+Value: 0x210b
+----------------------------------------
+Address: 14001b068
+Type: uint
+Size: 4 bytes
+Value: 0x2104
+----------------------------------------
+Address: 14001b06c
+Type: uint
+Size: 4 bytes
+Value: 0x20fd
+----------------------------------------
+Address: 14001b070
+Type: uint
+Size: 4 bytes
+Value: 0x20f6
+----------------------------------------
+Address: 14001b074
+Type: uint
+Size: 4 bytes
+Value: 0x20ef
+----------------------------------------
+Address: 14001b078
+Type: uint
+Size: 4 bytes
+Value: 0x20e5
+----------------------------------------
+Address: 14001b07c
+Type: uint
+Size: 4 bytes
+Value: 0x20db
+----------------------------------------
+Address: 14001b080
+Type: uint
+Size: 4 bytes
+Value: 0x20d1
+----------------------------------------
+Address: 14001b084
+Type: uint
+Size: 4 bytes
+Value: 0x20c7
+----------------------------------------
+Address: 14001b0b0
+Type: uint
+Size: 4 bytes
+Value: 0x2d6e
+----------------------------------------
+Address: 14001b0b4
+Type: uint
+Size: 4 bytes
+Value: 0x2e54
+----------------------------------------
+Address: 14001b0b8
+Type: uint
+Size: 4 bytes
+Value: 0x2da8
+----------------------------------------
+Address: 14001b0bc
+Type: uint
+Size: 4 bytes
+Value: 0x2ddf
+----------------------------------------
+Address: 14001b0c0
+Type: uint
+Size: 4 bytes
+Value: 0x2e5a
+----------------------------------------
+Address: 14001b0c4
+Type: uint
+Size: 4 bytes
+Value: 0x2e3f
+----------------------------------------
+Address: 14001b0c8
+Type: uint
+Size: 4 bytes
+Value: 0x2e30
+----------------------------------------
+Address: 14001b0cc
+Type: uint
+Size: 4 bytes
+Value: 0x2db0
+----------------------------------------
+Address: 14001b0d0
+Type: uint
+Size: 4 bytes
+Value: 0x2e4d
+----------------------------------------
+Address: 14001b0d4
+Type: uint
+Size: 4 bytes
+Value: 0x2e15
+----------------------------------------
+Address: 14001b0d8
+Type: uint
+Size: 4 bytes
+Value: 0x2e06
+----------------------------------------
+Address: 14001b0dc
+Type: uint
+Size: 4 bytes
+Value: 0x2d90
+----------------------------------------
+Address: 14001b0e0
+Type: uint
+Size: 4 bytes
+Value: 0x2e23
+----------------------------------------
+Address: 14001b0e4
+Type: uint
+Size: 4 bytes
+Value: 0x2df0
+----------------------------------------
+Address: 14001b0e8
+Type: uint
+Size: 4 bytes
+Value: 0x2dc8
+----------------------------------------
+Address: 14001b0ec
+Type: uint
+Size: 4 bytes
+Value: 0x2d70
+----------------------------------------
+Address: 14001b114
+Type: uint
+Size: 4 bytes
+Value: 0x3166
+----------------------------------------
+Address: 14001b118
+Type: uint
+Size: 4 bytes
+Value: 0x315f
+----------------------------------------
+Address: 14001b11c
+Type: uint
+Size: 4 bytes
+Value: 0x3151
+----------------------------------------
+Address: 14001b120
+Type: uint
+Size: 4 bytes
+Value: 0x3143
+----------------------------------------
+Address: 14001b124
+Type: uint
+Size: 4 bytes
+Value: 0x3135
+----------------------------------------
+Address: 14001b128
+Type: uint
+Size: 4 bytes
+Value: 0x3121
+----------------------------------------
+Address: 14001b12c
+Type: uint
+Size: 4 bytes
+Value: 0x310d
+----------------------------------------
+Address: 14001b130
+Type: uint
+Size: 4 bytes
+Value: 0x30f9
+----------------------------------------
+Address: 14001b134
+Type: uint
+Size: 4 bytes
+Value: 0x30e5
+----------------------------------------

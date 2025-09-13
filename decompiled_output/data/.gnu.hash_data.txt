@@ -1,0 +1,40 @@
+Data Section: .gnu.hash
+Address Range: 001003b0 - 001003d3
+Size: 36 bytes
+============================================================
+
+Address: 001003b0
+Type: dword
+Size: 4 bytes
+Value: 0x2
+----------------------------------------
+Address: 001003b4
+Type: dword
+Size: 4 bytes
+Value: 0xa
+----------------------------------------
+Address: 001003b8
+Type: dword
+Size: 4 bytes
+Value: 0x1
+----------------------------------------
+Address: 001003bc
+Type: dword
+Size: 4 bytes
+Value: 0x6
+----------------------------------------
+Address: 001003c0
+Type: qword[1]
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 001003c8
+Type: dword[2]
+Size: 8 bytes
+Value: undefined
+----------------------------------------
+Address: 001003d0
+Type: dword[1]
+Size: 4 bytes
+Value: undefined
+----------------------------------------

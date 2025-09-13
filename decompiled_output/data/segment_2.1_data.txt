@@ -1,0 +1,41 @@
+Data Section: segment_2.1
+Address Range: 00100000 - 00100317
+Size: 792 bytes
+============================================================
+
+Address: 00100000
+Type: /ELF/Elf64_Ehdr
+pack(disabled)
+Structure Elf64_Ehdr {
+   0   byte   1   e_ident_magic_num   ""
+   1   string   3   e_ident_magic_str   ""
+   4   byte   1   e_ident_class   ""
+   5   byte   1   e_ident_data   ""
+   6   byte   1   e_ident_version   ""
+   7   byte   1   e_ident_osabi   ""
+   8   byte   1   e_ident_abiversion   ""
+   9   byte[7]   7   e_ident_pad   ""
+   16   word   2   e_type   ""
+   18   word   2   e_machine   ""
+   20   dword   4   e_version   ""
+   24   qword   8   e_entry   ""
+   32   qword   8   e_phoff   ""
+   40   qword   8   e_shoff   ""
+   48   dword   4   e_flags   ""
+   52   word   2   e_ehsize   ""
+   54   word   2   e_phentsize   ""
+   56   word   2   e_phnum   ""
+   58   word   2   e_shentsize   ""
+   60   word   2   e_shnum   ""
+   62   word   2   e_shstrndx   ""
+}
+Length: 64 Alignment: 1
+
+Size: 64 bytes
+Value: undefined
+----------------------------------------
+Address: 00100040
+Type: Elf64_Phdr[13]
+Size: 728 bytes
+Value: undefined
+----------------------------------------
