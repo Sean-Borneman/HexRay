@@ -1,10 +1,31 @@
 # Hack-CMU-2025
 To set up package dependencies
 
+# install ghidra
+needs JDK 22+ installed first
+ghidra version 11.14.2
+in main repo: mkdir Ghidra_open_source_install
+put in "Ghidra_open_source_install" folder in main repo
+set up environment variable:
+
+$env:GHIDRA_INSTALL_DIR = "C:\Users\James\Documents\Hack-CMU-2025\Ghidra_full_open_source_install\ghidra_11.4.2_PUBLIC"
+
+
+# open up virtual environment
+python -m venv venv
+./venv/Scripts/activate
+
+# Download dependencies
 git clone https://github.com/Denloob/ghidra-cli
+pip -m pip  install anthropic
+python -m pip install pyghidra
+
+# install npm
+Install npm from your favorite source
+https://nodejs.org/en/download
 
 # Basic usage (analyzes everything)
-python main_pipeline.py /path/to/binary
+python .\backend\main.py 
 
 # With environment variable for API key
 export ANTHROPIC_API_KEY="your-api-key"

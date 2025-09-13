@@ -5,9 +5,11 @@
 *.exe
 
 # Dependencies
+Ghidra_full_open_source_install/ghidra_11.4.2_PUBLIC
 node_modules/
 vendor/
 .venv/
+/venv/
 
 # Logs
 *.log
@@ -20,5 +22,9 @@ npm-debug.log
 
 # Sensitive data
 .env
-/Ghidra_full_open_source_install/
 backend/config.json
+
+#storage
+./storage/results/
+./storage/uploads/
+./storage/working/
