@@ -5,234 +5,162 @@
 #include <windows.h>
 #include <evntprov.h>
 
-// ETW callback function for event registration
-void ETW_Callback(LPCGUID SourceId, ULONG ControlCode, UCHAR Level, 
-                  ULONGLONG MatchAnyKeyword, ULONGLONG MatchAllKeyword, 
-                  PEVENT_FILTER_DESCRIPTOR FilterData, PVOID CallbackContext)
+// ETW event callback function
+void ETW_EventCallback(REGHANDLE RegHandle, int EventType, unsigned char Level, 
+                      ULONGLONG MatchAnyKeyword, ULONGLONG MatchAllKeyword, 
+                      PEVENT_FILTER_DESCRIPTOR FilterData, int *CallbackContext)
 {
-    void (*callback_func)(void);
-    int *context = (int *)CallbackContext;
+    int value;
     
-    if (context != NULL) {
-        if (ControlCode == 0) {
-            *context = 0;
+    if (CallbackContext != NULL) {
+        if (EventType == 0) {
+            *CallbackContext = 0;
         }
-        else if (ControlCode == 1) {
-            context[5] = (int)FilterData;
-            int size = 0x100;
-            if (Level != 0) {
-                size = (Level & 0xff) + 1;
+        else if (EventType == 1) {
+            if (Level == 0) {
+                value = 0x100;
             }
-            *context = size;
-            context[2] = (int)MatchAnyKeyword;
-            context[3] = (int)MatchAllKeyword;
-            context[4] = (int)FilterData;
+            else {
+                value = Level + 1;
+            }
+            *CallbackContext = value;
+            *(ULONGLONG *)(CallbackContext + 4) = MatchAnyKeyword;
+            *(ULONGLONG *)(CallbackContext + 6) = MatchAllKeyword;
         }
         
-        callback_func = (void (*)(void))context[8];
-        if (callback_func != NULL) {
-            // Guard check for indirect call
-            callback_func();
+        if (*(ULONGLONG *)(CallbackContext + 10) != 0) {
+            ((void (*)(REGHANDLE))*(ULONGLONG *)(CallbackContext + 10))(RegHandle);
         }
     }
 }
 
-// Initialize ETW event registration
-void Initialize_ETW(void)
+// ETW event writing function
+void _tlgWriteTransfer_EtwWriteTransfer(ULONGLONG ProviderContext, unsigned char *EventMetadata,
+                                       LPCGUID ActivityId, LPCGUID RelatedActivityId, 
+                                       ULONG UserDataCount, PEVENT_DATA_DESCRIPTOR UserData)
 {
-    GUID provider_guid;
-    ULONG result;
+    EVENT_DESCRIPTOR EventDesc;
     
-    // Load provider GUID from data section
-    provider_guid.Data1 = *(ULONG *)(0x403004 - 0x10);
-    provider_guid.Data2 = *(USHORT *)(0x403004 - 0xc);
-    provider_guid.Data3 = *(USHORT *)(0x403004 - 0xa);
-    memcpy(provider_guid.Data4, (void *)(0x403004 - 8), 8);
+    EventDesc.Id = (USHORT)(*EventMetadata << 24);
+    EventDesc.Version = (UCHAR)(*(USHORT *)(EventMetadata + 1));
+    EventDesc.Channel = 0;
+    EventDesc.Level = 0;
+    EventDesc.Opcode = 0;
+    EventDesc.Task = 0;
+    EventDesc.Keyword = *(ULONGLONG *)(EventMetadata + 3);
+    
+    UserData->Ptr = *(ULONGLONG *)(ProviderContext + 8);
+    UserData->Size = (ULONG)**(USHORT **)(ProviderContext + 8);
+    UserData->Reserved = 2;
+    
+    UserData[1].Ptr = (ULONGLONG)(EventMetadata + 0xb);
+    UserData[1].Size = (ULONG)*(USHORT *)(EventMetadata + 0xb);
+    UserData[1].Reserved = 1;
+    
+    EventWriteTransfer(*(REGHANDLE *)(ProviderContext + 0x20), &EventDesc, 
+                      ActivityId, RelatedActivityId, UserDataCount, UserData);
+}
+
+// PE section finder
+PIMAGE_SECTION_HEADER _FindPESection(PBYTE pImageBase, DWORD_PTR rva)
+{
+    int ntHeaderOffset = *(int *)(pImageBase + 0x3c);
+    UINT sectionIndex = 0;
+    PIMAGE_SECTION_HEADER pSection = (PIMAGE_SECTION_HEADER)
+        (pImageBase + (ULONGLONG)*(USHORT *)(pImageBase + ntHeaderOffset + 0x14) + 
+         0x18 + ntHeaderOffset);
+    
+    USHORT numberOfSections = *(USHORT *)(pImageBase + ntHeaderOffset + 6);
+    
+    if (numberOfSections != 0) {
+        do {
+            if ((pSection->VirtualAddress <= rva) &&
+                (rva < pSection->Misc.PhysicalAddress + pSection->VirtualAddress)) {
+                return pSection;
+            }
+            sectionIndex++;
+            pSection++;
+        } while (sectionIndex < numberOfSections);
+    }
+    return NULL;
+}
+
+// Check if address is in non-writable section
+BOOL _IsNonwritableInCurrentImage(PBYTE pTarget)
+{
+    PIMAGE_SECTION_HEADER pSection;
+    
+    if (!IsValidPEImage((short *)&IMAGE_DOS_HEADER_140000000)) {
+        return FALSE;
+    }
+    
+    pSection = _FindPESection((PBYTE)&IMAGE_DOS_HEADER_140000000, 
+                             (DWORD_PTR)(pTarget - 0x140000000));
+    if (pSection != NULL) {
+        return (BOOL)(~(pSection->Characteristics >> 0x1f) & 1);
+    }
+    return FALSE;
+}
+
+// Validate PE image
+bool IsValidPEImage(short *pImageBase)
+{
+    if ((*pImageBase == 0x5a4d) &&  // "MZ" signature
+        (*(int *)((ULONGLONG)*(int *)(pImageBase + 0x1e) + (ULONGLONG)pImageBase) == 0x4550)) { // "PE" signature
+        return (short)((int *)((ULONGLONG)*(int *)(pImageBase + 0x1e) + (ULONGLONG)pImageBase))[6] == 0x20b;
+    }
+    return false;
+}
+
+// Main application function
+int MainApplication(void)
+{
+    ULONG result;
+    const char *eventName = "CalculatorStarted";
+    EVENT_DATA_DESCRIPTOR eventData[3];
     
     // Register ETW provider
-    result = EventRegister(&provider_guid, ETW_Callback, (PVOID)0x403000, (PREGHANDLE)0x403018);
+    result = EventRegister((LPCGUID)0x140002489, ETW_EventCallback, 
+                          (PVOID)0x140003000, (PREGHANDLE)&DAT_140003020);
     
     if (result == 0) {
-        EventSetInformation(*(REGHANDLE *)0x403018, *(REGHANDLE *)0x40301c, 2, 
-                          (PVOID)0x403004, *(USHORT *)0x403004);
-    }
-}
-
-// Write ETW event
-void Write_ETW_Event(int context_ptr, BYTE *event_data, LPCGUID activity_id, 
-                     LPCGUID related_activity_id, ULONG user_data_count, 
-                     PEVENT_DATA_DESCRIPTOR user_data)
-{
-    EVENT_DESCRIPTOR event_desc;
-    USHORT data_size;
-    
-    // Build event descriptor from event data
-    event_desc.Id = *event_data;
-    event_desc.Version = *(USHORT *)(event_data + 1);
-    event_desc.Channel = *(BYTE *)(event_data + 3);
-    event_desc.Level = *(BYTE *)(event_data + 4);
-    event_desc.Opcode = *(BYTE *)(event_data + 5);
-    event_desc.Task = *(USHORT *)(event_data + 6);
-    event_desc.Keyword = *(ULONGLONG *)(event_data + 8);
-    
-    // Set up user data descriptors
-    user_data[0].Ptr = (ULONGLONG)*(void **)(context_ptr + 4);
-    user_data[0].Size = **(USHORT **)(context_ptr + 4);
-    user_data[0].Reserved = 2;
-    
-    data_size = *(USHORT *)(event_data + 0xb);
-    user_data[1].Ptr = (ULONGLONG)(event_data + 0xb);
-    user_data[1].Size = data_size;
-    user_data[1].Reserved = 1;
-    
-    EventWriteTransfer(*(REGHANDLE *)(context_ptr + 0x18), &event_desc, 
-                      activity_id, related_activity_id, user_data_count, user_data);
-}
-
-// Main calculator launcher function
-void Launch_Calculator(void)
-{
-    EVENT_DATA_DESCRIPTOR event_data[2];
-    const char *event_name = "CalculatorStarted";
-    
-    Initialize_ETW();
-    
-    // Check ETW conditions and log event if appropriate
-    if ((*(int *)0x403000 > 5) && ((*(int *)0x40300c & 0x20000) != 0)) {
-        if ((*(int *)0x403010 == 0) && ((*(int *)0x403014 & 0x20000) == *(int *)0x403014)) {
-            Write_ETW_Event(0x403000, (BYTE *)0x401259, NULL, NULL, 3, event_data);
-        }
+        EventSetInformation(DAT_140003020, 2);
     }
     
-    // Launch Windows Calculator using ms-calculator protocol
+    // Check if ETW logging is enabled and write event
+    if (((5 < DAT_140003000) && ((DAT_140003010 & 0x2000000000000) != 0)) &&
+        ((DAT_140003018 & 0x2000000000000) == DAT_140003018)) {
+        
+        eventData[2].Size = 0;
+        eventData[2].Ptr = (ULONGLONG)eventName;
+        eventData[2].Reserved = 0x12;
+        
+        _tlgWriteTransfer_EtwWriteTransfer(0x140003000, (unsigned char *)&DAT_140002489,
+                                         NULL, NULL, 3, eventData);
+    }
+    
+    // Launch Windows Calculator
     ShellExecuteW(NULL, NULL, L"ms-calculator:", NULL, NULL, SW_SHOWNORMAL);
-}
-
-// Security cookie initialization
-void Initialize_Security_Cookie(void)
-{
-    FILETIME file_time;
-    LARGE_INTEGER perf_counter;
-    DWORD process_id, thread_id, tick_count;
-    UINT cookie = 0;
-    
-    if ((*(UINT *)0x403028 == 0) || (*(UINT *)0x403028 == 0xbb40e64e)) {
-        GetSystemTimeAsFileTime(&file_time);
-        cookie = file_time.dwHighDateTime ^ file_time.dwLowDateTime;
-        
-        process_id = GetCurrentProcessId();
-        cookie ^= process_id;
-        
-        thread_id = GetCurrentThreadId();
-        cookie ^= thread_id;
-        
-        tick_count = GetTickCount();
-        cookie ^= tick_count;
-        
-        QueryPerformanceCounter(&perf_counter);
-        cookie ^= perf_counter.HighPart ^ perf_counter.LowPart;
-        
-        *(UINT *)0x403028 = (cookie != 0) ? cookie : 0xbb40e64e;
-    }
-    
-    *(UINT *)0x40302c = ~*(UINT *)0x403028;
-}
-
-// C runtime initialization
-int Initialize_CRT(void)
-{
-    int app_type;
-    int *mode_ptr;
-    
-    app_type = 2; // GUI application
-    __set_app_type(app_type);
-    
-    // Set file mode
-    mode_ptr = (int *)__p__fmode();
-    *mode_ptr = *(int *)0x403388;
-    
-    // Set COM mode
-    mode_ptr = (int *)__p__commode();
-    *mode_ptr = *(int *)0x40337c;
-    
-    // Set math error handler
-    if (*(int *)0x403030 == 0) {
-        __setusermatherr((int (*)(struct _exception *))0x401e40);
-    }
-    
-    // Set floating point control
-    _controlfp(0x10000, 0x30000);
     
     return 0;
 }
 
-// Main entry point
-int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
-{
-    STARTUPINFOW startup_info;
-    WCHAR *cmd_line;
-    WCHAR ch;
-    BOOL in_quotes = FALSE;
-    
-    GetStartupInfoW(&startup_info);
-    
-    // Initialize C runtime
-    Initialize_CRT();
-    
-    // Parse command line
-    cmd_line = *(WCHAR **)_wcmdln;
-    if (cmd_line != NULL) {
-        while (*cmd_line != 0) {
-            ch = *cmd_line;
-            if (ch < 0x21) {
-                if (ch == 0) break;
-                if (!in_quotes) {
-                    while (*cmd_line != 0 && *cmd_line < 0x21) {
-                        cmd_line++;
-                    }
-                    break;
-                }
-            }
-            if (ch == L'"') {
-                in_quotes = !in_quotes;
-            }
-            cmd_line++;
-        }
-    }
-    
-    // Launch calculator
-    Launch_Calculator();
-    
-    return 0;
-}
-
-// Program entry point
+// Application entry point
 void entry(void)
 {
-    Initialize_Security_Cookie();
-    WinMain(NULL, NULL, NULL, 0);
+    __security_init_cookie();
+    MainApplication();
 }
 
-// Exception handler
-LONG WINAPI Exception_Handler(EXCEPTION_POINTERS *exception_info)
+// Exception filter
+int ExceptionFilter(_EXCEPTION_POINTERS *ExceptionInfo)
 {
-    EXCEPTION_RECORD *record = exception_info->ExceptionRecord;
-    
-    if ((record->ExceptionCode == 0xe06d7363) && (record->NumberParameters == 3)) {
-        DWORD param = record->ExceptionInformation[2];
-        if (param == 0x19930520 || param == 0x19930521 || 
-            param == 0x19930522 || param == 0x1994000) {
-            terminate();
-        }
-    }
-    
-    return EXCEPTION_CONTINUE_SEARCH;
+    return _XcptFilter(ExceptionInfo->ExceptionRecord->ExceptionCode, ExceptionInfo);
 }
 
-// Set up exception handling
-int Setup_Exception_Handler(void)
+// Check for specific exception code
+bool IsSpecificException(EXCEPTION_POINTERS **ExceptionInfo)
 {
-    SetUnhandledExceptionFilter(Exception_Handler);
-    return 0;
+    return *(int *)**ExceptionInfo == -0x3ffffffb;
 }
 ```

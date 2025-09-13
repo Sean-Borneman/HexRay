@@ -5,7 +5,7 @@
 *.exe
 
 # Dependencies
-Ghidra_full_open_source_install/ghidra_11.4.2_PUBLIC
+Ghidra_full_open_source_install/ghidra_11.4.2_PUBLIC/
 node_modules/
 vendor/
 .venv/
@@ -24,7 +24,11 @@ npm-debug.log
 .env
 backend/config.json
 
-#storage
-./storage/results/
-./storage/uploads/
-./storage/working/
+# Python
+__pycache__/
+*.pyc
+
+# Build outputs / tools
+decompiled_output/
+
+# Storage directories are managed by per-folder .gitignore files
