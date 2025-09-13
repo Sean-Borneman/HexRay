@@ -564,6 +564,8 @@ Examples:
         
         # Print results
         if not args.quiet:
+            # Add cleanup here
+            pipeline.llm_analyzer._cleanup_decompiled_output()
             pipeline.print_results(results)
         
         # Exit successfully

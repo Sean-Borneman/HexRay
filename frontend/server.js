@@ -10,6 +10,7 @@ const PORT = 3000;
 // --- Directory Setup ---
 const storageDir = path.join(__dirname, '..', 'storage');
 const uploadsDir = path.join(storageDir, 'uploads');
+const decomp_out = path.join(__dirname, '..', 'decompiled_output');
 const resultsDir = path.join(storageDir, 'results');
 
 [storageDir, uploadsDir, resultsDir].forEach(dir => {
@@ -113,6 +114,7 @@ app.post('/cleanup', (req, res) => {
     };
     cleanupDirectory(uploadsDir);
     cleanupDirectory(resultsDir);
+    cleanupDirectory(decomp_out);
     res.json({ message: 'Server directories cleaned up successfully.' });
 });
 
