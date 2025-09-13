@@ -1,0 +1,23 @@
+# Build artifacts
+/build/
+/dist/
+*.o
+*.exe
+
+# Dependencies
+node_modules/
+vendor/
+.venv/
+
+# Logs
+*.log
+npm-debug.log
+
+# IDE and Editor files
+.idea/
+.vscode/
+.DS_Store
+
+# Sensitive data
+.env
+/Ghidra_full_open_source_install/

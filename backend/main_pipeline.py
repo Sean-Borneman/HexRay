@@ -158,4 +158,105 @@ class DisassemblyPipeline:
         print("\nAll files saved to: {}".format(
             self.storage_dir.absolute()
         ))
-        print("=" * 60
+        print("=" * 60)
+
+def main():
+    """Main entry point for the pipeline"""
+    parser = argparse.ArgumentParser(
+        description='Complete Ghidra Disassembly and LLM Analysis Pipeline',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Basic usage (analyzes everything)
+  python main_pipeline.py /path/to/binary
+
+  # Only analyze code sections
+  python main_pipeline.py binary.exe --no-data
+
+  # Use custom prompt
+  python main_pipeline.py binary --prompt "Focus on crypto functions"
+
+  # Skip summary generation
+  python main_pipeline.py binary --no-summary
+
+  # Use specific model
+  python main_pipeline.py binary --model claude-3-opus-20240229
+        """
+    )
+    
+    # Required arguments
+    parser.add_argument('binary', help='Path to binary file to analyze')
+    
+    # Ghidra options
+    parser.add_argument('--ghidra-path', default='ghidra-cli',
+                       help='Path to ghidra-cli executable (default: ghidra-cli)')
+    
+    # API options
+    parser.add_argument('--api-key', 
+                       help='Anthropic API key (or set ANTHROPIC_API_KEY env var)')
+    parser.add_argument('--model', default='claude-3-5-sonnet-20241022',
+                       help='LLM model to use (default: claude-3-5-sonnet-20241022)')
+    
+    # Analysis options
+    parser.add_argument('--no-code', action='store_true',
+                       help='Skip code analysis')
+    parser.add_argument('--no-data', action='store_true',
+                       help='Skip data analysis')
+    parser.add_argument('--no-summary', action='store_true',
+                       help='Skip summary generation')
+    parser.add_argument('--prompt', 
+                       help='Custom prompt for LLM analysis')
+    
+    # Output options
+    parser.add_argument('--quiet', action='store_true',
+                       help='Minimal output')
+    parser.add_argument('--verbose', action='store_true',
+                       help='Verbose output')
+    
+    args = parser.parse_args()
+    
+    # Validate binary exists
+    if not Path(args.binary).exists():
+        print(f"Error: Binary file not found: {args.binary}")
+        sys.exit(1)
+    
+    # Create pipeline
+    try:
+        pipeline = DisassemblyPipeline(
+            ghidra_path=args.ghidra_path,
+            api_key=args.api_key,
+            model=args.model
+        )
+    except Exception as e:
+        print(f"Error initializing pipeline: {e}")
+        sys.exit(1)
+    
+    # Run pipeline
+    try:
+        results = pipeline.run_pipeline(
+            binary_path=args.binary,
+            analyze_code=not args.no_code,
+            analyze_data=not args.no_data,
+            custom_prompt=args.prompt,
+            generate_summary=not args.no_summary
+        )
+        
+        # Print results
+        if not args.quiet:
+            pipeline.print_results(results)
+        
+        # Exit successfully
+        sys.exit(0)
+        
+    except KeyboardInterrupt:
+        print("\n\nPipeline interrupted by user")
+        sys.exit(130)
+    except Exception as e:
+        print(f"\nError during pipeline execution: {e}")
+        if args.verbose:
+            import traceback
+            traceback.print_exc()
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()

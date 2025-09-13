@@ -287,5 +287,5 @@ def export_code_and_data():
         if 'project' in locals():
             project.close()
 
-# Run the complete export
-export_code_and_data()
+# # Run the complete export
+# export_code_and_data()

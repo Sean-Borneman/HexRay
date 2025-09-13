@@ -1,13 +1,14 @@
 import subprocess
 import os
 from pathlib import Path
+from ghidraWithDataCall import export_code_and_data
 # from ghidraDecompileToText import export_with_pyghidra
 class SimpleGhidraCLI:
     def __init__(self):
         self.script_path = Path("./ghidra-cli").resolve()
         self.git_bash = self._find_git_bash()
     
-    
+
     def _find_git_bash(self):
         """Find Git Bash executable"""
         possible_paths = [
@@ -145,3 +146,4 @@ def main():
 if __name__ == "__main__":
     main()
     # export_with_pyghidra()
+    export_code_and_data()
