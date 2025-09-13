@@ -4,6 +4,7 @@ import time
 import sys
 import re
 import json
+import shutil
 from pathlib import Path
 from ghidraDecompileTWOFiles import export_consolidated_code_and_data
 from llm_analyzer import LLMAnalyzer
@@ -38,6 +39,48 @@ def _find_original_executable(upload_root: Path) -> Path | None:
         return None
     files.sort(key=lambda p: p.stat().st_mtime, reverse=True)
     return files[0]
+
+def _rm_tree_contents(root: Path):
+    try:
+        if not root.exists():
+            return
+        for child in root.iterdir():
+            try:
+                if child.is_dir():
+                    shutil.rmtree(child, ignore_errors=True)
+                else:
+                    try:
+                        child.unlink(missing_ok=True)  # py3.8+: ignore errors below
+                    except TypeError:
+                        # Fallback for older Python
+                        if child.exists():
+                            child.unlink()
+            except Exception:
+                pass
+    except Exception:
+        pass
+
+def _pre_run_cleanup():
+    """Remove artifacts from previous runs before starting a new one.
+
+    Preserves uploads, deletes analysis outputs:
+      - ./ghidra_projects (entire tree)
+      - ./decompiled_output (entire tree)
+      - ./storage/working (contents)
+      - ./storage/results (contents)
+    """
+    try:
+        print("[Cleanup] Removing previous analysis artifacts...")
+        shutil.rmtree(Path('./ghidra_projects'), ignore_errors=True)
+        shutil.rmtree(Path('./decompiled_output'), ignore_errors=True)
+        _rm_tree_contents(Path('./storage/working'))
+        _rm_tree_contents(Path('./storage/results'))
+        # Ensure directories exist after cleanup
+        Path('./storage/working').mkdir(parents=True, exist_ok=True)
+        Path('./storage/results').mkdir(parents=True, exist_ok=True)
+        print("[Cleanup] Done.")
+    except Exception as e:
+        print(f"[Cleanup] Warning: cleanup encountered an issue: {e}")
 class SimpleGhidraCLI:
     def __init__(self):
         self.script_path = Path("./ghidra-cli").resolve()
@@ -179,6 +222,8 @@ def main():
         print(f"Unexpected Error: {e}")
 
 if __name__ == "__main__":
+    # Always clean stale artifacts before starting a new run
+    _pre_run_cleanup()
     main()
     # export_with_pyghidra()
     
