@@ -5,6 +5,7 @@ Orchestrates the complete Ghidra disassembly and LLM analysis pipeline
 """
 
 import argparse
+import shutil
 import json
 import sys
 from pathlib import Path
@@ -188,7 +189,9 @@ class DisassemblyPipeline:
         if not export_root.exists() or not funcs_dir.exists():
             return None
 
-        merged_c = self.storage_dir / f"{binary_stem}_functions_merged.c"
+        working_dir = self.storage_dir / 'working'
+        working_dir.mkdir(parents=True, exist_ok=True)
+        merged_c = working_dir / f"{binary_stem}_functions_merged.c"
         combined_data = self.storage_dir / f"{binary_stem}_export_data.txt"
 
         # Merge all function .c files
@@ -395,6 +398,14 @@ Examples:
             merged_c_path = Path('./decompiled_output/ALL_FUNCTIONS.c')
             combined_data_path = Path('./decompiled_output/ALL_DATA.txt')
             if merged_c_path.exists():
+                # Also copy the combined functions file into storage/working/
+                try:
+                    (pipeline.storage_dir / 'working').mkdir(parents=True, exist_ok=True)
+                    target_name = f"{Path(args.binary).stem}_functions_merged.c" if args.binary else f"{merged_c_path.stem}_functions_merged.c"
+                    target_path = pipeline.storage_dir / 'working' / target_name
+                    shutil.copyfile(merged_c_path, target_path)
+                except Exception:
+                    pass
                 outputs = pipeline.llm_analyzer.annotate_types_and_summarize(
                     c_file_path=str(merged_c_path),
                     objdump_path=str(combined_data_path) if combined_data_path.exists() else None,
@@ -443,6 +454,14 @@ Examples:
             merged_c_path = Path('./decompiled_output/ALL_FUNCTIONS.c')
             combined_data_path = Path('./decompiled_output/ALL_DATA.txt')
             if merged_c_path.exists():
+                # Also copy the combined functions file into storage/working/
+                try:
+                    (pipeline.storage_dir / 'working').mkdir(parents=True, exist_ok=True)
+                    target_name = f"{merged_c_path.stem}_functions_merged.c"
+                    target_path = pipeline.storage_dir / 'working' / target_name
+                    shutil.copyfile(merged_c_path, target_path)
+                except Exception:
+                    pass
                 outputs = pipeline.llm_analyzer.annotate_types_and_summarize(
                     c_file_path=str(merged_c_path),
                     objdump_path=str(combined_data_path) if combined_data_path.exists() else None,
