@@ -4,13 +4,21 @@ HeXray is a decomiplation tool for binary and .exe files that severs an an evolu
 HeXray takes in your file then either analyses it outputing the deobfuscated c code source file along with a full explanation of the code and its vulnerabilities or (such as in the case of a CTF challenge) attempts to fully exploit the script and grab the flag, defuse the bomb, what have you. 
 ## The HeXray UI
 ### UI upon accepting a file
+
 <img width="2559" height="1336" alt="image" src="https://github.com/user-attachments/assets/931d4374-60ab-43b4-8ae2-3a920e5438c6" />
+
 ### UI after basic analysis (on the windows calculator)
+
 <img width="2558" height="1333" alt="image" src="https://github.com/user-attachments/assets/8c643e1e-6367-4669-80f2-0af594705d9b" />
+
 ### UI after a full auto hack exploit exploration
+
 <img width="2559" height="1346" alt="image" src="https://github.com/user-attachments/assets/00aeddfe-628e-4909-b058-5171e89ecbdb" />
+
 # How it works
+
 HeXray first leverage the ghidra cli to decompile the given file. we then concatonate the C functions and pass it to the anthropic API which de-obfuscates the code (adding typing, changing variable names). After that we use GCC to build the C-code and make sure the AI hasn't hallucenated any functions, this is how we ensuredeterministic behavoir on a probablistic compiler. 
+
 # Instalation instructions (set up package dependencies)
 # install ghidra
 needs JDK 22+ installed first
