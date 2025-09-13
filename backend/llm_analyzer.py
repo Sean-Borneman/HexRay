@@ -84,6 +84,12 @@ class LLMAnalyzer:
         results_dir = self.storage_dir / 'results'
         results_dir.mkdir(parents=True, exist_ok=True)
         return results_dir
+
+    def _get_working_dir(self) -> Path:
+        """Get the working directory under storage (repo-root/storage/working)."""
+        working_dir = self.storage_dir / 'working'
+        working_dir.mkdir(parents=True, exist_ok=True)
+        return working_dir
     
     def _get_api_key(self, provided_key: str = None) -> str:
         """
@@ -368,7 +374,8 @@ Content:
         results_dir = self._get_results_dir()
         out_code = results_dir / f"{base_name}_typed.{out_ext or 'c'}"
         out_summary = results_dir / f"{base_name}_summary.txt"
-        combined_input = results_dir / f"{base_name}_combined.txt"
+        # Save the combined input in working directory for live artifacts
+        combined_input = self._get_working_dir() / f"{base_name}_combined.txt"
 
         # Persist a combined view of inputs for traceability and optional reuse
         try:
