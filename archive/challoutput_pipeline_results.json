@@ -1,0 +1,12 @@
+{
+  "binary_name": "challoutput",
+  "code_file": "storage/challoutput.c",
+  "data_file": "storage/challdump.txt",
+  "analysis_file": null,
+  "summary_file": "/Users/mycomputer/Documents/GitHub/Hack-CMU-2025/storage/challoutput_summary.txt",
+  "typed_code_file": "/Users/mycomputer/Documents/GitHub/Hack-CMU-2025/storage/challoutput_typed.c",
+  "code_chunks_analyzed": 0,
+  "data_chunks_analyzed": 0,
+  "total_chunks": 0,
+  "tokens_used": 0
+}

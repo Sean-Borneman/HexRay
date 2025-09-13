@@ -8,11 +8,18 @@ import json
 import os
 import sys
 import getpass
+import time
 from pathlib import Path
 from typing import List, Dict, Optional
 from dataclasses import dataclass
-import anthropic
-from anthropic import Anthropic
+try:
+    import anthropic  # type: ignore
+    from anthropic import Anthropic  # type: ignore
+    _HAVE_ANTHROPIC = True
+except Exception:
+    anthropic = None  # type: ignore
+    Anthropic = None  # type: ignore
+    _HAVE_ANTHROPIC = False
 
 @dataclass
 class AnalysisChunk:
@@ -32,7 +39,7 @@ class AnalysisResult:
     tokens_used: int = 0
 
 class LLMAnalyzer:
-    def __init__(self, api_key: str = None, model: str = "claude-3-5-sonnet-20241022"):
+    def __init__(self, api_key: str = None, model: str = "claude-sonnet-4-20250514", disable_chunking: bool = True):
         """
         Initialize the LLM Analyzer
         
@@ -40,11 +47,23 @@ class LLMAnalyzer:
             api_key: Anthropic API key (optional, can use env var)
             model: Model to use for analysis
         """
-        self.api_key = self._get_api_key(api_key)
-        self.client = Anthropic(api_key=self.api_key)
+        if _HAVE_ANTHROPIC:
+            self.api_key = self._get_api_key(api_key)
+            self.client = Anthropic(api_key=self.api_key)
+        else:
+            self.api_key = None
+            self.client = None
+            # Surface a concise hint so users don't silently hit offline fallback
+            print("[LLMAnalyzer] Anthropic SDK not found in this interpreter; running offline fallback.")
         self.model = model
         self.max_chunk_size = 8000  # Max tokens per chunk
         self.storage_dir = self._get_storage_dir()
+        self.disable_chunking = disable_chunking
+
+    def _sanitize_basename(self, name: str) -> str:
+        """Create a safe base filename without extensions or spaces."""
+        base = Path(name).stem
+        return "".join(c for c in base if c.isalnum() or c in ("-", "_")) or "output"
     
     def _get_storage_dir(self) -> Path:
         """Get the storage directory"""
@@ -69,15 +88,39 @@ class LLMAnalyzer:
         Returns:
             Valid API key
         """
-        # Priority order: provided key, env var, config file
+        # Priority order: provided key, env var, project config, user config
         if provided_key:
             return provided_key
         
         # Check environment variable
         if os.environ.get('ANTHROPIC_API_KEY'):
             return os.environ.get('ANTHROPIC_API_KEY')
-        
-        # Check config file
+
+        # Check project-local config files (useful for per-repo setup)
+        try:
+            here = Path(__file__).parent
+        except Exception:
+            here = Path.cwd()
+
+        local_candidates = [
+            here / 'config.json',               # backend/config.json
+            here.parent / 'config.json',        # repo-root/config.json
+            Path.cwd() / 'backend' / 'config.json',
+            Path.cwd() / 'config.json',
+        ]
+        for cfg in local_candidates:
+            try:
+                if cfg.exists():
+                    with open(cfg, 'r') as f:
+                        config = json.load(f)
+                        key = config.get('anthropic_api_key')
+                        if key:
+                            return key
+            except Exception:
+                # Ignore malformed local config; fall through to other sources
+                pass
+
+        # Check user config in home directory
         config_file = Path.home() / '.config' / 'ghidra-llm' / 'config.json'
         if config_file.exists():
             with open(config_file, 'r') as f:
@@ -211,6 +254,13 @@ Content:
 ```
 """
         
+        if self.client is None:
+            return AnalysisResult(
+                chunk_type=chunk.chunk_type,
+                chunk_index=chunk.chunk_index,
+                analysis="Anthropic client unavailable; skipped LLM analysis.",
+                tokens_used=0
+            )
         try:
             response = self.client.messages.create(
                 model=self.model,
@@ -240,7 +290,8 @@ Content:
             )
     
     def analyze_file(self, file_path: str, file_type: str = 'code',
-                    custom_prompt: str = None) -> List[AnalysisResult]:
+                    custom_prompt: str = None,
+                    disable_chunking: Optional[bool] = None) -> List[AnalysisResult]:
         """
         Analyze a complete file by chunking and processing
         
@@ -258,8 +309,18 @@ Content:
         with open(file_path, 'r') as f:
             content = f.read()
         
-        # Create chunks
-        chunks = self.chunk_content(content, file_type)
+        # Create chunks (optionally disabled to send as a single chunk)
+        no_chunk = self.disable_chunking if disable_chunking is None else disable_chunking
+        if no_chunk:
+            chunks = [AnalysisChunk(
+                content=content,
+                chunk_type=file_type,
+                chunk_index=0,
+                start_line=0,
+                end_line=len(content.split('\n')) - 1
+            )]
+        else:
+            chunks = self.chunk_content(content, file_type)
         print(f"Created {len(chunks)} chunks for analysis")
         
         # Analyze each chunk
@@ -270,6 +331,192 @@ Content:
             results.append(result)
         
         return results
+
+    def annotate_types_and_summarize(self,
+                                     c_file_path: str,
+                                     objdump_path: Optional[str] = None,
+                                     out_ext: str = 'c') -> Dict[str, str]:
+        """
+        Use the LLM to infer and insert explicit types for functions/variables
+        in a decompiled C file, and produce a concise textual summary.
+
+        Args:
+            c_file_path: Path to the decompiled C file to annotate
+            objdump_path: Optional path to an objdump/data text to aid typing
+            out_ext: Extension for the typed code output (e.g., 'c' or 'txt')
+
+        Returns:
+            Dict with keys: 'typed_code_file', 'summary_file'
+        """
+        with open(c_file_path, 'r') as f:
+            c_content = f.read()
+
+        objdump_content = None
+        if objdump_path and Path(objdump_path).exists():
+            # Read a bounded amount to avoid excessive tokens
+            with open(objdump_path, 'r', errors='ignore') as f:
+                objdump_content = f.read(200_000)
+
+        base_name = self._sanitize_basename(Path(c_file_path).name)
+        out_code = self.storage_dir / f"{base_name}_typed.{out_ext or 'c'}"
+        out_summary = self.storage_dir / f"{base_name}_summary.txt"
+        combined_input = self.storage_dir / f"{base_name}_combined.txt"
+
+        # Persist a combined view of inputs for traceability and optional reuse
+        try:
+            with open(combined_input, 'w') as f:
+                f.write("=== SOURCE_C_START ===\n")
+                f.write(c_content.rstrip() + "\n")
+                f.write("=== SOURCE_C_END ===\n")
+                if objdump_content:
+                    f.write("\n=== OBJ_DUMP_START ===\n")
+                    f.write(objdump_content.rstrip() + "\n")
+                    f.write("=== OBJ_DUMP_END ===\n")
+        except Exception:
+            # Do not fail the analysis if writing the combined file has issues
+            pass
+
+        system_instructions = (
+            "You are a reverse engineering assistant. Given decompiled C code "
+            "from Ghidra and optionally objdump output, infer strong typing for "
+            "function signatures and local variables. Replace ambiguous types "
+            "(e.g., int/undefined/void* when inappropriate) with the most likely "
+            "concrete types based on calling conventions, pointer arithmetic, "
+            "string usage, and arithmetic width. Maintain identical logic, names, "
+            "and structure, only improving types and adding const/restrict where obvious. "
+            "Do not add comments except where necessary to indicate assumptions."
+        )
+
+        prompt = (
+            "Task: Produce two artifacts.\n"
+            "1) TYPED_CODE: Full C code with improved/explicit types.\n"
+            "2) SUMMARY: Short explanation of how the code works.\n\n"
+            "Constraints:\n"
+            "- Preserve original logic and control flow.\n"
+            "- Keep function and variable names unless obviously autogenerated.\n"
+            "- Ensure compilable C.\n"
+            "- Clearly separate outputs using the exact markers below.\n\n"
+            "Markers:\n"
+            "===TYPED_CODE_START===\n"
+            "... C code here ...\n"
+            "===TYPED_CODE_END===\n"
+            "===SUMMARY_START===\n"
+            "... plain text summary here ...\n"
+            "===SUMMARY_END===\n\n"
+            f"C File ({Path(c_file_path).name}):\n```c\n{c_content[:200000]}\n```\n"
+        )
+
+        if objdump_content:
+            prompt += f"\nObjdump/Data ({Path(objdump_path).name} excerpt):\n```\n{objdump_content}\n```\n"
+
+        text = None
+        last_error: Optional[Exception] = None
+        
+        def _fmt_error(err: Exception) -> str:
+            parts = [f"{err.__class__.__name__}: {err}"]
+            # Try to include extra context from common HTTP/API exceptions
+            for attr in ("status_code", "code", "message"):
+                if hasattr(err, attr):
+                    parts.append(f"{attr}={getattr(err, attr)}")
+            resp = getattr(err, "response", None)
+            if resp is not None:
+                try:
+                    # Some SDKs expose .text or .json() on response
+                    body = getattr(resp, "text", None) or getattr(resp, "content", None)
+                    parts.append(f"response_body={str(body)[:500]}")
+                except Exception:
+                    pass
+            return " | ".join(parts)
+
+        if self.client is not None:
+            max_retries = 3
+            for attempt in range(1, max_retries + 1):
+                try:
+                    response = self.client.messages.create(
+                        model=self.model,
+                        max_tokens=4000,
+                        temperature=0,
+                        system=system_instructions,
+                        messages=[
+                            {"role": "user", "content": prompt}
+                        ]
+                    )
+                    text = response.content[0].text
+                    if attempt > 1:
+                        print(f"[LLMAnalyzer] Succeeded on retry {attempt} of {max_retries}.")
+                    break
+                except Exception as e:
+                    last_error = e
+                    msg = _fmt_error(e)
+                    print(f"[LLMAnalyzer] Typing/summarization attempt {attempt}/{max_retries} failed: {msg}")
+                    if attempt < max_retries:
+                        delay = min(2 ** attempt, 8)
+                        print(f"[LLMAnalyzer] Retrying in {delay}s...")
+                        try:
+                            time.sleep(delay)
+                        except KeyboardInterrupt:
+                            raise
+                    else:
+                        print("[LLMAnalyzer] All attempts failed; using offline fallback.")
+        if text is None:
+            # Offline fallback: keep original code and a minimal heuristic summary
+            func_headers = []
+            for line in c_content.splitlines():
+                s = line.strip()
+                if s and '(' in s and ')' in s and s.endswith('{') and not s.startswith('//'):
+                    func_headers.append(s)
+                if len(func_headers) >= 20:
+                    break
+            summary_lines = [
+                "Offline fallback: unable to contact LLM.",
+                f"File: {Path(c_file_path).name}",
+                f"Approx. function headers detected: {len(func_headers)}",
+            ]
+            if last_error is not None:
+                summary_lines.append(f"LLM error: {_fmt_error(last_error)}")
+            if func_headers:
+                summary_lines.append("Sample headers:")
+                summary_lines.extend(f"- {h}" for h in func_headers[:5])
+            text = (
+                "===TYPED_CODE_START===\n" + c_content + "\n===TYPED_CODE_END===\n"
+                "===SUMMARY_START===\n" + "\n".join(summary_lines) + "\n===SUMMARY_END===\n"
+            )
+
+        # Extract typed code and summary between markers
+        def _between(s: str, a: str, b: str) -> Optional[str]:
+            i = s.find(a)
+            if i == -1:
+                return None
+            i += len(a)
+            j = s.find(b, i)
+            if j == -1:
+                return None
+            return s[i:j].strip()
+
+        typed_code = _between(text, "===TYPED_CODE_START===", "===TYPED_CODE_END===")
+        summary = _between(text, "===SUMMARY_START===", "===SUMMARY_END===")
+
+        # Fallbacks
+        if not typed_code:
+            typed_code = c_content
+        if not summary:
+            summary = "No summary generated."
+
+        # Save files
+        with open(out_code, 'w') as f:
+            f.write(typed_code.rstrip() + "\n")
+        with open(out_summary, 'w') as f:
+            f.write(summary.rstrip() + "\n")
+
+        print(f"Saved typed code to: {out_code}")
+        print(f"Saved summary to: {out_summary}")
+        print(f"Saved combined input to: {combined_input}")
+
+        return {
+            'typed_code_file': str(out_code),
+            'summary_file': str(out_summary),
+            'combined_input_file': str(combined_input),
+        }
     
     def save_analysis(self, results: List[AnalysisResult], base_name: str) -> str:
         """
@@ -327,6 +574,8 @@ Content:
         {all_analyses[:15000]}  # Limit to avoid token limits
         """
         
+        if self.client is None:
+            return "LLM unavailable; no combined summary generated."
         try:
             response = self.client.messages.create(
                 model=self.model,
@@ -350,18 +599,21 @@ def main():
                        help='Type of file to analyze')
     parser.add_argument('--api-key', help='Anthropic API key')
     parser.add_argument('--prompt', help='Custom analysis prompt')
-    parser.add_argument('--model', default='claude-3-5-sonnet-20241022',
+    parser.add_argument('--model', default='claude-sonnet-4-20250514',
                        help='Model to use for analysis')
+    parser.add_argument('--chunk', action='store_true',
+                       help='Enable chunking (disabled by default)')
     
     args = parser.parse_args()
     
-    analyzer = LLMAnalyzer(api_key=args.api_key, model=args.model)
+    analyzer = LLMAnalyzer(api_key=args.api_key, model=args.model, disable_chunking=(not args.chunk))
     
     # Analyze file
     results = analyzer.analyze_file(
         file_path=args.file,
         file_type=args.type,
-        custom_prompt=args.prompt
+        custom_prompt=args.prompt,
+        disable_chunking=(not args.chunk)
     )
     
     # Save results
