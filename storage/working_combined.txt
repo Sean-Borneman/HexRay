@@ -1,8 +1,8 @@
 === SOURCE_C_START ===
 /*==============================================================================
  * CONSOLIDATED DECOMPILED FUNCTIONS
- * Program: 22b0596355c0eca90a15627353ae66af
- * Generated: Sat Sep 13 11:28:33 EDT 2025
+ * Program: b725ef767b4150d81d3072d2f6cf5d07
+ * Generated: Sat Sep 13 11:39:54 EDT 2025
  * ============================================================================
  */
 
@@ -11,68 +11,22 @@
 #include <string.h>
 
 /*****************************************************************************
- * Function: FUN_004015a0
- * Address: 004015a0
- * Size: 125 bytes
+ * Function: _DT_INIT
+ * Address: 00101000
+ * Size: 27 bytes
  *****************************************************************************/
 
 
 
-void FUN_004015a0(undefined4 param_1,int param_2,uint param_3,int param_4,int param_5,int param_6,
-
-                 int param_7,undefined4 param_8,int *param_9)
+void _DT_INIT(void)
 
 
 
 {
 
-  code *pcVar1;
+  if (PTR___gmon_start___00103fe8 != (undefined *)0x0) {
 
-  int iVar2;
-
-  
-
-  if (param_9 != (int *)0x0) {
-
-    if (param_2 == 0) {
-
-      *param_9 = 0;
-
-    }
-
-    else if (param_2 == 1) {
-
-      param_9[5] = param_7;
-
-      iVar2 = 0x100;
-
-      if ((char)param_3 != '\0') {
-
-        iVar2 = (param_3 & 0xff) + 1;
-
-      }
-
-      *param_9 = iVar2;
-
-      param_9[2] = param_4;
-
-      param_9[3] = param_5;
-
-      param_9[4] = param_6;
-
-    }
-
-    pcVar1 = (code *)param_9[8];
-
-    if (pcVar1 != (code *)0x0) {
-
-      (*(code *)PTR_guard_check_icall_00404098)
-
-                (param_1,param_2,param_3,param_4,param_5,param_6,param_7,param_8,param_9[9]);
-
-      (*pcVar1)();
-
-    }
+    (*(code *)PTR___gmon_start___00103fe8)();
 
   }
 
@@ -85,76 +39,20 @@ void FUN_004015a0(undefined4 param_1,int param_2,uint param_3,int param_4,int pa
 
 
 /*****************************************************************************
- * Function: FUN_00401623
- * Address: 00401623
- * Size: 166 bytes
+ * Function: FUN_00101020
+ * Address: 00101020
+ * Size: 13 bytes
  *****************************************************************************/
 
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-
-
-void FUN_00401623(void)
+void FUN_00101020(void)
 
 
 
 {
 
-  code *pcVar1;
-
-  ULONG UVar2;
-
-  undefined4 extraout_EDX;
-
-  undefined4 extraout_EDX_00;
-
-  undefined4 uVar3;
-
-  GUID local_1c;
-
-  uint local_c;
-
-  
-
-  local_c = DAT_00403028 ^ (uint)&stack0xfffffffc;
-
-  local_1c.Data1 = *(ulong *)(PTR_DAT_00403004 + -0x10);
-
-  local_1c._4_4_ = *(undefined4 *)(PTR_DAT_00403004 + -0xc);
-
-  local_1c.Data4._0_4_ = *(undefined4 *)(PTR_DAT_00403004 + -8);
-
-  local_1c.Data4._4_4_ = *(undefined4 *)(PTR_DAT_00403004 + -4);
-
-  if (DAT_00403018 != 0 || DAT_0040301c != 0) {
-
-    pcVar1 = (code *)swi(0x29);
-
-    (*pcVar1)();
-
-  }
-
-  _DAT_00403020 = 0;
-
-  _DAT_00403024 = 0;
-
-  UVar2 = EventRegister(&local_1c,FUN_004015a0,&DAT_00403000,(PREGHANDLE)&DAT_00403018);
-
-  uVar3 = extraout_EDX;
-
-  if (UVar2 == 0) {
-
-    EventSetInformation(DAT_00403018,DAT_0040301c,2,PTR_DAT_00403004,*(undefined2 *)PTR_DAT_00403004
-
-                       );
-
-    uVar3 = extraout_EDX_00;
-
-  }
-
-  FUN_00401810(local_c ^ (uint)&stack0xfffffffc,uVar3);
+  (*(code *)PTR_00103f70)();
 
   return;
 
@@ -165,62 +63,20 @@ void FUN_00401623(void)
 
 
 /*****************************************************************************
- * Function: FUN_004016cf
- * Address: 004016cf
- * Size: 143 bytes
+ * Function: FUN_001010f0
+ * Address: 001010f0
+ * Size: 11 bytes
  *****************************************************************************/
 
 
 
-void FUN_004016cf(int param_1,byte *param_2,LPCGUID param_3,LPCGUID param_4,ULONG param_5,
-
-                 PEVENT_DATA_DESCRIPTOR param_6)
+void FUN_001010f0(void)
 
 
 
 {
 
-  ushort uVar1;
-
-  undefined4 uVar2;
-
-  EVENT_DESCRIPTOR local_18;
-
-  undefined4 local_8;
-
-  
-
-  local_18.Keyword._4_4_ = *(undefined4 *)(param_2 + 7);
-
-  local_18._0_4_ = (uint)*param_2 << 0x18;
-
-  local_18._4_4_ = ZEXT24(*(ushort *)(param_2 + 1));
-
-  local_18.Keyword._0_4_ = *(undefined4 *)(param_2 + 3);
-
-  uVar2 = *(undefined4 *)(param_1 + 4);
-
-  *(undefined4 *)((int)&param_6->Ptr + 4) = 0;
-
-  *(undefined4 *)&param_6->Ptr = uVar2;
-
-  uVar1 = **(ushort **)(param_1 + 4);
-
-  *(undefined4 *)((int)&param_6[1].Ptr + 4) = 0;
-
-  param_6->Size = (uint)uVar1;
-
-  param_6->Reserved = 2;
-
-  *(byte **)&param_6[1].Ptr = param_2 + 0xb;
-
-  param_6[1].Size = (uint)*(ushort *)(param_2 + 0xb);
-
-  param_6[1].Reserved = 1;
-
-  local_8 = 0x80;
-
-  EventWriteTransfer(*(REGHANDLE *)(param_1 + 0x18),&local_18,param_3,param_4,param_5,param_6);
+  (*(code *)PTR___cxa_finalize_00103ff8)();
 
   return;
 
@@ -231,62 +87,30 @@ void FUN_004016cf(int param_1,byte *param_2,LPCGUID param_3,LPCGUID param_4,ULON
 
 
 /*****************************************************************************
- * Function: FUN_0040176d
- * Address: 0040176d
- * Size: 154 bytes
+ * Function: getenv
+ * Address: 00101100
+ * Size: 11 bytes
  *****************************************************************************/
 
 
 
-void FUN_0040176d(void)
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+char * getenv(char *__name)
 
 
 
 {
 
-  undefined4 extraout_EDX;
-
-  _EVENT_DATA_DESCRIPTOR local_3c [2];
-
-  char *local_1c;
-
-  undefined4 local_18;
-
-  undefined4 local_14;
-
-  undefined4 local_10;
-
-  uint local_8;
+  char *pcVar1;
 
   
 
-  local_8 = DAT_00403028 ^ (uint)&stack0xfffffffc;
+  pcVar1 = (char *)(*(code *)PTR_getenv_00103f78)();
 
-  FUN_00401623();
-
-  if ((5 < DAT_00403000) && ((DAT_0040300c & 0x20000) != 0)) {
-
-    if ((DAT_00403010 == 0) && ((DAT_00403014 & 0x20000) == DAT_00403014)) {
-
-      local_1c = "CalculatorStarted";
-
-      local_18 = 0;
-
-      local_14 = 0x12;
-
-      local_10 = 0;
-
-      FUN_004016cf(0x403000,&DAT_00401259,(LPCGUID)0x0,(LPCGUID)0x0,3,local_3c);
-
-    }
-
-  }
-
-  ShellExecuteW((HWND)0x0,(LPCWSTR)0x0,L"ms-calculator:",(LPCWSTR)0x0,(LPCWSTR)0x0,1);
-
-  FUN_00401810(local_8 ^ (uint)&stack0xfffffffc,extraout_EDX);
-
-  return;
+  return pcVar1;
 
 }
 
@@ -295,786 +119,18 @@ void FUN_0040176d(void)
 
 
 /*****************************************************************************
- * Function: FUN_00401810
- * Address: 00401810
- * Size: 279 bytes
+ * Function: putchar
+ * Address: 00101110
+ * Size: 11 bytes
  *****************************************************************************/
 
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
 
 
 
-void __fastcall FUN_00401810(int param_1,undefined4 param_2)
-
-
-
-{
-
-  undefined4 in_EAX;
-
-  HANDLE hProcess;
-
-  undefined4 unaff_EBX;
-
-  undefined4 unaff_EBP;
-
-  undefined4 unaff_ESI;
-
-  undefined4 unaff_EDI;
-
-  undefined2 in_ES;
-
-  undefined2 in_CS;
-
-  undefined2 in_SS;
-
-  undefined2 in_DS;
-
-  undefined2 in_FS;
-
-  undefined2 in_GS;
-
-  byte in_AF;
-
-  byte in_TF;
-
-  byte in_IF;
-
-  byte in_NT;
-
-  byte in_AC;
-
-  byte in_VIF;
-
-  byte in_VIP;
-
-  byte in_ID;
-
-  undefined4 unaff_retaddr;
-
-  UINT uExitCode;
-
-  undefined4 auStack_328 [199];
-
-  undefined4 local_c;
-
-  int local_8;
-
-  
-
-  if (param_1 == DAT_00403028) {
-
-    return;
-
-  }
-
-  _DAT_00403150 =
-
-       (uint)(in_NT & 1) * 0x4000 | (uint)SBORROW4((int)&stack0xfffffffc,0x324) * 0x800 |
-
-       (uint)(in_IF & 1) * 0x200 | (uint)(in_TF & 1) * 0x100 | (uint)((int)auStack_328 < 0) * 0x80 |
-
-       (uint)(&stack0x00000000 == (undefined1 *)0x328) * 0x40 | (uint)(in_AF & 1) * 0x10 |
-
-       (uint)((POPCOUNT((uint)auStack_328 & 0xff) & 1U) == 0) * 4 |
-
-       (uint)(&stack0xfffffffc < (undefined1 *)0x324) | (uint)(in_ID & 1) * 0x200000 |
-
-       (uint)(in_VIP & 1) * 0x100000 | (uint)(in_VIF & 1) * 0x80000 | (uint)(in_AC & 1) * 0x40000;
-
-  _DAT_00403090 = 0x10001;
-
-  _DAT_00403154 = &stack0x00000004;
-
-  _DAT_00403040 = 0xc0000409;
-
-  _DAT_00403044 = 1;
-
-  _DAT_00403050 = 1;
-
-  DAT_00403054 = 2;
-
-  local_8 = DAT_00403028;
-
-  local_c = DAT_0040302c;
-
-  _DAT_0040304c = unaff_retaddr;
-
-  _DAT_0040311c = in_GS;
-
-  _DAT_00403120 = in_FS;
-
-  _DAT_00403124 = in_ES;
-
-  _DAT_00403128 = in_DS;
-
-  _DAT_0040312c = unaff_EDI;
-
-  _DAT_00403130 = unaff_ESI;
-
-  _DAT_00403134 = unaff_EBX;
-
-  _DAT_00403138 = param_2;
-
-  _DAT_0040313c = param_1;
-
-  _DAT_00403140 = in_EAX;
-
-  _DAT_00403144 = unaff_EBP;
-
-  DAT_00403148 = unaff_retaddr;
-
-  _DAT_0040314c = in_CS;
-
-  _DAT_00403158 = in_SS;
-
-  SetUnhandledExceptionFilter((LPTOP_LEVEL_EXCEPTION_FILTER)0x0);
-
-  UnhandledExceptionFilter((_EXCEPTION_POINTERS *)&PTR_DAT_00401000);
-
-  auStack_328[0] = 1;
-
-  uExitCode = 0xc0000409;
-
-  hProcess = GetCurrentProcess();
-
-  TerminateProcess(hProcess,uExitCode);
-
-  return;
-
-}
-
-
-
-
-
-/*****************************************************************************
- * Function: FUN_00401933
- * Address: 00401933
- * Size: 131 bytes
- *****************************************************************************/
-
-
-
-void FUN_00401933(void)
-
-
-
-{
-
-  DWORD DVar1;
-
-  _FILETIME local_18;
-
-  LARGE_INTEGER local_10;
-
-  uint local_8;
-
-  
-
-  local_10.QuadPart = 0.0;
-
-  if ((DAT_00403028 == 0) || (DAT_00403028 == 0xbb40e64e)) {
-
-    GetSystemTimeAsFileTime(&local_18);
-
-    local_8 = local_18.dwHighDateTime ^ local_18.dwLowDateTime;
-
-    DVar1 = GetCurrentProcessId();
-
-    local_8 = local_8 ^ DVar1;
-
-    DVar1 = GetCurrentThreadId();
-
-    local_8 = local_8 ^ DVar1;
-
-    DVar1 = GetTickCount();
-
-    local_8 = DVar1 ^ local_8 ^ (uint)&local_8;
-
-    QueryPerformanceCounter(&local_10);
-
-    local_8 = local_10.s.HighPart ^ local_10.s.LowPart ^ local_8;
-
-    DAT_00403028 = 0xbb40e64e;
-
-    if (local_8 != 0) {
-
-      DAT_00403028 = local_8;
-
-    }
-
-  }
-
-  DAT_0040302c = ~DAT_00403028;
-
-  return;
-
-}
-
-
-
-
-
-/*****************************************************************************
- * Function: FUN_004019c0
- * Address: 004019c0
- * Size: 102 bytes
- *****************************************************************************/
-
-
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-
-
-undefined4 FUN_004019c0(void)
-
-
-
-{
-
-  bool bVar1;
-
-  undefined3 extraout_var;
-
-  int iVar2;
-
-  undefined4 *puVar3;
-
-  
-
-  bVar1 = FUN_00401c80();
-
-  DAT_00403374 = CONCAT31(extraout_var,bVar1);
-
-  iVar2 = FUN_00401de4(2);
-
-  __set_app_type(iVar2);
-
-  _DAT_00403390 = 0xffffffff;
-
-  _DAT_00403394 = 0xffffffff;
-
-  puVar3 = (undefined4 *)__p__fmode();
-
-  *puVar3 = DAT_00403388;
-
-  puVar3 = (undefined4 *)__p__commode();
-
-  *puVar3 = DAT_0040337c;
-
-  FUN_00401e40();
-
-  if (DAT_00403030 == 0) {
-
-    __setusermatherr(FUN_00401e40);
-
-  }
-
-  FUN_00401fa9();
-
-  return 0;
-
-}
-
-
-
-
-
-/*****************************************************************************
- * Function: FUN_00401a30
- * Address: 00401a30
- * Size: 51 bytes
- *****************************************************************************/
-
-
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-
-
-void FUN_00401a30(void)
-
-
-
-{
-
-  _DAT_00403378 = DAT_00403384;
-
-  _DAT_00403370 =
-
-       __wgetmainargs((int *)&DAT_00403364,(wchar_t ***)&DAT_00403368,(wchar_t ***)&DAT_0040336c,
-
-                      DAT_00403380,(_startupinfo *)&DAT_00403378);
-
-  return;
-
-}
-
-
-
-
-
-/*****************************************************************************
- * Function: FUN_00401a69
- * Address: 00401a69
- * Size: 427 bytes
- *****************************************************************************/
-
-
-
-/* WARNING: Function: __SEH_prolog4 replaced with injection: SEH_prolog4 */
-
-
-
-int FUN_00401a69(void)
-
-
-
-{
-
-  bool bVar1;
-
-  code *pcVar2;
-
-  int iVar3;
-
-  ushort uVar4;
-
-  int iVar5;
-
-  int iVar6;
-
-  BOOL BVar7;
-
-  uint uVar8;
-
-  _STARTUPINFOW local_6c;
-
-  ushort *local_24;
-
-  uint local_20;
-
-  void *local_14;
-
-  undefined4 uStack_c;
-
-  undefined *local_8;
-
-  
-
-  local_8 = &DAT_00402078;
-
-  uStack_c = 0x401a75;
-
-  local_20 = 0;
-
-  GetStartupInfoW(&local_6c);
-
-  local_8 = (undefined *)0x0;
-
-  iVar6 = *(int *)((int)Self + 4);
-
-  bVar1 = false;
-
-  while( true ) {
-
-    iVar5 = 0;
-
-    LOCK();
-
-    iVar3 = iVar6;
-
-    if (DAT_00403398 != 0) {
-
-      iVar5 = DAT_00403398;
-
-      iVar3 = DAT_00403398;
-
-    }
-
-    DAT_00403398 = iVar3;
-
-    UNLOCK();
-
-    if (iVar5 == 0) goto LAB_00401abe;
-
-    if (iVar5 == iVar6) break;
-
-    Sleep(1000);
-
-  }
-
-  bVar1 = true;
-
-LAB_00401abe:
-
-  if (DAT_0040339c == 1) {
-
-    _amsg_exit(0x1f);
-
-  }
-
-  else if (DAT_0040339c == 0) {
-
-    DAT_0040339c = 1;
-
-    iVar6 = FUN_00401c49((undefined4 *)&DAT_004010d4,(undefined4 *)&DAT_004010e0);
-
-    if (iVar6 != 0) {
-
-      ExceptionList = local_14;
-
-      return 0xff;
-
-    }
-
-  }
-
-  else {
-
-    DAT_00403360 = 1;
-
-  }
-
-  if (DAT_0040339c == 1) {
-
-    initterm(&DAT_004010c8,&DAT_004010d0);
-
-    DAT_0040339c = 2;
-
-  }
-
-  if (!bVar1) {
-
-    LOCK();
-
-    DAT_00403398 = 0;
-
-    UNLOCK();
-
-  }
-
-  if ((DAT_004033a0 != (code *)0x0) &&
-
-     (BVar7 = __IsNonwritableInCurrentImage((PBYTE)&DAT_004033a0), pcVar2 = DAT_004033a0, BVar7 != 0
-
-     )) {
-
-    (*(code *)PTR_guard_check_icall_00404098)(0,2,0);
-
-    (*pcVar2)();
-
-  }
-
-  local_24 = *(ushort **)_wcmdln_exref;
-
-  uVar8 = local_20;
-
-  if (local_24 == (ushort *)0x0) {
-
-    ExceptionList = local_14;
-
-    return 0xff;
-
-  }
-
-  do {
-
-    uVar4 = *local_24;
-
-    if (uVar4 < 0x21) {
-
-      if (uVar4 == 0) goto LAB_00401ba0;
-
-      if (uVar8 == 0) {
-
-        while ((uVar4 != 0 && (uVar4 < 0x21))) {
-
-          local_24 = local_24 + 1;
-
-          uVar4 = *local_24;
-
-        }
-
-LAB_00401ba0:
-
-        DAT_0040335c = FUN_0040176d();
-
-        if (DAT_00403374 == 0) {
-
-                    /* WARNING: Subroutine does not return */
-
-          exit(DAT_0040335c);
-
-        }
-
-        if (DAT_00403360 == 0) {
-
-          _cexit();
-
-          ExceptionList = local_14;
-
-          return DAT_0040335c;
-
-        }
-
-        ExceptionList = local_14;
-
-        return DAT_0040335c;
-
-      }
-
-    }
-
-    if (uVar4 == 0x22) {
-
-      uVar8 = (uint)(uVar8 == 0);
-
-      local_20 = uVar8;
-
-    }
-
-    local_24 = local_24 + 1;
-
-  } while( true );
-
-}
-
-
-
-
-
-/*****************************************************************************
- * Function: FUN_00401c49
- * Address: 00401c49
- * Size: 49 bytes
- *****************************************************************************/
-
-
-
-void __cdecl FUN_00401c49(undefined4 *param_1,undefined4 *param_2)
-
-
-
-{
-
-  code *pcVar1;
-
-  int iVar2;
-
-  
-
-  iVar2 = 0;
-
-  if (param_1 < param_2) {
-
-    do {
-
-      if (iVar2 != 0) {
-
-        return;
-
-      }
-
-      pcVar1 = (code *)*param_1;
-
-      if (pcVar1 != (code *)0x0) {
-
-        (*(code *)PTR_guard_check_icall_00404098)();
-
-        iVar2 = (*pcVar1)();
-
-      }
-
-      param_1 = param_1 + 1;
-
-    } while (param_1 < param_2);
-
-  }
-
-  return;
-
-}
-
-
-
-
-
-/*****************************************************************************
- * Function: FUN_00401c80
- * Address: 00401c80
- * Size: 102 bytes
- *****************************************************************************/
-
-
-
-bool FUN_00401c80(void)
-
-
-
-{
-
-  short sVar1;
-
-  int iVar2;
-
-  
-
-  if ((IMAGE_DOS_HEADER_00400000.e_magic != (char  [2])0x5a4d) ||
-
-     (*(int *)(IMAGE_DOS_HEADER_00400000.e_lfanew + 0x400000) != 0x4550)) {
-
-    return false;
-
-  }
-
-  sVar1 = *(short *)((int)IMAGE_DOS_HEADER_00400000.e_res_4_ +
-
-                    (IMAGE_DOS_HEADER_00400000.e_lfanew - 4));
-
-  if (sVar1 == 0x10b) {
-
-    if (*(uint *)(IMAGE_DOS_HEADER_00400000.e_program + IMAGE_DOS_HEADER_00400000.e_lfanew + 0x34) <
-
-        0xf) {
-
-      return false;
-
-    }
-
-    iVar2 = *(int *)(&UNK_004000e8 + IMAGE_DOS_HEADER_00400000.e_lfanew);
-
-  }
-
-  else {
-
-    if (sVar1 != 0x20b) {
-
-      return false;
-
-    }
-
-    if (*(uint *)(&UNK_00400080.field_0x4 + IMAGE_DOS_HEADER_00400000.e_lfanew) < 0xf) {
-
-      return false;
-
-    }
-
-    iVar2 = *(int *)(IMAGE_NT_HEADERS32_004000f8.Signature + IMAGE_DOS_HEADER_00400000.e_lfanew);
-
-  }
-
-  return iVar2 != 0;
-
-}
-
-
-
-
-
-/*****************************************************************************
- * Function: entry
- * Address: 00401cf0
- * Size: 10 bytes
- *****************************************************************************/
-
-
-
-void entry(void)
-
-
-
-{
-
-  FUN_00401933();
-
-  FUN_00401a69();
-
-  return;
-
-}
-
-
-
-
-
-/*****************************************************************************
- * Function: FUN_00401d00
- * Address: 00401d00
- * Size: 67 bytes
- *****************************************************************************/
-
-
-
-undefined4 FUN_00401d00(int *param_1)
-
-
-
-{
-
-  int *piVar1;
-
-  int iVar2;
-
-  
-
-  piVar1 = (int *)*param_1;
-
-  if (((*piVar1 == -0x1f928c9d) && (piVar1[4] == 3)) &&
-
-     ((iVar2 = piVar1[5], iVar2 == 0x19930520 ||
-
-      (((iVar2 == 0x19930521 || (iVar2 == 0x19930522)) || (iVar2 == 0x1994000)))))) {
-
-    terminate();
-
-  }
-
-  return 0;
-
-}
-
-
-
-
-
-/*****************************************************************************
- * Function: FUN_00401d50
- * Address: 00401d50
- * Size: 14 bytes
- *****************************************************************************/
-
-
-
-undefined4 FUN_00401d50(void)
-
-
-
-{
-
-  SetUnhandledExceptionFilter(FUN_00401d00);
-
-  return 0;
-
-}
-
-
-
-
-
-/*****************************************************************************
- * Function: _XcptFilter
- * Address: 00401d64
- * Size: 6 bytes
- *****************************************************************************/
-
-
-
-int __cdecl _XcptFilter(ulong _ExceptionNum,_EXCEPTION_POINTERS *_ExceptionPtr)
+int putchar(int __c)
 
 
 
@@ -1084,11 +140,7 @@ int __cdecl _XcptFilter(ulong _ExceptionNum,_EXCEPTION_POINTERS *_ExceptionPtr)
 
   
 
-                    /* WARNING: Could not recover jumptable at 0x00401d64. Too many branches */
-
-                    /* WARNING: Treating indirect jump as call */
-
-  iVar1 = _XcptFilter(_ExceptionNum,_ExceptionPtr);
+  iVar1 = (*(code *)PTR_putchar_00103f80)();
 
   return iVar1;
 
@@ -1099,28 +151,88 @@ int __cdecl _XcptFilter(ulong _ExceptionNum,_EXCEPTION_POINTERS *_ExceptionPtr)
 
 
 /*****************************************************************************
- * Function: FUN_00401d70
- * Address: 00401d70
- * Size: 101 bytes
+ * Function: puts
+ * Address: 00101120
+ * Size: 11 bytes
  *****************************************************************************/
 
 
 
-/* WARNING: Function: __SEH_prolog4 replaced with injection: SEH_prolog4 */
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
 
 
 
-void FUN_00401d70(void)
+int puts(char *__s)
 
 
 
 {
 
-  void *local_14;
+  int iVar1;
 
   
 
-  ExceptionList = local_14;
+  iVar1 = (*(code *)PTR_puts_00103f88)();
+
+  return iVar1;
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: printf
+ * Address: 00101140
+ * Size: 11 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+int printf(char *__format,...)
+
+
+
+{
+
+  int iVar1;
+
+  
+
+  iVar1 = (*(code *)PTR_printf_00103f98)();
+
+  return iVar1;
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: srand
+ * Address: 00101150
+ * Size: 11 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+void srand(uint __seed)
+
+
+
+{
+
+  (*(code *)PTR_srand_00103fa0)();
 
   return;
 
@@ -1131,76 +243,312 @@ void FUN_00401d70(void)
 
 
 /*****************************************************************************
- * Function: FUN_00401de4
- * Address: 00401de4
- * Size: 60 bytes
+ * Function: getchar
+ * Address: 00101160
+ * Size: 11 bytes
  *****************************************************************************/
 
 
 
-undefined4 __cdecl FUN_00401de4(undefined4 param_1)
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+int getchar(void)
 
 
 
 {
 
-  HMODULE pHVar1;
-
-  int iVar2;
-
-  undefined4 uVar3;
+  int iVar1;
 
   
 
-  pHVar1 = GetModuleHandleW((LPCWSTR)0x0);
+  iVar1 = (*(code *)PTR_getchar_00103fa8)();
 
-  uVar3 = param_1;
+  return iVar1;
 
-  if ((pHVar1 != (HMODULE)0x0) && (iVar2 = FUN_00401d70(), iVar2 != 0)) {
+}
 
-    uVar3 = 2;
 
-    if (*(short *)(iVar2 + 0x5c) != 2) {
 
-      if (*(short *)(iVar2 + 0x5c) == 3) {
 
-        param_1 = 1;
 
-      }
+/*****************************************************************************
+ * Function: time
+ * Address: 00101170
+ * Size: 11 bytes
+ *****************************************************************************/
 
-      return param_1;
+
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+time_t time(time_t *__timer)
+
+
+
+{
+
+  time_t tVar1;
+
+  
+
+  tVar1 = (*(code *)PTR_time_00103fb0)();
+
+  return tVar1;
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: random
+ * Address: 00101180
+ * Size: 11 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+long random(void)
+
+
+
+{
+
+  long lVar1;
+
+  
+
+  lVar1 = (*(code *)PTR_random_00103fb8)();
+
+  return lVar1;
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: fflush
+ * Address: 00101190
+ * Size: 11 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+int fflush(FILE *__stream)
+
+
+
+{
+
+  int iVar1;
+
+  
+
+  iVar1 = (*(code *)PTR_fflush_00103fc0)();
+
+  return iVar1;
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: exit
+ * Address: 001011a0
+ * Size: 11 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+void exit(int __status)
+
+
+
+{
+
+  (*(code *)PTR_exit_00103fc8)();
+
+  return;
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: rand
+ * Address: 001011b0
+ * Size: 11 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+int rand(void)
+
+
+
+{
+
+  int iVar1;
+
+  
+
+  iVar1 = (*(code *)PTR_rand_00103fd0)();
+
+  return iVar1;
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: entry
+ * Address: 001011c0
+ * Size: 47 bytes
+ *****************************************************************************/
+
+
+
+void processEntry entry(undefined8 param_1,undefined8 param_2)
+
+
+
+{
+
+  undefined1 auStack_8 [8];
+
+  
+
+  (*(code *)PTR___libc_start_main_00103fe0)
+
+            (FUN_001012a9,param_2,&stack0x00000008,FUN_001016b0,FUN_00101720,param_1,auStack_8);
+
+  do {
+
+                    /* WARNING: Do nothing block with infinite loop */
+
+  } while( true );
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: FUN_001011f0
+ * Address: 001011f0
+ * Size: 34 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Removing unreachable block (ram,0x00101203) */
+
+/* WARNING: Removing unreachable block (ram,0x0010120f) */
+
+
+
+void FUN_001011f0(void)
+
+
+
+{
+
+  return;
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: FUN_00101220
+ * Address: 00101220
+ * Size: 51 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Removing unreachable block (ram,0x00101244) */
+
+/* WARNING: Removing unreachable block (ram,0x00101250) */
+
+
+
+void FUN_00101220(void)
+
+
+
+{
+
+  return;
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: _FINI_0
+ * Address: 00101260
+ * Size: 54 bytes
+ *****************************************************************************/
+
+
+
+void _FINI_0(void)
+
+
+
+{
+
+  if (DAT_00104018 == '\0') {
+
+    if (PTR___cxa_finalize_00103ff8 != (undefined *)0x0) {
+
+      FUN_001010f0(PTR_LOOP_00104008);
 
     }
 
+    FUN_001011f0();
+
+    DAT_00104018 = 1;
+
+    return;
+
   }
-
-  return uVar3;
-
-}
-
-
-
-
-
-/*****************************************************************************
- * Function: _amsg_exit
- * Address: 00401e26
- * Size: 6 bytes
- *****************************************************************************/
-
-
-
-void __cdecl _amsg_exit(int param_1)
-
-
-
-{
-
-                    /* WARNING: Could not recover jumptable at 0x00401e26. Too many branches */
-
-                    /* WARNING: Treating indirect jump as call */
-
-  _amsg_exit(param_1);
 
   return;
 
@@ -1211,18 +559,70 @@ void __cdecl _amsg_exit(int param_1)
 
 
 /*****************************************************************************
- * Function: FUN_00401e40
- * Address: 00401e40
- * Size: 3 bytes
+ * Function: _INIT_0
+ * Address: 001012a0
+ * Size: 9 bytes
  *****************************************************************************/
 
 
 
-undefined4 FUN_00401e40(void)
+void _INIT_0(void)
 
 
 
 {
+
+  FUN_00101220();
+
+  return;
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: FUN_001012a9
+ * Address: 001012a9
+ * Size: 92 bytes
+ *****************************************************************************/
+
+
+
+undefined8 FUN_001012a9(void)
+
+
+
+{
+
+  time_t tVar1;
+
+  undefined4 local_10;
+
+  undefined4 local_c;
+
+  
+
+  tVar1 = time((time_t *)0x0);
+
+  srand((uint)tVar1);
+
+  local_10 = 0;
+
+  while (local_10 == 0) {
+
+    local_10 = FUN_00101305();
+
+  }
+
+  local_c = 1;
+
+  while (local_c != 0) {
+
+    local_c = FUN_001014b0(local_10);
+
+  }
 
   return 0;
 
@@ -1233,26 +633,128 @@ undefined4 FUN_00401e40(void)
 
 
 /*****************************************************************************
- * Function: FUN_00401f70
- * Address: 00401f70
- * Size: 51 bytes
+ * Function: FUN_00101305
+ * Address: 00101305
+ * Size: 427 bytes
  *****************************************************************************/
 
 
 
-bool __cdecl FUN_00401f70(short *param_1)
+int FUN_00101305(void)
 
 
 
 {
 
-  if ((*param_1 == 0x5a4d) && (*(int *)(*(int *)(param_1 + 0x1e) + (int)param_1) == 0x4550)) {
+  int iVar1;
 
-    return (short)((int *)(*(int *)(param_1 + 0x1e) + (int)param_1))[6] == 0x10b;
+  long in_FS_OFFSET;
+
+  int local_3c;
+
+  int local_38;
+
+  int local_34;
+
+  int local_30;
+
+  int local_2c;
+
+  int aiStack_28 [6];
+
+  long local_10;
+
+  
+
+  local_10 = *(long *)(in_FS_OFFSET + 0x28);
+
+  local_3c = 0;
+
+  while (local_3c == 0) {
+
+    for (local_38 = 0; local_38 < 5; local_38 = local_38 + 1) {
+
+      iVar1 = rand();
+
+      aiStack_28[local_38] = iVar1 % 9;
+
+      local_3c = local_3c + aiStack_28[local_38];
+
+    }
 
   }
 
-  return false;
+  local_34 = 0;
+
+  do {
+
+    if (4 < local_34) {
+
+      puts(":Calibration success");
+
+      puts("!");
+
+      fflush(stdout);
+
+      local_3c = local_3c + 0xc;
+
+LAB_0010149a:
+
+      if (local_10 != *(long *)(in_FS_OFFSET + 0x28)) {
+
+                    /* WARNING: Subroutine does not return */
+
+        __stack_chk_fail();
+
+      }
+
+      return local_3c;
+
+    }
+
+    printf(":Calibrating (%d/5)...\n",(ulong)(local_34 + 1));
+
+    putchar(0x3e);
+
+    for (local_30 = 0; local_30 <= local_34; local_30 = local_30 + 1) {
+
+      putchar(aiStack_28[local_30] + 0x31);
+
+    }
+
+    putchar(10);
+
+    fflush(stdout);
+
+    for (local_2c = 0; local_2c <= local_34; local_2c = local_2c + 1) {
+
+      iVar1 = getchar();
+
+      if ((char)iVar1 == -1) {
+
+                    /* WARNING: Subroutine does not return */
+
+        exit(0);
+
+      }
+
+      if ((int)(char)((char)iVar1 + -0x31) != aiStack_28[local_2c]) {
+
+        puts(":Calibration failure");
+
+        fflush(stdout);
+
+        local_3c = 0;
+
+        goto LAB_0010149a;
+
+      }
+
+    }
+
+    local_34 = local_34 + 1;
+
+  } while( true );
 
 }
 
@@ -1261,20 +763,170 @@ bool __cdecl FUN_00401f70(short *param_1)
 
 
 /*****************************************************************************
- * Function: FUN_00401fa9
- * Address: 00401fa9
- * Size: 19 bytes
+ * Function: FUN_001014b0
+ * Address: 001014b0
+ * Size: 500 bytes
  *****************************************************************************/
 
 
 
-void FUN_00401fa9(void)
+undefined8 FUN_001014b0(uint param_1)
 
 
 
 {
 
-  _controlfp(0x10000,0x30000);
+  int iVar1;
+
+  uint uVar2;
+
+  undefined8 uVar3;
+
+  long lVar4;
+
+  char *pcVar5;
+
+  long in_FS_OFFSET;
+
+  int local_28;
+
+  int local_24;
+
+  uint local_20;
+
+  char local_17 [7];
+
+  long local_10;
+
+  
+
+  local_10 = *(long *)(in_FS_OFFSET + 0x28);
+
+  for (local_28 = 0; local_28 < 7; local_28 = local_28 + 1) {
+
+    local_17[local_28] = '\0';
+
+  }
+
+  do {
+
+    for (local_24 = 0; local_24 < 6; local_24 = local_24 + 1) {
+
+      local_17[local_24] = local_17[local_24 + 1];
+
+    }
+
+    iVar1 = getchar();
+
+    if ((char)iVar1 == -1) {
+
+                    /* WARNING: Subroutine does not return */
+
+      exit(0);
+
+    }
+
+    local_17[6] = (char)iVar1 + -0x31;
+
+  } while (((((local_17[0] != '\x05') || (local_17[1] != '\b')) || (local_17[2] != '\b')) ||
+
+           ((local_17[3] != '\x02' || (local_17[4] != '\x03')))) ||
+
+          ((local_17[5] != '\0' || (local_20 = param_1, local_17[6] != '\0'))));
+
+  do {
+
+    if ((int)local_20 < 10) {
+
+      printf(">%d\n",(ulong)local_20);
+
+      fflush(stdout);
+
+      uVar3 = 1;
+
+      goto LAB_0010168e;
+
+    }
+
+    lVar4 = random();
+
+    uVar2 = (int)lVar4 + (int)(lVar4 / 9) * -9 + 1;
+
+    printf(">%d\n",(ulong)uVar2);
+
+    fflush(stdout);
+
+    local_20 = local_20 - uVar2;
+
+    iVar1 = getchar();
+
+    if ((char)iVar1 == -1) {
+
+                    /* WARNING: Subroutine does not return */
+
+      exit(0);
+
+    }
+
+    iVar1 = (char)iVar1 + -0x30;
+
+  } while (((iVar1 < 1) || (9 < iVar1)) || (local_20 = local_20 - iVar1, local_20 != 0));
+
+  pcVar5 = getenv("FLAG");
+
+  printf(":%s\n",pcVar5);
+
+  fflush(stdout);
+
+  uVar3 = 0;
+
+LAB_0010168e:
+
+  if (local_10 == *(long *)(in_FS_OFFSET + 0x28)) {
+
+    return uVar3;
+
+  }
+
+                    /* WARNING: Subroutine does not return */
+
+  __stack_chk_fail();
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: FUN_001016b0
+ * Address: 001016b0
+ * Size: 101 bytes
+ *****************************************************************************/
+
+
+
+void FUN_001016b0(undefined4 param_1,undefined8 param_2,undefined8 param_3)
+
+
+
+{
+
+  long lVar1;
+
+  
+
+  _DT_INIT();
+
+  lVar1 = 0;
+
+  do {
+
+    (*(code *)(&__DT_INIT_ARRAY)[lVar1])(param_1,param_2,param_3);
+
+    lVar1 = lVar1 + 1;
+
+  } while (lVar1 != 1);
 
   return;
 
@@ -1285,24 +937,18 @@ void FUN_00401fa9(void)
 
 
 /*****************************************************************************
- * Function: initterm
- * Address: 00401fc2
- * Size: 6 bytes
+ * Function: FUN_00101720
+ * Address: 00101720
+ * Size: 5 bytes
  *****************************************************************************/
 
 
 
-void __cdecl initterm(void)
+void FUN_00101720(void)
 
 
 
 {
-
-                    /* WARNING: Could not recover jumptable at 0x00401fc2. Too many branches */
-
-                    /* WARNING: Treating indirect jump as call */
-
-  initterm();
 
   return;
 
@@ -1313,22 +959,18 @@ void __cdecl initterm(void)
 
 
 /*****************************************************************************
- * Function: FUN_00402030
- * Address: 00402030
- * Size: 37 bytes
+ * Function: _DT_FINI
+ * Address: 00101728
+ * Size: 13 bytes
  *****************************************************************************/
 
 
 
-void __cdecl
-
-FUN_00402030(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
+void _DT_FINI(void)
 
 
 
 {
-
-  except_handler4_common(&DAT_00403028,FUN_00401810,param_1,param_2,param_3,param_4);
 
   return;
 
@@ -1339,26 +981,28 @@ FUN_00402030(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 
 /*****************************************************************************
- * Function: except_handler4_common
- * Address: 0040205b
- * Size: 6 bytes
+ * Function: getenv
+ * Address: 00105000
+ * Size: 1 bytes
  *****************************************************************************/
 
 
 
-void __cdecl except_handler4_common(void)
+/* WARNING: Control flow encountered bad instruction data */
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+char * getenv(char *__name)
 
 
 
 {
 
-                    /* WARNING: Could not recover jumptable at 0x0040205b. Too many branches */
+                    /* WARNING: Bad instruction - Truncating control flow here */
 
-                    /* WARNING: Treating indirect jump as call */
-
-  except_handler4_common();
-
-  return;
+  halt_baddata();
 
 }
 
@@ -1367,24 +1011,354 @@ void __cdecl except_handler4_common(void)
 
 
 /*****************************************************************************
- * Function: guard_check_icall
- * Address: 00402070
- * Size: 3 bytes
+ * Function: putchar
+ * Address: 00105008
+ * Size: 1 bytes
  *****************************************************************************/
 
 
 
-/* guard_check_icall */
+/* WARNING: Control flow encountered bad instruction data */
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
 
 
 
-void __cdecl guard_check_icall(void)
+int putchar(int __c)
 
 
 
 {
 
-  return;
+                    /* WARNING: Bad instruction - Truncating control flow here */
+
+  halt_baddata();
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: _ITM_deregisterTMCloneTable
+ * Address: 00105010
+ * Size: 1 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+
+
+void _ITM_deregisterTMCloneTable(void)
+
+
+
+{
+
+                    /* WARNING: Bad instruction - Truncating control flow here */
+
+  halt_baddata();
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: puts
+ * Address: 00105018
+ * Size: 1 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+int puts(char *__s)
+
+
+
+{
+
+                    /* WARNING: Bad instruction - Truncating control flow here */
+
+  halt_baddata();
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: printf
+ * Address: 00105028
+ * Size: 1 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+int printf(char *__format,...)
+
+
+
+{
+
+                    /* WARNING: Bad instruction - Truncating control flow here */
+
+  halt_baddata();
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: srand
+ * Address: 00105038
+ * Size: 1 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+void srand(uint __seed)
+
+
+
+{
+
+                    /* WARNING: Bad instruction - Truncating control flow here */
+
+  halt_baddata();
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: getchar
+ * Address: 00105040
+ * Size: 1 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+int getchar(void)
+
+
+
+{
+
+                    /* WARNING: Bad instruction - Truncating control flow here */
+
+  halt_baddata();
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: time
+ * Address: 00105050
+ * Size: 1 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+time_t time(time_t *__timer)
+
+
+
+{
+
+                    /* WARNING: Bad instruction - Truncating control flow here */
+
+  halt_baddata();
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: random
+ * Address: 00105058
+ * Size: 1 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+long random(void)
+
+
+
+{
+
+                    /* WARNING: Bad instruction - Truncating control flow here */
+
+  halt_baddata();
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: fflush
+ * Address: 00105060
+ * Size: 1 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+int fflush(FILE *__stream)
+
+
+
+{
+
+                    /* WARNING: Bad instruction - Truncating control flow here */
+
+  halt_baddata();
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: exit
+ * Address: 00105068
+ * Size: 1 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+void exit(int __status)
+
+
+
+{
+
+                    /* WARNING: Bad instruction - Truncating control flow here */
+
+  halt_baddata();
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: _ITM_registerTMCloneTable
+ * Address: 00105070
+ * Size: 1 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+
+
+void _ITM_registerTMCloneTable(void)
+
+
+
+{
+
+                    /* WARNING: Bad instruction - Truncating control flow here */
+
+  halt_baddata();
+
+}
+
+
+
+
+
+/*****************************************************************************
+ * Function: rand
+ * Address: 00105078
+ * Size: 1 bytes
+ *****************************************************************************/
+
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+
+
+
+int rand(void)
+
+
+
+{
+
+                    /* WARNING: Bad instruction - Truncating control flow here */
+
+  halt_baddata();
 
 }
 === SOURCE_C_END ===
@@ -1392,1540 +1366,700 @@ void __cdecl guard_check_icall(void)
 === OBJ_DUMP_START ===
 ================================================================================
 CONSOLIDATED DATA EXPORT
-Program: 22b0596355c0eca90a15627353ae66af
-Generated: Sat Sep 13 11:28:33 EDT 2025
+Program: b725ef767b4150d81d3072d2f6cf5d07
+Generated: Sat Sep 13 11:39:54 EDT 2025
 ================================================================================
 
 /******************************************************************************
  * MEMORY BLOCKS AND DATA SECTIONS
  ******************************************************************************/
 
-Block: Headers
-Range: 00400000 - 004003ff
-Size: 1024 bytes
+Block: segment_2.1
+Range: 00100000 - 00100317
+Size: 792 bytes
 ------------------------------------------------------------
-  00400000: /DOS/IMAGE_DOS_HEADER
+  00100000: /ELF/Elf64_Ehdr
 pack(disabled)
-Structure IMAGE_DOS_HEADER {
-   0   char[2]   2   e_magic   "Magic number"
-   2   word   2   e_cblp   "Bytes of last page"
-   4   word   2   e_cp   "Pages in file"
-   6   word   2   e_crlc   "Relocations"
-   8   word   2   e_cparhdr   "Size of header in paragraphs"
-   10   word   2   e_minalloc   "Minimum extra paragraphs needed"
-   12   word   2   e_maxalloc   "Maximum extra paragraphs needed"
-   14   word   2   e_ss   "Initial (relative) SS value"
-   16   word   2   e_sp   "Initial SP value"
-   18   word   2   e_csum   "Checksum"
-   20   word   2   e_ip   "Initial IP value"
-   22   word   2   e_cs   "Initial (relative) CS value"
-   24   word   2   e_lfarlc   "File address of relocation table"
-   26   word   2   e_ovno   "Overlay number"
-   28   word[4]   8   e_res[4]   "Reserved words"
-   36   word   2   e_oemid   "OEM identifier (for e_oeminfo)"
-   38   word   2   e_oeminfo   "OEM information; e_oemid specific"
-   40   word[10]   20   e_res2[10]   "Reserved words"
-   60   dword   4   e_lfanew   "File address of new exe header"
-   64   byte[64]   64   e_program   "Actual DOS program"
+Structure Elf64_Ehdr {
+   0   byte   1   e_ident_magic_num   ""
+   1   string   3   e_ident_magic_str   ""
+   4   byte   1   e_ident_class   ""
+   5   byte   1   e_ident_data   ""
+   6   byte   1   e_ident_version   ""
+   7   byte   1   e_ident_osabi   ""
+   8   byte   1   e_ident_abiversion   ""
+   9   byte[7]   7   e_ident_pad   ""
+   16   word   2   e_type   ""
+   18   word   2   e_machine   ""
+   20   dword   4   e_version   ""
+   24   qword   8   e_entry   ""
+   32   qword   8   e_phoff   ""
+   40   qword   8   e_shoff   ""
+   48   dword   4   e_flags   ""
+   52   word   2   e_ehsize   ""
+   54   word   2   e_phentsize   ""
+   56   word   2   e_phnum   ""
+   58   word   2   e_shentsize   ""
+   60   word   2   e_shnum   ""
+   62   word   2   e_shstrndx   ""
 }
-Length: 128 Alignment: 1
+Length: 64 Alignment: 1
  = undefined
-  00400080: IMAGE_RICH_HEADER = IMAGE_RICH_HEADER[mask=da3544afh, numRecords=9]
-  004000f8: /PE/IMAGE_NT_HEADERS32
-pack(disabled)
-Structure IMAGE_NT_HEADERS32 {
-   0   char[4]   4   Signature   ""
-   4   IMAGE_FILE_HEADER   20   FileHeader   ""
-   24   IMAGE_OPTIONAL_HEADER32   224   OptionalHeader   ""
-}
-Length: 248 Alignment: 1
- = undefined
-  004001f0: /PE/IMAGE_SECTION_HEADER
-pack(disabled)
-Structure IMAGE_SECTION_HEADER {
-   0   char[8]   8   Name   ""
-   8   Misc   4   Misc   ""
-   12   ImageBaseOffset32   4   VirtualAddress   ""
-   16   dword   4   SizeOfRawData   ""
-   20   dword   4   PointerToRawData   ""
-   24   dword   4   PointerToRelocations   ""
-   28   dword   4   PointerToLinenumbers   ""
-   32   word   2   NumberOfRelocations   ""
-   34   word   2   NumberOfLinenumbers   ""
-   36   SectionFlags   4   Characteristics   ""
-}
-Length: 40 Alignment: 1
- = undefined
-  00400218: /PE/IMAGE_SECTION_HEADER
-pack(disabled)
-Structure IMAGE_SECTION_HEADER {
-   0   char[8]   8   Name   ""
-   8   Misc   4   Misc   ""
-   12   ImageBaseOffset32   4   VirtualAddress   ""
-   16   dword   4   SizeOfRawData   ""
-   20   dword   4   PointerToRawData   ""
-   24   dword   4   PointerToRelocations   ""
-   28   dword   4   PointerToLinenumbers   ""
-   32   word   2   NumberOfRelocations   ""
-   34   word   2   NumberOfLinenumbers   ""
-   36   SectionFlags   4   Characteristics   ""
-}
-Length: 40 Alignment: 1
- = undefined
-  00400240: /PE/IMAGE_SECTION_HEADER
-pack(disabled)
-Structure IMAGE_SECTION_HEADER {
-   0   char[8]   8   Name   ""
-   8   Misc   4   Misc   ""
-   12   ImageBaseOffset32   4   VirtualAddress   ""
-   16   dword   4   SizeOfRawData   ""
-   20   dword   4   PointerToRawData   ""
-   24   dword   4   PointerToRelocations   ""
-   28   dword   4   PointerToLinenumbers   ""
-   32   word   2   NumberOfRelocations   ""
-   34   word   2   NumberOfLinenumbers   ""
-   36   SectionFlags   4   Characteristics   ""
-}
-Length: 40 Alignment: 1
- = undefined
-  00400268: /PE/IMAGE_SECTION_HEADER
-pack(disabled)
-Structure IMAGE_SECTION_HEADER {
-   0   char[8]   8   Name   ""
-   8   Misc   4   Misc   ""
-   12   ImageBaseOffset32   4   VirtualAddress   ""
-   16   dword   4   SizeOfRawData   ""
-   20   dword   4   PointerToRawData   ""
-   24   dword   4   PointerToRelocations   ""
-   28   dword   4   PointerToLinenumbers   ""
-   32   word   2   NumberOfRelocations   ""
-   34   word   2   NumberOfLinenumbers   ""
-   36   SectionFlags   4   Characteristics   ""
-}
-Length: 40 Alignment: 1
- = undefined
-  00400290: /PE/IMAGE_SECTION_HEADER
-pack(disabled)
-Structure IMAGE_SECTION_HEADER {
-   0   char[8]   8   Name   ""
-   8   Misc   4   Misc   ""
-   12   ImageBaseOffset32   4   VirtualAddress   ""
-   16   dword   4   SizeOfRawData   ""
-   20   dword   4   PointerToRawData   ""
-   24   dword   4   PointerToRelocations   ""
-   28   dword   4   PointerToLinenumbers   ""
-   32   word   2   NumberOfRelocations   ""
-   34   word   2   NumberOfLinenumbers   ""
-   36   SectionFlags   4   Characteristics   ""
-}
-Length: 40 Alignment: 1
- = undefined
-Items in block: 8
+  00100040: Elf64_Phdr[13] = undefined
+Items in block: 2
 
-Block: .text
-Range: 00401000 - 004021ff
-Size: 4608 bytes
+Block: .interp
+Range: 00100318 - 00100333
+Size: 28 bytes
 ------------------------------------------------------------
-  00401000: pointer = 00403040
-  00401004: undefined * = 00403090
-  00401008: /PE/IMAGE_LOAD_CONFIG_DIRECTORY32
+  00100318: TerminatedCString = /lib64/ld-linux-x86-64.so.2
+Items in block: 1
+
+Block: .note.gnu.property
+Range: 00100338 - 00100357
+Size: 32 bytes
+------------------------------------------------------------
+  00100338: /ELF/NoteGnuProperty_4
 pack(disabled)
-Structure IMAGE_LOAD_CONFIG_DIRECTORY32 {
-   0   dword   4   Size   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   dword   4   GlobalFlagsClear   ""
-   16   dword   4   GlobalFlagsSet   ""
-   20   dword   4   CriticalSectionDefaultTimeout   ""
-   24   dword   4   DeCommitFreeBlockThreshold   ""
-   28   dword   4   DeCommitTotalFreeThreshold   ""
-   32   pointer32   4   LockPrefixTable   ""
-   36   dword   4   MaximumAllocationSize   ""
-   40   dword   4   VirtualMemoryThreshold   ""
-   44   dword   4   ProcessHeapFlags   ""
-   48   dword   4   ProcessAffinityMask   ""
-   52   word   2   CsdVersion   ""
-   54   word   2   DependentLoadFlags   ""
-   56   pointer32   4   EditList   ""
-   60   pointer32   4   SecurityCookie   ""
-   64   pointer32   4   SEHandlerTable   ""
-   68   dword   4   SEHandlerCount   ""
-   72   pointer32   4   GuardCFCCheckFunctionPointer   ""
-   76   pointer32   4   GuardCFDispatchFunctionPointer   ""
-   80   pointer32   4   GuardCFFunctionTable   ""
-   84   dword   4   GuardCFFunctionCount   ""
-   88   IMAGE_GUARD_FLAGS   4   GuardFlags   ""
-   92   IMAGE_LOAD_CONFIG_CODE_INTEGRITY   12   CodeIntegrity   ""
-   104   pointer32   4   GuardAddressTakenIatEntryTable   ""
-   108   dword   4   GuardAddressTakenIatEntryCount   ""
-   112   pointer32   4   GuardLongJumpTargetTable   ""
-   116   dword   4   GuardLongJumpTargetCount   ""
-   120   pointer32   4   DynamicValueRelocTable   ""
-   124   pointer32   4   CHPEMetadataPointer   ""
-   128   pointer32   4   GuardRFFailureRoutine   ""
-   132   pointer32   4   GuardRFFailureRoutineFunctionPointer   ""
-   136   dword   4   DynamicValueRelocTableOffset   ""
-   140   word   2   DynamicValueRelocTableSection   ""
-   142   word   2   Reserved1   ""
-   144   pointer32   4   GuardRFVerifyStackPointerFunctionPointer   ""
-   148   dword   4   HotPatchTableOffset   ""
-   152   dword   4   Reserved2   ""
-   156   dword   4   Reserved3   ""
+Structure NoteGnuProperty_4 {
+   0   dword   4   namesz   "Length of name field"
+   4   dword   4   descsz   "Length of description field"
+   8   dword   4   type   "Vendor specific type"
+   12   string   4   name   "Vendor name"
 }
-Length: 160 Alignment: 1
+Length: 16 Alignment: 1
  = undefined
-  004010d8: undefined * = 004019c0
-  004010dc: undefined * = 00401d50
-  004010e4: GuardCfgTableEntry[10] = undefined
-  00401110: string = CalculatorStarted
-  00401124: unicode = ms-calculator:
-  00401144: /PE/IMAGE_DEBUG_DIRECTORY
+  00100348: /NoteGnuPropertyElement_4
 pack(disabled)
-Structure IMAGE_DEBUG_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   dword   4   Type   ""
-   16   dword   4   SizeOfData   ""
-   20   dword   4   AddressOfRawData   ""
-   24   dword   4   PointerToRawData   ""
+Structure NoteGnuPropertyElement_4 {
+   0   dword   4   prType   ""
+   4   dword   4   prDatasz   ""
+   8   byte[4]   4   data   ""
 }
-Length: 28 Alignment: 1
+Length: 12 Alignment: 1
  = undefined
-  00401160: /PE/IMAGE_DEBUG_DIRECTORY
+Items in block: 2
+
+Block: .note.gnu.build-id
+Range: 00100358 - 0010037b
+Size: 36 bytes
+------------------------------------------------------------
+  00100358: /ELF/GnuBuildId
 pack(disabled)
-Structure IMAGE_DEBUG_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   dword   4   Type   ""
-   16   dword   4   SizeOfData   ""
-   20   dword   4   AddressOfRawData   ""
-   24   dword   4   PointerToRawData   ""
+Structure GnuBuildId {
+   0   dword   4   namesz   "Length of name field"
+   4   dword   4   descsz   "Length of description field"
+   8   dword   4   type   "Vendor specific type"
+   12   string   4   name   "Vendor name"
+   16   byte[20]   20   hash   ""
 }
-Length: 28 Alignment: 1
+Length: 36 Alignment: 1
  = undefined
-  0040117c: /PE/IMAGE_DEBUG_DIRECTORY
+Items in block: 1
+
+Block: .note.ABI-tag
+Range: 0010037c - 0010039b
+Size: 32 bytes
+------------------------------------------------------------
+  0010037c: /ELF/NoteAbiTag
 pack(disabled)
-Structure IMAGE_DEBUG_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   dword   4   Type   ""
-   16   dword   4   SizeOfData   ""
-   20   dword   4   AddressOfRawData   ""
-   24   dword   4   PointerToRawData   ""
-}
-Length: 28 Alignment: 1
- = undefined
-  00401198: /PE/IMAGE_DEBUG_DIRECTORY
-pack(disabled)
-Structure IMAGE_DEBUG_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   dword   4   Type   ""
-   16   dword   4   SizeOfData   ""
-   20   dword   4   AddressOfRawData   ""
-   24   dword   4   PointerToRawData   ""
-}
-Length: 28 Alignment: 1
- = undefined
-  004011c0: IBO32DataType: typedef ImageBaseOffset32 pointer32 = 00402030
-  00401267: string = CalculatorWinMain
-  00401279: string = "CalculatorStarted"
-  0040128f: undefined4 = 0x905ca09
-  00401293: undefined4 = 0x401e610e
-  00401297: undefined4 = 0x212f50b6
-  0040129b: undefined4 = -0x1f467fd7
-  0040129f: undefined2 = 0x29
-  004012a1: string = MicrosoftCalculator
-  004012cc: /PDB/DotNetPdbInfo
-pack(disabled)
-Structure DotNetPdbInfo {
-   0   string   4   signature   ""
-   4   GUID   16   guid   ""
-   20   dword   4   age   ""
-   24   string   8   pdbpath   ""
+Structure NoteAbiTag {
+   0   dword   4   namesz   "Length of name field"
+   4   dword   4   descsz   "Length of description field"
+   8   dword   4   type   "Vendor specific type"
+   12   string   4   name   "Vendor name"
+   16   dword   4   abiType   "0 == Linux"
+   20   dword[3]   12   requiredKernelVersion   "Major.minor.patch"
 }
 Length: 32 Alignment: 1
  = undefined
-  004013ac: string = .rdata
-  004013bc: string = .rdata$sxdata
-  004013d4: string = .rdata$voltmd
-  00401404: string = .rdata$zETW1
-  0040141c: string = .rdata$zETW2
-  004014b0: string = .data
-  0040208c: undefined * = 00401be9
-  00402090: undefined * = 00401bfd
-  004020ac: undefined * = 00401db9
-  004020b0: undefined * = 00401dbd
-  004020cc: undefined * = 00401f2b
-  004020d0: undefined * = 00401f3e
-Items in block: 34
+Items in block: 1
+
+Block: .gnu.hash
+Range: 001003a0 - 001003c7
+Size: 40 bytes
+------------------------------------------------------------
+  001003a0: dword = 0x2
+  001003a4: dword = 0x11
+  001003a8: dword = 0x1
+  001003ac: dword = 0x6
+  001003b0: qword[1] = undefined
+  001003b8: dword[2] = undefined
+  001003c0: dword[2] = undefined
+Items in block: 7
+
+Block: .dynsym
+Range: 001003c8 - 0010058f
+Size: 456 bytes
+------------------------------------------------------------
+  001003c8: Elf64_Sym[19] = undefined
+Items in block: 1
+
+Block: .dynstr
+Range: 00100590 - 0010066f
+Size: 224 bytes
+------------------------------------------------------------
+  00100591: string-utf8 = libc.so.6
+  0010059b: string-utf8 = fflush
+  001005a2: string-utf8 = exit
+  001005a7: string-utf8 = srand
+  001005ad: string-utf8 = puts
+  001005b2: string-utf8 = time
+  001005b7: string-utf8 = __stack_chk_fail
+  001005c8: string-utf8 = putchar
+  001005d0: string-utf8 = printf
+  001005d7: string-utf8 = getchar
+  001005df: string-utf8 = stdout
+  001005e6: string-utf8 = getenv
+  001005ed: string-utf8 = __cxa_finalize
+  001005fc: string-utf8 = __libc_start_main
+  0010060e: string-utf8 = random
+  00100615: string-utf8 = GLIBC_2.4
+  0010061f: string-utf8 = GLIBC_2.2.5
+  0010062b: string-utf8 = _ITM_deregisterTMCloneTable
+  00100647: string-utf8 = __gmon_start__
+  00100656: string-utf8 = _ITM_registerTMCloneTable
+Items in block: 20
+
+Block: .gnu.version
+Range: 00100670 - 00100695
+Size: 38 bytes
+------------------------------------------------------------
+  00100670: word = 0x0
+  00100672: word = 0x2
+  00100674: word = 0x2
+  00100676: word = 0x0
+  00100678: word = 0x2
+  0010067a: word = 0x3
+  0010067c: word = 0x2
+  0010067e: word = 0x2
+  00100680: word = 0x2
+  00100682: word = 0x2
+  00100684: word = 0x0
+  00100686: word = 0x2
+  00100688: word = 0x2
+  0010068a: word = 0x2
+  0010068c: word = 0x2
+  0010068e: word = 0x0
+  00100690: word = 0x2
+  00100692: word = 0x2
+  00100694: word = 0x2
+Items in block: 19
+
+Block: .gnu.version_r
+Range: 00100698 - 001006c7
+Size: 48 bytes
+------------------------------------------------------------
+Items in block: 0
+
+Block: .rela.dyn
+Range: 001006c8 - 0010079f
+Size: 216 bytes
+------------------------------------------------------------
+  001006c8: Elf64_Rela[9] = undefined
+Items in block: 1
+
+Block: .rela.plt
+Range: 001007a0 - 001008bf
+Size: 288 bytes
+------------------------------------------------------------
+  001007a0: Elf64_Rela[12] = undefined
+Items in block: 1
+
+Block: .init
+Range: 00101000 - 0010101a
+Size: 27 bytes
+------------------------------------------------------------
+Items in block: 0
+
+Block: .plt
+Range: 00101020 - 001010ef
+Size: 208 bytes
+------------------------------------------------------------
+Items in block: 0
+
+Block: .plt.got
+Range: 001010f0 - 001010ff
+Size: 16 bytes
+------------------------------------------------------------
+Items in block: 0
+
+Block: .plt.sec
+Range: 00101100 - 001011bf
+Size: 192 bytes
+------------------------------------------------------------
+Items in block: 0
+
+Block: .text
+Range: 001011c0 - 00101724
+Size: 1381 bytes
+------------------------------------------------------------
+Items in block: 0
+
+Block: .fini
+Range: 00101728 - 00101734
+Size: 13 bytes
+------------------------------------------------------------
+Items in block: 0
+
+Block: .rodata
+Range: 00102000 - 00102056
+Size: 87 bytes
+------------------------------------------------------------
+  00102004: string = :Calibrating (%d/5)...
+
+  0010201c: string = :Calibration failure
+  00102031: string = :Calibration success
+Items in block: 3
+
+Block: .eh_frame_hdr
+Range: 00102058 - 001020ab
+Size: 84 bytes
+------------------------------------------------------------
+  00102058: /eh_frame_hdr
+pack(disabled)
+Structure eh_frame_hdr {
+   0   byte   1   eh_frame_hdr_version   "Exception Handler Frame Header Version"
+   1   dwfenc   1   eh_frame_pointer_encoding   "Exception Handler Frame Pointer Encoding"
+   2   dwfenc   1   eh_frame_desc_entry_count_encoding   "Encoding of # of Exception Handler FDEs"
+   3   dwfenc   1   eh_frame_table_encoding   "Exception Handler Table Encoding"
+}
+Length: 4 Alignment: 1
+ = undefined
+  0010205c: dword = 0x54
+  00102060: dword = 0x9
+  00102064: /fde_table_entry
+pack(disabled)
+Structure fde_table_entry {
+   0   dword   4   initial_loc   "Initial Location"
+   4   dword   4   data_loc   "Data location"
+}
+Length: 8 Alignment: 1
+ = undefined
+  0010206c: /fde_table_entry
+pack(disabled)
+Structure fde_table_entry {
+   0   dword   4   initial_loc   "Initial Location"
+   4   dword   4   data_loc   "Data location"
+}
+Length: 8 Alignment: 1
+ = undefined
+  00102074: /fde_table_entry
+pack(disabled)
+Structure fde_table_entry {
+   0   dword   4   initial_loc   "Initial Location"
+   4   dword   4   data_loc   "Data location"
+}
+Length: 8 Alignment: 1
+ = undefined
+  0010207c: /fde_table_entry
+pack(disabled)
+Structure fde_table_entry {
+   0   dword   4   initial_loc   "Initial Location"
+   4   dword   4   data_loc   "Data location"
+}
+Length: 8 Alignment: 1
+ = undefined
+  00102084: /fde_table_entry
+pack(disabled)
+Structure fde_table_entry {
+   0   dword   4   initial_loc   "Initial Location"
+   4   dword   4   data_loc   "Data location"
+}
+Length: 8 Alignment: 1
+ = undefined
+  0010208c: /fde_table_entry
+pack(disabled)
+Structure fde_table_entry {
+   0   dword   4   initial_loc   "Initial Location"
+   4   dword   4   data_loc   "Data location"
+}
+Length: 8 Alignment: 1
+ = undefined
+  00102094: /fde_table_entry
+pack(disabled)
+Structure fde_table_entry {
+   0   dword   4   initial_loc   "Initial Location"
+   4   dword   4   data_loc   "Data location"
+}
+Length: 8 Alignment: 1
+ = undefined
+  0010209c: /fde_table_entry
+pack(disabled)
+Structure fde_table_entry {
+   0   dword   4   initial_loc   "Initial Location"
+   4   dword   4   data_loc   "Data location"
+}
+Length: 8 Alignment: 1
+ = undefined
+  001020a4: /fde_table_entry
+pack(disabled)
+Structure fde_table_entry {
+   0   dword   4   initial_loc   "Initial Location"
+   4   dword   4   data_loc   "Data location"
+}
+Length: 8 Alignment: 1
+ = undefined
+Items in block: 12
+
+Block: .eh_frame
+Range: 001020b0 - 001021f7
+Size: 328 bytes
+------------------------------------------------------------
+  001020b0: dword = 0x14
+  001020b4: dword = 0x0
+  001020b8: byte = 0x1
+  001020b9: string = zR
+  001020bc: uleb128 = 0x1
+  001020bd: sleb128 = -0x8
+  001020be: byte = 0x10
+  001020bf: uleb128 = 0x1
+  001020c0: dwfenc = DW_EH_PE_sdata4 | DW_EH_PE_pcrel
+  001020c1: byte[7] = undefined
+  001020c8: dword = 0x14
+  001020cc: dword = 0x1c
+  001020d0: dword = 0xfffff0f0
+  001020d4: dword = 0x2f
+  001020d8: uleb128 = 0x0
+  001020d9: byte[7] = undefined
+  001020e0: dword = 0x24
+  001020e4: dword = 0x34
+  001020e8: dword = 0xffffef38
+  001020ec: dword = 0xd0
+  001020f0: uleb128 = 0x0
+  001020f1: byte[23] = undefined
+  00102108: dword = 0x14
+  0010210c: dword = 0x5c
+  00102110: dword = 0xffffefe0
+  00102114: qword = 0x10
+  0010211c: uleb128 = 0x0
+  0010211d: byte[3] = undefined
+  00102120: dword = 0x14
+  00102124: dword = 0x74
+  00102128: dword = 0xffffefd8
+  0010212c: qword = 0xc0
+  00102134: uleb128 = 0x0
+  00102135: byte[3] = undefined
+  00102138: dword = 0x1c
+  0010213c: dword = 0x8c
+  00102140: dword = 0xfffff169
+  00102144: dword = 0x5c
+  00102148: uleb128 = 0x0
+  00102149: byte[15] = undefined
+  00102158: dword = 0x1c
+  0010215c: dword = 0xac
+  00102160: dword = 0xfffff1a5
+  00102164: dword = 0x1ab
+  00102168: uleb128 = 0x0
+  00102169: byte[15] = undefined
+  00102178: dword = 0x1c
+  0010217c: dword = 0xcc
+  00102180: dword = 0xfffff330
+  00102184: dword = 0x1f4
+  00102188: uleb128 = 0x0
+  00102189: byte[15] = undefined
+  00102198: dword = 0x44
+  0010219c: dword = 0xec
+  001021a0: dword = 0xfffff510
+  001021a4: dword = 0x65
+  001021a8: uleb128 = 0x0
+  001021a9: byte[55] = undefined
+  001021e0: dword = 0x10
+  001021e4: dword = 0x134
+  001021e8: dword = 0xfffff538
+  001021ec: qword = 0x5
+  001021f4: dword = 0x0
+Items in block: 63
+
+Block: .init_array
+Range: 00103d60 - 00103d67
+Size: 8 bytes
+------------------------------------------------------------
+  00103d60: pointer = 001012a0
+Items in block: 1
+
+Block: .fini_array
+Range: 00103d68 - 00103d6f
+Size: 8 bytes
+------------------------------------------------------------
+  00103d68: pointer = 00101260
+Items in block: 1
+
+Block: .dynamic
+Range: 00103d70 - 00103f5f
+Size: 496 bytes
+------------------------------------------------------------
+  00103d70: Elf64_Dyn[27] = undefined
+Items in block: 1
+
+Block: .got
+Range: 00103f60 - 00103fff
+Size: 160 bytes
+------------------------------------------------------------
+  00103f60: pointer = 00103d70
+  00103f68: pointer = 00000000
+  00103f70: pointer = 00000000
+  00103f78: pointer = 00105000
+  00103f80: pointer = 00105008
+  00103f88: pointer = 00105018
+  00103f90: pointer = 00105020
+  00103f98: pointer = 00105028
+  00103fa0: pointer = 00105038
+  00103fa8: pointer = 00105040
+  00103fb0: pointer = 00105050
+  00103fb8: pointer = 00105058
+  00103fc0: pointer = 00105060
+  00103fc8: pointer = 00105068
+  00103fd0: pointer = 00105078
+  00103fd8: pointer = 00105010
+  00103fe0: pointer = 00105030
+  00103fe8: pointer = 00105048
+  00103ff0: pointer = 00105070
+  00103ff8: pointer = 00105080
+Items in block: 20
 
 Block: .data
-Range: 00403000 - 004033ff
-Size: 1024 bytes
+Range: 00104000 - 0010400f
+Size: 16 bytes
 ------------------------------------------------------------
-  00403000: undefined4 = 0x0
-  00403004: pointer = 0040129f
-  0040300c: undefined4 = 0x0
-  00403010: undefined4 = 0x0
-  00403014: undefined4 = 0x0
-  00403018: undefined4 = 0x0
-  0040301c: undefined4 = 0x0
-  00403028: undefined4 = -0x44bf19b2
-  0040302c: undefined4 = 0x44bf19b1
-  00403030: undefined4 = 0x1
-  00403054: undefined4 = 0x0
-  00403148: undefined4 = 0x0
-  0040335c: undefined4 = 0x0
-  00403360: undefined4 = 0x0
-  00403374: undefined4 = 0x0
-  0040337c: undefined4 = 0x0
-  00403380: undefined4 = 0x0
-  00403384: undefined4 = 0x0
-  00403388: undefined4 = 0x0
-  00403398: undefined4 = 0x0
-  0040339c: undefined4 = 0x0
-  004033a0: undefined4 = 0x0
-Items in block: 22
+  00104008: pointer = 00104008
+Items in block: 1
 
-Block: .idata
-Range: 00404000 - 004045ff
-Size: 1536 bytes
+Block: .bss
+Range: 00104010 - 0010401f
+Size: 16 bytes
 ------------------------------------------------------------
-  00404000: pointer = 000043ce
-  00404004: pointer = 000043e4
-  00404008: pointer = 000043be
-  00404010: pointer = 00004210
-  00404014: pointer = 0000422e
-  00404018: pointer = 00004242
-  0040401c: pointer = 000041f4
-  00404020: pointer = 00004270
-  00404024: pointer = 00004286
-  00404028: pointer = 0000429c
-  0040402c: pointer = 000042b6
-  00404030: pointer = 00004256
-  00404038: pointer = 000041d8
-  00404040: pointer = 00004422
-  00404048: pointer = 00004410
-  00404050: pointer = 00004408
-  00404058: pointer = 000042f2
-  0040405c: pointer = 0000433e
-  00404060: pointer = 0000434c
-  00404064: pointer = 00004360
-  00404068: pointer = 0000436c
-  0040406c: pointer = 00004382
-  00404070: pointer = 00004396
-  00404074: pointer = 0000432c
-  00404078: pointer = 00004324
-  0040407c: pointer = 000042e2
-  00404080: pointer = 000042d4
-  00404084: pointer = 00004312
-  00404088: pointer = 000043a4
-  0040408c: pointer = 00004300
-  00404090: pointer = 00004334
-  00404098: pointer = 00402070
-  004040a0: dword = 0x4178
-  004040a4: dword = 0x0
-  004040a8: dword = 0x0
-  004040ac: dword = 0x41e8
-  004040b0: dword = 0x4038
-  004040b4: dword = 0x4150
-  004040b8: dword = 0x0
-  004040bc: dword = 0x0
-  004040c0: dword = 0x42c6
-  004040c4: dword = 0x4010
-  004040c8: dword = 0x4198
-  004040cc: dword = 0x0
-  004040d0: dword = 0x0
-  004040d4: dword = 0x4376
-  004040d8: dword = 0x4058
-  004040dc: dword = 0x4140
-  004040e0: dword = 0x0
-  004040e4: dword = 0x0
-  004040e8: dword = 0x43fa
-  004040ec: dword = 0x4000
-  004040f0: dword = 0x4190
-  004040f4: dword = 0x0
-  004040f8: dword = 0x0
-  004040fc: dword = 0x4436
-  00404100: dword = 0x4050
-  00404104: dword = 0x4188
-  00404108: dword = 0x0
-  0040410c: dword = 0x0
-  00404110: dword = 0x4458
-  00404114: dword = 0x4048
-  00404118: dword = 0x4180
-  0040411c: dword = 0x0
-  00404120: dword = 0x0
-  00404124: dword = 0x4482
-  00404128: dword = 0x4040
-  00404140: dword = 0x43ce
-  00404144: dword = 0x43e4
-  00404148: dword = 0x43be
-  00404150: dword = 0x4210
-  00404154: dword = 0x422e
-  00404158: dword = 0x4242
-  0040415c: dword = 0x41f4
-  00404160: dword = 0x4270
-  00404164: dword = 0x4286
-  00404168: dword = 0x429c
-  0040416c: dword = 0x42b6
-  00404170: dword = 0x4256
-  00404178: dword = 0x41d8
-  00404180: dword = 0x4422
-  00404188: dword = 0x4410
-  00404190: dword = 0x4408
-  00404198: dword = 0x42f2
-  0040419c: dword = 0x433e
-  004041a0: dword = 0x434c
-  004041a4: dword = 0x4360
-  004041a8: dword = 0x436c
-  004041ac: dword = 0x4382
-  004041b0: dword = 0x4396
-  004041b4: dword = 0x432c
-  004041b8: dword = 0x4324
-  004041bc: dword = 0x42e2
-  004041c0: dword = 0x42d4
-  004041c4: dword = 0x4312
-  004041c8: dword = 0x43a4
-  004041cc: dword = 0x4300
-  004041d0: dword = 0x4334
-  004041d8: word = 0x1b0
-  004041da: TerminatedCString = ShellExecuteW
-  004041e8: TerminatedCString = SHELL32.dll
-  004041f4: word = 0x5e2
-  004041f6: TerminatedCString = UnhandledExceptionFilter
-  00404210: word = 0x5a0
-  00404212: TerminatedCString = SetUnhandledExceptionFilter
-  0040422e: word = 0x235
-  00404230: TerminatedCString = GetCurrentProcess
-  00404242: word = 0x5c0
-  00404244: TerminatedCString = TerminateProcess
-  00404256: word = 0x478
-  00404258: TerminatedCString = QueryPerformanceCounter
-  00404270: word = 0x236
-  00404272: TerminatedCString = GetCurrentProcessId
-  00404286: word = 0x23a
-  00404288: TerminatedCString = GetCurrentThreadId
-  0040429c: word = 0x30d
-  0040429e: TerminatedCString = GetSystemTimeAsFileTime
-  004042b6: word = 0x32f
-  004042b8: TerminatedCString = GetTickCount
-  004042c6: TerminatedCString = KERNEL32.dll
-  004042d4: word = 0x74
-  004042d6: TerminatedCString = _XcptFilter
-  004042e2: word = 0xd2
-  004042e4: TerminatedCString = __p__commode
-  004042f2: word = 0x11a
-  004042f4: TerminatedCString = _amsg_exit
-  00404300: word = 0xfa
-  00404302: TerminatedCString = __wgetmainargs
-  00404312: word = 0xeb
-  00404314: TerminatedCString = __set_app_type
-  00404324: word = 0x4b9
-  00404326: TerminatedCString = exit
-  0040432c: word = 0x17c
-  0040432e: TerminatedCString = _exit
-  00404334: word = 0x12d
-  00404336: TerminatedCString = _cexit
-  0040433e: word = 0xd7
-  00404340: TerminatedCString = __p__fmode
-  0040434c: word = 0xed
-  0040434e: TerminatedCString = __setusermatherr
-  00404360: word = 0x1f3
-  00404362: TerminatedCString = _initterm
-  0040436c: word = 0x410
-  0040436e: TerminatedCString = _wcmdln
-  00404376: TerminatedCString = msvcrt.dll
-  00404382: word = 0x3a
-  00404384: TerminatedCString = ?terminate@@YAXXZ
-  00404396: word = 0x140
-  00404398: TerminatedCString = _controlfp
-  004043a4: word = 0x173
-  004043a6: TerminatedCString = _except_handler4_common
-  004043be: word = 0x10c
-  004043c0: TerminatedCString = EventRegister
-  004043ce: word = 0x10d
-  004043d0: TerminatedCString = EventSetInformation
-  004043e4: word = 0x114
-  004043e6: TerminatedCString = EventWriteTransfer
-  004043fa: TerminatedCString = ADVAPI32.dll
-  00404408: word = 0x2d
-  0040440a: TerminatedCString = Sleep
-  00404410: word = 0x22
-  00404412: TerminatedCString = GetStartupInfoW
-  00404422: word = 0x15
-  00404424: TerminatedCString = GetModuleHandleW
-  00404436: TerminatedCString = api-ms-win-core-synch-l1-2-0.dll
-  00404458: TerminatedCString = api-ms-win-core-processthreads-l1-1-0.dll
-  00404482: TerminatedCString = api-ms-win-core-libraryloader-l1-2-0.dll
-Items in block: 167
+  00104010: undefined8 = 0x0
+  00104018: undefined1 = 0x0
+Items in block: 2
 
-Block: .rsrc
-Range: 00405000 - 004097ff
-Size: 18432 bytes
+Block: EXTERNAL
+Range: 00105000 - 00105087
+Size: 136 bytes
 ------------------------------------------------------------
-  00405000: /PE/IMAGE_RESOURCE_DIRECTORY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   word   2   NumberOfNamedEntries   ""
-   14   word   2   NumberOfIdEntries   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  00405010: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405018: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405020: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405028: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405030: /PE/IMAGE_RESOURCE_DIRECTORY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   word   2   NumberOfNamedEntries   ""
-   14   word   2   NumberOfIdEntries   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  00405040: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405048: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405050: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405058: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405060: /PE/IMAGE_RESOURCE_DIRECTORY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   word   2   NumberOfNamedEntries   ""
-   14   word   2   NumberOfIdEntries   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  00405070: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405078: /PE/IMAGE_RESOURCE_DIRECTORY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   word   2   NumberOfNamedEntries   ""
-   14   word   2   NumberOfIdEntries   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  00405088: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405090: /PE/IMAGE_RESOURCE_DIRECTORY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   word   2   NumberOfNamedEntries   ""
-   14   word   2   NumberOfIdEntries   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  004050a0: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  004050a8: /PE/IMAGE_RESOURCE_DIRECTORY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   word   2   NumberOfNamedEntries   ""
-   14   word   2   NumberOfIdEntries   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  004050b8: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  004050c0: /PE/IMAGE_RESOURCE_DIRECTORY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   word   2   NumberOfNamedEntries   ""
-   14   word   2   NumberOfIdEntries   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  004050d0: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  004050d8: /PE/IMAGE_RESOURCE_DIRECTORY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   word   2   NumberOfNamedEntries   ""
-   14   word   2   NumberOfIdEntries   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  004050e8: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  004050f0: /PE/IMAGE_RESOURCE_DIRECTORY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   word   2   NumberOfNamedEntries   ""
-   14   word   2   NumberOfIdEntries   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  00405100: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405108: /PE/IMAGE_RESOURCE_DIRECTORY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   word   2   NumberOfNamedEntries   ""
-   14   word   2   NumberOfIdEntries   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  00405118: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405120: /PE/IMAGE_RESOURCE_DIRECTORY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   word   2   NumberOfNamedEntries   ""
-   14   word   2   NumberOfIdEntries   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  00405130: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405138: /PE/IMAGE_RESOURCE_DIRECTORY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY {
-   0   dword   4   Characteristics   ""
-   4   dword   4   TimeDateStamp   ""
-   8   word   2   MajorVersion   ""
-   10   word   2   MinorVersion   ""
-   12   word   2   NumberOfNamedEntries   ""
-   14   word   2   NumberOfIdEntries   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  00405148: /PE/IMAGE_RESOURCE_DIRECTORY_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DIRECTORY_ENTRY {
-   0   IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion   4   NameUnion   ""
-   4   IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion   4   DirectoryUnion   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  00405150: /PE/IMAGE_RESOURCE_DATA_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DATA_ENTRY {
-   0   dword   4   OffsetToData   ""
-   4   dword   4   Size   ""
-   8   dword   4   CodePage   ""
-   12   dword   4   Reserved   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  00405160: /PE/IMAGE_RESOURCE_DATA_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DATA_ENTRY {
-   0   dword   4   OffsetToData   ""
-   4   dword   4   Size   ""
-   8   dword   4   CodePage   ""
-   12   dword   4   Reserved   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  00405170: /PE/IMAGE_RESOURCE_DATA_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DATA_ENTRY {
-   0   dword   4   OffsetToData   ""
-   4   dword   4   Size   ""
-   8   dword   4   CodePage   ""
-   12   dword   4   Reserved   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  00405180: /PE/IMAGE_RESOURCE_DATA_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DATA_ENTRY {
-   0   dword   4   OffsetToData   ""
-   4   dword   4   Size   ""
-   8   dword   4   CodePage   ""
-   12   dword   4   Reserved   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  00405190: /PE/IMAGE_RESOURCE_DATA_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DATA_ENTRY {
-   0   dword   4   OffsetToData   ""
-   4   dword   4   Size   ""
-   8   dword   4   CodePage   ""
-   12   dword   4   Reserved   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  004051a0: /PE/IMAGE_RESOURCE_DATA_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DATA_ENTRY {
-   0   dword   4   OffsetToData   ""
-   4   dword   4   Size   ""
-   8   dword   4   CodePage   ""
-   12   dword   4   Reserved   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  004051b0: /PE/IMAGE_RESOURCE_DATA_ENTRY
-pack(disabled)
-Structure IMAGE_RESOURCE_DATA_ENTRY {
-   0   dword   4   OffsetToData   ""
-   4   dword   4   Size   ""
-   8   dword   4   CodePage   ""
-   12   dword   4   Reserved   ""
-}
-Length: 16 Alignment: 1
- = undefined
-  004051c0: /PE/IMAGE_RESOURCE_DIR_STRING_U_26
-pack(disabled)
-Structure IMAGE_RESOURCE_DIR_STRING_U_26 {
-   0   word   2   Length   ""
-   2   unicode   26   NameString   ""
-}
-Length: 28 Alignment: 1
- = undefined
-  004051e0: TerminatedCString = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+Items in block: 0
 
-<!-- Copyright (c) Microsoft Corporation -->
-
-<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
-
-<assemblyIdentity
-
-    name="Microsoft.Windows.Shell.calc"
-
-    processorArchitecture="x86"
-
-    version="5.1.0.0"
-
-    type="win32"/>
-
-<description>Windows Shell</description>
-
-<dependency>
-
-    <dependentAssembly>
-
-        <assemblyIdentity
-
-            type="win32"
-
-            name="Microsoft.Windows.Common-Controls"
-
-            version="6.0.0.0"
-
-            processorArchitecture="*"
-
-            publicKeyToken="6595b64144ccf1df"
-
-            language="*"
-
-        />
-
-    </dependentAssembly>
-
-</dependency>
-
-<trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
-
-    <security>
-
-        <requestedPrivileges>
-
-            <requestedExecutionLevel level="asInvoker" uiAccess="false"/>
-
-        </requestedPrivileges>
-
-    </security>
-
-</trustInfo>
-
-<application xmlns="urn:schemas-microsoft-com:asm.v3">
-
-    <windowsSettings>
-
-        <dpiAware  xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true</dpiAware>
-
-    </windowsSettings>
-
-</application>
-
-</assembly>
-
-
-  00405670: /PE/VS_VERSION_INFO
-pack(disabled)
-Structure VS_VERSION_INFO {
-   0   word   2   StructLength   ""
-   2   word   2   ValueLength   ""
-   4   word   2   StructType   ""
-   6   unicode   32   Info   ""
-   38   byte[2]   2   Padding   ""
-   40   dword   4   Signature   ""
-   44   word[2]   4   StructVersion   ""
-   48   word[4]   8   FileVersion   ""
-   56   word[4]   8   ProductVersion   ""
-   64   dword[2]   8   FileFlagsMask   ""
-   72   dword   4   FileFlags   ""
-   76   dword   4   FileOS   ""
-   80   dword   4   FileType   ""
-   84   dword   4   FileSubtype   ""
-   88   dword   4   FileTimestamp   ""
-}
-Length: 92 Alignment: 1
- = undefined
-  004056cc: /PE/StringFileInfo
-pack(disabled)
-Structure StringFileInfo {
-   0   word   2   wLength   ""
-   2   word   2   wValueLength   ""
-   4   word   2   wType   ""
-}
-Length: 6 Alignment: 1
- = undefined
-  004056d2: TerminatedUnicode = StringFileInfo
-  004056f0: /PE/StringTable
-pack(disabled)
-Structure StringTable {
-   0   word   2   wLength   ""
-   2   word   2   wValueLength   ""
-   4   word   2   wType   ""
-}
-Length: 6 Alignment: 1
- = undefined
-  004056f6: TerminatedUnicode = 040904B0
-  00405708: /PE/StringInfo
-pack(disabled)
-Structure StringInfo {
-   0   word   2   wLength   ""
-   2   word   2   wValueLength   ""
-   4   word   2   wType   ""
-}
-Length: 6 Alignment: 1
- = undefined
-  0040570e: TerminatedUnicode = CompanyName
-  00405728: TerminatedUnicode = Microsoft Corporation
-  00405754: /PE/StringInfo
-pack(disabled)
-Structure StringInfo {
-   0   word   2   wLength   ""
-   2   word   2   wValueLength   ""
-   4   word   2   wType   ""
-}
-Length: 6 Alignment: 1
- = undefined
-  0040575a: TerminatedUnicode = FileDescription
-  0040577c: TerminatedUnicode = Windows Calculator
-  004057a4: /PE/StringInfo
-pack(disabled)
-Structure StringInfo {
-   0   word   2   wLength   ""
-   2   word   2   wValueLength   ""
-   4   word   2   wType   ""
-}
-Length: 6 Alignment: 1
- = undefined
-  004057aa: TerminatedUnicode = FileVersion
-  004057c4: TerminatedUnicode = 10.0.26100.1882 (WinBuild.160101.0800)
-  00405814: /PE/StringInfo
-pack(disabled)
-Structure StringInfo {
-   0   word   2   wLength   ""
-   2   word   2   wValueLength   ""
-   4   word   2   wType   ""
-}
-Length: 6 Alignment: 1
- = undefined
-  0040581a: TerminatedUnicode = InternalName
-  00405834: TerminatedUnicode = CALC
-  00405840: /PE/StringInfo
-pack(disabled)
-Structure StringInfo {
-   0   word   2   wLength   ""
-   2   word   2   wValueLength   ""
-   4   word   2   wType   ""
-}
-Length: 6 Alignment: 1
- = undefined
-  00405846: TerminatedUnicode = LegalCopyright
-  00405864: TerminatedUnicode = © Microsoft Corporation. All rights reserved.
-  004058c0: /PE/StringInfo
-pack(disabled)
-Structure StringInfo {
-   0   word   2   wLength   ""
-   2   word   2   wValueLength   ""
-   4   word   2   wType   ""
-}
-Length: 6 Alignment: 1
- = undefined
-  004058c6: TerminatedUnicode = OriginalFilename
-  004058e8: TerminatedUnicode = CALC.EXE
-  004058fc: /PE/StringInfo
-pack(disabled)
-Structure StringInfo {
-   0   word   2   wLength   ""
-   2   word   2   wValueLength   ""
-   4   word   2   wType   ""
-}
-Length: 6 Alignment: 1
- = undefined
-  00405902: TerminatedUnicode = ProductName
-  0040591c: TerminatedUnicode = Microsoft® Windows® Operating System
-  00405968: /PE/StringInfo
-pack(disabled)
-Structure StringInfo {
-   0   word   2   wLength   ""
-   2   word   2   wValueLength   ""
-   4   word   2   wType   ""
-}
-Length: 6 Alignment: 1
- = undefined
-  0040596e: TerminatedUnicode = ProductVersion
-  0040598c: TerminatedUnicode = 10.0.26100.1882
-  004059ac: /PE/VarFileInfo
-pack(disabled)
-Structure VarFileInfo {
-   0   word   2   wLength   ""
-   2   word   2   wValueLength   ""
-   4   word   2   wType   ""
-}
-Length: 6 Alignment: 1
- = undefined
-  004059b2: TerminatedUnicode = VarFileInfo
-  004059cc: /PE/Var
-pack(disabled)
-Structure Var {
-   0   word   2   wLength   ""
-   2   word   2   wValueLength   ""
-   4   word   2   wType   ""
-}
-Length: 6 Alignment: 1
- = undefined
-  004059d2: TerminatedUnicode = Translation
-  004059ec: dword = 0x4b00409
-  004059f8: IconResource = <Icon-Image>
-  00405e60: PNG-Image = DataImage@eb91027
-  00406078: IconResource = <Icon-Image>
-  00407120: IconResource = <Icon-Image>
-  004096c8: GroupIconResource = GroupIcon
-Items in block: 78
-
-Block: .reloc
-Range: 0040a000 - 0040a1ff
-Size: 512 bytes
+Block: .comment
+Range: .comment::00000000 - .comment::0000002a
+Size: 43 bytes
 ------------------------------------------------------------
-  0040a000: dword = 0x1000
-  0040a004: dword = 0x13c
-  0040a008: word = 0x3000
-  0040a00a: word = 0x3004
-  0040a00c: word = 0x3044
-  0040a00e: word = 0x3048
-  0040a010: word = 0x3050
-  0040a012: word = 0x3058
-  0040a014: word = 0x30a8
-  0040a016: word = 0x30c0
-  0040a018: word = 0x30cc
-  0040a01a: word = 0x30d8
-  0040a01c: word = 0x30dc
-  0040a01e: word = 0x3610
-  0040a020: word = 0x362c
-  0040a022: word = 0x3636
-  0040a024: word = 0x363c
-  0040a026: word = 0x3643
-  0040a028: word = 0x365b
-  0040a02a: word = 0x3665
-  0040a02c: word = 0x366b
-  0040a02e: word = 0x3670
-  0040a030: word = 0x3675
-  0040a032: word = 0x367c
-  0040a034: word = 0x369a
-  0040a036: word = 0x36a7
-  0040a038: word = 0x36ad
-  0040a03a: word = 0x36b3
-  0040a03c: word = 0x3733
-  0040a03e: word = 0x3738
-  0040a040: word = 0x3755
-  0040a042: word = 0x3776
-  0040a044: word = 0x378a
-  0040a046: word = 0x3793
-  0040a048: word = 0x37a6
-  0040a04a: word = 0x37b0
-  0040a04c: word = 0x37c0
-  0040a04e: word = 0x37ca
-  0040a050: word = 0x37cf
-  0040a052: word = 0x37ea
-  0040a054: word = 0x37f2
-  0040a056: word = 0x3812
-  0040a058: word = 0x3832
-  0040a05a: word = 0x3838
-  0040a05c: word = 0x383e
-  0040a05e: word = 0x3844
-  0040a060: word = 0x384a
-  0040a062: word = 0x3850
-  0040a064: word = 0x3857
-  0040a066: word = 0x385e
-  0040a068: word = 0x3865
-  0040a06a: word = 0x386c
-  0040a06c: word = 0x3873
-  0040a06e: word = 0x387a
-  0040a070: word = 0x3881
-  0040a072: word = 0x3887
-  0040a074: word = 0x3893
-  0040a076: word = 0x389e
-  0040a078: word = 0x38a9
-  0040a07a: word = 0x38ae
-  0040a07c: word = 0x38b3
-  0040a07e: word = 0x38b9
-  0040a080: word = 0x38c3
-  0040a082: word = 0x38cd
-  0040a084: word = 0x38dd
-  0040a086: word = 0x38e6
-  0040a088: word = 0x38ee
-  0040a08a: word = 0x38f9
-  0040a08c: word = 0x38fe
-  0040a08e: word = 0x3904
-  0040a090: word = 0x3920
-  0040a092: word = 0x3927
-  0040a094: word = 0x393d
-  0040a096: word = 0x395d
-  0040a098: word = 0x396c
-  0040a09a: word = 0x3975
-  0040a09c: word = 0x397e
-  0040a09e: word = 0x3993
-  0040a0a0: word = 0x39a7
-  0040a0a2: word = 0x39af
-  0040a0a4: word = 0x39c8
-  0040a0a6: word = 0x39d4
-  0040a0a8: word = 0x39da
-  0040a0aa: word = 0x39e1
-  0040a0ac: word = 0x39ea
-  0040a0ae: word = 0x39f0
-  0040a0b0: word = 0x39f8
-  0040a0b2: word = 0x39fe
-  0040a0b4: word = 0x3a0b
-  0040a0b6: word = 0x3a13
-  0040a0b8: word = 0x3a19
-  0040a0ba: word = 0x3a31
-  0040a0bc: word = 0x3a36
-  0040a0be: word = 0x3a3c
-  0040a0c0: word = 0x3a41
-  0040a0c2: word = 0x3a46
-  0040a0c4: word = 0x3a4b
-  0040a0c6: word = 0x3a50
-  0040a0c8: word = 0x3a56
-  0040a0ca: word = 0x3a5e
-  0040a0cc: word = 0x3a6c
-  0040a0ce: word = 0x3a80
-  0040a0d0: word = 0x3a93
-  0040a0d2: word = 0x3ab5
-  0040a0d4: word = 0x3ac0
-  0040a0d6: word = 0x3ad2
-  0040a0d8: word = 0x3ada
-  0040a0da: word = 0x3adf
-  0040a0dc: word = 0x3ae4
-  0040a0de: word = 0x3b06
-  0040a0e0: word = 0x3b0c
-  0040a0e2: word = 0x3b13
-  0040a0e4: word = 0x3b18
-  0040a0e6: word = 0x3b25
-  0040a0e8: word = 0x3b34
-  0040a0ea: word = 0x3b3c
-  0040a0ec: word = 0x3b44
-  0040a0ee: word = 0x3b58
-  0040a0f0: word = 0x3b60
-  0040a0f2: word = 0x3b67
-  0040a0f4: word = 0x3bb2
-  0040a0f6: word = 0x3bbc
-  0040a0f8: word = 0x3bc2
-  0040a0fa: word = 0x3bcc
-  0040a0fc: word = 0x3c04
-  0040a0fe: word = 0x3c0a
-  0040a100: word = 0x3c14
-  0040a102: word = 0x3c1a
-  0040a104: word = 0x3c23
-  0040a106: word = 0x3c28
-  0040a108: word = 0x3c68
-  0040a10a: word = 0x3c88
-  0040a10c: word = 0x3c90
-  0040a10e: word = 0x3c96
-  0040a110: word = 0x3ca3
-  0040a112: word = 0x3cbd
-  0040a114: word = 0x3cc8
-  0040a116: word = 0x3cd2
-  0040a118: word = 0x3cdd
-  0040a11a: word = 0x3d39
-  0040a11c: word = 0x3d51
-  0040a11e: word = 0x3d57
-  0040a120: word = 0x3d66
-  0040a122: word = 0x3d73
-  0040a124: word = 0x3ded
-  0040a126: word = 0x3e28
-  0040a128: word = 0x3ea8
-  0040a12a: word = 0x3ead
-  0040a12c: word = 0x3ebf
-  0040a12e: word = 0x3edd
-  0040a130: word = 0x3ef1
-  0040a132: word = 0x3ef7
-  0040a134: word = 0x3fb5
-  0040a136: word = 0x3fc4
-  0040a138: word = 0x3fd1
-  0040a13a: word = 0x3fee
-  0040a13c: dword = 0x2000
-  0040a140: dword = 0x1c
-  0040a144: word = 0x3042
-  0040a146: word = 0x3047
-  0040a148: word = 0x305d
-  0040a14a: word = 0x308c
-  0040a14c: word = 0x3090
-  0040a14e: word = 0x30ac
-  0040a150: word = 0x30b0
-  0040a152: word = 0x30cc
-  0040a154: word = 0x30d0
-  0040a156: word = 0x0
-  0040a158: dword = 0x3000
-  0040a15c: dword = 0xc
-  0040a160: word = 0x3004
-  0040a162: word = 0x0
-  0040a164: dword = 0x4000
-  0040a168: dword = 0xc
-  0040a16c: word = 0x3098
-  0040a16e: word = 0x0
-Items in block: 176
+  .comment::00000000: string-utf8 = GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+Items in block: 1
 
-Block: tdb
-Range: ffdff000 - ffdfffff
-Size: 4096 bytes
+Block: .shstrtab
+Range: .shstrtab::00000000 - .shstrtab::00000109
+Size: 266 bytes
 ------------------------------------------------------------
-  ffdff000: void *32 = 00000000
-  ffdff004: void *32 = 00000000
-  ffdff008: void *32 = 00000000
-  ffdff00c: void *32 = 00000000
-  ffdff010: void *32 = 00000000
-  ffdff014: void *32 = 00000000
-  ffdff018: void *32 = ffdff000
-  ffdff01c: void *32 = 00000000
-  ffdff020: /CLIENT_ID
-pack(disabled)
-Structure CLIENT_ID {
-   0   void *32   4   UniqueProcess   ""
-   4   void *32   4   UniqueThread   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  ffdff028: void *32 = 00000000
-  ffdff02c: void *32 = 00000000
-  ffdff030: void *32 = 00000000
-  ffdff034: dword = 0x0
-  ffdff038: dword = 0x0
-  ffdff03c: void *32 = 00000000
-  ffdff040: void *32 = 00000000
-  ffdff044: dword[26] = undefined
-  ffdff0ac: dword[5] = undefined
-  ffdff0c0: void *32 = 00000000
-  ffdff0c4: dword = 0x0
-  ffdff0c8: dword = 0x0
-  ffdff0cc: void *[54] = undefined
-  ffdff1a4: dword = 0x0
-  ffdff1a8: void *32 = 00000000
-  ffdff1ac: uchar[36] = undefined
-  ffdff1d0: dword = 0x0
-  ffdff1d4: dword = 0x0
-  ffdff6b4: /CLIENT_ID
-pack(disabled)
-Structure CLIENT_ID {
-   0   void *32   4   UniqueProcess   ""
-   4   void *32   4   UniqueThread   ""
-}
-Length: 8 Alignment: 1
- = undefined
-  ffdff6bc: void *32 = 00000000
-  ffdff6c0: dword = 0x0
-  ffdff6c4: dword = 0x0
-  ffdff6c8: void *32 = 00000000
-  ffdff6cc: void *[62] = undefined
-  ffdff7c4: void *[233] = undefined
-  ffdffb68: void *[29] = undefined
-  ffdffbdc: void *32 = 00000000
-  ffdffbe0: void *32 = 00000000
-  ffdffbe4: void *32 = 00000000
-  ffdffbe8: void *32 = 00000000
-  ffdffbec: void *32 = 00000000
-  ffdffbf0: void *32 = 00000000
-  ffdffbf4: dword = 0x0
-  ffdffc00: wchar16[261] = undefined
-  ffdffe0c: void *32 = 00000000
-  ffdffe10: void *[64] = undefined
-  ffdfff10: void *32 = 00000000
-  ffdfff14: void *32 = 00000000
-  ffdfff18: void *32 = 00000000
-  ffdfff1c: void *32 = 00000000
-  ffdfff20: void *[2] = undefined
-  ffdfff28: dword = 0x0
-  ffdfff2c: void *[9] = undefined
-  ffdfff50: GUID = 00000000-0000-0000-0000-000000000000
-  ffdfff60: void *32 = 00000000
-  ffdfff64: void *32 = 00000000
-  ffdfff68: void *32 = 00000000
-  ffdfff6c: void *32 = 00000000
-  ffdfff70: dword = 0x0
-  ffdfff74: dword = 0x0
-  ffdfff78: dword = 0x0
-  ffdfff7c: void *32 = 00000000
-  ffdfff80: void *32 = 00000000
-  ffdfff84: dword = 0x0
-  ffdfff88: void *32 = 00000000
-  ffdfff8c: void *32 = 00000000
-  ffdfff90: void *32 = 00000000
-  ffdfff94: void *32 = 00000000
-  ffdfff98: dword = 0x0
-  ffdfff9c: dword = 0x0
-  ffdfffa0: void *32 = 00000000
-  ffdfffa4: void *32 = 00000000
-  ffdfffa8: dword = 0x0
-  ffdfffac: void *32 = 00000000
-  ffdfffb0: void *32 = 00000000
-  ffdfffb4: void *32 = 00000000
-  ffdfffb8: void *32 = 00000000
-  ffdfffbc: void *32 = 00000000
-  ffdfffc0: void *32 = 00000000
-  ffdfffc4: dword = 0x0
-  ffdfffc8: ushort = 0x0
-  ffdfffca: ushort = 0x0
-  ffdfffcc: void *32 = 00000000
-  ffdfffd0: void *32 = 00000000
-  ffdfffd4: void *32 = 00000000
-  ffdfffd8: dword = 0x0
-  ffdfffe0: void *32 = 00000000
-Items in block: 86
+  .shstrtab::00000001: string-utf8 = .shstrtab
+  .shstrtab::0000000b: string-utf8 = .interp
+  .shstrtab::00000013: string-utf8 = .note.gnu.property
+  .shstrtab::00000026: string-utf8 = .note.gnu.build-id
+  .shstrtab::00000039: string-utf8 = .note.ABI-tag
+  .shstrtab::00000047: string-utf8 = .gnu.hash
+  .shstrtab::00000051: string-utf8 = .dynsym
+  .shstrtab::00000059: string-utf8 = .dynstr
+  .shstrtab::00000061: string-utf8 = .gnu.version
+  .shstrtab::0000006e: string-utf8 = .gnu.version_r
+  .shstrtab::0000007d: string-utf8 = .rela.dyn
+  .shstrtab::00000087: string-utf8 = .rela.plt
+  .shstrtab::00000091: string-utf8 = .init
+  .shstrtab::00000097: string-utf8 = .plt.got
+  .shstrtab::000000a0: string-utf8 = .plt.sec
+  .shstrtab::000000a9: string-utf8 = .text
+  .shstrtab::000000af: string-utf8 = .fini
+  .shstrtab::000000b5: string-utf8 = .rodata
+  .shstrtab::000000bd: string-utf8 = .eh_frame_hdr
+  .shstrtab::000000cb: string-utf8 = .eh_frame
+  .shstrtab::000000d5: string-utf8 = .init_array
+  .shstrtab::000000e1: string-utf8 = .fini_array
+  .shstrtab::000000ed: string-utf8 = .dynamic
+  .shstrtab::000000f6: string-utf8 = .data
+  .shstrtab::000000fc: string-utf8 = .bss
+  .shstrtab::00000101: string-utf8 = .comment
+Items in block: 26
+
+Block: _elfSectionHeaders
+Range: _elfSectionHeaders::00000000 - _elfSectionHeaders::0000073f
+Size: 1856 bytes
+------------------------------------------------------------
+  _elfSectionHeaders::00000000: Elf64_Shdr[29] = undefined
+Items in block: 1
 
 /******************************************************************************
  * STRING DATA
  ******************************************************************************/
 
-00401110: string = 'CalculatorStarted'
-00401267: string = 'CalculatorWinMain'
-00401279: string = '"CalculatorStarted"'
-004012a1: string = 'MicrosoftCalculator'
-004013ac: string = '.rdata'
-004013bc: string = '.rdata$sxdata'
-004013d4: string = '.rdata$voltmd'
-00401404: string = '.rdata$zETW1'
-0040141c: string = '.rdata$zETW2'
-004014b0: string = '.data'
-004041da: TerminatedCString = 'ShellExecuteW'
-004041e8: TerminatedCString = 'SHELL32.dll'
-004041f6: TerminatedCString = 'UnhandledExceptionFilter'
-00404212: TerminatedCString = 'SetUnhandledExceptionFilter'
-00404230: TerminatedCString = 'GetCurrentProcess'
-00404244: TerminatedCString = 'TerminateProcess'
-00404258: TerminatedCString = 'QueryPerformanceCounter'
-00404272: TerminatedCString = 'GetCurrentProcessId'
-00404288: TerminatedCString = 'GetCurrentThreadId'
-0040429e: TerminatedCString = 'GetSystemTimeAsFileTime'
-004042b8: TerminatedCString = 'GetTickCount'
-004042c6: TerminatedCString = 'KERNEL32.dll'
-004042d6: TerminatedCString = '_XcptFilter'
-004042e4: TerminatedCString = '__p__commode'
-004042f4: TerminatedCString = '_amsg_exit'
-00404302: TerminatedCString = '__wgetmainargs'
-00404314: TerminatedCString = '__set_app_type'
-00404326: TerminatedCString = 'exit'
-0040432e: TerminatedCString = '_exit'
-00404336: TerminatedCString = '_cexit'
-00404340: TerminatedCString = '__p__fmode'
-0040434e: TerminatedCString = '__setusermatherr'
-00404362: TerminatedCString = '_initterm'
-0040436e: TerminatedCString = '_wcmdln'
-00404376: TerminatedCString = 'msvcrt.dll'
-00404384: TerminatedCString = '?terminate@@YAXXZ'
-00404398: TerminatedCString = '_controlfp'
-004043a6: TerminatedCString = '_except_handler4_common'
-004043c0: TerminatedCString = 'EventRegister'
-004043d0: TerminatedCString = 'EventSetInformation'
-004043e6: TerminatedCString = 'EventWriteTransfer'
-004043fa: TerminatedCString = 'ADVAPI32.dll'
-0040440a: TerminatedCString = 'Sleep'
-00404412: TerminatedCString = 'GetStartupInfoW'
-00404424: TerminatedCString = 'GetModuleHandleW'
-00404436: TerminatedCString = 'api-ms-win-core-synch-l1-2-0.dll'
-00404458: TerminatedCString = 'api-ms-win-core-processthreads-l1-1-0.dll'
-00404482: TerminatedCString = 'api-ms-win-core-libraryloader-l1-2-0.dll'
-004051e0: TerminatedCString = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\r\n<!-- Copyright (c) Microsoft Corporation -->\r\n<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">\r\n<assemblyIdentity\r\n    name="Microsoft.Windows.Shell.calc"\r\n    processorArchitecture="x86"\r\n    version="5.1.0.0"\r\n    type="win32"/>\r\n<description>Windows Shell</description>\r\n<dependency>\r\n    <dependentAssembly>\r\n        <assemblyIdentity\r\n            type="win32"\r\n            name="Microsoft.Windows.Common-Controls"\r\n            version="6.0.0.0"\r\n            processorArchitecture="*"\r\n            publicKeyToken="6595b64144ccf1df"\r\n            language="*"\r\n        />\r\n    </dependentAssembly>\r\n</dependency>\r\n<trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">\r\n    <security>\r\n        <requestedPrivileges>\r\n            <requestedExecutionLevel level="asInvoker" uiAccess="false"/>\r\n        </requestedPrivileges>\r\n    </security>\r\n</trustInfo>\r\n<application xmlns="urn:schemas-microsoft-com:asm.v3">\r\n    <windowsSettings>\r\n        <dpiAware  xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true</dpiAware>\r\n    </windowsSettings>\r\n</application>\r\n</assembly>\r\n'
+00100318: TerminatedCString = '/lib64/ld-linux-x86-64.so.2'
+00100591: string-utf8 = 'libc.so.6'
+0010059b: string-utf8 = 'fflush'
+001005a2: string-utf8 = 'exit'
+001005a7: string-utf8 = 'srand'
+001005ad: string-utf8 = 'puts'
+001005b2: string-utf8 = 'time'
+001005b7: string-utf8 = '__stack_chk_fail'
+001005c8: string-utf8 = 'putchar'
+001005d0: string-utf8 = 'printf'
+001005d7: string-utf8 = 'getchar'
+001005df: string-utf8 = 'stdout'
+001005e6: string-utf8 = 'getenv'
+001005ed: string-utf8 = '__cxa_finalize'
+001005fc: string-utf8 = '__libc_start_main'
+0010060e: string-utf8 = 'random'
+00100615: string-utf8 = 'GLIBC_2.4'
+0010061f: string-utf8 = 'GLIBC_2.2.5'
+0010062b: string-utf8 = '_ITM_deregisterTMCloneTable'
+00100647: string-utf8 = '__gmon_start__'
+00100656: string-utf8 = '_ITM_registerTMCloneTable'
+00102004: string = ':Calibrating (%d/5)...\n'
+0010201c: string = ':Calibration failure'
+00102031: string = ':Calibration success'
+001020b9: string = 'zR'
+.comment::00000000: string-utf8 = 'GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0'
+.shstrtab::00000001: string-utf8 = '.shstrtab'
+.shstrtab::0000000b: string-utf8 = '.interp'
+.shstrtab::00000013: string-utf8 = '.note.gnu.property'
+.shstrtab::00000026: string-utf8 = '.note.gnu.build-id'
+.shstrtab::00000039: string-utf8 = '.note.ABI-tag'
+.shstrtab::00000047: string-utf8 = '.gnu.hash'
+.shstrtab::00000051: string-utf8 = '.dynsym'
+.shstrtab::00000059: string-utf8 = '.dynstr'
+.shstrtab::00000061: string-utf8 = '.gnu.version'
+.shstrtab::0000006e: string-utf8 = '.gnu.version_r'
+.shstrtab::0000007d: string-utf8 = '.rela.dyn'
+.shstrtab::00000087: string-utf8 = '.rela.plt'
+.shstrtab::00000091: string-utf8 = '.init'
+.shstrtab::00000097: string-utf8 = '.plt.got'
+.shstrtab::000000a0: string-utf8 = '.plt.sec'
+.shstrtab::000000a9: string-utf8 = '.text'
+.shstrtab::000000af: string-utf8 = '.fini'
+.shstrtab::000000b5: string-utf8 = '.rodata'
+.shstrtab::000000bd: string-utf8 = '.eh_frame_hdr'
+.shstrtab::000000cb: string-utf8 = '.eh_frame'
+.shstrtab::000000d5: string-utf8 = '.init_array'
+.shstrtab::000000e1: string-utf8 = '.fini_array'
+.shstrtab::000000ed: string-utf8 = '.dynamic'
+.shstrtab::000000f6: string-utf8 = '.data'
+.shstrtab::000000fc: string-utf8 = '.bss'
+.shstrtab::00000101: string-utf8 = '.comment'
 
-Total strings: 49
+Total strings: 52
 
 /******************************************************************************
  * SYMBOL TABLE
  ******************************************************************************/
 
---- Function (59 symbols) ---
-  EXTERNAL:00000001: ShellExecuteW
-  EXTERNAL:00000002: SetUnhandledExceptionFilter
-  EXTERNAL:00000003: GetCurrentProcess
-  EXTERNAL:00000004: TerminateProcess
-  EXTERNAL:00000005: UnhandledExceptionFilter
-  EXTERNAL:00000006: GetCurrentProcessId
-  EXTERNAL:00000007: GetCurrentThreadId
-  EXTERNAL:00000008: GetSystemTimeAsFileTime
-  EXTERNAL:00000009: GetTickCount
-  EXTERNAL:0000000a: QueryPerformanceCounter
-  EXTERNAL:0000000b: _amsg_exit
-  EXTERNAL:0000000c: __p__fmode
-  EXTERNAL:0000000d: __setusermatherr
-  EXTERNAL:0000000e: initterm
-  EXTERNAL:00000010: terminate
-  EXTERNAL:00000011: _controlfp
-  EXTERNAL:00000012: _exit
-  EXTERNAL:00000013: exit
-  EXTERNAL:00000014: __p__commode
-  EXTERNAL:00000015: _XcptFilter
-  EXTERNAL:00000016: __set_app_type
-  EXTERNAL:00000017: except_handler4_common
-  EXTERNAL:00000018: __wgetmainargs
-  EXTERNAL:00000019: _cexit
-  EXTERNAL:0000001a: EventSetInformation
-  EXTERNAL:0000001b: EventWriteTransfer
-  EXTERNAL:0000001c: EventRegister
-  EXTERNAL:0000001d: Sleep
-  EXTERNAL:0000001e: GetStartupInfoW
-  EXTERNAL:0000001f: GetModuleHandleW
-  004015a0: FUN_004015a0
-  00401623: FUN_00401623
-  004016cf: FUN_004016cf
-  0040176d: FUN_0040176d
-  00401810: FUN_00401810
-  00401933: FUN_00401933
-  004019c0: FUN_004019c0
-  00401a30: FUN_00401a30
-  00401a69: FUN_00401a69
-  00401c49: FUN_00401c49
-  00401c80: FUN_00401c80
-  00401cf0: entry
-  00401d00: FUN_00401d00
-  00401d50: FUN_00401d50
-  00401d64: _XcptFilter
-  00401d70: FUN_00401d70
-  00401de4: FUN_00401de4
-  00401e26: _amsg_exit
-  00401e40: FUN_00401e40
-  00401e50: __FindPESection
-  ... and 9 more
+--- Function (60 symbols) ---
+  EXTERNAL:00000001: getenv
+  EXTERNAL:00000002: putchar
+  EXTERNAL:00000003: puts
+  EXTERNAL:00000004: __stack_chk_fail
+  EXTERNAL:00000005: printf
+  EXTERNAL:00000006: __libc_start_main
+  EXTERNAL:00000007: srand
+  EXTERNAL:00000008: getchar
+  EXTERNAL:00000009: time
+  EXTERNAL:0000000a: random
+  EXTERNAL:0000000b: fflush
+  EXTERNAL:0000000c: exit
+  EXTERNAL:0000000d: rand
+  EXTERNAL:0000000e: __cxa_finalize
+  EXTERNAL:0000000f: _ITM_deregisterTMCloneTable
+  EXTERNAL:00000010: _ITM_registerTMCloneTable
+  EXTERNAL:00000011: __gmon_start__
+  00101000: _DT_INIT
+  00101020: FUN_00101020
+  001010f0: FUN_001010f0
+  00101100: getenv
+  00101110: putchar
+  00101120: puts
+  00101130: __stack_chk_fail
+  00101140: printf
+  00101150: srand
+  00101160: getchar
+  00101170: time
+  00101180: random
+  00101190: fflush
+  001011a0: exit
+  001011b0: rand
+  001011c0: entry
+  001011f0: FUN_001011f0
+  00101220: FUN_00101220
+  00101260: _FINI_0
+  001012a0: _INIT_0
+  001012a9: FUN_001012a9
+  00101305: FUN_00101305
+  001014b0: FUN_001014b0
+  001016b0: FUN_001016b0
+  00101720: FUN_00101720
+  00101728: _DT_FINI
+  00105000: getenv
+  00105008: putchar
+  00105010: _ITM_deregisterTMCloneTable
+  00105018: puts
+  00105020: __stack_chk_fail
+  00105028: printf
+  00105030: __libc_start_main
+  ... and 10 more
 
---- Label (268 symbols) ---
-  EXTERNAL:0000000f: _wcmdln
-  00400000: IMAGE_DOS_HEADER_00400000
-  0040003c: IMAGE_DOS_HEADER_00400000.e_lfanew
-  004000f8: IMAGE_NT_HEADERS32_004000f8
-  00400110: IMAGE_NT_HEADERS32_004000f8.OptionalHeader.Magic
-  0040016c: IMAGE_NT_HEADERS32_004000f8.OptionalHeader.NumberOfRvaAndSizes
-  0040017c: IMAGE_NT_HEADERS32_004000f8.OptionalHeader.DataDirectory[1].Size
-  004001e0: IMAGE_NT_HEADERS32_004000f8.OptionalHeader.DataDirectory[14].VirtualAddress
-  004001f0: IMAGE_SECTION_HEADER_004001f0
-  00401000: PTR_DAT_00401000
-  00401008: IMAGE_LOAD_CONFIG_DIRECTORY32_00401008
-  004010c8: DAT_004010c8
-  004010d0: DAT_004010d0
-  004010d4: DAT_004010d4
-  004010e0: DAT_004010e0
-  004010e4: GuardCFFunctionTable
-  00401110: s_CalculatorStarted_00401110
-  00401124: u_ms-calculator:_00401124
-  00401144: IMAGE_DEBUG_DIRECTORY_00401144
-  004011c0: DAT_004011c0
-  00401248: DAT_00401248
-  00401259: DAT_00401259
-  0040128f: DAT_0040128f
-  00401293: DAT_00401293
-  00401297: DAT_00401297
-  0040129b: DAT_0040129b
-  0040129f: DAT_0040129f
-  004012c8: DAT_004012c8
-  004015e9: LAB_004015e9
-  004015ec: LAB_004015ec
-  004015f2: LAB_004015f2
-  00401616: LAB_00401616
-  00401659: LAB_00401659
-  00401698: LAB_00401698
-  004016b7: LAB_004016b7
-  004017e5: LAB_004017e5
-  0040181b: LAB_0040181b
-  00401826: LAB_00401826
-  00401957: LAB_00401957
-  004019ab: LAB_004019ab
-  00401a1e: LAB_00401a1e
-  00401a92: LAB_00401a92
-  00401aae: LAB_00401aae
-  00401abb: LAB_00401abb
-  00401abe: LAB_00401abe
-  00401ad0: LAB_00401ad0
-  00401af3: LAB_00401af3
-  00401b04: LAB_00401b04
-  00401b0a: LAB_00401b0a
-  00401b2d: LAB_00401b2d
-  ... and 218 more
+--- Label (100 symbols) ---
+  00100040: Elf64_Phdr_ARRAY_00100040
+  00100318: s_/lib64/ld-linux-x86-64.so.2_00100318
+  00100338: NoteGnuProperty_4_00100338
+  00100358: GnuBuildId_00100358
+  0010037c: NoteAbiTag_0010037c
+  001003a0: __DT_GNU_HASH
+  001003c8: __DT_SYMTAB
+  00100590: __DT_STRTAB
+  00100670: __DT_VERSYM
+  00100698: __DT_VERNEED
+  001006c8: __DT_RELA
+  001007a0: __DT_JMPREL
+  00101000: __DT_INIT
+  00101016: LAB_00101016
+  00101218: LAB_00101218
+  00101258: LAB_00101258
+  00101287: LAB_00101287
+  00101298: LAB_00101298
+  001012cf: LAB_001012cf
+  001012dc: LAB_001012dc
+  001012eb: LAB_001012eb
+  001012f8: LAB_001012f8
+  00101329: LAB_00101329
+  00101332: LAB_00101332
+  00101379: LAB_00101379
+  0010137f: LAB_0010137f
+  00101391: LAB_00101391
+  001013bd: LAB_001013bd
+  001013d4: LAB_001013d4
+  001013fe: LAB_001013fe
+  00101416: LAB_00101416
+  00101453: LAB_00101453
+  00101457: LAB_00101457
+  00101463: LAB_00101463
+  0010149a: LAB_0010149a
+  001014ae: LAB_001014ae
+  001014d7: LAB_001014d7
+  001014e5: LAB_001014e5
+  001014eb: LAB_001014eb
+  001014f4: LAB_001014f4
+  0010150e: LAB_0010150e
+  0010152c: LAB_0010152c
+  00101573: LAB_00101573
+  0010157a: LAB_0010157a
+  001015af: LAB_001015af
+  0010162c: LAB_0010162c
+  0010168e: LAB_0010168e
+  001016a2: LAB_001016a2
+  001016f0: LAB_001016f0
+  00101706: LAB_00101706
+  ... and 50 more
 
 ================================================================================
 EXPORT SUMMARY
 ================================================================================
-Functions exported: 25
-Data items: 571
-Strings: 49
-Symbols: 327
+Functions exported: 38
+Data items: 188
+Strings: 52
+Symbols: 160
 ================================================================================
 === OBJ_DUMP_END ===
