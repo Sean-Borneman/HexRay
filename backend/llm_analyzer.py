@@ -522,23 +522,23 @@ Content:
         print(f"Saved combined input to: {combined_input}")
 
     # ========== CLEANUP GHIDRA PROJECT FOLDER ==========
-        try:
-            print("Cleaning up Ghidra project folder...")
+        # try:#UNCOMMENT
+        #     print("Cleaning up Ghidra project folder...")
             
-            # Wait a moment to ensure all file handles are released
-            import time
-            time.sleep(1)
-            project_dir = Path("./decompiled_output").resolve()
-            if project_dir.exists():
-                # Delete the entire ghidra_projects folder
-                shutil.rmtree(project_dir)
-                print(f"Deleted: {project_dir}")
-            else:
-                print(f"Project folder already gone: {project_dir}")
+        #     # Wait a moment to ensure all file handles are released
+        #     import time
+        #     time.sleep(1)
+        #     project_dir = Path("./decompiled_output").resolve()
+        #     if project_dir.exists():
+        #         # Delete the entire ghidra_projects folder
+        #         shutil.rmtree(project_dir)
+        #         print(f"Deleted: {project_dir}")
+        #     else:
+        #         print(f"Project folder already gone: {project_dir}")
                 
-        except Exception as e:
-            print(f"Could not delete project folder: {e}")
-            print(f"You can manually delete: {project_dir}")
+        # except Exception as e:
+        #     print(f"Could not delete project folder: {e}")
+        #     print(f"You can manually delete: {project_dir}")
 
         return {
             'typed_code_file': str(out_code),
