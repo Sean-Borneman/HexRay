@@ -1,0 +1,15 @@
+Function: _ITM_registerTMCloneTable
+Address: 00105070
+Size: 1 bytes
+============================================================
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+void _ITM_registerTMCloneTable(void)
+
+{
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+

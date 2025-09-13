@@ -1,0 +1,119 @@
+DECOMPILED FUNCTIONS SUMMARY
+Generated from: engine
+Total functions exported: 38
+==================================================
+
+File: _DT_INIT.txt
+Function: _DT_INIT
+------------------------------
+File: FUN_00101020.txt
+Function: FUN_00101020
+------------------------------
+File: FUN_001010f0.txt
+Function: FUN_001010f0
+------------------------------
+File: getenv.txt
+Function: getenv
+------------------------------
+File: putchar.txt
+Function: putchar
+------------------------------
+File: puts.txt
+Function: puts
+------------------------------
+File: printf.txt
+Function: printf
+------------------------------
+File: srand.txt
+Function: srand
+------------------------------
+File: getchar.txt
+Function: getchar
+------------------------------
+File: time.txt
+Function: time
+------------------------------
+File: random.txt
+Function: random
+------------------------------
+File: fflush.txt
+Function: fflush
+------------------------------
+File: exit.txt
+Function: exit
+------------------------------
+File: rand.txt
+Function: rand
+------------------------------
+File: entry.txt
+Function: entry
+------------------------------
+File: FUN_001011f0.txt
+Function: FUN_001011f0
+------------------------------
+File: FUN_00101220.txt
+Function: FUN_00101220
+------------------------------
+File: _FINI_0.txt
+Function: _FINI_0
+------------------------------
+File: _INIT_0.txt
+Function: _INIT_0
+------------------------------
+File: FUN_001012a9.txt
+Function: FUN_001012a9
+------------------------------
+File: FUN_00101305.txt
+Function: FUN_00101305
+------------------------------
+File: FUN_001014b0.txt
+Function: FUN_001014b0
+------------------------------
+File: FUN_001016b0.txt
+Function: FUN_001016b0
+------------------------------
+File: FUN_00101720.txt
+Function: FUN_00101720
+------------------------------
+File: _DT_FINI.txt
+Function: _DT_FINI
+------------------------------
+File: getenv.txt
+Function: getenv
+------------------------------
+File: putchar.txt
+Function: putchar
+------------------------------
+File: _ITM_deregisterTMCloneTable.txt
+Function: _ITM_deregisterTMCloneTable
+------------------------------
+File: puts.txt
+Function: puts
+------------------------------
+File: printf.txt
+Function: printf
+------------------------------
+File: srand.txt
+Function: srand
+------------------------------
+File: getchar.txt
+Function: getchar
+------------------------------
+File: time.txt
+Function: time
+------------------------------
+File: random.txt
+Function: random
+------------------------------
+File: fflush.txt
+Function: fflush
+------------------------------
+File: exit.txt
+Function: exit
+------------------------------
+File: _ITM_registerTMCloneTable.txt
+Function: _ITM_registerTMCloneTable
+------------------------------
+File: rand.txt
+Function: rand
+------------------------------

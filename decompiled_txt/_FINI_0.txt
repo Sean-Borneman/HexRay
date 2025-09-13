@@ -1,0 +1,20 @@
+Function: _FINI_0
+Address: 00101260
+Size: 54 bytes
+============================================================
+
+
+void _FINI_0(void)
+
+{
+  if (DAT_00104018 == '\0') {
+    if (PTR___cxa_finalize_00103ff8 != (undefined *)0x0) {
+      FUN_001010f0(PTR_LOOP_00104008);
+    }
+    FUN_001011f0();
+    DAT_00104018 = 1;
+    return;
+  }
+  return;
+}
+

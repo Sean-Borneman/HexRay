@@ -1,0 +1,69 @@
+Function: FUN_001014b0
+Address: 001014b0
+Size: 500 bytes
+============================================================
+
+
+undefined8 FUN_001014b0(uint param_1)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined8 uVar3;
+  long lVar4;
+  char *pcVar5;
+  long in_FS_OFFSET;
+  int local_28;
+  int local_24;
+  uint local_20;
+  char local_17 [7];
+  long local_10;
+  
+  local_10 = *(long *)(in_FS_OFFSET + 0x28);
+  for (local_28 = 0; local_28 < 7; local_28 = local_28 + 1) {
+    local_17[local_28] = '\0';
+  }
+  do {
+    for (local_24 = 0; local_24 < 6; local_24 = local_24 + 1) {
+      local_17[local_24] = local_17[local_24 + 1];
+    }
+    iVar1 = getchar();
+    if ((char)iVar1 == -1) {
+                    /* WARNING: Subroutine does not return */
+      exit(0);
+    }
+    local_17[6] = (char)iVar1 + -0x31;
+  } while (((((local_17[0] != '\x05') || (local_17[1] != '\b')) || (local_17[2] != '\b')) ||
+           ((local_17[3] != '\x02' || (local_17[4] != '\x03')))) ||
+          ((local_17[5] != '\0' || (local_20 = param_1, local_17[6] != '\0'))));
+  do {
+    if ((int)local_20 < 10) {
+      printf(">%d\n",(ulong)local_20);
+      fflush(stdout);
+      uVar3 = 1;
+      goto LAB_0010168e;
+    }
+    lVar4 = random();
+    uVar2 = (int)lVar4 + (int)(lVar4 / 9) * -9 + 1;
+    printf(">%d\n",(ulong)uVar2);
+    fflush(stdout);
+    local_20 = local_20 - uVar2;
+    iVar1 = getchar();
+    if ((char)iVar1 == -1) {
+                    /* WARNING: Subroutine does not return */
+      exit(0);
+    }
+    iVar1 = (char)iVar1 + -0x30;
+  } while (((iVar1 < 1) || (9 < iVar1)) || (local_20 = local_20 - iVar1, local_20 != 0));
+  pcVar5 = getenv("FLAG");
+  printf(":%s\n",pcVar5);
+  fflush(stdout);
+  uVar3 = 0;
+LAB_0010168e:
+  if (local_10 == *(long *)(in_FS_OFFSET + 0x28)) {
+    return uVar3;
+  }
+                    /* WARNING: Subroutine does not return */
+  __stack_chk_fail();
+}
+

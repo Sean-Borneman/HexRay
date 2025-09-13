@@ -1,0 +1,15 @@
+Function: FUN_00101220
+Address: 00101220
+Size: 51 bytes
+============================================================
+
+
+/* WARNING: Removing unreachable block (ram,0x00101244) */
+/* WARNING: Removing unreachable block (ram,0x00101250) */
+
+void FUN_00101220(void)
+
+{
+  return;
+}
+
