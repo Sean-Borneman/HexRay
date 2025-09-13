@@ -6,6 +6,7 @@ Handles chunking and analysis of disassembled code using Anthropic's API
 
 import json
 import os
+import shutil
 import sys
 import getpass
 import time
@@ -84,12 +85,6 @@ class LLMAnalyzer:
         results_dir = self.storage_dir / 'results'
         results_dir.mkdir(parents=True, exist_ok=True)
         return results_dir
-
-    def _get_working_dir(self) -> Path:
-        """Get the working directory under storage (repo-root/storage/working)."""
-        working_dir = self.storage_dir / 'working'
-        working_dir.mkdir(parents=True, exist_ok=True)
-        return working_dir
     
     def _get_api_key(self, provided_key: str = None) -> str:
         """
@@ -372,18 +367,9 @@ Content:
 
         base_name = self._sanitize_basename(Path(c_file_path).name)
         results_dir = self._get_results_dir()
-        working_dir = self._get_working_dir()
         out_code = results_dir / f"{base_name}_typed.{out_ext or 'c'}"
         out_summary = results_dir / f"{base_name}_summary.txt"
-        # Save the combined input in working directory for live artifacts
-        combined_input = working_dir / f"{base_name}_combined.txt"
-        # Clean up any stale combined file that might exist in results from earlier versions
-        stale_combined = results_dir / f"{base_name}_combined.txt"
-        try:
-            if stale_combined.exists():
-                stale_combined.unlink()
-        except Exception:
-            pass
+        combined_input = results_dir / f"{base_name}_combined.txt"
 
         # Persist a combined view of inputs for traceability and optional reuse
         try:
@@ -399,15 +385,6 @@ Content:
             # Do not fail the analysis if writing the combined file has issues
             pass
 
-        # Helpful diagnostics for large requests
-        try:
-            c_len = len(c_content)
-            d_len = len(objdump_content) if objdump_content else 0
-            print(f"[LLMAnalyzer] Preparing typing request | model={self.model} | chunking={'off' if self.disable_chunking else 'on'} | c_chars={c_len} | data_chars={d_len}")
-            print(f"[LLMAnalyzer] Combined prompt artifact: {combined_input}")
-        except Exception:
-            pass
-
         system_instructions = (
             "You are a reverse engineering assistant. Given decompiled C code "
             "from Ghidra and optionally objdump output, infer strong typing for "
@@ -419,12 +396,9 @@ Content:
             "Do not add comments except where necessary to indicate assumptions."
         )
 
-        # Note: we include at most 200k chars of the C file and up to 200k chars of data
-        if len(c_content) > 200000:
-            print(f"[LLMAnalyzer] Note: C input truncated from {len(c_content):,} to 200,000 chars for prompt size.")
         prompt = (
             "Task: Produce two artifacts.\n"
-            "1) TYPED_CODE: Full C code with improved/explicit types.\n"
+            "1) TYPED_CODE: Full C code with improved/explicit types and better variable names so the code is more human readable.\n"
             "2) SUMMARY: Short explanation of how the code works.\n\n"
             "Constraints:\n"
             "- Preserve original logic and control flow.\n"
@@ -442,8 +416,6 @@ Content:
         )
 
         if objdump_content:
-            if len(objdump_content) > 200000:
-                print(f"[LLMAnalyzer] Note: Data input truncated from {len(objdump_content):,} to 200,000 chars for prompt size.")
             prompt += f"\nObjdump/Data ({Path(objdump_path).name} excerpt):\n```\n{objdump_content}\n```\n"
 
         text = None
@@ -549,6 +521,25 @@ Content:
         print(f"Saved summary to: {out_summary}")
         print(f"Saved combined input to: {combined_input}")
 
+    # ========== CLEANUP GHIDRA PROJECT FOLDER ==========
+        # try:#UNCOMMENT
+        #     print("Cleaning up Ghidra project folder...")
+            
+        #     # Wait a moment to ensure all file handles are released
+        #     import time
+        #     time.sleep(1)
+        #     project_dir = Path("./decompiled_output").resolve()
+        #     if project_dir.exists():
+        #         # Delete the entire ghidra_projects folder
+        #         shutil.rmtree(project_dir)
+        #         print(f"Deleted: {project_dir}")
+        #     else:
+        #         print(f"Project folder already gone: {project_dir}")
+                
+        # except Exception as e:
+        #     print(f"Could not delete project folder: {e}")
+        #     print(f"You can manually delete: {project_dir}")
+
         return {
             'typed_code_file': str(out_code),
             'summary_file': str(out_summary),
@@ -625,7 +616,41 @@ Content:
             return response.content[0].text
         except Exception as e:
             return f"Error generating summary: {str(e)}"
-
+    def _cleanup_decompiled_output(self):
+        """
+        Clean up the decompiled_output folder after processing is complete
+        """
+        try:
+            print("[LLMAnalyzer] Cleaning up decompiled_output folder...")
+            
+            # Look for decompiled_output folder in common locations
+            possible_locations = [
+                Path("./decompiled_output"),                    # Current directory
+                Path("../decompiled_output"),                   # Parent directory
+                Path(__file__).parent / "decompiled_output",    # Same as script
+                Path(__file__).parent.parent / "decompiled_output"  # Parent of script
+            ]
+            
+            deleted = False
+            for decompiled_dir in possible_locations:
+                if decompiled_dir.exists() and decompiled_dir.is_dir():
+                    print(f"[LLMAnalyzer] Found decompiled_output at: {decompiled_dir.resolve()}")
+                    
+                    # Wait a moment to ensure all file handles are released
+                    time.sleep(1)
+                    
+                    # Delete the folder
+                    shutil.rmtree(decompiled_dir)
+                    print(f"[LLMAnalyzer] Deleted: {decompiled_dir.resolve()}")
+                    deleted = True
+                    break
+            
+            if not deleted:
+                print("[LLMAnalyzer] No decompiled_output folder found to clean up")
+                
+        except Exception as e:
+            print(f"[LLMAnalyzer] Could not delete decompiled_output folder: {e}")
+            print("[LLMAnalyzer] You can manually delete it if needed")
 def main():
     """Standalone usage of LLM analyzer"""
     import argparse
@@ -664,6 +689,7 @@ def main():
     print(f"Analyzed {len(results)} chunks")
     print(f"Total tokens used: {total_tokens}")
     print(f"Results saved to: {output_file}")
+    analyzer._cleanup_decompiled_output()
 
 if __name__ == "__main__":
     main()
