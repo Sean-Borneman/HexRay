@@ -12,6 +12,7 @@ const storageDir = path.join(__dirname, '..', 'storage');
 const uploadsDir = path.join(storageDir, 'uploads');
 const decomp_out = path.join(__dirname, '..', 'decompiled_output');
 const resultsDir = path.join(storageDir, 'results');
+const verifyDir = path.join(resultsDir, 'verification');
 
 [storageDir, uploadsDir, resultsDir].forEach(dir => {
     if (!fs.existsSync(dir)) {
@@ -98,7 +99,20 @@ app.get('/code-results', (req, res) => {
     }
 });
 
-// 4. Cleanup Endpoint
+// 4. Verification Endpoint (SAFE SIMULATION)
+app.post('/verify', (req, res) => {
+    console.log('Verification process triggered...');
+
+    execSync("cd .. && python ./backend/verify.py");
+    const verificationResultPath = path.join(verifyDir, 'verification_result.txt');
+    const verificationContent = fs.readFileSync(verificationResultPath, 'utf-8');
+    res.json({
+                message: 'Verification complete.',
+                result: verificationContent
+            });
+});
+
+// 5. Cleanup Endpoint
 app.post('/cleanup', (req, res) => {
     const cleanupDirectory = (directory) => {
         try {
