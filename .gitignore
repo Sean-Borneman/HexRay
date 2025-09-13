@@ -21,3 +21,4 @@ npm-debug.log
 # Sensitive data
 .env
 /Ghidra_full_open_source_install/
+backend/config.json

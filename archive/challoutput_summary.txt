@@ -1,0 +1,9 @@
+Offline fallback: unable to contact LLM.
+File: challoutput.c
+Approx. function headers detected: 9
+Sample headers:
+- if (completed_0 != '\0') {
+- if (sVar2 < 0x47) {
+- while( true ) {
+- while (iVar1 = (local_284 + local_288) / 2, iVar1 != local_278[local_28c]) {
+- if (iVar1 < local_278[local_28c]) {

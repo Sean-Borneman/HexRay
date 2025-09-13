@@ -19,3 +19,29 @@ python main_pipeline.py binary --prompt "Focus on encryption and security"
 
 # Skip summary generation
 python main_pipeline.py binary --no-summary
+
+# Enable chunking (off by default)
+python backend/llm_analyzer.py storage/challoutput.c --type code --chunk
+python backend/llm_analyzer.py storage/challdump.txt --type data --chunk
+
+## Configuration
+
+You can provide your Anthropic API key via any of these (checked in order):
+
+1) CLI flag: `--api-key YOUR_KEY`
+2) Environment variable: `ANTHROPIC_API_KEY`
+3) Project config file: `backend/config.json`
+4) User config file: `~/.config/ghidra-llm/config.json`
+
+Project-local config setup:
+
+- Copy `backend/config.example.json` to `backend/config.json`
+- Put your key in the `anthropic_api_key` field
+
+Example `backend/config.json`:
+
+{
+  "anthropic_api_key": "sk-ant-..."
+}
+
+Note: `backend/config.json` is ignored by git to avoid committing secrets.
