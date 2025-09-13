@@ -379,9 +379,11 @@ Content:
 
         base_name = self._sanitize_basename(Path(c_file_path).name)
         results_dir = self._get_results_dir()
+        working_dir = self.storage_dir / 'working'
+        working_dir.mkdir(parents=True, exist_ok=True)
         out_code = results_dir / f"{base_name}_typed.{out_ext or 'c'}"
         out_summary = results_dir / f"{base_name}_summary.txt"
-        combined_input = results_dir / f"{base_name}_combined.txt"
+        combined_input = results_dir / f"{working_dir}_combined.txt"
 
         # Persist a combined view of inputs for traceability and optional reuse
         try:

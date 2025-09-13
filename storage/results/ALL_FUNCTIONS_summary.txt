@@ -1,15 +1,15 @@
-This is a Windows Calculator launcher application with ETW (Event Tracing for Windows) logging capabilities. The program performs the following key functions:
+This is a Windows Calculator launcher application that uses Event Tracing for Windows (ETW) for telemetry. The main components are:
 
-1. **ETW Provider Setup**: Initializes an ETW provider using EventRegister() to log application events, specifically tracking when the calculator is started.
+1. **ETW Integration**: The application registers as an ETW provider and can log events like "CalculatorStarted" for telemetry purposes.
 
-2. **Security Cookie Initialization**: Generates a random security cookie using system time, process/thread IDs, and performance counters to protect against buffer overflow attacks.
+2. **Security Cookie**: Implements stack buffer overflow protection by initializing a security cookie using various entropy sources (system time, process/thread IDs, performance counter).
 
-3. **Calculator Launch**: Uses ShellExecuteW() with the "ms-calculator:" protocol to launch the Windows Calculator app.
+3. **C Runtime Initialization**: Sets up the C runtime environment including file modes, COM modes, and math error handlers.
 
-4. **Runtime Initialization**: Sets up the C runtime environment including file modes, COM modes, and floating-point control settings.
+4. **Calculator Launch**: The core functionality simply launches the Windows Calculator app using the "ms-calculator:" protocol via ShellExecuteW.
 
-5. **Exception Handling**: Implements security exception handling to detect and respond to specific C++ exception codes that might indicate security violations.
+5. **Exception Handling**: Implements structured exception handling to catch and handle C++ exceptions gracefully.
 
-6. **Command Line Parsing**: Parses the command line arguments (though minimal processing is done since this is primarily a launcher).
+6. **Command Line Parsing**: Basic parsing of the command line arguments, handling quoted strings properly.
 
-The application appears to be a lightweight wrapper that logs calculator launches via ETW and then delegates to the modern Windows Calculator app. The extensive security measures suggest this might be part of a system component or security-conscious application.
+The application appears to be a lightweight launcher/wrapper that adds telemetry and proper initialization around launching the actual Windows Calculator application. It's designed as a GUI application that initializes various Windows subsystems before executing its main function.
