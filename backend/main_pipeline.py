@@ -335,6 +335,8 @@ Examples:
                        help='Use ghirda-cli-call.py and ghidraDecompileToText.py instead of ghidra_processor')
     parser.add_argument('--use-ghidra-with-data', action='store_true',
                        help='Use ghidraWithDataCall.py as the first step to create a project and export code+data')
+    parser.add_argument('--use-ghidra-twofiles', action='store_true',
+                       help='Run ghidraDecompileTWOFiles.py to produce ALL_FUNCTIONS.c and ALL_DATA.txt, then feed into LLM')
     
     # Output options
     parser.add_argument('--quiet', action='store_true',
@@ -346,8 +348,8 @@ Examples:
     
     # Validate mode selection
     using_existing = bool(args.c_file)
-    if not using_existing and not args.binary and not args.use_ghirda_scripts and not args.use_ghidra_with_data:
-        print("Error: provide a binary or --c-file or --use-ghirda-scripts or --use-ghidra-with-data")
+    if not using_existing and not args.binary and not args.use_ghirda_scripts and not args.use_ghidra_with_data and not args.use_ghidra_twofiles:
+        print("Error: provide a binary or --c-file or --use-ghirda-scripts or --use-ghidra-with-data or --use-ghidra-twofiles")
         sys.exit(2)
     
     # Create pipeline
@@ -413,6 +415,54 @@ Examples:
                 }
             else:
                 print("Consolidated outputs not found; you can pass --c-file and --dump-file to run typing.")
+                results = {
+                    'binary_name': None,
+                    'code_file': None,
+                    'data_file': None,
+                    'analysis_file': None,
+                    'summary_file': None,
+                    'typed_code_file': None,
+                    'combined_input_file': None,
+                    'code_chunks_analyzed': 0,
+                    'data_chunks_analyzed': 0,
+                    'total_chunks': 0,
+                    'tokens_used': 0,
+                }
+        elif args.use_ghidra_twofiles:
+            # Only run the consolidation export (no ghidra-cli); assumes a project already exists
+            import subprocess
+            print("[Mode] Using ghidraDecompileTWOFiles.py to export consolidated function C and data")
+            try:
+                subprocess.run([sys.executable, 'ghidraDecompileTWOFiles.py'], check=True)
+            except Exception as e:
+                print(f"Error running ghidraDecompileTWOFiles.py: {e}")
+                if args.verbose:
+                    import traceback
+                    traceback.print_exc()
+            # Then feed the consolidated outputs into the LLM typing/summarization step
+            merged_c_path = Path('./decompiled_output/ALL_FUNCTIONS.c')
+            combined_data_path = Path('./decompiled_output/ALL_DATA.txt')
+            if merged_c_path.exists():
+                outputs = pipeline.llm_analyzer.annotate_types_and_summarize(
+                    c_file_path=str(merged_c_path),
+                    objdump_path=str(combined_data_path) if combined_data_path.exists() else None,
+                    out_ext='c'
+                )
+                results = {
+                    'binary_name': merged_c_path.stem,
+                    'code_file': str(merged_c_path),
+                    'data_file': str(combined_data_path) if combined_data_path.exists() else None,
+                    'analysis_file': None,
+                    'summary_file': outputs.get('summary_file'),
+                    'typed_code_file': outputs.get('typed_code_file'),
+                    'combined_input_file': outputs.get('combined_input_file'),
+                    'code_chunks_analyzed': 0,
+                    'data_chunks_analyzed': 0,
+                    'total_chunks': 0,
+                    'tokens_used': 0,
+                }
+            else:
+                print("Consolidated outputs not found. Ensure a Ghidra project exists in ./ghidra_projects.")
                 results = {
                     'binary_name': None,
                     'code_file': None,
