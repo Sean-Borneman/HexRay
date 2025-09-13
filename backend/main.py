@@ -2,6 +2,7 @@ import subprocess
 import os
 from pathlib import Path
 from ghidraDecompileTWOFiles import export_consolidated_code_and_data
+from llm_analyzer import LLMAnalyzer
 # from ghidraDecompileToText import export_with_pyghidra
 class SimpleGhidraCLI:
     def __init__(self):
@@ -147,3 +148,24 @@ if __name__ == "__main__":
     main()
     # export_with_pyghidra()
     export_consolidated_code_and_data()
+
+    # After consolidated export, automatically run LLM typing + summary
+    try:
+        funcs_path = Path('./decompiled_output/ALL_FUNCTIONS.c')
+        data_path = Path('./decompiled_output/ALL_DATA.txt')
+        if funcs_path.exists():
+            print("[LLM] Running typing and summarization on consolidated outputs...")
+            analyzer = LLMAnalyzer()
+            outputs = analyzer.annotate_types_and_summarize(
+                c_file_path=str(funcs_path),
+                objdump_path=str(data_path) if data_path.exists() else None,
+                out_ext='c'
+            )
+            print("[LLM] Typed code:", outputs.get('typed_code_file'))
+            print("[LLM] Summary:", outputs.get('summary_file'))
+            if outputs.get('combined_input_file'):
+                print("[LLM] Combined input:", outputs.get('combined_input_file'))
+        else:
+            print("[LLM] Skipping typing: consolidated file ./decompiled_output/ALL_FUNCTIONS.c not found.")
+    except Exception as e:
+        print(f"[LLM] Error during typing/summarization: {e}")
