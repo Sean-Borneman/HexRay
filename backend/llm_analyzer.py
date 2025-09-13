@@ -79,14 +79,9 @@ class LLMAnalyzer:
         return storage_dir
 
     def _get_results_dir(self) -> Path:
-        """Get the results directory (repo-root/results)."""
-        current_dir = Path(__file__).parent
-        if current_dir.name == 'backend':
-            results_dir = current_dir.parent / 'results'
-        else:
-            results_dir = Path('../results').resolve()
-            if not results_dir.exists():
-                results_dir = current_dir.parent / 'results'
+        """Get the results directory under storage (repo-root/storage/results)."""
+        # Always place results inside the existing storage directory
+        results_dir = self.storage_dir / 'results'
         results_dir.mkdir(parents=True, exist_ok=True)
         return results_dir
     
