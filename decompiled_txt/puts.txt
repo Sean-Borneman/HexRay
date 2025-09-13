@@ -1,5 +1,5 @@
 Function: puts
-Address: 00105018
+Address: 00105010
 Size: 1 bytes
 ============================================================
 
@@ -11,6 +11,7 @@ int puts(char *__s)
 
 {
                     /* WARNING: Bad instruction - Truncating control flow here */
+                    /* puts@GLIBC_2.2.5 */
   halt_baddata();
 }
 

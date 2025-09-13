@@ -1,5 +1,5 @@
 Function: _ITM_deregisterTMCloneTable
-Address: 00105010
+Address: 00105008
 Size: 1 bytes
 ============================================================
 

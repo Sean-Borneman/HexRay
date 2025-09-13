@@ -1,7 +1,7 @@
 import subprocess
 import os
 from pathlib import Path
-
+# from ghidraDecompileToText import export_with_pyghidra
 class SimpleGhidraCLI:
     def __init__(self):
         self.script_path = Path("./ghidra-cli").resolve()
@@ -87,9 +87,27 @@ def main():
     try:
         ghidra = SimpleGhidraCLI()
         
-        # Analyze the "engine" binary
-        binary_path = "./engine"
-        project_name = "engine_analysis"
+        storage_dir = Path("./storage")
+        
+        if not storage_dir.exists():
+            print(f"❌ Storage folder not found: {storage_dir.resolve()}")
+            print("Please create a 'storage' folder and put your binary file in it.")
+            return
+        
+        # Get the first file in storage folder
+        files = [f for f in storage_dir.iterdir() if f.is_file()]
+        
+        if not files:
+            print(f"❌ No files found in storage folder: {storage_dir.resolve()}")
+            print("Please put a binary file in the storage folder.")
+            return
+        
+        # Use the first file found
+        binary_file = files[0]
+        
+        # Set up paths based on the file found
+        binary_path = str(binary_file)
+        project_name = f"{binary_file.stem}_analysis"  # e.g., "myfile_analysis"
         project_dir = "./ghidra_projects"  # Optional: specify where to save the project
         
         # Check if the binary exists first
@@ -126,3 +144,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # export_with_pyghidra()

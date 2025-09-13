@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GHIDRA_PATH="C:\Users\Sean\Documents\school\CMU\PPP\ghidra_11.4.2_PUBLIC_20250826\ghidra_11.4.2_PUBLIC"
+GHIDRA_PATH="Ghidra_full_open_source_install\ghidra_11.4.2_PUBLIC"
 GHIDRA_EXECUTE="$GHIDRA_PATH/ghidraRun"
 GHIDRA_ANALYZE="$GHIDRA_PATH/support/analyzeHeadless"
 TEMP_PROJECT_DIR="/tmp/"

@@ -11,6 +11,7 @@ int printf(char *__format,...)
 
 {
                     /* WARNING: Bad instruction - Truncating control flow here */
+                    /* printf@GLIBC_2.2.5 */
   halt_baddata();
 }
 
