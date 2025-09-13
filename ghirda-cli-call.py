@@ -2,91 +2,6 @@ import subprocess
 import os
 from pathlib import Path
 
-class WindowsGhidraCLI:
-    def __init__(self):
-        self.script_path = Path("./ghidra-cli").resolve()
-        self.executor = self._find_bash_executor()
-    
-    def _find_bash_executor(self):
-        """Find a way to execute bash scripts on Windows"""
-        executors = [
-            # Git Bash
-            (r"C:\Program Files\Git\bin\bash.exe", "git_bash"),
-            (r"C:\Program Files (x86)\Git\bin\bash.exe", "git_bash"),
-            # WSL
-            ("wsl", "wsl"),
-            # System bash
-            ("bash", "bash"),
-        ]
-        
-        for exe_path, exe_type in executors:
-            try:
-                if exe_type == "wsl":
-                    subprocess.run([exe_path, "--help"], 
-                                 capture_output=True, check=True, timeout=5)
-                else:
-                    if Path(exe_path).exists() or exe_type == "bash":
-                        subprocess.run([exe_path, "--version"], 
-                                     capture_output=True, check=True, timeout=5)
-                
-                print(f"✓ Found executor: {exe_type}")
-                return (exe_path, exe_type)
-            except:
-                continue
-        
-        raise RuntimeError("No bash executor found. Please install Git for Windows or WSL.")
-    
-    def _convert_to_bash_path(self, windows_path):
-        """Convert Windows path to Git Bash compatible path"""
-        path = Path(windows_path).resolve()
-        path_str = str(path)
-        
-        # Convert C:\Users\... to /c/Users/...
-        if path_str[1:3] == ':\\':
-            drive_letter = path_str[0].lower()
-            rest_of_path = path_str[3:].replace('\\', '/')
-            return f"/{drive_letter}/{rest_of_path}"
-        
-        return path_str.replace('\\', '/')
-    
-    def run(self, args, cwd=None):
-        """Execute ghidra-cli with arguments"""
-        exe_path, exe_type = self.executor
-        
-        if exe_type == "git_bash":
-            # Convert script path to Git Bash format
-            bash_script_path = self._convert_to_bash_path(self.script_path)
-            cmd = [exe_path, bash_script_path] + args
-            
-            # Convert working directory if provided
-            if cwd:
-                bash_cwd = self._convert_to_bash_path(cwd)
-                # Use cd command in bash
-                bash_command = f'cd "{bash_cwd}" && bash "{bash_script_path}" {" ".join(args)}'
-                cmd = [exe_path, "-c", bash_command]
-            
-        elif exe_type == "wsl":
-            cmd = [exe_path, "bash", str(self.script_path)] + args
-        else:
-            cmd = [exe_path, str(self.script_path)] + args
-        
-        try:
-            print(f"Running: {' '.join(cmd[:3])}...")  # Don't print full path for readability
-            result = subprocess.run(
-                cmd,
-                cwd=None if exe_type == "git_bash" and cwd else cwd,  # Let bash handle cwd
-                capture_output=True,
-                text=True,
-                check=True
-            )
-            return result
-        except subprocess.CalledProcessError as e:
-            print(f"❌ Command failed")
-            print(f"Error: {e.stderr}")
-            print(f"Output: {e.stdout}")
-            raise
-
-# Alternative simpler approach - just use bash -c with a command string
 class SimpleGhidraCLI:
     def __init__(self):
         self.script_path = Path("./ghidra-cli").resolve()
@@ -137,32 +52,75 @@ class SimpleGhidraCLI:
             print(f"Error: {e.stderr}")
             print(f"Output: {e.stdout}")
             raise
+    
+    def analyze_binary(self, binary_path, project_name=None, project_dir=None):
+        """Analyze a binary file with ghidra-cli"""
+        # Check if binary exists
+        binary_file = Path(binary_path)
+        if not binary_file.exists():
+            raise FileNotFoundError(f"Binary file not found: {binary_file.resolve()}")
+        
+        # Build arguments for ghidra-cli
+        args = ['-n', '-i', str(binary_path)]
+        
+        if project_dir:
+            args.extend(['-d', str(project_dir)])
+        
+        if project_name:
+            args.extend(['--name', project_name])
+        
+        print(f"🔍 Starting analysis of: {binary_file.resolve()}")
+        print(f"📁 Project will be created in: {project_dir or '/tmp'}")
+        print(f"📝 Project name:5 {project_name or 'auto-generated'}")
+        print("⏳ This may take a while for large binaries...")
+        
+        try:
+            result = self.run(args)
+            print("✅ Analysis completed successfully!")
+            print("Output:", result.stdout)
+            return result
+        except Exception as e:
+            print(f"❌ Analysis failed: {e}")
+            raise
 
-# Usage
 def main():
     try:
-        # Use the simpler approach
         ghidra = SimpleGhidraCLI()
         
-        # Test with help
-        print("Testing ghidra-cli...")
-        result = ghidra.run(["-n -i ./engine"])
-        print("✓ ghidra-cli is working!")
-        print("Help output:")
-        print(result.stdout)
+        # Analyze the "engine" binary
+        binary_path = "./engine"
+        project_name = "engine_analysis"
+        project_dir = "./ghidra_projects"  # Optional: specify where to save the project
         
-        # Test analyzing a binary (uncomment when you have a binary to test)
-        # result = ghidra.run(['-n', '-i', './my_binary.exe', '--name', 'test'])
-        # print("✓ Analysis completed!")
+        # Check if the binary exists first
+        if not Path(binary_path).exists():
+            print(f"❌ Binary file '{binary_path}' not found in current directory.")
+            print(f"Current directory: {Path.cwd()}")
+            print("Files in current directory:")
+            for file in Path.cwd().iterdir():
+                if file.is_file():
+                    print(f"  - {file.name}")
+            return
+        
+        # Create project directory if specified
+        if project_dir:
+            Path(project_dir).mkdir(exist_ok=True)
+        
+        # Run the analysis
+        result = ghidra.analyze_binary(
+            binary_path=binary_path,
+            project_name=project_name,
+            project_dir=project_dir
+        )
+        
+        print(f"\n🎉 Analysis complete! Project saved as '{project_name}'")
+        if project_dir:
+            print(f"📂 Project location: {Path(project_dir).resolve()}")
         
     except FileNotFoundError as e:
         print(f"❌ Setup Error: {e}")
     except subprocess.CalledProcessError as e:
         print(f"❌ Execution Error: {e}")
-        if "No such file or directory" in str(e.stderr):
-            print("\nMake sure the ghidra-cli script is in your current directory.")
-            print(f"Looking for: {Path('./ghidra-cli').resolve()}")
-            print(f"File exists: {Path('./ghidra-cli').exists()}")
     except Exception as e:
         print(f"❌ Unexpected Error: {e}")
 
