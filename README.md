@@ -48,7 +48,6 @@ python .\backend\main.py
 
 # With environment variable for API key
 export ANTHROPIC_API_KEY="your-api-key"
-export ANTHROPIC_API_KEY="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"
 python main_pipeline.py binary.exe
 
 # Only analyze code sections
